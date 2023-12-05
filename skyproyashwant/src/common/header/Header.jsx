@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import bottomImg from "../../assets/images/home-01/logo/Skypro_New_Logo.png";
 import headerLogo from "../../assets/images/home-01/logo/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ToggleHeader from "./ToggleHeader";
+import AccountContext from "../../utils/AccountContext";
 const Header = () => {
+  const { login, setLogin, setUserData } = useContext(AccountContext);
+  const navigate = useNavigate();
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("userInfo");
+    setLogin(false);
+    setUserData(null);
+    navigate("/login");
+  };
+
   return (
     <>
       <div class="header-top d-none d-lg-block">
@@ -24,15 +35,27 @@ const Header = () => {
             </div>
             <div class="top-button d-flex flex-wrap justify-content-between align-items-center">
               <ul class="login-registration d-flex flex-wrap justify-content-between align-items-center">
-                <li>
-                  <Link to="/login">
-                    <span class="icon-user-1"></span> Login
-                  </Link>
-                </li>
-                <li>/</li>
-                <li>
-                  <Link to="/register">Register</Link>
-                </li>
+                {localStorage.getItem("userInfo") ? (
+                  <li>
+                    <Link to="/">
+                      <span class="icon-user-1"></span>
+                      <span onClick={logoutHandler}>LogOut</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <>
+                    <li>
+                      <Link to="/login">
+                        <span class="icon-user-1"></span>
+                        Login
+                      </Link>
+                    </li>
+                    <li>/</li>
+                    <li>
+                      <Link to="/register">Register</Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>

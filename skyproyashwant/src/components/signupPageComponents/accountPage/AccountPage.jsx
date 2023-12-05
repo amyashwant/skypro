@@ -3,15 +3,32 @@ import signupOne from "../../../assets/images/authentication/fun-bg.png";
 import signupTwo from "../../../assets/images/authentication/fun-img.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+// import OtpPage from "../../otpPageComponents/OtpPage";
+// import OtpPage from "../../otpPageComponents/OtpPage";
 
 const AccountPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showReenteredPassword, setShowReenteredPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const toggleReenteredPasswordVisibility = () => {
+    setShowReenteredPassword(
+      (prevShowReenteredPassword) => !prevShowReenteredPassword
+    );
+  };
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    otp: "",
   });
+  console.log("formData>>", formData);
+
+  const [showOtp, setShowOtp] = useState(null);
 
   const [errors, setErrors] = useState({});
 
@@ -54,7 +71,18 @@ const AccountPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // console.log("formData.otp", formData.otp);
+    // console.log("showOtp", showOtp);
+    // if (formData.otp === showOtp) {
+    //   navigate("/login");
+    //   console.log("correct otp");
+    //   // const newErrors = {};
+    //   // newErrors.otp = "Please enter the correct OTP";
+    //   // setErrors(newErrors);
+    // } else {
+    //   console.log("please enter correct otp");
+    //   // newErrors.otp = "please enter correct otp";
+    // }
     if (validateForm()) {
       // Submit the form or perform any further action here
       const { name, email, password, confirmPassword } = formData;
@@ -71,9 +99,10 @@ const AccountPage = () => {
           { name, email, password, confirmPassword },
           config
         );
-        console.log(data.message);
+        setShowOtp(data.otp);
+        console.log(data);
         localStorage.setItem("userInfo", JSON.stringify(data));
-        navigate("/login");
+        // navigate("/login");
       } catch (error) {
         const newErrors = {};
         // console.log(error);
@@ -89,6 +118,25 @@ const AccountPage = () => {
     }
   };
 
+  const handleSubmitTwo = (e) => {
+    e.preventDefault();
+    const newErrorsTwo = {};
+    console.log("formData.otp", formData.otp);
+    console.log("showOtp", showOtp);
+    if (formData.otp === showOtp) {
+      navigate("/login");
+      console.log("correct otp");
+      // const newErrors = {};
+      // newErrors.otp = "Please enter the correct OTP";
+      // setErrors(newErrors);
+    } else {
+      console.log("please enter correct otp");
+      newErrorsTwo.otp = "please enter correct otp";
+      // newErrors.otp = "please enter correct otp";
+    }
+    setErrors(newErrorsTwo);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -97,6 +145,29 @@ const AccountPage = () => {
     });
   };
 
+  // if (formData.otp !== showOtp) {
+  //   // const newErrors = {};
+  //   // newErrors.otp = "Please enter the correct OTP";
+  //   // setErrors(newErrors);
+  //   console.log("please enter correct otp");
+  // } else {
+  //   console.log("correct otp");
+  //   navigate("/login");
+  // }
+
+  // const handleSubmitTwo = () => {
+  //   if (formData.otp !== showOtp) {
+  //     // const newErrors = {};
+  //     // newErrors.otp = "Please enter the correct OTP";
+  //     // setErrors(newErrors);
+  //     console.log("please enter correct otp");
+  //   } else {
+  //     console.log("correct otp");
+  //     navigate("/login");
+  //   }
+  // };
+
+  console.log("formdata.otp>>", formData.otp);
   return (
     <section className="account py-100">
       <div className="container">
@@ -117,7 +188,207 @@ const AccountPage = () => {
                 <h4 className="subtitle">SIGN UP</h4>
                 <h2 className="title">CREATE AN ACCOUNT</h2>
               </div>
-              <form onSubmit={handleSubmit} autoComplete="off" noValidate>
+              {showOtp ? (
+                <>
+                  <form
+                    onSubmit={handleSubmitTwo}
+                    autoComplete="off"
+                    noValidate
+                  >
+                    <div className="row gy-3">
+                      <div className="col-md-12">
+                        <span className="star">*</span>
+                        <div className="contact-form-field">
+                          <label for="otp" className="form-label form--label">
+                            Enter OTP
+                          </label>
+                          <input
+                            type="text"
+                            id="otp"
+                            className="form-control form--control"
+                            placeholder="Enter Your OTP"
+                            maxLength={6}
+                            // required={true}
+                            name="otp"
+                            value={formData.otp}
+                            onChange={handleChange}
+                          />
+                          {/* {errors && <span className="error">{errors.otp}</span>} */}
+                          {errors.otp && (
+                            <span className="error">{errors.otp}</span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <div className="contact-form-field d-sm-flex flex-wrap justify-content-between align-items-center">
+                          <button type="submit" className="btn--base">
+                            SUBMIT
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </>
+              ) : (
+                // <OtpPage
+                //   handleSubmitTwo={handleSubmitTwo}
+                //   handleChange={handleChange}
+                // otpValue={formData.otp}
+                // formData={formData}
+                // showOtp={showOtp}
+                // />
+                <form onSubmit={handleSubmit} autoComplete="off" noValidate>
+                  <div className="row gy-3">
+                    <div className="col-md-12">
+                      <span className="star">*</span>
+                      <div className="contact-form-field">
+                        <label
+                          for="userName"
+                          className="form-label form--label"
+                        >
+                          User Name
+                        </label>
+
+                        <input
+                          type="text"
+                          id="userName"
+                          className="form-control form--control"
+                          placeholder="Enter Your Name"
+                          // required={true}
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                        {errors.name && (
+                          <span className="error">{errors.name}</span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-md-12">
+                      <span className="star">*</span>
+                      <div className="contact-form-field">
+                        <label
+                          for="Emailaddress"
+                          className="form-label form--label"
+                        >
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          id="Emailaddress"
+                          className="form-control form--control"
+                          placeholder="Enter Your Email"
+                          // required={true}
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                        {errors.email && (
+                          <span className="error">{errors.email}</span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-sm-12">
+                      <span className="star">*</span>
+                      <div className="contact-form-field">
+                        <label className="form--label" for="password">
+                          Password
+                        </label>
+                        <div className="input--group">
+                          <input
+                            id="password"
+                            // type="password"
+                            type={showPassword ? "text" : "password"}
+                            className="form-control form--control"
+                            placeholder="Enter your password"
+                            // value="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                          />
+                          <span
+                            id="#password"
+                            // className="fa fa-fw field-icon toggle-password fa-eye"
+                            className={`fa fa-fw field-icon toggle-password ${
+                              showPassword ? "fa-eye-slash" : "fa-eye"
+                            }`}
+                            onClick={togglePasswordVisibility}
+                          ></span>
+                          {errors.password && (
+                            <span className="error">{errors.password}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-sm-12">
+                      <span className="star">*</span>
+                      <div className="contact-form-field">
+                        <label className="form--label" for="re-password">
+                          Re Password
+                        </label>
+                        <div className="input--group">
+                          <input
+                            id="re-password"
+                            // type="password"
+                            type={showReenteredPassword ? "text" : "password"}
+                            className="form-control form--control "
+                            placeholder="Re enter password"
+                            // value="re-password"
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                          />
+                          <span
+                            id="#re-password"
+                            // className="fa fa-fw field-icon toggle-password fa-eye"
+                            className={`fa fa-fw field-icon toggle-password ${
+                              showReenteredPassword ? "fa-eye-slash" : "fa-eye"
+                            }`}
+                            onClick={toggleReenteredPasswordVisibility}
+                          ></span>
+
+                          {/* {
+                            <div>
+                              <input
+                                type={showPassword ? "text" : "password"}
+                                id={id}
+                                // Add other input properties as needed
+                              />
+                              <i
+                                className={`toggle-password ${
+                                  showPassword ? "fa-eye-slash" : "fa-eye"
+                                }`}
+                                onClick={togglePasswordVisibility}
+                              />
+                            </div>
+                          } */}
+                          {errors.confirmPassword && (
+                            <span className="error">
+                              {errors.confirmPassword}
+                            </span>
+                          )}
+                          {errors.authErrors && (
+                            <span className="error">{errors?.authErrors}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-12">
+                      <div className="contact-form-field d-sm-flex flex-wrap justify-content-between align-items-center">
+                        <button type="submit" className="btn--base">
+                          REGISTER
+                        </button>
+                        <p className="text text-dark fw-normal mt-sm-0 mt-2">
+                          Already Have An Account?
+                          <Link to="/login">Log in</Link>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              )}
+
+              {/* <form onSubmit={handleSubmit} autoComplete="off" noValidate>
                 <div className="row gy-3">
                   <div className="col-md-12">
                     <span className="star">*</span>
@@ -235,7 +506,7 @@ const AccountPage = () => {
                     </div>
                   </div>
                 </div>
-              </form>
+              </form> */}
             </div>
           </div>
         </div>

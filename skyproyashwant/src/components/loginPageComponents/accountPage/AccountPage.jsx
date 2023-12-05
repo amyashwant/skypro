@@ -5,6 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AccountContext from "../../../utils/AccountContext";
 const AccountPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const navigate = useNavigate();
 
   const { login, setLogin, setUserData } = useContext(AccountContext);
@@ -154,7 +160,8 @@ const AccountPage = () => {
                       <div className="input--group">
                         <input
                           id="password"
-                          type="password"
+                          // type="password"
+                          type={showPassword ? "text" : "password"}
                           className="form-control form--control"
                           placeholder="Enter your password"
                           // value="password"
@@ -164,7 +171,11 @@ const AccountPage = () => {
                         />
                         <span
                           id="#password"
-                          className="fa fa-fw field-icon toggle-password fa-eye"
+                          // className="fa fa-fw field-icon toggle-password fa-eye"
+                          className={`fa fa-fw field-icon toggle-password ${
+                            showPassword ? "fa-eye-slash" : "fa-eye"
+                          }`}
+                          onClick={togglePasswordVisibility}
                         ></span>
                         {errors.password && (
                           <span className="error">{errors.password}</span>
@@ -175,21 +186,21 @@ const AccountPage = () => {
                   <div className="col-md-12">
                     <div className="contact-form-field d-sm-flex flex-wrap justify-content-between align-items-center">
                       <button type="submit" className="btn--base">
-                        LOGIN YOUR ACCOUNT
+                        LOGIN
                       </button>
-                      <p className="text text-dark fw-normal mt-sm-0 mt-2">
+                      {/* <p className="text text-dark fw-normal mt-sm-0 mt-2">
                         <a href="#" className="forgot">
                           Forgot Password?
                         </a>
-                      </p>
+                      </p> */}
                     </div>
                   </div>
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <div className="remeber-me">
                       <input type="checkbox" id="rem-me" />
                       <label for="rem-me">Remember Me</label>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-md-12">
                     <div className="contact-form-field">
                       <p className="text text-dark fw-normal">

@@ -5,15 +5,15 @@
 ======================================================================*/
   $(document).ready(function () {
     // ========================= Password Show Hide Js Start ==========================
-    $(".toggle-password").click(function () {
-      $(this).toggleClass("fa-eye fa-eye-slash");
-      var input = $($(this).attr("id"));
-      if (input.attr("type") == "password") {
-        input.attr("type", "text");
-      } else {
-        input.attr("type", "password");
-      }
-    });
+    // $(".toggle-password").click(function () {
+    //   $(this).toggleClass("fa-eye fa-eye-slash");
+    //   var input = $($(this).attr("id"));
+    //   if (input.attr("type") == "password") {
+    //     input.attr("type", "text");
+    //   } else {
+    //     input.attr("type", "password");
+    //   }
+    // });
     // ========================= Password Show Hide Js End ==========================
 
     // ========================= Toggle Search Js Start =====================
