@@ -17,7 +17,7 @@ const PackageMainPage = () => {
 
   return (
     <div>
-      <div className="package-section-new" style={{ marginTop: "100px" }}>
+      <div className="package-section-new" style={{ marginTop: "38px" }}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-12">

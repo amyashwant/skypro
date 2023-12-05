@@ -6,6 +6,7 @@ import axios from "axios";
 import AccountContext from "../../../utils/AccountContext";
 const AccountPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -79,7 +80,9 @@ const AccountPage = () => {
           { email, password },
           config
         );
-
+        {
+          localStorage.getItem("otpInfo") && localStorage.removeItem("otpInfo");
+        }
         localStorage.setItem("userInfo", JSON.stringify(data));
 
         // window.location.reload(false); //seen from comment lect. 12 youtube
@@ -125,15 +128,15 @@ const AccountPage = () => {
                 <h4 className="subtitle">LOG IN</h4>
                 <h2 className="title">WELCOME BACK</h2>
               </div>
-              <form onSubmit={handleSubmit} autoComplete="off" noValidate>
+              <form className='cust-formdiv' onSubmit={handleSubmit} autoComplete="off" noValidate>
                 <div className="row gy-3">
                   <div className="col-md-12">
-                    <span className="star">*</span>
+                    
                     <div className="contact-form-field">
                       <label
                         for="Emailaddress"
                         className="form-label form--label"
-                      >
+                      ><span className="star">*</span>
                         Email Address
                       </label>
                       <input
@@ -152,12 +155,12 @@ const AccountPage = () => {
                     </div>
                   </div>
                   <div className="col-sm-12">
-                    <span className="star">*</span>
+                    
                     <div className="contact-form-field">
-                      <label className="form--label" for="password">
+                      <label className="form--label" for="password"><span className="star">*</span>
                         Password
                       </label>
-                      <div className="input--group">
+                      <div className="input--group position-relative">
                         <input
                           id="password"
                           // type="password"
@@ -172,7 +175,7 @@ const AccountPage = () => {
                         <span
                           id="#password"
                           // className="fa fa-fw field-icon toggle-password fa-eye"
-                          className={`fa fa-fw field-icon toggle-password ${
+                          className={`cust-div3 fa fa-fw field-icon toggle-password ${
                             showPassword ? "fa-eye-slash" : "fa-eye"
                           }`}
                           onClick={togglePasswordVisibility}
@@ -188,19 +191,19 @@ const AccountPage = () => {
                       <button type="submit" className="btn--base">
                         LOGIN
                       </button>
-                      {/* <p className="text text-dark fw-normal mt-sm-0 mt-2">
+                      <p className="text text-dark fw-normal mt-sm-0 mt-2">
                         <a href="#" className="forgot">
                           Forgot Password?
                         </a>
-                      </p> */}
+                      </p>
                     </div>
                   </div>
-                  {/* <div className="col-md-12">
+                  <div className="col-md-12">
                     <div className="remeber-me">
                       <input type="checkbox" id="rem-me" />
                       <label for="rem-me">Remember Me</label>
                     </div>
-                  </div> */}
+                  </div>
                   <div className="col-md-12">
                     <div className="contact-form-field">
                       <p className="text text-dark fw-normal">

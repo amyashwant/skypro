@@ -101,7 +101,7 @@ const AccountPage = () => {
         );
         setShowOtp(data.otp);
         console.log(data);
-        localStorage.setItem("userInfo", JSON.stringify(data));
+        localStorage.setItem("otpInfo", data.otp);
         // navigate("/login");
       } catch (error) {
         const newErrors = {};
@@ -120,10 +120,14 @@ const AccountPage = () => {
 
   const handleSubmitTwo = (e) => {
     e.preventDefault();
+
     const newErrorsTwo = {};
-    console.log("formData.otp", formData.otp);
-    console.log("showOtp", showOtp);
-    if (formData.otp === showOtp) {
+    console.log("formData.otp two>>", typeof formData.otp);
+    console.log("showOtp type two>>", typeof showOtp);
+    const otpcheck = localStorage.getItem("otpInfo");
+    console.log("otpcheck two", typeof otpcheck);
+    if (formData.otp === otpcheck) {
+      localStorage.removeItem("otpInfo");
       navigate("/login");
       console.log("correct otp");
       // const newErrors = {};
@@ -188,18 +192,18 @@ const AccountPage = () => {
                 <h4 className="subtitle">SIGN UP</h4>
                 <h2 className="title">CREATE AN ACCOUNT</h2>
               </div>
-              {showOtp ? (
+              {localStorage.getItem("otpInfo") ? (
                 <>
-                  <form
+                  <form className="cust-formdiv"
                     onSubmit={handleSubmitTwo}
                     autoComplete="off"
                     noValidate
                   >
                     <div className="row gy-3">
                       <div className="col-md-12">
-                        <span className="star">*</span>
                         <div className="contact-form-field">
                           <label for="otp" className="form-label form--label">
+                            <span className="star">*</span>
                             Enter OTP
                           </label>
                           <input
@@ -237,15 +241,15 @@ const AccountPage = () => {
                 // formData={formData}
                 // showOtp={showOtp}
                 // />
-                <form onSubmit={handleSubmit} autoComplete="off" noValidate>
+                <form  className="cust-formdiv" onSubmit={handleSubmit} autoComplete="off" noValidate>
                   <div className="row gy-3">
                     <div className="col-md-12">
-                      <span className="star">*</span>
+                      
                       <div className="contact-form-field">
                         <label
                           for="userName"
                           className="form-label form--label"
-                        >
+                        ><span className="star">*</span>
                           User Name
                         </label>
 
@@ -265,12 +269,11 @@ const AccountPage = () => {
                       </div>
                     </div>
                     <div className="col-md-12">
-                      <span className="star">*</span>
+                      
                       <div className="contact-form-field">
                         <label
                           for="Emailaddress"
-                          className="form-label form--label"
-                        >
+                          className="form-label form--label"><span className="star">*</span>
                           Email Address
                         </label>
                         <input
@@ -289,12 +292,12 @@ const AccountPage = () => {
                       </div>
                     </div>
                     <div className="col-sm-12">
-                      <span className="star">*</span>
+                      
                       <div className="contact-form-field">
-                        <label className="form--label" for="password">
+                        <label className="form--label" for="password"><span className="star">*</span>
                           Password
                         </label>
-                        <div className="input--group">
+                        <div className="input--group position-relative">
                           <input
                             id="password"
                             // type="password"
@@ -309,7 +312,7 @@ const AccountPage = () => {
                           <span
                             id="#password"
                             // className="fa fa-fw field-icon toggle-password fa-eye"
-                            className={`fa fa-fw field-icon toggle-password ${
+                            className={`cust-div3 fa fa-fw field-icon toggle-password ${
                               showPassword ? "fa-eye-slash" : "fa-eye"
                             }`}
                             onClick={togglePasswordVisibility}
@@ -321,12 +324,12 @@ const AccountPage = () => {
                       </div>
                     </div>
                     <div className="col-sm-12">
-                      <span className="star">*</span>
+                      
                       <div className="contact-form-field">
-                        <label className="form--label" for="re-password">
+                        <label className="form--label" for="re-password"><span className="star">*</span>
                           Re Password
                         </label>
-                        <div className="input--group">
+                        <div className="input--group position-relative">
                           <input
                             id="re-password"
                             // type="password"
@@ -341,27 +344,12 @@ const AccountPage = () => {
                           <span
                             id="#re-password"
                             // className="fa fa-fw field-icon toggle-password fa-eye"
-                            className={`fa fa-fw field-icon toggle-password ${
+                            className={`cust-div3 fa fa-fw field-icon toggle-password ${
                               showReenteredPassword ? "fa-eye-slash" : "fa-eye"
                             }`}
                             onClick={toggleReenteredPasswordVisibility}
                           ></span>
 
-                          {/* {
-                            <div>
-                              <input
-                                type={showPassword ? "text" : "password"}
-                                id={id}
-                                // Add other input properties as needed
-                              />
-                              <i
-                                className={`toggle-password ${
-                                  showPassword ? "fa-eye-slash" : "fa-eye"
-                                }`}
-                                onClick={togglePasswordVisibility}
-                              />
-                            </div>
-                          } */}
                           {errors.confirmPassword && (
                             <span className="error">
                               {errors.confirmPassword}

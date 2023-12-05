@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const OtpPage = ({ handleSubmitTwo, handleChange, otpValue }) => {
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
 //   const handleSubmitTwo = () => {
 //     if (formData.otp !== showOtp) {
