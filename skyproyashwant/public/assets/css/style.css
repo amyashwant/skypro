@@ -741,7 +741,7 @@ span {
 }
 
 ::-webkit-scrollbar {
-  width: 13px;
+  width: 12px;
   height: 13px;
 }
 
@@ -753,7 +753,7 @@ span {
 ::-webkit-scrollbar-thumb {
   background-color: #fd5901;
   border: 0px solid transparent;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -3198,7 +3198,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .banner-content .subtitle {
-  color: #df0e0e;
+  color: #fd5901;
   font-size: 18px;
   margin-bottom: 30px;
   line-height: 0;
