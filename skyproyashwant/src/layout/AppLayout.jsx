@@ -14,7 +14,8 @@ import RefundPage from "../screens/RefundPage";
 import CompliancePage from "../screens/CompliancePage";
 import PackagePage from "../screens/PackagePage";
 import AccountContext from "../utils/AccountContext";
-
+import MultiForm from "../components/packagePageComponents/multiform/MultiForm";
+import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -57,6 +58,8 @@ const AppLayout = () => {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/refund" element={<RefundPage />} />
             <Route path="/compliance" element={<CompliancePage />} />
+            <Route path="/payment" element={<MultiForm />} />
+            {/* <Route path="/checkoutform" element={<Checkout />} /> */}
           </Routes>
         </Router>
       </AccountContext.Provider>

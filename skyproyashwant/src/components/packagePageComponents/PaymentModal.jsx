@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import MultiForm from "./multiform/MultiForm";
 import SecondModal from "./SecondModal";
+import { Link } from "react-router-dom";
 
 const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
@@ -65,8 +66,16 @@ const PaymentModal = ({ handleClose, show, children }) => {
                   <p className="NOK">₹ 0</p>
                 </div>
               </div>
-              <button className="Checkout-btn" onClick={handleOpenSecondModal}>
-                Checkout
+
+              <button  className="Checkout-btn">
+                <Link to="/payment">
+                  <button
+                    className="Checkout-btn"
+                    onClick={handleOpenSecondModal}
+                  >
+                    Checkout
+                  </button>
+                </Link>
               </button>
             </div>
           </div>
