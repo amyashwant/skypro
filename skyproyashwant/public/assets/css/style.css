@@ -732,33 +732,24 @@ span {
 
 ::-moz-selection {
   color: #fff;
-  background-color: #ce0f0f;
+  background-color: #fd5901;
 }
 
 ::selection {
   color: #fff;
-  background-color: #ce0f0f;
+  background-color: #fd5901;
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 13px;
-}
-
-::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #fd5901;
   border: 0px solid transparent;
-  /* border-radius: 10px; */
 }
 
-::-webkit-scrollbar-thumb:active {
-  background-color: #fd5901;
-}
+
 
 ::-webkit-scrollbar-track {
   background-color: #071e43;
@@ -866,7 +857,7 @@ button:focus {
 .btn--base {
   background-color: #fd5901;
   color: #fff;
-  padding: 13px 30px;
+  padding: 8px 22px 4px 22px;
   font-family: "Teko", sans-serif;
   letter-spacing: 0.5px;
   font-weight: 400;
@@ -878,7 +869,9 @@ button:focus {
   border-radius: 1px;
   text-align: center;
 }
-
+.package-tab-sec .tab-price p{
+  color: #071e43;
+}
 .btn--base::before {
   position: absolute;
   content: "";
@@ -900,7 +893,12 @@ button:focus {
   height: 100%;
   border-radius: 1px;
 }
-
+p.text.text-dark.fw-normal a {
+  color: #fd5901;
+}
+p.text.text-dark.fw-normal a:hover {
+  color: #071e43 !important;
+}
 @media (max-width: 575px) {
   .btn--base {
     padding: 10px 20px;
@@ -3198,7 +3196,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .banner-content .subtitle {
-  color: #fd5901;
+  color: #df0e0e;
   font-size: 18px;
   margin-bottom: 30px;
   line-height: 0;
@@ -7185,4 +7183,49 @@ form.cust-formdiv label span.star {
 
 form.cust-formdiv label {
   position: relative;
+}
+
+
+
+
+
+
+/*----- 06-12-2013----*/
+
+@media (max-width: 767px){
+  .py-100 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.package-section-new {
+  margin: 0 !important;
+}
+.package-tab-sec ul {
+  width: auto !important;
+  margin: 10px 0px !important;
+  padding: 0 !important;
+}
+.package-tab-sec ul li a {
+  padding: 4px 11px !important;
+  text-transform: capitalize;
+}
+.package-tab-sec .tab-content h4 {
+  font-size: 26px !important;
+}
+.package-tab-sec .tab-bg .channelImage {
+  display: none;
+}
+.package-tab-sec .price-style h2 {
+  font-size: 28px !important;
+}
+.package-tab-sec .selectbtn a {
+  padding: 10px 16px !important;
+  white-space: nowrap;
+}
+.package-tab-sec .tab-price {
+  align-items: center;
+}
+.package-tab-sec .tab-bg {
+  margin-bottom: 12px !important;
+}
 }
