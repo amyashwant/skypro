@@ -3,21 +3,25 @@ import imgOne from "../../assets/images/packageNew/aljazeera.png";
 import imgTwo from "../../assets/images/packageNew/b4u.png";
 import imgThree from "../../assets/images/packageNew/dangal.png";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../utils/cartSlice";
+import { addItem, clearItem } from "../../utils/cartSlice";
 import { Link } from "react-router-dom";
 
 const PackageMainPage = () => {
   const dispatch = useDispatch();
 
   const [lang, setLang] = useState(languages[0])
+  const [view, setView] = useState(false)
+  const [selectedPack, setSelectedPack] = useState(null);
 
   const cartItems = useSelector((store) => store.cart.items);
 
   const handleClick = (arg) => {
+    if(cartItems.length > 0){
+      dispatch(clearItem())
+    }
     dispatch(addItem(arg));
+    setSelectedPack(arg)
   };
-
-  console.log("cartItems", cartItems);
 
   const languageClick = (language) => {
     setLang(language.toLowerCase());
@@ -78,7 +82,10 @@ const PackageMainPage = () => {
                             <div className="tab-bg">
                               <div className="width-div w-50">
                                 <h4>{item.title}</h4>
-                                <a href="#">{item.subTitle}</a>
+                                <Link onClick={() => setView((prevIndex) => (prevIndex === index ? null : index))}>
+                                  {view === index ? 'Hide Channels' : 'View Channels'}
+                                </Link>
+                                  {view === index && <div className="">Hello</div>}
                               </div>
                               <div className="channelImage w-50">
                                 <ul className="m-0 p-0">
@@ -104,12 +111,12 @@ const PackageMainPage = () => {
                                 <p>{item.priceTitle}</p>
                               </div>
                               <div className="selectbtn">
-                                <a className="btn-style" href="#">
-                                  <span onClick={() => handleClick(item)}>
-                                    Add Pack
-                                  </span>
-                                </a>
-                                ``
+                                <Link className={`btn-style ${selectedPack === item ? "selected" : ""}`} to="#"
+                                  onClick={() => handleClick(item)}
+                                  disabled={selectedPack === item}
+                                >
+                                    {selectedPack === item ? "Selected" : "Add Pack"}
+                                </Link>
                               </div>
                             </div>
                           </div>

@@ -7229,3 +7229,58 @@ form.cust-formdiv label {
   margin-bottom: 12px !important;
 }
 }
+
+.information .card {
+  border-radius: 0;
+  background-color: #f3f5f7;
+}
+
+.information .card input {
+  border: 1px solid #071e43;
+  border-radius: 0;
+}
+
+.information .card input:focus {
+  box-shadow: none;
+}
+
+.btn-check:focus+.btn-warning, .btn-warning:focus {
+  box-shadow: none;
+}
+
+.information button.btn.btn-warning {
+  background-color: #fd5901;
+  color: #fff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 0;
+}
+.your-shoping-cart button.checkout-btn {
+    width: 100%;
+}
+
+.your-shoping-cart button.checkout-btn a {
+    color: #fff;
+    background-color: #071e43;
+    color: #fff !important;
+    padding: 10px 30px;
+    border: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.your-shoping-cart {
+  position: relative;
+}
+
+.your-shoping-cart .close-icon {
+  background: #071e43;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  height: 30px;
+  width: 32px;
+  position: absolute;
+  left: 90%;
+  top: 2%;
+}
