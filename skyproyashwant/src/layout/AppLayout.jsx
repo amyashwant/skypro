@@ -59,7 +59,7 @@ const AppLayout = () => {
             <Route path="/refund" element={<RefundPage />} />
             <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/payment" element={<MultiForm />} />
-            {/* <Route path="/checkoutform" element={<Checkout />} /> */}
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </Router>
       </AccountContext.Provider>

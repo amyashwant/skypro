@@ -2,14 +2,15 @@
 import React, { useState } from "react";
 import MultiForm from "./multiform/MultiForm";
 import SecondModal from "./SecondModal";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
 
-  const handleOpenSecondModal = () => {
-    setShowSecondModal(true);
-  };
+  const cartItems = useSelector((state) => state.cart.items);
+
+  console.log("cart in packages", cartItems);
 
   const modalStyle = {
     position: "fixed",
@@ -54,34 +55,27 @@ const PaymentModal = ({ handleClose, show, children }) => {
               <hr />
               <div className="cost-box">
                 <div>
-                  <p>Standard Package</p>
-                  <p>₹ 0</p>
+                  <p>
+                    {cartItems[0]?.title ? cartItems[0]?.title : "your package"}
+                  </p>
+                  <p>₹ {cartItems[0]?.price[0]}</p>
                 </div>
                 <div>
-                  <p>Total VAT</p>
-                  <p className="VAT">-</p>
+                  <p>Total TAX</p>
+                  <p className="VAT">2%</p>
                 </div>
                 <div>
-                  <p>Total NOK</p>
-                  <p className="NOK">₹ 0</p>
+                  <p>Total</p>
+                  <p className="NOK">{cartItems[0]?.price[0]}</p>
                 </div>
               </div>
-
-              <button  className="Checkout-btn">
-                <Link to="/payment">
-                  <button
-                    className="Checkout-btn"
-                    onClick={handleOpenSecondModal}
-                  >
-                    Checkout
-                  </button>
-                </Link>
+              <button className="Checkout-btn">
+                <Link to="/payment">Checkout </Link>
               </button>
             </div>
           </div>
         </div>
       </div>
-      {/* <SecondModal show={showSecondModal} /> */}
     </>
   );
 };
