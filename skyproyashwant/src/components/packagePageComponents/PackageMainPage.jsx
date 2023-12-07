@@ -78,6 +78,7 @@ const PackageMainPage = () => {
                             <div className="tab-bg">
                               <div className="width-div w-50">
                                 <h4>{item.title}</h4>
+                                
                                 <a href="#">{item.subTitle}</a>
                               </div>
                               <div className="channelImage w-50">
