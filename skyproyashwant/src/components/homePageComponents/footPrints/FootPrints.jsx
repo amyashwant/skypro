@@ -1,5 +1,5 @@
 import React from "react";
-import footPrint from "../../../assets/images/home-01/footprint/footprint.png";
+import footPrint from "../../../assets/images/home-01/footprint/map.png";
 const FootPrints = () => {
   return (
     <section className="footprint pb-100 pt-50">

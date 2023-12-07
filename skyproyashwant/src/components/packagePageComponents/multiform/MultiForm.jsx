@@ -37,7 +37,7 @@ const MultiForm = () => {
 
   console.log(values);
   return (
-    <div className="bg-dark vh-100">
+    <div className="bg-dark vh-100 d-flex">
       <div className="container d-flex justify-content-center align-items-center">
         <div className="card p-3 w-50 mt-5">
           {

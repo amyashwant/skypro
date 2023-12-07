@@ -1,7 +1,7 @@
 import React from "react";
-import footerOne from "../../assets/images/home-01/footer_contact/contact-01.png";
-import footerTwo from "../../assets/images/home-01/footer_contact/contact-02.png";
-import footerThree from "../../assets/images/home-01/footer_contact/contact-03.png";
+import footerOne from "../../assets/images/home-01/footer_contact/location.png";
+import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
+import footerThree from "../../assets/images/home-01/footer_contact/tell.png";
 const FooterContact = () => {
   return (
     <section className="footer-contact py-80">

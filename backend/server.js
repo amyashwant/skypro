@@ -1,3 +1,25 @@
+// // sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe
+// // bouquet: price_1OKcfxSBYt5a6mPeuFEF0QBc
+// // bouquetTwo: price_1OKcliSBYt5a6mPe7OHM2nUO
+
+// const express = require('express');
+// var cors = require('cors');
+// const stripe = require('stripe')('sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.static("public"));
+// app.use(express.json());
+
+
+
+
+
+
+
+
+
+
 const express = require("express");
 const app = express();
 const dbConnect = require("./config/db");
@@ -6,7 +28,6 @@ const chats = require("./data/data");
 const colors = require("colors");
 const cookieparser = require("cookie-parser");
 require("dotenv").config();
-
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const userRoutes = require("./routes/userRoutes");
@@ -18,6 +39,12 @@ app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
+
+
+// sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe
+// bouquet: price_1OKcfxSBYt5a6mPeuFEF0QBc
+// bouquet: price_1OKcliSBYt5a6mPe7OHM2nUO
+
 
 // --------------------------deployment------------------------------
 

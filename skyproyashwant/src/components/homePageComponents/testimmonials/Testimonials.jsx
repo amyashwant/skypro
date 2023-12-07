@@ -3,9 +3,9 @@ import testOne from "../../../assets/images/home-02/testi/left-img.png";
 import testTwo from "../../../assets/images/home-01/about/testi-01.png";
 import testThree from "../../../assets/images/home-01/about/testi-02.png";
 import testFour from "../../../assets/images/home-01/about/testi-03.png";
-import testFive from "../../../assets/images/home-02/testi/features-02.png";
-import testSix from "../../../assets/images/home-02/testi/features-02.png";
-import testSeven from "../../../assets/images/home-02/testi/features-03.png";
+import testFive from "../../../assets/images/home-02/testi/idia.png";
+import testSix from "../../../assets/images/home-02/testi/seatting.png";
+import testSeven from "../../../assets/images/home-02/testi/tell.png";
 const Testimonials = () => {
   return (
     <section className="home-two-testimonial overflow-hidden">

@@ -5,8 +5,8 @@ import React from "react";
 import banner from "../../../assets/images/home-02/banner/banner.png";
 
 import shapeOne from "../../../assets/images/home-02/banner/shape-01.png";
-import shapeTwo from "../../../assets/images/home-02/banner/fun-bg.png";
-import shapeThree from "../../../assets/images/home-02/banner/unnamed.png";
+import shapeTwo from "../../../assets/images/home-02/banner/left.png";
+import shapeThree from "../../../assets/images/home-02/banner/right.png";
 // import banner from "../../../assets/images/home-02/banner/";
 import { Link } from "react-router-dom";
 
