@@ -34,6 +34,18 @@ const PaymentModal = ({ handleClose, show, children }) => {
     zIndex: 999,
   };
 
+  const calculateGST = (subtotal) => {
+    const gstRate = 0.18;
+    return subtotal * gstRate;
+  };
+
+  const subtotal = cartItems[0]?.price[0] || 0;
+  console.log(subtotal)
+  const gstAmount = calculateGST(subtotal);
+  console.log(gstAmount)
+  const total = subtotal + gstAmount;
+  console.log(total)
+
   return (
     <>
       <div>
@@ -43,6 +55,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
             <div className="container">
               <div className="title-box">
                 <h1>Your Cart</h1>
+                <span className="close-icon">x</span>
               </div>
               <div className="product-box">
                 <div className="info-box">
@@ -61,16 +74,16 @@ const PaymentModal = ({ handleClose, show, children }) => {
                   <p>₹ {cartItems[0]?.price[0]}</p>
                 </div>
                 <div>
-                  <p>Total TAX</p>
-                  <p className="VAT">2%</p>
+                  <p>GST</p>
+                  <p className="VAT">18%</p>
                 </div>
                 <div>
                   <p>Total</p>
-                  <p className="NOK">{cartItems[0]?.price[0]}</p>
+                  <p className="NOK">₹ {total}</p>
                 </div>
               </div>
-              <button className="Checkout-btn">
-                <Link to="/payment">Checkout </Link>
+              <button className="checkout-btn">
+                <Link  to="/payment">Checkout </Link>   
               </button>
             </div>
           </div>

@@ -37,9 +37,9 @@ const MultiForm = () => {
 
   console.log(values);
   return (
-    <div className="bg-dark vh-100">
+    <div className="bg-dark vh-100 d-flex information">
       <div className="container d-flex justify-content-center align-items-center">
-        <div className="card p-3 w-50 mt-5">
+        <div className="card p-3 w-50 mt-4">
           {
             {
               1: <PersonalInfo handleChange={handleChange} />,
