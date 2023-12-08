@@ -10,6 +10,10 @@ const channelSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  Language: {
+    type: String,
+    trim: true,
+  },
   channelImage: {
     type: String,
     default:
@@ -20,6 +24,8 @@ const channelSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  createdAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Channel", channelSchema);
