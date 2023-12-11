@@ -5,5 +5,5 @@ const otp = otpGenerator.generate(6, {
   specialChars: false,
 });
 // const otp = otpObj.otp;
-console.log("otpjs>>", otp);
+// console.log("otpjs>>", otp);
 module.exports = otp;

@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-console.log(upload, "upload>>>>");
+// console.log(upload, "upload>>>>");
 
 const imageUploadMiddleware = (fieldName) => (req, res, next) => {
   upload.single(fieldName)(req, res, (err) => {
