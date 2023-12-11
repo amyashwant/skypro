@@ -8,7 +8,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact py-100">
+    <section className="contact contactus-style py-80">
       <div className="container">
         <div className="row gy-5">
           <div className="col-lg-6">
@@ -82,7 +82,7 @@ const Contact = () => {
             <form onSubmit={handleClick} autoComplete="off">
               <div className="row">
                 <div className="col-md-6">
-                  <div style={{ color: "black", fontWeight: "bolder" }}>
+                  <div className="mb-1" style={{ color: "#071e43", fontWeight: "bolder", }}>
                     Enter Your Name
                   </div>
                   <div className="contact-form-field mb-4">
@@ -97,7 +97,7 @@ const Contact = () => {
                 </div>
 
                 <div className="col-md-6">
-                  <div style={{ color: "black", fontWeight: "bolder" }}>
+                  <div className="mb-1" style={{ color: "#071e43", fontWeight: "bolder" }}>
                     Enter Your Email
                   </div>
                   <div className="contact-form-field mb-4">
@@ -111,7 +111,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="col-md-6">
-                  <div style={{ color: "black", fontWeight: "bolder" }}>
+                  <div className="mb-1" style={{ color: "#071e43", fontWeight: "bolder" }}>
                     Enter Your Phone
                   </div>
                   <div className="contact-form-field mb-4">
@@ -125,7 +125,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="col-md-6">
-                  <div style={{ color: "black", fontWeight: "bolder" }}>
+                  <div className="mb-1" style={{ color: "#071e43", fontWeight: "bolder" }}>
                     Enter Your Subject
                   </div>
                   <div className="contact-form-field mb-4">
@@ -142,7 +142,7 @@ const Contact = () => {
                   <div className="contact-form-field mb-4">
                     <textarea
                       id="yourComment"
-                      className="form-control form--control style-two"
+                      className="form-control form--control style-two py-2"
                       placeholder="Message"
                       spellcheck="false"
                     ></textarea>

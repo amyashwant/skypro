@@ -48,7 +48,7 @@ const PortalHeader = ({ children }) => {
     return (
         <div className='dashboard'>
             <div className={!isActive ? 'is_active dashboard_left' : 'dashboard_left'}>
-                <div className='w-[200px] h-[100vh]'>
+                <div className='form-style-div01'>
                     <List
                         sx={{ width: '100%', maxWidth: 360 }}
                         component="nav"
@@ -118,7 +118,7 @@ const PortalHeader = ({ children }) => {
                         <UserProfile initialLetter={initialLetter} userData={userData}/>
                     </div> */}
                 </div>
-                <div className="px-[50px] py-[30px] mt-[70px] overflow-y-scroll">
+                <div className="form-style-div02">
                     {children}
                 </div>
             </div>
