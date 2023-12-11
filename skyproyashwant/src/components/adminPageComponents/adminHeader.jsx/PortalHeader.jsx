@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Skyprologo from "../../../assets/images/skypro/Skypro_New_Logo.png"
+import smallSkyprologo from "../../../assets/images/skypro/skypro-logo-icon.png"
 // import UserProfile from '../dashboard/userProfile';
 import { Link, useLocation } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -55,12 +56,11 @@ const PortalHeader = ({ children }) => {
                         subheader={
                             <ListSubheader component="div" id="nested-list-subheader" sx={{...isActive && {padding: 0}}}>
                                 <Link className='logo' to='/' alt="logo">
-                                    <img src={Skyprologo} alt="fullLogo"/>
-                                    {/* {isActive ? (
-                                        // <img src={ImageIcons.logo} alt="fullLogo" />
+                                    {isActive ? (
+                                        <img src={Skyprologo} alt="fullLogo" />
                                     ):(
-                                        // <img src={ImageIcons.small_logo} alt="logo" />
-                                    )} */}
+                                        <img src={smallSkyprologo} alt="logo" />
+                                    )}
                                 </Link>
                             </ListSubheader>
                         }
