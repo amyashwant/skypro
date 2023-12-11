@@ -1,6 +1,7 @@
 const Channel = require("../models/packagesPageModel/channelModel");
 const Bouquet = require("../models/packagesPageModel/bouquetModel");
 const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
+const Language = require("../models/packagesPageModel/languageModel");
 
 // const multer = require("multer");
 // const storage = multer.diskStorage({
@@ -45,6 +46,28 @@ const getChannels = async (req, res) => {
   try {
     const channels = await Channel.find();
     res.status(200).json(channels);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+//language controller--------------------------------------------------------------------
+const createLanguage = async (req, res) => {
+  try {
+    const { name } = req.body;
+    const language = await Language.create({ name });
+    res.status(200).json(language);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getLanguage = async (req, res) => {
+  try {
+    const language = await Language.find();
+    res.status(200).json(language);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -112,6 +135,8 @@ const getBroadcasters = async (req, res) => {
 module.exports = {
   // createChannel,
   getChannels,
+  createLanguage,
+  getLanguage,
   createBouquet,
   getBouquets,
   createBroadcaster,
