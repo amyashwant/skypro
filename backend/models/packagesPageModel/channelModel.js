@@ -6,16 +6,26 @@ const channelSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  description: {
+  Type: {
     type: String,
     trim: true,
   },
-  pic: {
+  Language: {
+    type: String,
+    trim: true,
+  },
+  channelImage: {
     type: String,
     default:
       "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg ",
   },
-  // Add any other channel-related fields here
+
+  channelPrice: {
+    type: String,
+    trim: true,
+  },
+  createdAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Channel", channelSchema);

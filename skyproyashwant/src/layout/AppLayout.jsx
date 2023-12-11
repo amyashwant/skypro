@@ -17,7 +17,11 @@ import AccountContext from "../utils/AccountContext";
 import MultiForm from "../components/packagePageComponents/multiform/MultiForm";
 import SuccessPage from "../components/packagePageComponents/multiform/SuccessPage";
 import CancelPage from "../components/packagePageComponents/multiform/CancelPage";
-import PortalHeader from "../components/adminPageComponents/AdminPage";
+import AdminPage from "../screens/AdminPage";
+import BroadcasterFormPage from "../components/adminPageComponents/BroadcasterFormPage";
+import BouqetFormPage from "../components/adminPageComponents/BouqetFormPage";
+import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader";
+import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -64,8 +68,11 @@ const AppLayout = () => {
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
-            {/* <Route path="/admin" element={<PortalHeader />} /> */}
-            {/* <Route path="/checkout" element={<Checkout />} /> */}
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/settings/broadcasters" element={<BroadcasterFormPage />}/>
+            <Route path="/admin/settings/bouquets" element={<BouqetFormPage />}/>
+            <Route path="/admin/settings/channels" element={<ChannelFormPage />}/>
+            <Route path="/admin/settings/languages" element={<LanguageFormPage />}/>
           </Routes>
         </Router>
       </AccountContext.Provider>
