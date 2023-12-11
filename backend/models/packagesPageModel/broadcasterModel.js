@@ -5,13 +5,18 @@ const broadcasterSchema = new mongoose.Schema({
       required: true,
       trim: true,
     },
-    channels: [
+    price: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    channelsRef: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Channel',
       },
     ],
-    bouquets: [
+    bouquetsRef: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Bouquet',

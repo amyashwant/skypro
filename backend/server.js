@@ -15,23 +15,57 @@ const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
 const path = require("path");
 const multer = require("multer");
+
+// const cors = require("cors");
+// const multer = require("multer");
 //middlewares
 app.use(express.json());
+
 app.use("/api/user", userRoutes);
 app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
-
-const upload = multer({ dest: "uploads/" });
-
-app.post("/uploads", upload.single("complienceFile"), async (req, res) => {
-  console.log(req.body);
-  console.log(req.file);
+// skyproyashwant/src/assets/images/packagesImages
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./skyproyashwant/src/assets/images/packagesImages"); // Uploads will be stored in the 'uploads/' directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname); // Unique filename to avoid overwriting
+  },
 });
+
+const upload = multer({ storage: storage });
+app.post("/upload-image", upload.single("image"), async (req, res) => {
+  console.log(req.file.filename);
+  res.send("uploaded!!");
+});
+
+// app.use(
+//   cors({
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
+
+// const upload = multer({ dest: "uploads/" });
+
+// app.post("/uploads", upload.single("complienceFile"), async (req, res) => {
+//   console.log(req.body);
+//   console.log(req.file);
+// });
 
 //error handeling mechanism
 app.use(notFound);
 app.use(errorHandler);
+
+//multer file upload code---------------------------------------------------------------------------
+
+// app.post("/upload-image", upload.single("image"), (req, res) => {
+//   console.log(req.body);
+//   res.send("uploaded!!");
+// });
+
+//End multer file upload code---------------------------------------------------------------------------
 
 //listening the server
 const PORT = process.env.PORT || 5000;

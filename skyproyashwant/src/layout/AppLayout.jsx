@@ -17,7 +17,9 @@ import AccountContext from "../utils/AccountContext";
 import MultiForm from "../components/packagePageComponents/multiform/MultiForm";
 import SuccessPage from "../components/packagePageComponents/multiform/SuccessPage";
 import CancelPage from "../components/packagePageComponents/multiform/CancelPage";
-import PortalHeader from "../components/adminPageComponents/AdminPage";
+import AdminPage from "../screens/AdminPage";
+import BouquetComponent from "../components/adminPageComponents/BouquetComponent";
+
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -64,7 +66,9 @@ const AppLayout = () => {
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
-            {/* <Route path="/admin" element={<PortalHeader />} /> */}
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/bouque" element={<BouquetComponent />} />
+
             {/* <Route path="/checkout" element={<Checkout />} /> */}
           </Routes>
         </Router>
