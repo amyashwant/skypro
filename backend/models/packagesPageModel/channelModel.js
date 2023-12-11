@@ -6,20 +6,19 @@ const channelSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  Type: {
+  type: {
     type: String,
     trim: true,
   },
-  Language: {
+  language: {
     type: String,
     trim: true,
   },
-  channelImage: {
+  image: {
     type: String,
     default:
       "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg ",
   },
-
   channelPrice: {
     type: String,
     trim: true,
