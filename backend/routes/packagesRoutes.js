@@ -3,6 +3,8 @@ const Channel = require("../models/packagesPageModel/channelModel");
 const {
   // createChannel,
   getChannels,
+  createLanguage,
+  getLanguage,
   createBouquet,
   getBouquets,
   createBroadcaster,
@@ -52,6 +54,8 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   }
 });
 router.route("/channel").get(getChannels);
+router.route("/language").post(createLanguage);
+router.route("/language").get(getLanguage);
 router.route("/bouquet").post(createBouquet);
 router.route("/bouquet").get(getBouquets);
 router.route("/broadcaster").post(createBroadcaster);

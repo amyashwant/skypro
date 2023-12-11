@@ -11,7 +11,7 @@ const channelSchema = new mongoose.Schema({
     trim: true,
   },
   language: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
     trim: true,
   },
   image: {
