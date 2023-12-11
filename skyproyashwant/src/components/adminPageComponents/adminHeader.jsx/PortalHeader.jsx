@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Skyprologo from "../../../assets/images/skypro/Skypro_New_Logo.png"
-import smallSkyprologo from "../../../assets/images/skypro/Skypro_New_Logo.png"
+import smallSkyprologo from "../../../assets/images/skypro/skypro-logo-icon.png"
 // import UserProfile from '../dashboard/userProfile';
 import { Link, useLocation } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
