@@ -38,7 +38,7 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   try {
     const { name, type, language, channelPrice } = req.body;
     const image = req.file.path;
-    console.log(image, "image>>>");
+    // console.log(image, "image>>>");
     const channel = await Channel.create({
       name,
       type,

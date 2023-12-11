@@ -14,7 +14,7 @@ const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
 const path = require("path");
-const multer = require("multer");
+// const multer = require("multer");
 //middlewares
 app.use(express.json());
 app.use("/api/user", userRoutes);
@@ -22,12 +22,12 @@ app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
 
-const upload = multer({ dest: "uploads/" });
+// const upload = multer({ dest: "uploads/" });
 
-app.post("/uploads", upload.single("complienceFile"), async (req, res) => {
-  console.log(req.body);
-  console.log(req.file);
-});
+// app.post("/uploads", upload.single("complienceFile"), async (req, res) => {
+//   console.log(req.body);
+//   console.log(req.file);
+// });
 
 //error handeling mechanism
 app.use(notFound);
