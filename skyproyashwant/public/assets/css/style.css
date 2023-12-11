@@ -7299,6 +7299,7 @@ form.cust-formdiv label {
   width: 200px;
   overflow-x: hidden;
   transition: 0.5s;
+  height: 100%;
 }
 
 .dashboard_left_content {
@@ -7578,11 +7579,71 @@ form.cust-formdiv label {
   } 
 
 }
+section.contact.contactus-style .contact-form-field input, textarea#yourComment {
+  height: 50px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #071e43;
+  font-weight: 400;
+  outline: none;
+  width: 100%;
+  border: 1px solid #33333336;
+  padding: 0px 15px;
+}
+section.contact.contactus-style .contact-address a:hover {
+  color: #fd5901 !important;
+}
+.css-cveggr-MuiListItemIcon-root svg {
+  color: #071e43;
+}
+form.broadcaster-form {
+  width: 530px;
+  background: #e0dfee;
+  border: 1px solid #071e43;
+}
 
+form.broadcaster-form .MuiFormControl-root.css-u4cvaf-MuiFormControl-root {
+  width: 100%;
+  background: #fff;
+  margin: 12px 0px;
+}
 
-/* 8/12/2023 */
-/* .formInput {
-  height: 500px;
-  align-items: center;
+form.broadcaster-form input {
+  border: 1px solid #071e43;
+  padding: 7px 7px 7px 7px;
+  border-radius: 4px !important;
+}
+form.broadcaster-form input:hover {
+  box-shadow: none;
+}
+form.broadcaster-form div#demo-multiple-checkbox{
+  border: 1px solid #071e43;
+  border-radius: 4px !important;
+}
+form.broadcaster-form div#demo-multiple-checkbox {
+  border: 1px solid #071e43;
+  border-radius: 4px !important;
+  padding: 7px 7px 7px 7px;
+}
+.form-style-div02 {
+  height: 860px;
   display: flex;
-} */
+  align-items: center;
+  width: 100%;
+}
+.form-style-div02 form.broadcaster-form .form-label {
+  color: #081e43;
+  font-size: 18px;
+}
+form.broadcaster-form button.btn.btn-primary:focus {
+  box-shadow: none;
+}
+
+form.broadcaster-form button.btn.btn-primary {
+  background: #f76e25;
+  padding: 10px 40px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 0;
+  border: 0;
+}
