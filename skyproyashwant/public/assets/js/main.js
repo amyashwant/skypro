@@ -146,19 +146,19 @@
     // ========================= Brand Slider Js End =====================
 
     // ========================= Home Two testimonial Slider Js Start =====================
-    $(".testi-slider").slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 1000,
-      speed: 2000,
-      dots: false,
-      arrows: true,
-      nextArrow:
-        '<button type="button" class="slick-prev"><i class="fas fa-angle-right"></i></button>',
-      prevArrow:
-        '<button type="button" class="slick-next"><i class="fas fa-angle-left"></i></button>',
-    });
+    // $(".testi-slider").slick({
+    //   slidesToShow: 1,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   autoplaySpeed: 1000,
+    //   speed: 2000,
+    //   dots: false,
+    //   arrows: true,
+    //   nextArrow:
+    //     '<button type="button" class="slick-prev"><i class="fas fa-angle-right"></i></button>',
+    //   prevArrow:
+    //     '<button type="button" class="slick-next"><i class="fas fa-angle-left"></i></button>',
+    // });
     // ========================= Home Two testimonial Slider Js End =====================
 
     // ========================= Odometer Counter Js End =====================

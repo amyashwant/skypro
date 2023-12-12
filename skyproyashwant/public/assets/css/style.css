@@ -3196,7 +3196,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .banner-content .subtitle {
-  color: #df0e0e;
+  color: #fd5901;
   font-size: 18px;
   margin-bottom: 30px;
   line-height: 0;
@@ -4563,6 +4563,10 @@ svg.radial-progress circle {
   }
 }
 
+.testimonial-left i.icon-quote:before {
+  font-size: 60px;
+  color: #fd5901;
+}
 .testimonial-item {
   background-color: #fbfbfb;
   padding: 30px;
@@ -5651,7 +5655,7 @@ svg.radial-progress circle {
 }
 
 .testimonial-right {
-  background-color: #c61e1e;
+  background-color: #fd5901e0;
 }
 
 .testimonial-right .right-item {
@@ -7647,4 +7651,3 @@ form.broadcaster-form button.btn.btn-primary {
   border-radius: 0;
   border: 0;
 }
-

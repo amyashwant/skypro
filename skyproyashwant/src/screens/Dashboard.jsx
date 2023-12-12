@@ -25,8 +25,8 @@ const Dashboard = () => {
 
   const { login } = useContext(AccountContext);
   useEffect(() => {
-    if (!login) {
-      navigate("/login");
+    if (login) {
+      navigate("/");
     }
   }, [login]);
 

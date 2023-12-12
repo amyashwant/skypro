@@ -1,7 +1,7 @@
 import React from "react";
-import footerOne from "../../assets/images/home-01/footer_contact/contact-01.png";
-import footerTwo from "../../assets/images/home-01/footer_contact/contact-02.png";
-import footerThree from "../../assets/images/home-01/footer_contact/contact-03.png";
+import footerOne from "../../assets/images/home-01/footer_contact/location.png";
+import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
+import footerThree from "../../assets/images/home-01/footer_contact/phone.png";
 const FooterContact = () => {
   return (
     <section className="footer-contact py-80">
@@ -15,9 +15,9 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">OFFICIAL LOCATION</h6>
                 <p className="para">
-                  SCO 37, Second floor, Sector 67  
+                Abacus Cloud, B-70 ,Sector-74, Phase-7  
                 </p>
-                <p className="para">SAS Nagar - 160062(PUNJAB)</p>
+                <p className="para">Mohali, Punjab, IN</p>
               </div>
             </div>
           </div>

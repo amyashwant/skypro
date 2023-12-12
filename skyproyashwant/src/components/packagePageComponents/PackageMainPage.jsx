@@ -160,7 +160,7 @@ const languages = ["Hindi", "Punjabi", "Marathi", "Oriya"];
 const broadcaster = [
   {
     id: "price_1OKcfxSBYt5a6mPeuFEF0QBc",
-    title: "HW AP SILVER BUDGET TELUGU",
+    title: "Discovery Communications India",
     price: 150,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -171,7 +171,7 @@ const broadcaster = [
   },
   {
     id: "price_1OKcliSBYt5a6mPe7OHM2nUO",
-    title: "NORTH FTA",
+    title: "Celebrities Management Pvt Ltd",
     price: 450,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -181,7 +181,7 @@ const broadcaster = [
   },
   {
     id: "3",
-    title: "SILVER BUDGET HINDI",
+    title: "Eenadu Television Pvt Ltd",
     price: 260,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -191,7 +191,7 @@ const broadcaster = [
   },
   {
     id: "4",
-    title: "HW NORTH ULTRA VALUE HD",
+    title: "Epic Television Networks Pvt Ltd",
     price: 460,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -201,7 +201,7 @@ const broadcaster = [
   },
   {
     id: "5",
-    title: "NORTH FTA",
+    title: "TV18 Broadcast Limited",
     price: 150,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -211,7 +211,7 @@ const broadcaster = [
   },
   {
     id: "6",
-    title: "NORTH FTA",
+    title: "New Delhi Television Ltd",
     price: 450,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -221,7 +221,7 @@ const broadcaster = [
   },
   {
     id: "7",
-    title: "SILVER BUDGET HINDI",
+    title: "Culver Max Entertainment Pvt Ltd",
     price: 260,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -231,7 +231,7 @@ const broadcaster = [
   },
   {
     id: "8",
-    title: "HW NORTH ULTRA VALUE HD",
+    title: "TV Today Network",
     price: 460,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -241,7 +241,7 @@ const broadcaster = [
   },
   {
     id: "9",
-    title: "SILVER BUDGET TELUGU",
+    title: "Zee entertainment Enterprises Ltd",
     price: 140,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
@@ -255,7 +255,7 @@ const broadcaster = [
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
     channels: 272,
-    price: [140],
+    price: 140,
     priceTitle: "*Prices are excluding taxes",
     language: "oriya",
   },

@@ -92,8 +92,8 @@ const PaymentModal = ({ handleClose, show, children }) => {
                   <p>₹ {cartItems[0]?.price}</p>
                 </div>
                 <div>
-                  <p>GST</p>
-                  <p className="VAT">18%</p>
+                  <p>GST (18%)</p>
+                  <p className="VAT">₹ {gstAmount}</p>
                 </div>
                 <div>
                   <p>Total</p>

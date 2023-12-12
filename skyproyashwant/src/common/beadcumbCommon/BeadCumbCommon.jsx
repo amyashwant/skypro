@@ -21,10 +21,10 @@ const BeadCumbCommon = ({ titleOne, titleTwo, bgImg }) => {
                 <li>
                   <Link to="/">HOME</Link>
                 </li>
-                <li>
+                {/* <li>
                   <span>/</span>
                 </li>
-                <li>{titleTwo}</li>
+                <li>{titleTwo}</li> */}
               </ul>
             </div>
           </div>
