@@ -10,7 +10,7 @@ const TestimonialPage = () => {
           <div className="col-lg-6">
             <div className="section-header">
               <h4 className="subtitle">TESTIMONIAL</h4>
-              <h2 className="title text-dark">WHAT OUR CLIENT SAY ABOUT US</h2>
+              <h2 className="title text-white">WHAT OUR CLIENT SAY ABOUT US</h2>
             </div>
           </div>
         </div>
@@ -24,9 +24,9 @@ const TestimonialPage = () => {
                 <div
                   className="background-img"
                   //  style="background-image: url(assets/images/home-01/testimonial/testi-shape.png);"
-                  style={{
-                    backgroundImage: `url(${testiOne})`,
-                  }}
+                  // style={{
+                  //   backgroundImage: `url(${testiOne})`,
+                  // }}
                 ></div>
                 <div className="content">
                   <div className="icon">
