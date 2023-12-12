@@ -1,8 +1,8 @@
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // cb(null, "./skyproyashwant/src/assets/images/packagesImages"); // Uploads will be stored in the 'uploads/' directory
-    cb(null, "uploads/"); // Uploads will be stored in the 'uploads/' directory
+    cb(null, "./skyproyashwant/src/assets/images/packagesImages"); // Uploads will be stored in the 'uploads/' directory
+    // cb(null, "uploads/"); // Uploads will be stored in the 'uploads/' directory
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname); // Unique filename to avoid overwriting
