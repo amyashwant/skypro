@@ -24,8 +24,8 @@ app.use("/api/package", packageRoutes);
 
 
 //error handeling mechanism
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 //listening the server
 const PORT = process.env.PORT || 5000;
