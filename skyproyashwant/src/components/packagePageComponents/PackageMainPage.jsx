@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imgOne from "../../assets/images/packageNew/aljazeera.png";
 import imgTwo from "../../assets/images/packageNew/b4u.png";
 import imgThree from "../../assets/images/packageNew/dangal.png";
@@ -12,6 +12,7 @@ const PackageMainPage = () => {
   const [lang, setLang] = useState(languages[0]);
   const [view, setView] = useState(false);
   const [selectedPack, setSelectedPack] = useState(null);
+  const [packages, setPackages] = useState([]);
 
   const cartItems = useSelector((store) => store.cart.items);
 
@@ -27,12 +28,13 @@ const PackageMainPage = () => {
     setLang(language.toLowerCase());
   };
 
-  const packages = broadcaster.filter((item) => item.language === lang);
+  useEffect(() => {
+    const packages = broadcaster.filter((item) => item.language === lang);
+    setPackages(packages);
+  }, [lang]);
 
-  // console.log("lang>>>>>", lang)
-  // console.log("packagessss>>>>>", packages)
-
- 
+  console.log("lang>>>>>", lang)
+  console.log("packagessss>>>>>", packages)
 
   return (
     <div>
@@ -55,9 +57,10 @@ const PackageMainPage = () => {
                     {languages.map((language, index) => (
                       <li className="nav-item" role="presentation" key={index}>
                         <Link
-                          className={`nav-link ${index === 0 ? "active" : ""}`}
-                          data-bs-toggle="tab"
-                          to={`#ex2-tabs-${index + 1}`}
+                          // className={`nav-link ${index === 0 ? "active" : ""}`}
+                          className="nav-link"
+                          // data-bs-toggle="tab"
+                          // to={`#ex2-tabs-${index + 1}`}
                           // role="tab"
                           // aria-controls={`ex2-tabs-${index + 1}`}
                           // aria-selected={index === 0 ? "true" : "false"}
@@ -69,7 +72,7 @@ const PackageMainPage = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="tab-content" id="ex2-content">
+                <div className="tab-content" id="ex2-content">                
                   {packages.map((item, index) => (
                     <div
                       key={index}
@@ -272,3 +275,4 @@ const broadcaster = [
 ];
 
 export default PackageMainPage;
+

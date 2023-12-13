@@ -37,7 +37,7 @@ const AppLayout = () => {
   const cookieData = localStorage.getItem("userInfo");
 
   useEffect(() => {
-    console.log("useEffect hitted applayout");
+    // console.log("useEffect hitted applayout");
     if (cookieData) {
       setLogin(true);
       setUserData(JSON.parse(cookieData));

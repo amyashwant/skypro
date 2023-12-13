@@ -6,6 +6,12 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
 
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   const handleClick = () => {
     alert("Thanks ");
   };
@@ -153,9 +159,9 @@ const Footer = () => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-12 text-center">
-                <p className="bottom-footer-text text-white">
-                  Copyright &copy; 2023. All Rights Reserved By Skypro
-                </p>
+              <p className="bottom-footer-text text-white">
+                Copyright &copy; {currentYear}. All Rights Reserved By Skypro
+              </p>
               </div>
             </div>
           </div>
@@ -174,3 +180,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

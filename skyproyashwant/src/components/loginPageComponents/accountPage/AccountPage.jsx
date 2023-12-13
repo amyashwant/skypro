@@ -191,11 +191,11 @@ const AccountPage = () => {
                       <button type="submit" className="btn--base">
                         LOGIN
                       </button>
-                      <p className="text text-dark fw-normal mt-sm-0 mt-2">
+                      {/* <p className="text text-dark fw-normal mt-sm-0 mt-2">
                         <a href="#" className="forgot">
                           Forgot Password?
                         </a>
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="col-md-12">

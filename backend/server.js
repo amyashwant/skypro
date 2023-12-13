@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
+// const contactRoutes = require("./routes/contactRoutes")
 const path = require("path");
 
 //middlewares
@@ -21,6 +22,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
+// app.use("/api/contact", contactRoutes)
 
 
 //error handeling mechanism
