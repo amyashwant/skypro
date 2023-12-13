@@ -45,8 +45,8 @@ const Banner = () => {
               <h1 className="title">SKYPRO FOR THE FAST INTERNET</h1>
               <ul className="banner-buttons d-flex flex-wrap">
                 <li className="banner-buttons__item">
-                  <Link to="/signup" className="btn--base banner-buttons__link">
-                    START FROM $20 <i className="icon-checked"></i>
+                  <Link to="/packages" className="btn--base banner-buttons__link">
+                    View our latest Plans <i className="icon-checked"></i>
                   </Link>
                 </li>
                 <li className="banner-buttons__item">

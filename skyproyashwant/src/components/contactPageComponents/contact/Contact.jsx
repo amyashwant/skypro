@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import contactOne from "../../../assets/images/contact/contact-icon-01.png";
 import contactTwo from "../../../assets/images/contact/contact-icon-02.png";
 import contactThree from "../../../assets/images/contact/contact-icon-03.png";
+import axios from "axios";
 const Contact = () => {
-  const handleClick = () => {
-    alert("Thanks");
+
+  const [formData, setFormData] = useState({
+    name:'',
+    email:'',
+    phone:"",
+    subject:"",
+    message:""
+  })
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const {name, email, phone, subject, message} = formData
+    console.log(`{${name} ${email} ${phone} ${subject} ${message}}`)
+    try {
+      await axios.post('/api/contact', {name,email,phone,subject,message});
+      alert('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Error sending email. Please try again later.');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(() => ({
+      ...formData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -21,7 +48,7 @@ const Contact = () => {
                   <div className="content">
                     <h6 className="title">OFFICIAL LOCATION</h6>
                     <p className="text">
-                      SCO 37, Second floor, Sector 67 SAS Nagar - 160062(PUNJAB)
+                       Abacus Cloud, B-70 ,Sector-74, Phase-7 Mohali, - 160062(PUNJAB)
                     </p>
                     {/* <p className="text">Maine 98380</p>  */}
                   </div>
@@ -65,9 +92,9 @@ const Contact = () => {
                     <p className="text">
                       <a href="tel:">+(91) 9803596035</a>
                     </p>
-                    <p className="text">
+                    {/* <p className="text">
                       <a href="tel:">+(91) 9803596035</a>
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -88,10 +115,13 @@ const Contact = () => {
                   <div className="contact-form-field mb-4">
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
                       id="yourname"
                       className="form-control form--control style-two"
                       placeholder="Your Name"
                       required={true}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -103,10 +133,13 @@ const Contact = () => {
                   <div className="contact-form-field mb-4">
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
                       id="yourEmail"
                       className="form-control form--control style-two"
                       placeholder="Email"
                       required={true}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -118,9 +151,12 @@ const Contact = () => {
                     <input
                       type="number"
                       id="phone"
+                      name="phone"
+                      value={formData.phone}
                       className="form-control form--control style-two"
                       placeholder="Phone"
                       required={true}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -131,10 +167,13 @@ const Contact = () => {
                   <div className="contact-form-field mb-4">
                     <input
                       type="text"
+                      name="subject"
+                      value={formData.subject}
                       id="yoursubject"
                       className="form-control form--control style-two"
                       placeholder="Subject"
                       required={true}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -142,9 +181,12 @@ const Contact = () => {
                   <div className="contact-form-field mb-4">
                     <textarea
                       id="yourComment"
+                      name="message"
+                      value={formData.message}
                       className="form-control form--control style-two py-2"
                       placeholder="Message"
                       spellcheck="false"
+                      onChange={handleChange}
                     ></textarea>
                   </div>
                 </div>

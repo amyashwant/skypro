@@ -47,9 +47,9 @@ const FooterContact = () => {
                 <p className="para">
                   <a href="tel:">+(91) 9803596035</a>
                 </p>
-                <p className="para">
+                {/* <p className="para">
                   <a href="tel:">+(91) 9803596035</a>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
