@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const dbConnect = require("./config/db");
 dbConnect();
@@ -13,7 +14,6 @@ const userRoutes = require("./routes/userRoutes");
 const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
-const path = require("path");
 
 //middlewares
 app.use(express.json());
@@ -21,7 +21,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
-
 
 //error handeling mechanism
 // app.use(notFound);

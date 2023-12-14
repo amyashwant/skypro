@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Channel = require("../models/packagesPageModel/channelModel");
+const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
 const {
   // createChannel,
   getChannels,
@@ -7,8 +8,12 @@ const {
   getLanguage,
   createBouquet,
   getBouquets,
-  createBroadcaster,
+  // createBroadcaster,
   getBroadcasters,
+  createType,
+  getType,
+  createPackage,
+  getPackage,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
@@ -37,7 +42,7 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
   try {
     const { name, type, language, channelPrice } = req.body;
-    const image = req.file.path;
+    const image = req.file.filename;
     // console.log(image, "image>>>");
     const channel = await Channel.create({
       name,
@@ -58,7 +63,31 @@ router.route("/language").post(createLanguage);
 router.route("/language").get(getLanguage);
 router.route("/bouquet").post(createBouquet);
 router.route("/bouquet").get(getBouquets);
-router.route("/broadcaster").post(createBroadcaster);
+// router.route("/broadcaster").post(createBroadcaster);
+router.post(
+  "/broadcaster",
+  imageUploadMiddleware("image"),
+  async (req, res) => {
+    try {
+      const { name, bouqueRef } = req.body;
+      const image = req.file.filename;
+      const broadcaster = await Broadcaster.create({
+        name,
+        image,
+        bouqueRef,
+      });
+      res.status(200).json(broadcaster);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+);
 router.route("/broadcaster").get(getBroadcasters);
+
+router.post("/type", createType);
+router.get("/type", getType);
+router.post("/pack", createPackage);
+router.get("/pack", getPackage);
 
 module.exports = router;

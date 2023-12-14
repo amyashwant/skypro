@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
-
+import currImg from "../../assets/images/packagesImages/1702451103822-Default.jpg";
 const LanguageFormPage = () => {
   const [formData, setFormData] = useState({
     name: "",
   });
 
+  const [languageOne, setLanguageOne] = useState();
+  const [error, setError] = useState();
   const [languageData, setLanguageData] = useState();
 
   const getLanguageFunc = async () => {
@@ -22,16 +24,22 @@ const LanguageFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = {
-      Headers: {
-        "Content-type": "application/json",
-        // "Content-Type": "multipart/form-data",
-      },
-    };
-    const { name } = formData;
-    const data = await axios.post("/api/package/language", { name }, config);
-    console.log("data post>>>", data?.data?.name);
-    // setLanguageData(data);
+
+    try {
+      const config = {
+        Headers: {
+          "Content-type": "application/json",
+          // "Content-Type": "multipart/form-data",
+        },
+      };
+      const { name } = formData;
+      const data = await axios.post("/api/package/language", { name }, config);
+      console.log("data post>>>", data?.data?.name);
+      // setLanguageData(data);
+    } catch (error) {
+      console.log("error.response>>>>", error?.response?.data?.error);
+      setError(error?.response?.data?.error);
+    }
 
     setFormData((prevData) => ({
       ...prevData,
@@ -69,7 +77,12 @@ const LanguageFormPage = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        {error && error}
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={formData.name === ""}
+        >
           Submit
         </button>
         <div>language available:</div>

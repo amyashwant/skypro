@@ -2,6 +2,8 @@ const Channel = require("../models/packagesPageModel/channelModel");
 const Bouquet = require("../models/packagesPageModel/bouquetModel");
 const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
 const Language = require("../models/packagesPageModel/languageModel");
+const Type = require("../models/packagesPageModel/typeModel");
+const Package = require("../models/packagesPageModel/packageModel");
 
 // const multer = require("multer");
 // const storage = multer.diskStorage({
@@ -44,7 +46,7 @@ const Language = require("../models/packagesPageModel/languageModel");
 
 const getChannels = async (req, res) => {
   try {
-    const channels = await Channel.find();
+    const channels = await Channel.find().populate("type");
     res.status(200).json(channels);
   } catch (error) {
     console.error(error);
@@ -56,10 +58,15 @@ const getChannels = async (req, res) => {
 const createLanguage = async (req, res) => {
   try {
     const { name } = req.body;
+    const existingLanguage = await Language.findOne({ name });
+    if (existingLanguage) {
+      return res.status(400).json({ error: "Already added" });
+    }
+
     const language = await Language.create({ name });
     res.status(200).json(language);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -77,13 +84,12 @@ const getLanguage = async (req, res) => {
 // Bouque Controller------------------------------------------------------------------------------------
 const createBouquet = async (req, res) => {
   try {
-    const { name, type, channelsRef, broadcasterRef, price } = req.body;
+    const { name, price, broadcasterRef, channelRef } = req.body;
     const bouquet = await Bouquet.create({
       name,
-      type,
-      channelsRef,
-      broadcasterRef,
       price,
+      broadcasterRef,
+      channelRef,
     });
     res.status(200).json(bouquet);
   } catch (error) {
@@ -94,7 +100,21 @@ const createBouquet = async (req, res) => {
 
 const getBouquets = async (req, res) => {
   try {
-    const bouquets = await Bouquet.find().populate("channelsRef");
+    // const bouquets = await Bouquet.find()
+    //   .populate("broadcasterRef")
+    //   .populate("channelRef");
+    const bouquets = await Bouquet.find()
+      .populate({
+        path: "channelRef",
+        // select: "name",
+        populate: {
+          path: "language",
+        },
+      })
+      .populate({
+        path: "broadcasterRef",
+      });
+
     res.status(200).json(bouquets);
   } catch (error) {
     console.error(error);
@@ -103,29 +123,84 @@ const getBouquets = async (req, res) => {
 };
 
 // Broadcaster-----------------------------------------------------------------------------------
-const createBroadcaster = async (req, res) => {
+// const createBroadcaster = async (req, res) => {
+//   try {
+//     const { name } = req.body;
+//     const broadcaster = await Broadcaster.create({
+//       name,
+//     });
+//     res.status(200).json(broadcaster);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
+const getBroadcasters = async (req, res) => {
   try {
-    const { name, price, channelsRef, bouquetsRef } = req.body;
-    const broadcaster = await Broadcaster.create({
-      name,
-      price,
-      channelsRef,
-      bouquetsRef,
+    const broadcasters = await Broadcaster.find().populate({
+      path: "bouqueRef",
+      populate: {
+        path: "broadcasterRef",
+      },
     });
-    res.status(200).json(broadcaster);
+
+    res.status(200).json(broadcasters);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-const getBroadcasters = async (req, res) => {
+const createType = async (req, res) => {
   try {
-    const broadcasters = await Broadcaster.find()
-      .populate("channelsRef")
-      .populate("bouquetsRef");
+    const { name } = req.body;
+    const existingType = await Type.findOne({ name });
+    if (existingType) {
+      return res.status(400).json({ error: "Already added" });
+    }
 
-    res.status(200).json(broadcasters);
+    const type = await Type.create({ name });
+    res.status(200).json(type);
+  } catch (error) {
+    // console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getType = async (req, res) => {
+  try {
+    const type = await Type.find();
+    res.status(200).json(type);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const createPackage = async (req, res) => {
+  try {
+    const { name, price, broadcasterRef } = req.body;
+    const package = await Package.create({ name, price, broadcasterRef });
+    res.status(200).json(package);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getPackage = async (req, res) => {
+  try {
+    const package = await Package.find().populate({
+      path: "broadcasterRef",
+      populate: {
+        path: "bouqueRef",
+        populate: {
+          path: "broadcasterRef",
+        },
+      },
+    });
+    res.status(200).json(package);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -139,6 +214,10 @@ module.exports = {
   getLanguage,
   createBouquet,
   getBouquets,
-  createBroadcaster,
+  // createBroadcaster,
   getBroadcasters,
+  createType,
+  getType,
+  createPackage,
+  getPackage,
 };

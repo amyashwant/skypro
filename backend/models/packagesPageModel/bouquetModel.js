@@ -6,20 +6,23 @@ const bouquetSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  type: {
+  price: {
     type: String,
     trim: true,
   },
-  channelsRef: [
+  broadcasterRef: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Broadcaster",
+    },
+  ],
+  channelRef: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Channel",
     },
   ],
-  price: {
-    type: String,
-    trim: true,
-  },
+
   // Add any other bouquet-related fields here
 });
 

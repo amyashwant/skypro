@@ -22,6 +22,8 @@ import BroadcasterFormPage from "../components/adminPageComponents/BroadcasterFo
 import BouqetFormPage from "../components/adminPageComponents/BouqetFormPage";
 import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader";
 import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
+import TypeFormPage from "../components/adminPageComponents/TypeFormPage";
+import PackageFormPage from "../components/adminPageComponents/PackageFormPage";
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -69,10 +71,27 @@ const AppLayout = () => {
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
             <Route path="/admin" element={<AdminPage />} />
-            <Route path="/admin/settings/broadcasters" element={<BroadcasterFormPage />}/>
-            <Route path="/admin/settings/bouquets" element={<BouqetFormPage />}/>
-            <Route path="/admin/settings/channels" element={<ChannelFormPage />}/>
-            <Route path="/admin/settings/languages" element={<LanguageFormPage />}/>
+            <Route
+              path="/admin/settings/broadcasters"
+              element={<BroadcasterFormPage />}
+            />
+            <Route
+              path="/admin/settings/bouquets"
+              element={<BouqetFormPage />}
+            />
+            <Route
+              path="/admin/settings/channels"
+              element={<ChannelFormPage />}
+            />
+            <Route
+              path="/admin/settings/languages"
+              element={<LanguageFormPage />}
+            />
+            <Route path="/admin/settings/types" element={<TypeFormPage />} />
+            <Route
+              path="/admin/settings/packages"
+              element={<PackageFormPage />}
+            />
           </Routes>
         </Router>
       </AccountContext.Provider>
