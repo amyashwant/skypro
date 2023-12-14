@@ -22,18 +22,24 @@
   margin: 14px 0px;
 }
 .package-tab-sec ul {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   margin: auto;
   padding-bottom: 30px;
-  width: 832px;
+  margin-left: 80px;
+}
+.pricing-New .single-price:hover ul li {
+  color: #fff;
 }
 .package-tab-sec ul li {
   font-size: 18px;
   background-color: #071e43;
   color: #ffffff;
   margin: 0 6px 10px;
+}
+.pricing-New .single-price ul li{
+  background: none;
+  color: #071e43;
+
 }
 .package-tab-sec .style-div2 .width-div a:hover {
   color: #071e43 !important;
@@ -62,12 +68,12 @@
   flex: 0 0 auto;
 }
 .package-tab-sec .tab-content h4 {
-  color: #071e43;
+  color: #fff;
   font-size: 32px;
   margin-bottom: 8px;
   inline-size: 188px;
-  overflow-wrap: break-word;
   font-weight: 500;
+  width: 100%;
 }
 .package-tab-sec .tab-content a {
   font-size: 15px;
