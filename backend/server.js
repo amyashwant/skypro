@@ -22,8 +22,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
-// app.use("/api/contact", contactRoutes)
-
+// app.use("/api/contact", contactRoutes);
 
 //error handeling mechanism
 // app.use(notFound);

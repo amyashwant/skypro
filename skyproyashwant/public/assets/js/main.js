@@ -66,83 +66,83 @@
     // ========================= magnific Popup Icon Js End =====================
 
     // ========================= Blog Slick Slider Js Start =====================
-    $(".blog-slider").slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      speed: 1500,
-      dots: false,
-      arrows: true,
-      prevArrow:
-        '<button type="button" class="slick-next"><i class="fas fa-angle-left"></i></button>',
-      nextArrow:
-        '<button type="button" class="slick-prev"><i class="fas fa-angle-right"></i></button>',
-      responsive: [
-        {
-          breakpoint: 1199,
-          settings: {
-            arrows: true,
-            slidesToShow: 2,
-            dots: false,
-          },
-        },
-        {
-          breakpoint: 991,
-          settings: {
-            arrows: false,
-            slidesToShow: 2,
-            dots: true,
-          },
-        },
-        {
-          breakpoint: 767,
-          settings: {
-            arrows: false,
-            slidesToShow: 1,
-            dots: true,
-          },
-        },
-      ],
-    });
+    // $(".blog-slider").slick({
+    //   slidesToShow: 3,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   autoplaySpeed: 2000,
+    //   speed: 1500,
+    //   dots: false,
+    //   arrows: true,
+    //   prevArrow:
+    //     '<button type="button" class="slick-next"><i class="fas fa-angle-left"></i></button>',
+    //   nextArrow:
+    //     '<button type="button" class="slick-prev"><i class="fas fa-angle-right"></i></button>',
+    //   responsive: [
+    //     {
+    //       breakpoint: 1199,
+    //       settings: {
+    //         arrows: true,
+    //         slidesToShow: 2,
+    //         dots: false,
+    //       },
+    //     },
+    //     {
+    //       breakpoint: 991,
+    //       settings: {
+    //         arrows: false,
+    //         slidesToShow: 2,
+    //         dots: true,
+    //       },
+    //     },
+    //     {
+    //       breakpoint: 767,
+    //       settings: {
+    //         arrows: false,
+    //         slidesToShow: 1,
+    //         dots: true,
+    //       },
+    //     },
+    //   ],
+    // });
     // ========================= Blog Slick Slider Js End =====================
 
     // ========================= Brand Slider Js Start =====================
-    $(".brand-slider").slick({
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 1000,
-      speed: 2000,
-      dots: false,
-      arrows: false,
-      responsive: [
-        {
-          breakpoint: 1199,
-          settings: {
-            slidesToShow: 5,
-          },
-        },
-        {
-          breakpoint: 991,
-          settings: {
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 3,
-          },
-        },
-        {
-          breakpoint: 400,
-          settings: {
-            slidesToShow: 2,
-          },
-        },
-      ],
-    });
+    // $(".brand-slider").slick({
+    //   slidesToShow: 5,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   autoplaySpeed: 1000,
+    //   speed: 2000,
+    //   dots: false,
+    //   arrows: false,
+    //   responsive: [
+    //     {
+    //       breakpoint: 1199,
+    //       settings: {
+    //         slidesToShow: 5,
+    //       },
+    //     },
+    //     {
+    //       breakpoint: 991,
+    //       settings: {
+    //         slidesToShow: 4,
+    //       },
+    //     },
+    //     {
+    //       breakpoint: 767,
+    //       settings: {
+    //         slidesToShow: 3,
+    //       },
+    //     },
+    //     {
+    //       breakpoint: 400,
+    //       settings: {
+    //         slidesToShow: 2,
+    //       },
+    //     },
+    //   ],
+    // });
     // ========================= Brand Slider Js End =====================
 
     // ========================= Home Two testimonial Slider Js Start =====================
@@ -169,20 +169,20 @@
       //added custom
     };
 
-    $(".counterup-item").each(function () {
-      $(this).isInViewport(function (status) {
-        if (status === "entered") {
-          for (
-            var i = 0;
-            i < document.querySelectorAll(".odometer").length;
-            i++
-          ) {
-            var el = document.querySelectorAll(".odometer")[i];
-            el.innerHTML = el.getAttribute("data-odometer-final");
-          }
-        }
-      });
-    });
+    // $(".counterup-item").each(function () {
+    //   $(this).isInViewport(function (status) {
+    //     if (status === "entered") {
+    //       for (
+    //         var i = 0;
+    //         i < document.querySelectorAll(".odometer").length;
+    //         i++
+    //       ) {
+    //         var el = document.querySelectorAll(".odometer")[i];
+    //         el.innerHTML = el.getAttribute("data-odometer-final");
+    //       }
+    //     }
+    //   });
+    // });
     // ========================= Counter Js End =====================
   });
   /*======================================================================
