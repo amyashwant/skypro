@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import bottomImg from "../../assets/images/home-01/logo/Skypro_New_Logo.png";
 import headerLogo from "../../assets/images/home-01/logo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+
 import ToggleHeader from "./ToggleHeader";
 import AccountContext from "../../utils/AccountContext";
 const Header = () => {
@@ -44,6 +45,28 @@ const Header = () => {
                   </li>
                 ) : (
                   <>
+                  {/* <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
+                  <li>
+                    <Link to="/">
+                      <i className="fab fa-facebook-f"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/">
+                      <i className="fab fa-twitter"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/">
+                      <i className="fab fa-linkedin-in"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/">
+                      <i className="fab fa-pinterest-p"></i>
+                    </Link>
+                  </li>
+                  </span> */}
                     <li>
                       <Link to="/login">
                         <span class="icon-user-1"></span>

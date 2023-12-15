@@ -57,9 +57,12 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              <div className="about-button ps-lg-5 mt-xl-0 mt-3">
-                <Link to="/about" className="btn--base">
+              <div className="about-button ps-lg-5 mt-xl-0">
+                <Link to="/about" className="btn--base" style={{marginRight:"10px"}}>
                   READ MORE
+                </Link>
+                <Link to="/contact" className="btn--base">
+                  CONTACT US <i className="icon-next"></i>
                 </Link>
               </div>
             </div>

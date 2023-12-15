@@ -4,8 +4,8 @@ const asyncHandler = require("express-async-handler");
 const contactMiddleware = require("../middleware/contactMiddleware");
 const nodemailer = require("nodemailer");
 
-console.log("google mail controller>>", process.env.GOOGLE_MAIL);
-console.log("google pass contoller>>", process.env.GOOGLE_PASS);
+// console.log("google mail controller>>", process.env.GOOGLE_MAIL);
+// console.log("google pass contoller>>", process.env.GOOGLE_PASS);
 
 const contactController = asyncHandler(async (req, res) => {
   const { name, email, phone, subject, message } = req.body;
@@ -51,10 +51,3 @@ const contactController = asyncHandler(async (req, res) => {
 });
 
 module.exports = { contactController };
-
-// if (!name || !email || !phone || !subject || !message) {
-//   return res.status(400).send({
-//     success: false,
-//     message: "enter all credentials correctly",
-//   });
-// }

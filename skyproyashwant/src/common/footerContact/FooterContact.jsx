@@ -2,6 +2,7 @@ import React from "react";
 import footerOne from "../../assets/images/home-01/footer_contact/location.png";
 import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
 import footerThree from "../../assets/images/home-01/footer_contact/phone.png";
+import { Link } from "react-router-dom";
 const FooterContact = () => {
   return (
     <section className="footer-contact py-80">
@@ -29,10 +30,10 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">SEND US A MESSAGE</h6>
                 <p className="para">
-                  <a href="mailto:">info123@gmail.com</a>
+                  <Link to="/contact">info@skypro.co.in</Link>
                 </p>
                 <p className="para">
-                  <a href="mailto:">text123@etob.com</a>
+                  <Link to="/contact">info@skypro.co.in</Link>
                 </p>
               </div>
             </div>
