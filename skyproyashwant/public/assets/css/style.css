@@ -7657,12 +7657,13 @@ form.broadcaster-form button.btn.btn-primary {
 
 /* package css */
 .pricing-New {
-  background: #ddd;
-  padding: 80px 0px;
+  border: none;
+  padding: 43px 0px;
 }
 .pricing-New .single-price {
   border-radius: 10px;
-  background: #ffffff;
+  background: #ddd;
+  cursor: pointer;
   text-align: center;
   color: #000;
   font-size: 18px;
@@ -7709,6 +7710,7 @@ form.broadcaster-form button.btn.btn-primary {
   text-decoration: none;
   color: #fff;
   border-radius: 20px;
+  margin: 0px 4px;
 }
 .pricing-New .single-price ul.deal-item span {
   font-size: 14px;
@@ -7726,4 +7728,47 @@ form.broadcaster-form button.btn.btn-primary {
 .pricing-New .single-price .btn-area a:hover {
   background: #071e43;
   box-shadow: 2px 0px 6px 0px #999
+}
+
+
+
+/* contact for css */
+
+.contact_blok {
+	background: #6f757e30;
+}
+
+.contactForm .form-control {
+	border: 1px solid #CBCBCB;
+	border-radius: 6px;
+	font-size: 14px;
+	padding: 10px;
+}
+
+.contactForm .form-control:focus {
+	box-shadow: none;
+}
+
+input#captcha_field {
+	background: #fff url(../images/captcha_logo.png)no-repeat;
+	background-repeat: no-repeat;
+	background-position: 97%;
+	background-size: 26px;
+	height: auto;
+	margin: 0;
+	z-index: 99999;
+}
+
+button.btn.blue-btn {
+	background: #071e43;
+	color: #fff;
+	border-radius: 45px;
+	padding: 9px 37px;
+}
+
+.contact_blok h5 {
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: #071e43;
 }

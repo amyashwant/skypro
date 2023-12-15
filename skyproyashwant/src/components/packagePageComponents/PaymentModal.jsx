@@ -12,23 +12,23 @@ const PaymentModal = ({ handleClose, show, children }) => {
 
   console.log("cart in packages", cartItems);
 
-  const checkout = async () => {
-    // await fetch("http://localhost:4000/checkout", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ items: cartItems.items }),
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((response) => {
-    //     if (response.url) {
-    //       window.location.assign(response.url); // Forwarding user to Stripe
-    //     }
-    //   });
-  };
+  // const checkout = async () => {
+  //   // await fetch("http://localhost:4000/checkout", {
+  //   //   method: "POST",
+  //   //   headers: {
+  //   //     "Content-Type": "application/json",
+  //   //   },
+  //   //   body: JSON.stringify({ items: cartItems.items }),
+  //   // })
+  //   //   .then((response) => {
+  //   //     return response.json();
+  //   //   })
+  //   //   .then((response) => {
+  //   //     if (response.url) {
+  //   //       window.location.assign(response.url); // Forwarding user to Stripe
+  //   //     }
+  //   //   });
+  // };
 
   const modalStyle = {
     position: "fixed",
@@ -100,7 +100,12 @@ const PaymentModal = ({ handleClose, show, children }) => {
                   <p className="NOK">₹ {total}</p>
                 </div>
               </div>
-              <button className="checkout-btn" onClick={checkout}>
+              {/* <button className="checkout-btn" onClick={checkout}> */}
+                {/* <Link to="/payment"> */}
+                {/* Checkout */}
+                {/* </Link> */}
+              {/* </button> */}
+              <button className="checkout-btn">
                 {/* <Link to="/payment"> */}
                 Checkout
                 {/* </Link> */}

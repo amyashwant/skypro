@@ -183,8 +183,8 @@ const FaqPage = () => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="section-header style-two">
-                  <h4 className="subtitle"> FAQ </h4>
-                  <h2 className="title">A FREQUENTLY ASKED QUESTIONS</h2>
+                  {/* <h4 className="subtitle"> FAQ </h4> */}
+                  <h2 className="title">FREQUENTLY ASKED QUESTIONS</h2>
                 </div>
               </div>
             </div>

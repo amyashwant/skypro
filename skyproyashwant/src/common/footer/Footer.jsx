@@ -59,22 +59,22 @@ const Footer = () => {
                 </p>
                 <ul className="social-icons d-flex align-items-center flex-wrap pt-4">
                   <li>
-                    <Link to="/">
+                    <Link to="https://www.facebook.com/tvskypro/" target="_blank">
                       <i className="fab fa-facebook-f"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="active">
+                    <Link to="https://twitter.com/Skypro_TV" target="_blank">
                       <i className="fab fa-twitter"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/">
+                    <Link to="https://www.linkedin.com/company/skyprotv/" target="_blank">
                       <i className="fab fa-linkedin-in"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/">
+                    <Link to="https://in.pinterest.com/skyprotv/" target="_blank">
                       <i className="fab fa-pinterest-p"></i>
                     </Link>
                   </li>

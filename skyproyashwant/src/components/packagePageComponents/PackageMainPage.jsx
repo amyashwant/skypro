@@ -189,15 +189,15 @@ const PackageMainPage = () => {
               </ul>
             </div>
             <div className="tab-content" id="ex2-content">
+              <div className="pricing-New">
+                <div className="container">
+                  <div className="row">
               {packages.map((pricing, index) => (
-                <div className="pricing-New">
-                  <div className="container">
-                    <div className="row" key={index}>
-                      <div className="col-md-4 col-sm-6 col-xs-12">
+                      <div className="col-sm-4 mb-4" key={index}>
                         <div className="single-price">
                           <div className="deal-top">
                             <h3>{pricing.title}</h3>
-                            <h4>{pricing.price}</h4>
+                            <h4>₹ {pricing.price} <span>/mo</span></h4>
                           </div>
                           <div className="deal-bottom">
                             <ul className="deal-item">
@@ -209,15 +209,24 @@ const PackageMainPage = () => {
                               ))}
                             </ul>
                             <div className="btn-area">
-                              <a href="#">View More</a> <a href="#">Add Pack</a>
+                              <Link to="#">View More</Link> 
+                              <Link className={`btn-style ${ selectedPack === pricing ? "selected" : ""}`}
+                                to="#"
+                                onClick={() => handleClick(pricing)}
+                                disabled={selectedPack === pricing}
+                              >
+                                {selectedPack === pricing
+                                ? "Selected"
+                                : "Add Pack"}
+                              </Link>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
               ))}
+              </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -350,8 +359,9 @@ const languages = ["Hindi", "Punjabi", "Marathi", "Oriya"];
 
 const broadcaster = [
   {
+    id: "1",
     title: "Basic Service Tier (BST )",
-    price: "₹ 150.00/mo",
+    price: 150,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -361,8 +371,9 @@ const broadcaster = [
     language: "hindi"
   },
   {
+    id: "2",
     title: "NORTH FTA",
-    price: "₹ 450.00/mo",
+    price: 450,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -372,8 +383,9 @@ const broadcaster = [
     language: "hindi"
   },
   {
+    id: "3",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -383,8 +395,9 @@ const broadcaster = [
     language: "hindi"
   },
   {
+    id: "4",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -394,8 +407,9 @@ const broadcaster = [
     language: "punjabi"
   },
   {
+    id: "5",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -405,8 +419,9 @@ const broadcaster = [
     language: "punjabi"
   },
   {
+    id: "6",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -416,8 +431,9 @@ const broadcaster = [
     language: "marathi"
   },
   {
+    id: "7",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -427,8 +443,9 @@ const broadcaster = [
     language: "marathi"
   },
   {
+    id: "8",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -438,8 +455,9 @@ const broadcaster = [
     language: "oriya"
   },
   {
+    id: "9",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -449,8 +467,9 @@ const broadcaster = [
     language: "oriya"
   },
   {
+    id: "10",
     title: "SILVER BUDGET HINDI",
-    price: "₹ 260.00/mo",
+    price: 260,
     features: [
       "1+ 18 000 chaines",
       "+ 2 000 Series",
@@ -458,6 +477,30 @@ const broadcaster = [
       "100% Stable",
     ],
     language: "oriya"
+  },
+  {
+    id: "11",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi"
+  },
+  {
+    id: "12",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi"
   },
 ];
 

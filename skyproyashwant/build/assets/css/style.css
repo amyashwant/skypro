@@ -115,6 +115,8 @@ a:hover {
   font-weight: 600;
 }
 
+
+
 @media (max-width: 991px) {
   .section-header .title {
     max-width: 100%;
@@ -7578,11 +7580,3 @@ form.cust-formdiv label {
   } 
 
 }
-
-
-/* 8/12/2023 */
-/* .formInput {
-  height: 500px;
-  align-items: center;
-  display: flex;
-} */
