@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+
 const BeadCumbCommon = ({ titleOne, titleTwo, bgImg }) => {
   return (
     <section
