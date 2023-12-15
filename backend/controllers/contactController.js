@@ -1,53 +1,60 @@
-// const asyncHandler = require("express-async-handler");
-// // const User = require("../models/userModel");
-// const Message = require("../models/contactModel")
-// const nodemailer = require("nodemailer")
+const asyncHandler = require("express-async-handler");
+// const User = require("../models/userModel");
+// const Contact = require("../models/contactModel")
+const contactMiddleware = require("../middleware/contactMiddleware");
+const nodemailer = require("nodemailer");
 
-// const transporter = nodemailer.createTransport({
-//     host: process.env.SMTP_HOST,
-//     port: process.env.SMTP_PORT,
-//     secure: false,
-//     auth: {
-//       user: process.env.SMTP_EMAIL,
-//       pass: process.env.SMTP_PASSWORD
-//     }
-// });
+console.log("google mail controller>>", process.env.GOOGLE_MAIL);
+console.log("google pass contoller>>", process.env.GOOGLE_PASS);
 
+const contactController = asyncHandler(async (req, res) => {
+  const { name, email, phone, subject, message } = req.body;
+  console.log(name, email, phone, subject, message);
 
+  // contactMiddleware(name, email, phone, subject, message)
 
-// const contactController = asyncHandler(async (req, res) => {
-//   try {
-//     const { name, email, phone, subject, message } = req.body;
-//     console.log(name, email, phone, subject, message)
+  //-----------------------------------------------------------------------------------------------------------------------
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GOOGLE_MAIL,
+        pass: process.env.GOOGLE_PASS,
+      },
+    });
+    console.log("google mail receiver inside>>", process.env.GOOGLE_MAIL);
+    console.log("email sender inside>>", email);
+    console.log("google pass inside>>", process.env.GOOGLE_PASS);
 
-//     if (!name || !email || !phone || !subject || !message) {
-//       return res.status(400).send({
-//         success: false,
-//         message: "enter all credentials correctly",
-//       });
-//     }
+    const mailOptions = {
+      from: email,
+      to: process.env.GOOGLE_MAIL,
+      subject: subject,
+      text: `${message} sen by ${email}`,
+    };
 
-//     var mailOptions = {
-//         from: email,
-//         to: process.env.SMTP_EMAIL,
-//         subject: subject, 
-//         text: message
-//     }
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return false;
+      } else {
+        console.log("Email sent: " + info.response);
+        return true;
+      }
+    });
+    res.status(200).json("message sent successfull on email");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 
-//     transporter.sendMail(mailOptions, function(error, info){
-//         if(error){
-//             console.log(error)
-//             return false
-//         }else{
-//             alert("email sent successfully")
-//             console.log("email sent successfully", info.response)
-//             return true
-//         }
-//     })
-//   } catch (error) {
-//     console.log(error);
-//     res.status(401).send("something wrong happened");
-//   }  
-// });
+  //-----------------------------------------------------------------------------------------------------------------------
+});
 
-// module.exports = { contactController };
+module.exports = { contactController };
+
+// if (!name || !email || !phone || !subject || !message) {
+//   return res.status(400).send({
+//     success: false,
+//     message: "enter all credentials correctly",
+//   });
+// }

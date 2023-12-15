@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import cta from "../../../assets/images/services/cta.png"
 
 const CtaPage = () => {
   return (
     <section
       className="cta py-100 overlay-bg bg-img"
-    //   style="background-image: url(assets/images/services/cta.png);"
+      style={{backgroundImage: `url(${cta})`}}
     >
       <div className="container">
         <div className="row justify-content-center text-center">

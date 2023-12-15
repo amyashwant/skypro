@@ -25,4 +25,4 @@
 //     modifiedAt: { type: Date, default: Date.now },
 // })
 
-// module.exports = mongoose.model("Message", contactSchema);
+// module.exports = mongoose.model("Contact", contactSchema);
