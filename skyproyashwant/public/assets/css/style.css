@@ -102,7 +102,7 @@ a:hover {
 }
 
 .section-header .subtitle {
-  font-size: 20px;
+  font-size: 42px;
   font-weight: 500;
   color: #fd5901;
   margin-bottom: 6px;
@@ -3197,8 +3197,8 @@ ul[class*="custom--tab"] li:last-child button {
 
 .banner-content .subtitle {
   color: #fd5901;
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 40px;
+  margin-bottom: 40px;
   line-height: 0;
 }
 
@@ -4154,18 +4154,6 @@ ul[class*="custom--tab"] li:last-child button {
   }
 }
 
-.pricing-icons::before {
-  position: absolute;
-  content: "";
-  width: 20px;
-  height: 5px;
-  left: 0;
-  bottom: 0;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  background-color: #fd5901;
-  border-radius: 40px;
-}
 
 .pricing-icons li {
   background-color: #fce9e9;
@@ -7668,7 +7656,7 @@ form.broadcaster-form button.btn.btn-primary {
   color: #000;
   font-size: 18px;
   padding: 20px 0px;
-  transition: 0.6s;
+  transition: 0.3s;
 }
 .pricing-New .single-price:hover {
   background: #071e43e8;
@@ -7682,7 +7670,7 @@ form.broadcaster-form button.btn.btn-primary {
   padding: 3px 0px;
 }
 .pricing-New .single-price:hover h4 {
-  background: #fe4c1c;
+  background: #fe4c1cc7;
 }
 
 .pricing-New .single-price h3 {
@@ -7700,7 +7688,7 @@ form.broadcaster-form button.btn.btn-primary {
   padding: 5px 0px;
 }
 .pricing-New .single-price .btn-area a {
-  background: #fe4c1c;
+  background: #071e43;
   display: inline-flex;
   font-size: 14px;
   font-weight: 400;
@@ -7709,7 +7697,7 @@ form.broadcaster-form button.btn.btn-primary {
   transition: all 0.3s ease 0s;
   text-decoration: none;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 6px;
   margin: 0px 4px;
 }
 .pricing-New .single-price ul.deal-item span {
@@ -7722,12 +7710,16 @@ form.broadcaster-form button.btn.btn-primary {
   color: #fff;
   margin-right: 10px;
 }
+.pricing-New .single-price .btn-area a:hover {
+  background: #fe4c1cc7 !important;
+  color: #fff !important;
+}
 .pricing-New .deal-item {
   padding: 11px 0px 8px 29px;
 }
 .pricing-New .single-price .btn-area a:hover {
   background: #071e43;
-  box-shadow: 2px 0px 6px 0px #999
+  color: #fff !important;
 }
 
 
@@ -7762,7 +7754,7 @@ input#captcha_field {
 button.btn.blue-btn {
 	background: #071e43;
 	color: #fff;
-	border-radius: 45px;
+	border-radius: 10px;
 	padding: 9px 37px;
 }
 
