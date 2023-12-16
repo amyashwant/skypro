@@ -346,10 +346,14 @@ const Contact = () => {
                         value="9101fa8841e72709121bc9f2b2d00bec"
                       /> */}
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-3 d-flex align-items-center position-relative">
                       <button type="" class="btn blue-btn" id="">
                         <span></span>Submit
                       </button>
+                    <ul class="social-icons d-flex align-items-center flex-wrap ContactUS-icon">
+                    <li><a href="" target="_blank"><i class="fa-solid fa-phone"></i></a></li>
+                      <li><a href="" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
                     </div>
                   </form>
                 </div>

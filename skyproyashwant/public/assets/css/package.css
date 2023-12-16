@@ -25,16 +25,16 @@
   justify-content: center;
   margin: auto;
   padding-bottom: 30px;
-  margin-left: 80px;
 }
 .pricing-New .single-price:hover ul li {
   color: #fff;
 }
 .package-tab-sec ul li {
-  font-size: 18px;
+  font-size: 16px;
   background-color: #071e43;
   color: #ffffff;
   margin: 0 6px 10px;
+  border-radius: 6px;
 }
 .pricing-New .single-price ul li{
   background: none;
@@ -63,6 +63,7 @@
 .package-tab-sec ul li a:hover {
   color: #fff;
   background: #fd5901;
+  border-radius: 6px;
 }
 .nav-fill .nav-item, .nav-fill>.nav-link {
   flex: 0 0 auto;

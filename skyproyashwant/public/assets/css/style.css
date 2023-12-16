@@ -4907,8 +4907,11 @@ svg.radial-progress circle {
 
 .footer-contact {
   background-color: #071e43;
+  padding: 66px 0px;
 }
-
+footer.footer-area.bg-img .container.py-100 {
+  padding: 52px 0px;
+}
 .footer-contact-item .icon {
   position: relative;
   z-index: 1;
@@ -7667,7 +7670,6 @@ form.broadcaster-form button.btn.btn-primary {
 }
 .pricing-New .single-price ul li {
   display: flex;
-  padding: 3px 0px;
 }
 .pricing-New .single-price:hover h4 {
   background: #fe4c1cc7;
@@ -7701,21 +7703,31 @@ form.broadcaster-form button.btn.btn-primary {
   margin: 0px 4px;
 }
 .pricing-New .single-price ul.deal-item span {
-  font-size: 14px;
+  font-size: 20px;
   display: inline-block;
-  background: #fe4c1c;
   border-radius: 50%;
   height: 20px;
-  width: 20px;
-  color: #fff;
+  color: #fe4c1c;
   margin-right: 10px;
+  font-weight: bold;
+}
+.ContactUS-icon {
+  position: absolute;
+  right: 0;
+}
+.ContactUS-icon li a{
+  background-color: #071e43;
+  color: #fff;
+}
+form#contactusForm button.btn.blue-btn:hover {
+  background: #fd5901;
 }
 .pricing-New .single-price .btn-area a:hover {
   background: #fe4c1cc7 !important;
   color: #fff !important;
 }
 .pricing-New .deal-item {
-  padding: 11px 0px 8px 29px;
+  padding: 8px 0px 8px 8px;
 }
 .pricing-New .single-price .btn-area a:hover {
   background: #071e43;
@@ -7754,6 +7766,7 @@ input#captcha_field {
 button.btn.blue-btn {
 	background: #071e43;
 	color: #fff;
+  transition: 0.3s;
 	border-radius: 10px;
 	padding: 9px 37px;
 }
@@ -7763,4 +7776,16 @@ button.btn.blue-btn {
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #071e43;
+}
+.header-social-icon li a {
+    height: 31px;
+    width: 30px;
+}
+
+.header-social-icon li a:hover .fab {
+    color: #fff;
+}
+
+.header-social-icon {
+    margin-right: 24px;
 }
