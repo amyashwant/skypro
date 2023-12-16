@@ -27,89 +27,88 @@ const Testimonials = () => {
 
   return (
     <section className="home-two-testimonial overflow-hidden">
-   
-    <div className="row align-items-center ">
-      <div className="col-xl-7 col-lg-7">
-        <div className="testimonial-left py-100">
-          <div className="row align-items-center">
-            <div className="col-xxl-6 d-xxl-block d-none">
-              <div className="testimonial-thumbs">
-                <img src={testOne} alt="img" />
+      <div className="row align-items-center ">
+        <div className="col-xl-7 col-lg-7">
+          <div className="testimonial-left py-100">
+            <div className="row align-items-center">
+              <div className="col-xxl-6 d-xxl-block d-none">
+                <div className="testimonial-thumbs">
+                  <img src={testOne} alt="img" />
+                </div>
               </div>
-            </div>
-            <div className="col-xxl-6 col-xl-12 col-lg-5">
-              <Slider {...settings} className="">
-              {testimonialData.map((item,i) => (
-                <div className="testi-content">
-                        <div className="icon mb-lg-4">
-                            <i className={item?.icon}></i>
+              <div className="col-xxl-6 col-xl-12 col-lg-5">
+                <Slider {...settings} className="">
+                {testimonialData.map((item,i) => (
+                  <div className="testi-content">
+                          <div className="icon mb-lg-4">
+                              <i className={item?.icon}></i>
+                          </div>
+                          <p className="para text-white">
+                            {item.description}
+                          </p>
+                          <div className="client-meta d-flex align-items-center flex-wrap mt-5">
+                              <div className="meta-thumb">
+                                  <img src={item.image} alt="img" />
+                              </div>
+                              <div className="meta-content">
+                                  <h5 className="name">{item.name}</h5>
+                                  <span className="designation">{item.designation}</span>
+                              </div>
+                              </div>
                         </div>
-                        <p className="para text-white">
-                          {item.description}
-                        </p>
-                        <div className="client-meta d-flex align-items-center flex-wrap mt-5">
-                            <div className="meta-thumb">
-                                <img src={item.image} alt="img" />
-                            </div>
-                            <div className="meta-content">
-                                <h5 className="name">{item.name}</h5>
-                                <span className="designation">{item.designation}</span>
-                            </div>
-                            </div>
-                      </div>
-                ))}
-              </Slider>
+                  ))}
+                </Slider>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-xl-5 col-lg-6">
+          <div className="testimonial-right">
+            <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
+              <div className="icon">
+                <img src={testFive} alt="img" />
+              </div>
+              <div className="content">
+                <h5 className="title text-white mb-3">
+                  ULTRA SPEED CONNECTIONS
+                </h5>
+                <p className="para text-white">
+                  The term broadband alludes to a fast and high-data
+                  transmission correspondence foundation.
+                </p>
+              </div>
+            </div>
+            <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
+              <div className="icon">
+                <img src={testSix} alt="img" />
+              </div>
+              <div className="content">
+                <h5 className="title text-white mb-3">FREE INSTALLATIONS</h5>
+                <p className="para text-white">
+                  It commonly relates to high-speed Internet services, which
+                  have become very important to both consumers.
+                </p>
+              </div>
+            </div>
+            <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
+              <div className="icon">
+                <img src={testSeven} alt="img" />
+              </div>
+              <div className="content">
+                <h5 className="title text-white mb-3">FLEXIBLE TARIFF PLANS</h5>
+                <p className="para text-white">
+                  The main part of Internet clients (97%) across the globe
+                  access broadband through their cell phones.
+                </p>
+                {/* <a href="index.html" className="btn--base-two mt-md-3 mt-2">
+                  READ MORE <i className="fas fa-circle"></i>
+                </a> */}
               </div>
             </div>
           </div>
         </div>
-        {/* <div className="col-xl-5 col-lg-6">
-        <div className="testimonial-right">
-          <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
-            <div className="icon">
-              <img src={testFive} alt="img" />
-            </div>
-            <div className="content">
-              <h5 className="title text-white mb-3">
-                ULTRA SPEED CONNECTIONS
-              </h5>
-              <p className="para text-white">
-                The term broadband alludes to a fast and high-data
-                transmission correspondence foundation.
-              </p>
-            </div>
-          </div>
-          <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
-            <div className="icon">
-              <img src={testSix} alt="img" />
-            </div>
-            <div className="content">
-              <h5 className="title text-white mb-3">FREE INSTALLATIONS</h5>
-              <p className="para text-white">
-                It commonly relates to high-speed Internet services, which
-                have become very important to both consumers.
-              </p>
-            </div>
-          </div>
-          <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
-            <div className="icon">
-              <img src={testSeven} alt="img" />
-            </div>
-            <div className="content">
-              <h5 className="title text-white mb-3">FLEXIBLE TARIFF PLANS</h5>
-              <p className="para text-white">
-                The main part of Internet clients (97%) across the globe
-                access broadband through their cell phones.
-              </p>
-              {/* <a href="index.html" className="btn--base-two mt-md-3 mt-2">
-                READ MORE <i className="fas fa-circle"></i>
-              </a> 
-            </div>
-          </div>
         </div>
-      </div> */}
-    </div>
-  </section>
+    </section>
   );
 };
 
@@ -185,88 +184,6 @@ export default Testimonials;
                       </div>
                     </div>
                   </div>
-    </div> */}
-
-    {/* <div className="row align-items-center ">
-      <div className="col-xl-7 col-lg-7">
-        <div className="testimonial-left py-100">
-          <div className="row align-items-center">
-            <div className="col-xxl-6 d-xxl-block d-none">
-              <div className="testimonial-thumbs">
-                <img src={testOne} alt="img" />
-              </div>
-            </div>
-            <div className="col-xxl-6 col-xl-12 col-lg-5">
-              <Slider {...settings} className="">
-              {testimonialData.map((item,i) => (
-                <div className="testi-content">
-                        <div className="icon mb-lg-4">
-                            <i className={item?.icon}></i>
-                        </div>
-                        <p className="para text-white">
-                          {item.description}
-                        </p>
-                        <div className="client-meta d-flex align-items-center flex-wrap mt-5">
-                            <div className="meta-thumb">
-                                <img src={item.image} alt="img" />
-                            </div>
-                            <div className="meta-content">
-                                <h5 className="name">{item.name}</h5>
-                                <span className="designation">{item.designation}</span>
-                            </div>
-                            </div>
-                      </div>
-                ))}
-              </Slider>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-5 col-lg-6">
-        <div className="testimonial-right">
-          <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
-            <div className="icon">
-              <img src={testFive} alt="img" />
-            </div>
-            <div className="content">
-              <h5 className="title text-white mb-3">
-                ULTRA SPEED CONNECTIONS
-              </h5>
-              <p className="para text-white">
-                The term broadband alludes to a fast and high-data
-                transmission correspondence foundation.
-              </p>
-            </div>
-          </div>
-          <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
-            <div className="icon">
-              <img src={testSix} alt="img" />
-            </div>
-            <div className="content">
-              <h5 className="title text-white mb-3">FREE INSTALLATIONS</h5>
-              <p className="para text-white">
-                It commonly relates to high-speed Internet services, which
-                have become very important to both consumers.
-              </p>
-            </div>
-          </div>
-          <div className="right-item d-flex flex-wrap align-items-sm-start align-items-center">
-            <div className="icon">
-              <img src={testSeven} alt="img" />
-            </div>
-            <div className="content">
-              <h5 className="title text-white mb-3">FLEXIBLE TARIFF PLANS</h5>
-              <p className="para text-white">
-                The main part of Internet clients (97%) across the globe
-                access broadband through their cell phones.
-              </p>
-              {/* <a href="index.html" className="btn--base-two mt-md-3 mt-2">
-                READ MORE <i className="fas fa-circle"></i>
-              </a> 
-            </div>
-          </div>
-        </div>
-      </div>
     </div> */}
 
 const testimonialData = [
