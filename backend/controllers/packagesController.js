@@ -4,7 +4,7 @@ const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
 const Language = require("../models/packagesPageModel/languageModel");
 const Type = require("../models/packagesPageModel/typeModel");
 const Package = require("../models/packagesPageModel/packageModel");
-
+const PackageBouque = require("../models/packagesPageModel/packageBouqueModel");
 // const multer = require("multer");
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -46,7 +46,7 @@ const Package = require("../models/packagesPageModel/packageModel");
 
 const getChannels = async (req, res) => {
   try {
-    const channels = await Channel.find().populate("type");
+    const channels = await Channel.find().populate("type").populate("language");
     res.status(200).json(channels);
   } catch (error) {
     console.error(error);
@@ -83,13 +83,18 @@ const getLanguage = async (req, res) => {
 
 // Bouque Controller------------------------------------------------------------------------------------
 const createBouquet = async (req, res) => {
+  const { name, price, channelRef, broadcasterRef } = req.body;
   try {
-    const { name, price, broadcasterRef, channelRef } = req.body;
+    const existingBouquet = await Bouquet.findOne({ name });
+    if (existingBouquet) {
+      return res.status(400).json({ error: "Bouque Already Added" });
+    }
+
     const bouquet = await Bouquet.create({
       name,
       price,
-      broadcasterRef,
       channelRef,
+      broadcasterRef,
     });
     res.status(200).json(bouquet);
   } catch (error) {
@@ -103,17 +108,17 @@ const getBouquets = async (req, res) => {
     // const bouquets = await Bouquet.find()
     //   .populate("broadcasterRef")
     //   .populate("channelRef");
-    const bouquets = await Bouquet.find()
-      .populate({
-        path: "channelRef",
-        // select: "name",
-        populate: {
-          path: "language",
-        },
-      })
-      .populate({
-        path: "broadcasterRef",
-      });
+    const bouquets = await Bouquet.find().populate("broadcasterRef");
+    // .populate({
+    //   path: "channelRef",
+    //   // select: "name",
+    //   populate: {
+    //     path: "language",
+    //   },
+    // })
+    // .populate({
+    //   path: "broadcasterRef",
+    // });
 
     res.status(200).json(bouquets);
   } catch (error) {
@@ -138,12 +143,13 @@ const getBouquets = async (req, res) => {
 
 const getBroadcasters = async (req, res) => {
   try {
-    const broadcasters = await Broadcaster.find().populate({
-      path: "bouqueRef",
-      populate: {
-        path: "broadcasterRef",
-      },
-    });
+    const broadcasters = await Broadcaster.find();
+    // .populate({
+    //   path: "bouqueRef",
+    //   populate: {
+    //     path: "broadcasterRef",
+    //   },
+    // });
 
     res.status(200).json(broadcasters);
   } catch (error) {
@@ -179,9 +185,17 @@ const getType = async (req, res) => {
 };
 
 const createPackage = async (req, res) => {
+  const { name } = req.body;
   try {
-    const { name, price, broadcasterRef } = req.body;
-    const package = await Package.create({ name, price, broadcasterRef });
+    // const existingPackage = await Package.findOne({ name });
+    const existingPackage = await Package.findOne({
+      name: { $regex: new RegExp(name, "i") },
+    });
+    if (existingPackage) {
+      return res.status(400).json({ error: "Package Already Added" });
+    }
+
+    const package = await Package.create({ name });
     res.status(200).json(package);
   } catch (error) {
     console.error(error);
@@ -191,16 +205,46 @@ const createPackage = async (req, res) => {
 
 const getPackage = async (req, res) => {
   try {
-    const package = await Package.find().populate({
-      path: "broadcasterRef",
-      populate: {
-        path: "bouqueRef",
-        populate: {
-          path: "broadcasterRef",
-        },
-      },
-    });
+    const package = await Package.find();
+    // .populate({
+    //   path: "broadcasterRef",
+    //   populate: {
+    //     path: "bouqueRef",
+    //     populate: {
+    //       path: "channelRef",
+    //     },
+    //   },
+    // });
     res.status(200).json(package);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const createPackageBouque = async (req, res) => {
+  const { packageRef, broadcasterRef, bouqueRef } = req.body;
+  try {
+    const existingPackageBouque = await PackageBouque.findOne({ packageRef });
+    if (existingPackageBouque) {
+      return res.status(400).json({ error: "Duplicate Package! Not Allowed" });
+    }
+    const packageBouque = await PackageBouque.create({
+      packageRef,
+      broadcasterRef,
+      bouqueRef,
+    });
+    res.status(200).json(packageBouque);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getPackageBouque = async (req, res) => {
+  try {
+    const packageBouque = await PackageBouque.find();
+    res.status(200).json(packageBouque);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -220,4 +264,6 @@ module.exports = {
   getType,
   createPackage,
   getPackage,
+  createPackageBouque,
+  getPackageBouque,
 };

@@ -52,3 +52,64 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // --------------------------deployment------------------------------
+
+// sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe
+// bouquet: price_1OKcfxSBYt5a6mPeuFEF0QBc
+// bouquetTwo: price_1OKcliSBYt5a6mPe7OHM2nUO
+
+// const express = require("express");
+var cors = require("cors");
+const stripe = require("stripe")(
+  "sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe"
+);
+
+// const app = express();
+app.use(cors());
+app.use(express.static("public"));
+app.use(express.json());
+
+app.post("/checkout", async (req, res) => {
+  /*
+  req.body.items
+  [
+      {
+          id: 1,
+          quantity: 3
+      }
+  ]
+
+  stripe wants
+  [
+      {
+          price: 1,
+          quantity: 3
+      }
+  ]
+  */
+  console.log(req.body);
+  const items = req.body.items;
+  console.log("items>", items);
+  console.log("items>>36", items);
+  let lineItems = [];
+  items.forEach((item) => {
+    lineItems.push({
+      price: item.id,
+      quantity: item.quantity,
+    });
+  });
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: lineItems,
+    mode: "payment",
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
+  });
+
+  res.send(
+    JSON.stringify({
+      url: session.url,
+    })
+  );
+});
+
+// app.listen(4000, () => console.log("Listening on port 4000!"));

@@ -9,25 +9,26 @@ const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
 
   const cartItems = useSelector((state) => state.cart.items);
+  console.log("cartItems.items>?>", cartItems);
 
   console.log("cart in packages", cartItems);
 
   const checkout = async () => {
-    // await fetch("http://localhost:4000/checkout", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ items: cartItems.items }),
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((response) => {
-    //     if (response.url) {
-    //       window.location.assign(response.url); // Forwarding user to Stripe
-    //     }
-    //   });
+    await fetch("/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: cartItems }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response.url) {
+          window.location.assign(response.url); // Forwarding user to Stripe
+        }
+      });
   };
 
   const modalStyle = {

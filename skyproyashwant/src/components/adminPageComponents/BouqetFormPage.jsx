@@ -9,6 +9,9 @@ import Checkbox from "@mui/material/Checkbox";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const channels = ["star plus", "mtv", "aat tak"];
 
 const broadcasters = [
@@ -29,194 +32,208 @@ const MenuProps = {
 };
 
 const BouqetFormPage = () => {
-  const [broadcastername, setBroadcasterName] = useState([]);
   const [channelName, setchannelName] = useState([]);
-  const [channelData, setChannelData] = useState([]);
   const [channelId, setChannelId] = useState([]);
-
-  const [broadcasterTwoName, setBroadcasterTwoName] = useState([]);
+  const [channelData, setChannelData] = useState([]);
+  const [error, setError] = useState([]);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [broadcasterData, setBroadcasterData] = useState([]);
+  const [broadcasterName, setBroadcasterName] = useState([]);
   const [broadcasterId, setBroadcasterId] = useState([]);
-
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    broadcaster: "",
-    channels: "",
+    // channels: "",
   });
 
-  const handleBroadcasterChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setBroadcasterName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+  //   const {
+  //     target: { value },
+  //   } = event;
+  //   setBroadcasterName(
+  //     // On autofill we get a stringified value.
+  //     typeof value === "string" ? value.split(",") : value
+  //   );
+  // };
+
+  const resetFormFields = () => {
+    setFormData({
+      name: "",
+      price: "",
+    });
   };
 
   const handleChannelChange = (event) => {
     const {
       target: { value },
     } = event;
+
     setchannelName(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    setError(null);
+  };
+  const handleBroadcasterChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+
+    setBroadcasterName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+    setError(null);
   };
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
-    // const value = event.target.value;
-
-    // const newValue =
-    //   name === "image" && type === "file" ? e.target.files[0] : value;
-
-    // typeof value === "string" ? value.split(",") : value
 
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+    setError(null);
   };
-
-  const getChannelId = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-
-      const response = await axios.get("/api/package/channel", config);
-      const data = response.data;
-      let newData = data?.find((item) => item?.name === channelName[0]);
-      setChannelId(newData?._id);
-
-      // console.log("data>IDz", data);
-
-      // console.log("channelNamebeforeID>mm>", channelName[0]);
-
-      console.log("newDataID>>m>", newData);
-
-      console.log("channelNameafterID", channelName[0]);
-      // console.log("newDataidID", newData?._id);
-
-      console.log("langFinalInID", channelId);
-
-      // const responseTwo = await axios.get("/api/package/broadcaster", config);
-      // let newDataTwo = responseTwo?.data?.find(
-      //   (item) => item?.name === broadcastername[0]
-      // );
-      // setBroadcasterId(newDataTwo?._id);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  getChannelId();
-
-  const getBroadcasterId = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-
-      // const response = await axios.get("/api/package/broadcaster", config);
-      // const data = response.data;
-      // let newData = data?.find((item) => item?.name === channelName[0]);
-      // setChannelId(newData?._id);
-
-      // // console.log("data>IDz", data);
-
-      // // console.log("channelNamebeforeID>mm>", channelName[0]);
-
-      // console.log("newDataID>>m>", newData);
-
-      // console.log("channelNameafterID", channelName[0]);
-      // // console.log("newDataidID", newData?._id);
-
-      // console.log("langFinalInID", channelId);
-
-      const responseTwo = await axios.get("/api/package/broadcaster", config);
-      console.log("bouquetFormBroadcater>>>", responseTwo);
-      let newDataTwo = responseTwo?.data?.find(
-        (item) => item?.name === broadcastername[0]
-      );
-      setBroadcasterId(newDataTwo?._id);
-      console.log("setBroadcasterId>>c><<<<<", broadcasterId);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  getBroadcasterId();
 
   const getChannelFunc = async () => {
     const config = {
       Headers: {
         "Content-type": "application/json",
-        // "Content-Type": "multipart/form-data",
       },
     };
 
     const data = await axios.get("/api/package/channel", config);
-    console.log("datagetChannel>", data?.data);
+    // console.log("datagetChannel>", data?.data);
 
-    const responseTwo = await axios.get("/api/package/broadcaster", config);
-    console.log("responseTwo>>", responseTwo?.data);
-    console.log("broadcasterTwoName>", broadcasterTwoName);
+    // const channels = data?.data?.map((item) => item.name);
 
-    const channels = data?.data?.map((item) => item.name);
-    const broadcaster = responseTwo?.data?.map((item) => item.name);
-    setBroadcasterTwoName(broadcaster);
-    setChannelData(channels);
-    console.log("channelData;;;;;:::", channelData);
+    setChannelData(data);
   };
 
-  const getBroadcasterFunc = async () => {};
+  const getBroadcasterFunc = async () => {
+    const config = {
+      Headers: {
+        "Content-type": "application/json",
+      },
+    };
+    const data = await axios.get("/api/package/broadcaster", config);
+    setBroadcasterData(data);
+  };
 
-  console.log("channelData>>>", channelData);
+  const getChannelId = () => {
+    try {
+      const data = channelData.data;
+
+      // let newData = data?.find((item) => item?.name === channelName[0]);
+
+      // const channelIds = channelName.map((name, index) => {
+      //   const newData = data?.find((item) => item?.name === name);
+      //   return newData?._id;
+      // });
+
+      const channelIds = channelName.map((name) => {
+        const channel = data?.find((item) => item?.name === name);
+        return channel?._id;
+      });
+      console.log("channelidfunc>>", channelIds);
+      setChannelId(channelIds);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  const getBroadcasterId = () => {
+    try {
+      const data = broadcasterData.data;
+
+      // let newData = data?.find((item) => item?.name === channelName[0]);
+
+      // const channelIds = channelName.map((name, index) => {
+      //   const newData = data?.find((item) => item?.name === name);
+      //   return newData?._id;
+      // });
+
+      const channelIds = broadcasterName.map((name) => {
+        const channel = data?.find((item) => item?.name === name);
+        return channel?._id;
+      });
+      console.log("channelidfunc>>", channelIds);
+      setBroadcasterId(channelIds);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // console.log("formData in>>>", formData);
-    // getChannelId();
-    // console.log("languageName>>", languageName[0]);
-    // const formDataToSend = new FormData();
-    // formDataToSend.append("name", formData.name);
-    // formDataToSend.append("price", formData.price);
-    // console.log("languageFinalOutId>", languageId);
-    // formDataToSend.append("language", languageId);
-    // formDataToSend.append("image", formData.image);
-    // formDataToSend.append("type", channelName[0]);
+    try {
+      const config = {
+        Headers: {
+          "Content-type": "application/json",
+        },
+      };
 
-    const config = {
-      Headers: {
-        "Content-type": "application/json",
-        // "Content-Type": "multipart/form-data",
-      },
-    };
-    const { name, price } = formData;
-    console.log("channelIdSUBMIT>m>>", channelId);
-    const { data } = await axios.post(
-      "/api/package/bouquet",
-      // "http://localhost:5000/api/package/channel",
-      { name, price, broadcasterRef: broadcasterId, channelRef: channelId },
-      config
-    );
-    console.log("data>>after submit bouque final", data);
+      const { name, price } = formData;
+      console.log("channelIdsubmit>>>>", channelId);
+
+      const data = await axios.post(
+        "/api/package/bouquet",
+        { name, price, channelRef: channelId, broadcasterRef: broadcasterId },
+        config
+      );
+
+      console.log("data submit>>", data);
+
+      data &&
+        toast.success("Bouque has been created successfully", {
+          position: "top-center", // Set the position of the toast
+          autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
+          hideProgressBar: false, // Show or hide the progress bar
+          closeOnClick: true, // Close the toast when clicked
+          pauseOnHover: true, // Pause the timer when hovered
+          draggable: true, // Allow dragging the toast
+          progress: undefined, // Use the default progress bar
+          style: { fontSize: "18px", textAlign: "center" }, // Customize the style of the toast
+        });
+    } catch (error) {
+      setError(error?.response?.data?.error);
+      toast.error("Failed to create the Bouque", {
+        position: "top-center", // Set the position of the toast
+        autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
+        hideProgressBar: false, // Show or hide the progress bar
+        closeOnClick: true, // Close the toast when clicked
+        pauseOnHover: true, // Pause the timer when hovered
+        draggable: true, // Allow dragging the toast
+        progress: undefined, // Use the default progress bar
+        style: { fontSize: "18px", textAlign: "center", color: "red" }, // Customize the style of the toast
+      });
+
+      resetFormFields();
+    }
+    resetFormFields();
+    setchannelName([]);
+    setBroadcasterName([]);
   };
 
   useEffect(() => {
     getChannelFunc();
     getBroadcasterFunc();
-  }, []);
+    getChannelId();
+    getBroadcasterId();
+  }, [channelName, broadcasterName]);
+
+  useEffect(() => {
+    const isNameValid = formData.name.trim() !== "";
+    const isPriceValid = formData.price.trim() !== "";
+    const areChannelsSelected = channelName.length > 0;
+
+    setIsFormValid(isNameValid && isPriceValid && areChannelsSelected);
+  }, [formData.name, formData.price, channelName]);
 
   return (
     <PortalHeader>
+      <ToastContainer />
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="mb-3">
           <label className="form-label">Bouquet Name:</label>
@@ -228,7 +245,7 @@ const BouqetFormPage = () => {
             onChange={handleChange}
           />
         </div>
-
+        <div style={{ color: "red" }}>{error && error}</div>
         <div className="mb-3">
           <label className="form-label">Bouquet Price:</label>
           <input
@@ -243,26 +260,26 @@ const BouqetFormPage = () => {
         <div>
           <FormControl sx={{ m: 1, width: 600 }}>
             <InputLabel id="demo-multiple-checkbox-label">
-              Broadcaster
+              Channel Name
             </InputLabel>
             <Select
               labelId="demo-multiple-checkbox-label"
               id="demo-multiple-checkbox"
-              // multiple
-              value={broadcastername}
-              onChange={handleBroadcasterChange}
-              input={<OutlinedInput label="Broadcaster" />}
+              multiple
+              value={channelName}
+              onChange={handleChannelChange}
+              input={<OutlinedInput label="Channel Type" />}
               renderValue={(selected) => selected.join(", ")}
               MenuProps={MenuProps}
             >
-              {broadcasterTwoName.map((broadcaster) => (
-                <MenuItem key={broadcaster} value={broadcaster}>
-                  <Checkbox
-                    checked={broadcastername.indexOf(broadcaster) > -1}
-                  />
-                  <ListItemText primary={broadcaster} />
-                </MenuItem>
-              ))}
+              {channelData?.data
+                ?.map((item) => item.name)
+                ?.map((channel) => (
+                  <MenuItem key={channel} value={channel}>
+                    <Checkbox checked={channelName.indexOf(channel) > -1} />
+                    <ListItemText primary={channel} />
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </div>
@@ -270,29 +287,35 @@ const BouqetFormPage = () => {
         <div>
           <FormControl sx={{ m: 1, width: 600 }}>
             <InputLabel id="demo-multiple-checkbox-label">
-              Channel Name
+              Broadcaster Name
             </InputLabel>
             <Select
               labelId="demo-multiple-checkbox-label"
               id="demo-multiple-checkbox"
               // multiple
-              value={channelName}
-              onChange={handleChannelChange}
+              value={broadcasterName}
+              onChange={handleBroadcasterChange}
               input={<OutlinedInput label="Channel Type" />}
               renderValue={(selected) => selected.join(", ")}
               MenuProps={MenuProps}
             >
-              {channelData.map((channel) => (
-                <MenuItem key={channel} value={channel}>
-                  <Checkbox checked={channelName.indexOf(channel) > -1} />
-                  <ListItemText primary={channel} />
-                </MenuItem>
-              ))}
+              {broadcasterData?.data
+                ?.map((item) => item.name)
+                ?.map((channel) => (
+                  <MenuItem key={channel} value={channel}>
+                    <Checkbox checked={channelName.indexOf(channel) > -1} />
+                    <ListItemText primary={channel} />
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={!isFormValid}
+        >
           Submit
         </button>
       </form>

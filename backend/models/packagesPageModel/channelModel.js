@@ -6,15 +6,32 @@ const channelSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  type: {
-    type: mongoose.Schema.Types.ObjectId,
-    trim: true,
-  },
-  language: {
-    // type: String,
-    type: mongoose.Schema.Types.ObjectId,
-    trim: true,
-  },
+  type: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Type",
+    },
+  ],
+  // type: [
+  //   {
+  //     type: String,
+  //     // ref: "Type",
+  //   },
+  // ],
+  // language: [
+  //   {
+  //     type: String,
+  //     // ref: "Type",
+  //   },
+  // ],
+
+  language: [
+    {
+      // type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Language",
+    },
+  ],
   image: {
     type: String,
     default:

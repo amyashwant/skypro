@@ -9,12 +9,14 @@ const broadcasterSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  bouqueRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Bouquet",
-    },
-  ],
+  createdAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now },
+  // bouqueRef: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Bouquet",
+  //   },
+  // ],
   // channels: [
   //   {
   //     type: mongoose.Schema.Types.ObjectId,

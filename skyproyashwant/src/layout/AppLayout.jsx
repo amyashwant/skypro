@@ -24,6 +24,7 @@ import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader
 import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
 import TypeFormPage from "../components/adminPageComponents/TypeFormPage";
 import PackageFormPage from "../components/adminPageComponents/PackageFormPage";
+import PackageBouque from "../components/adminPageComponents/PackageBouque";
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -91,6 +92,10 @@ const AppLayout = () => {
             <Route
               path="/admin/settings/packages"
               element={<PackageFormPage />}
+            />
+            <Route
+              path="/admin/settings/package-bouque"
+              element={<PackageBouque />}
             />
           </Routes>
         </Router>

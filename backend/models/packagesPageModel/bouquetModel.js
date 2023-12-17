@@ -10,20 +10,19 @@ const bouquetSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  broadcasterRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Broadcaster",
-    },
-  ],
   channelRef: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Channel",
     },
   ],
+  broadcasterRef: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Broadcaster",
+  },
 
-  // Add any other bouquet-related fields here
+  createdAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Bouquet", bouquetSchema);

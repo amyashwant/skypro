@@ -33,7 +33,11 @@ const TypeFormPage = () => {
         },
       };
       const { name } = formData;
-      const data = await axios.post("/api/package/type", { name }, config);
+      const data = await axios.post(
+        "/api/package/type",
+        { name: name.toUpperCase() },
+        config
+      );
       console.log("data post>>>", data?.data?.name);
       // setTypeData(data);
     } catch (error) {
@@ -57,6 +61,7 @@ const TypeFormPage = () => {
       ...prevData,
       [name]: e.target.value,
     }));
+    setError(null);
   };
 
   useEffect(() => {
@@ -77,7 +82,7 @@ const TypeFormPage = () => {
             onChange={handleChange}
           />
         </div>
-        {error && error}
+        <div style={{ color: "red" }}>{error && error}</div>
         <button
           type="submit"
           className="btn btn-primary"
@@ -85,7 +90,19 @@ const TypeFormPage = () => {
         >
           Submit
         </button>
-        <div>type available:</div>
+        <div
+          style={{
+            marginTop: "30px",
+            color: "green",
+            fontSize: "20px",
+          }}
+        >
+          Type available:
+        </div>
+
+        <div style={{ fontSize: "10px" }}>
+          {typeData ? "" : "Loading......"}
+        </div>
         <div>
           {typeData?.data?.map((item, index) => {
             return (

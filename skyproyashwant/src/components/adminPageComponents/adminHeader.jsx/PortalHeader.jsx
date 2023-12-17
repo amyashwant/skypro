@@ -229,6 +229,11 @@ const settingsLinks = [
     title: "Packages",
     handle: "/admin/settings/packages",
   },
+  {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "Package-Bouque",
+    handle: "/admin/settings/package-bouque",
+  },
 ];
 
 export default PortalHeader;

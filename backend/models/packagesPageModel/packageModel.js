@@ -6,16 +6,18 @@ const packageSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  price: {
-    type: String,
-    trim: true,
-  },
-  broadcasterRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Broadcaster",
-    },
-  ],
+  createdAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now },
+  // price: {
+  //   type: String,
+  //   trim: true,
+  // },
+  // broadcasterRef: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Broadcaster",
+  //   },
+  // ],
 });
 
 module.exports = mongoose.model("Package", packageSchema);

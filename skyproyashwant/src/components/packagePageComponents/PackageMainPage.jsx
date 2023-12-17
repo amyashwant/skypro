@@ -157,8 +157,8 @@ const languages = ["Hindi", "Punjabi", "Marathi", "Oriya"];
 
 const broadcaster = [
   {
-    // id: "price_1OKcfxSBYt5a6mPeuFEF0QBc",
-    id: "1",
+    id: "price_1OKcfxSBYt5a6mPeuFEF0QBc",
+    // id: "1",
     title: "HW AP SILVER BUDGET TELUGU",
     price: 150,
     subTitle: "View channels",
@@ -169,13 +169,14 @@ const broadcaster = [
     language: "hindi",
   },
   {
-    // id: "price_1OKcliSBYt5a6mPe7OHM2nUO",
-    id: "2",
+    id: "price_1OKcliSBYt5a6mPe7OHM2nUO",
+    // id: "2",
     title: "NORTH FTA",
     price: 450,
     subTitle: "View channels",
     images: [imgThree, imgTwo, imgOne],
     channels: 272,
+    quantity: 1,
     priceTitle: "*Prices are excluding taxes",
     language: "hindi",
   },

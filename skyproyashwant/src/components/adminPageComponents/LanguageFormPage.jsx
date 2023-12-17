@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
-import currImg from "../../assets/images/packagesImages/1702451103822-Default.jpg";
+// import currImg from "../../assets/images/packagesImages/1702451103822-Default.jpg";
 const LanguageFormPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,6 +10,7 @@ const LanguageFormPage = () => {
   const [languageOne, setLanguageOne] = useState();
   const [error, setError] = useState();
   const [languageData, setLanguageData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const getLanguageFunc = async () => {
     const config = {
@@ -25,6 +26,8 @@ const LanguageFormPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
     try {
       const config = {
         Headers: {
@@ -33,7 +36,11 @@ const LanguageFormPage = () => {
         },
       };
       const { name } = formData;
-      const data = await axios.post("/api/package/language", { name }, config);
+      const data = await axios.post(
+        "/api/package/language",
+        { name: name.toUpperCase() },
+        config
+      );
       console.log("data post>>>", data?.data?.name);
       // setLanguageData(data);
     } catch (error) {
@@ -45,6 +52,7 @@ const LanguageFormPage = () => {
       ...prevData,
       name: "", // Set the 'name' property to an empty string
     }));
+    setLoading(false);
   };
 
   const handleChange = (e) => {
@@ -57,6 +65,7 @@ const LanguageFormPage = () => {
       ...prevData,
       [name]: e.target.value,
     }));
+    setError(null);
   };
 
   useEffect(() => {
@@ -77,15 +86,27 @@ const LanguageFormPage = () => {
             onChange={handleChange}
           />
         </div>
-        {error && error}
+        <div style={{ color: "red" }}>{error && error}</div>
         <button
           type="submit"
           className="btn btn-primary"
           disabled={formData.name === ""}
         >
-          Submit
+          {loading ? "submitting..." : "Submit"}
         </button>
-        <div>language available:</div>
+        <div
+          style={{
+            marginTop: "30px",
+            color: "green",
+            fontSize: "20px",
+          }}
+        >
+          <div>language available:</div>
+
+          <div style={{ fontSize: "10px" }}>
+            {languageData ? "" : "Loading......"}
+          </div>
+        </div>
         <div>
           {languageData?.data?.map((item, index) => {
             return (

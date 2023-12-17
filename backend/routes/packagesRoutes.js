@@ -14,6 +14,8 @@ const {
   getType,
   createPackage,
   getPackage,
+  createPackageBouque,
+  getPackageBouque,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
@@ -38,11 +40,18 @@ const {
 // });
 
 // router.route("/channel").post(createChannel);
+
 router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
+  const { name, type, language, channelPrice } = req.body;
+
   try {
-    const { name, type, language, channelPrice } = req.body;
-    const image = req.file.filename;
+    const existingChannel = await Channel.findOne({ name });
+    if (existingChannel) {
+      return res.status(400).json({ error: "Channel Already Added" });
+    }
+
+    const image = req?.file?.filename;
     // console.log(image, "image>>>");
     const channel = await Channel.create({
       name,
@@ -58,6 +67,7 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 router.route("/channel").get(getChannels);
 router.route("/language").post(createLanguage);
 router.route("/language").get(getLanguage);
@@ -68,13 +78,18 @@ router.post(
   "/broadcaster",
   imageUploadMiddleware("image"),
   async (req, res) => {
+    const { name } = req.body;
     try {
-      const { name, bouqueRef } = req.body;
+      const existingBroadcaster = await Broadcaster.findOne({ name });
+      if (existingBroadcaster) {
+        return res.status(400).json({ error: "Broadcaster Already Added" });
+      }
+
       const image = req.file.filename;
       const broadcaster = await Broadcaster.create({
         name,
         image,
-        bouqueRef,
+        // bouqueRef,
       });
       res.status(200).json(broadcaster);
     } catch (error) {
@@ -89,5 +104,8 @@ router.post("/type", createType);
 router.get("/type", getType);
 router.post("/pack", createPackage);
 router.get("/pack", getPackage);
+
+router.post("/package-bouque", createPackageBouque);
+router.get("/package-bouque", getPackageBouque);
 
 module.exports = router;
