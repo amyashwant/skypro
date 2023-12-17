@@ -200,7 +200,7 @@ const PackageMainPage = () => {
                             <h4>₹ {pricing.price} <span>/mo</span></h4>
                           </div>
                           <div className="deal-bottom">
-                            <ul className="deal-item">
+                            <ul className="deal-item" style={{display: 'inline-block'}}>
                               {pricing.features.map((feature, featureIndex) => (
                                 <li key={featureIndex}>
                                   <span>✓</span>
