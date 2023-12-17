@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import contactOne from "../../../assets/images/contact/contact-icon-01.png";
 import contactTwo from "../../../assets/images/contact/contact-icon-02.png";
 import contactThree from "../../../assets/images/contact/contact-icon-03.png";
+import contactImage from "../../../assets/images/contact/contact-us-form-image.jpg";
 import axios from "axios";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name:'',
@@ -265,14 +267,6 @@ const Contact = () => {
                           placeholder="Enter Your Subject"
                         />
                       </div>
-                      {/* <div class="form-group col-sm-6 mb-3">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Company"
-                          name="cmpny"
-                        />
-                      </div> */}
                       <div class="form-group col-sm-12 mb-3">
                         <textarea
                           class="form-control"
@@ -359,7 +353,7 @@ const Contact = () => {
                 </div>
                 <div className="col-sm-5">
                   <img
-                    src="https://www.epikso.com/images/contact-us-right.jpg"
+                    src={contactImage}
                     alt="Contact"
                     className="img-fluid"
                     style={{ maxWidth: "100%", height: "auto" }}
