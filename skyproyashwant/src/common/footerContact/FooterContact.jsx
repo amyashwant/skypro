@@ -32,9 +32,11 @@ const FooterContact = () => {
                 <p className="para">
                   <Link to="/contact">info@skypro.co.in</Link>
                 </p>
-                {/* <p className="para">
-                  <Link to="/contact">info@skypro.co.in</Link>
-                </p> */}
+
+                <p className="para">
+                  {/* <Link to="/contact">info@skypro.co.in</Link> */}
+                </p>
+
               </div>
             </div>
           </div>
