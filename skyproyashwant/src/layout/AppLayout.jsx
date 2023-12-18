@@ -22,6 +22,8 @@ import BroadcasterFormPage from "../components/adminPageComponents/BroadcasterFo
 import BouqetFormPage from "../components/adminPageComponents/BouqetFormPage";
 import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader";
 import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
+import ViewMoreSection from "../components/packagePageComponents/ViewMoreSection";
+import ViewMorePackage from "../screens/ViewMorePackage";
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -68,6 +70,7 @@ const AppLayout = () => {
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
+            <Route path="/viewmorepackage" element={<ViewMorePackage/>}/>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/settings/broadcasters" element={<BroadcasterFormPage />}/>
             <Route path="/admin/settings/bouquets" element={<BouqetFormPage />}/>

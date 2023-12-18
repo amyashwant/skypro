@@ -25,7 +25,7 @@ const PackageMainPage = () => {
   };
 
   const handleViewClick = () => {
-    alert("hello")
+    setView(true)
   }
 
   const languageClick = (language) => {
@@ -99,7 +99,7 @@ const PackageMainPage = () => {
                               ))}
                             </ul>
                             <div className="btn-area">
-                              <Link to="#" onClick={handleViewClick}>View More</Link> 
+                              <Link to="/viewmorepackage" onClick={handleViewClick}>View More</Link> 
                               <Link className={`btn-style ${ selectedPack === pricing ? "selected" : ""}`}
                                 to="#"
                                 onClick={() => handleClick(pricing)}
