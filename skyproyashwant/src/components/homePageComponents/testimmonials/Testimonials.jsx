@@ -25,16 +25,16 @@ const Testimonials = () => {
   };
 
 return (
-  <section className="home-two-testimonial overflow-hidden">
+  <section className="home-two-testimonial pricing pt-100 pb-50 bg-img">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-12">
-            <div className="testimonial-heading text-center mb-4">
-              <h2 className="text-uppercase text-white">Client Testimonials</h2>
+            <div className="section-header">
+              <h4 className="subtitle text-white">Client Testimonials</h4>
             </div>
             <div className="testimonial-left py-100">
               <div className="row align-items-center">
-                <div className="col-xxl-6 col-xl-12 col-lg-5">
+                <div className="col-sm-12 text-center">
                   <Slider {...settings} className="">
                     {testimonialData.map((item, i) => (
                       <div className="testi-content" key={i}>
