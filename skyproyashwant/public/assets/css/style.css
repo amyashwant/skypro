@@ -7791,3 +7791,52 @@ button.btn.blue-btn {
     margin-right: 24px;
 }
 
+/* view mopre packages page */
+section.Accordion-Div {
+  padding: 50px 0px;
+}
+section.Accordion-Div .accordion-item {
+  border-radius: 0;
+  margin-bottom: 4px;
+}
+section.Accordion-Div .accordion-item button.accordion-button {
+  background: #ddd;
+  border-radius: 0 !important;
+  color: #071e43;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 400;
+}
+section.Accordion-Div .accordion-body{
+height: 160px;
+}
+section.Accordion-Div .accordion-item button.accordion-button:focus {
+  box-shadow: none;
+}
+section.Accordion-Div ul.accordion-innerDiv li {
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 8px;
+  margin-right: 17px;
+  padding: 20px;
+  border: 0 !important;
+  box-shadow: 2px 2px 12px 0 rgba(188,188,188,.75);
+  float: left;
+  position: relative;
+}
+
+section.Accordion-Div ul.accordion-innerDiv li img {
+  margin-bottom: 10px;
+  height: auto;
+  max-height: 80px;
+  width: 80px;
+}
+
+section.Accordion-Div ul.accordion-innerDiv li span {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-size: 11px;
+}

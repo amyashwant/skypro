@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import contactImg from "../../../assets/images/breadcumb/_1530667899_390_yEZPsIaoTI3ZNDdB-croppedUundb-jpg-details.jpg";
+// import contactImg from "../../../assets/images/breadcumb/_1530667899_390_yEZPsIaoTI3ZNDdB-croppedUundb-jpg-details.jpg";
+import contactImg from "../../../assets/images/breadcumb/contact-backup.webp";
 const BeadCumb = () => {
   return (
     <section
