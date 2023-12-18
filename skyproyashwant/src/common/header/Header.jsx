@@ -130,7 +130,7 @@ const Header = () => {
                     ABOUT
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <Link
                     className="nav-link"
                     to="/service"
@@ -139,7 +139,7 @@ const Header = () => {
                   >
                     SERVICES
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link"
