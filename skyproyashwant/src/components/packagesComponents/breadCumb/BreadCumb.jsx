@@ -16,7 +16,7 @@ const BreadCumb = ({ headerName }) => {
               </h4>
               <ul className="breadcumb-list d-flex justify-content-center align-items-center">
                 <li>
-                  <Link to="/packages">Back To Packages</Link>
+                  <Link to="/">HOME</Link>
                 </li>
                 {/* <li>
                   <span>/</span>

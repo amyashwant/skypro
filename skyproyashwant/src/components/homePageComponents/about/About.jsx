@@ -35,17 +35,17 @@ const About = () => {
             <div className="about-left">
               <div className="play-button">
               {isVideoOpen ? (
-          <VideoPlayer
-            videoUrl={videoUrl}
-            width="100%"
-            height="100%"
-            onClose={closeVideo}
-          />
-        ) : (
-          <button onClick={openVideo}>
-            <i className="icon-play">Play</i>
-          </button>
-        )}
+                <VideoPlayer
+                  videoUrl={videoUrl}
+                  width="100%"
+                  height="100%"
+                  onClose={closeVideo}
+                />
+              ) : (
+                <button onClick={openVideo}>
+                  <i className="icon-play">Play</i>
+                </button>
+              )}
               </div>
               <div className="home-two-about-thumb">
                 <span>
@@ -83,6 +83,9 @@ const About = () => {
               <div className="about-button ps-lg-5 mt-xl-0 mt-3">
                 <Link to="/about" className="btn--base">
                   READ MORE
+                </Link>
+                <Link to="/contact" className="btn--base">
+                  CONTACT US
                 </Link>
               </div>
             </div>

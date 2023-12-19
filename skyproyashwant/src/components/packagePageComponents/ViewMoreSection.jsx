@@ -4,31 +4,32 @@ const ViewMoreSection = () => {
   const accordionData = [
     {
       id: 1,
-      title: 'Premium Hindi HD',
+      broadCaster: 'Premium Hindi HD',
+      bouquet: ["Hindi News Aaj Tak Pack"],
       items: [
-        { id: 1, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 2, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 1, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' }, 
+        { id: 2, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
       ],
     },
     {
       id: 2,
-      title: 'Hamara Punjabi Plus HD Combo',
+      broadCaster: 'Hamara Punjabi Plus HD Combo',
       items: [
-        { id: 1, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 2, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 3, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 1, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 2, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 3, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
       ],
     },
     {
       id: 3,
-      title: 'Value Lite Hindi HD',
+      broadCaster: 'Value Lite Hindi HD',
       items: [
-        { id: 1, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 2, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 3, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 4, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 5, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
-        { id: 6, imgSrc: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 1, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 2, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 3, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 4, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 5, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
       ],
     },
   ];
@@ -49,7 +50,7 @@ const ViewMoreSection = () => {
                     aria-expanded="true"
                     aria-controls={`panelsStayOpen-collapse${accordionItem.id}`}
                   >
-                    {accordionItem.title}
+                    {accordionItem.broadCaster} 
                   </button>
                 </h2>
                 <div
@@ -61,7 +62,7 @@ const ViewMoreSection = () => {
                     <ul className="accordion-innerDiv">
                       {accordionItem.items.map((item) => (
                         <li key={item.id}>
-                          <img src={item.imgSrc} alt={item.label} />
+                          <img src={item.channleImage} alt={item.label} />
                           <span>{item.label}</span>
                         </li>
                       ))}

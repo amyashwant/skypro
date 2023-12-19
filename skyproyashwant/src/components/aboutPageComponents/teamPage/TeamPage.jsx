@@ -3,12 +3,33 @@ import teamOne from "../../../assets/images/home-01/about/team-bg.png";
 import teamTwo from "../../../assets/images/home-01/about/team-01.png";
 import teamThree from "../../../assets/images/home-01/about/team-02.png";
 import teamFour from "../../../assets/images/home-01/about/team-03.png";
+import { Link } from "react-router-dom";
+
+const teamData = [
+  {
+    name: "DARLENE ROBERTSON",
+    designation: "CEO",
+    image: teamTwo,
+    link: "https://www.linkedin.com/company/skyprotv/"
+  },
+  {
+    name: "AHMADULLAH",
+    designation: "Founder",
+    image: teamThree,
+    link: "https://www.linkedin.com/company/skyprotv/"
+  },
+  {
+    name: "CHARLES BRADFORD",
+    designation: "Admin",
+    image: teamFour,
+    link: "https://www.linkedin.com/company/skyprotv/"
+  },
+];
 
 const TeamPage = () => {
   return (
     <section
       className="team bg-img overlay-bg pt-100 pb-50"
-      //  style="background-image: url(assets/images/about/team/team-bg.png);"
       style={{
         backgroundImage: `url(${teamOne})`,
       }}
@@ -23,128 +44,23 @@ const TeamPage = () => {
           </div>
         </div>
         <div className="row justify-content-center g-4">
-          <div className="col-lg-4 col-md-6">
-            <div className="team-item">
-              <div className="thumb">
-                <img src={teamTwo} alt="img" />
-                <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
-                  <div className="popup-share-icons"> 
-                    <ul className="popup-icons d-flex">
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
+          {teamData.map((member, index) => (
+            <div className="col-lg-4 col-md-6" key={index}>
+              <div className="team-item">
+                <div className="thumb">
+                  <img src={member.image} alt="img"/>
+                  <div className="share-icon">
+                    {/* <a href="javascript: void(0)" className="icon-share"></a> */}
+                    <Link to={member.link} className="icon-share" target="_blank"></Link>
                   </div>
                 </div>
-              </div>
-              <div className="content">
-                <h4 className="name">
-                  {/* <a href="team-details.html">DARLENE ROBERTSON</a> */}DARLENE ROBERTSON
-                </h4>
-                <span className="designation">Ceo</span>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="team-item">
-              <div className="thumb">
-                <img src={teamThree} alt="img" />
-                <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
-                  <div className="popup-share-icons">
-                    <ul className="popup-icons d-flex">
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="content">
+                  <h4 className="name">{member.name}</h4>
+                  <span className="designation">{member.designation}</span>
                 </div>
               </div>
-              <div className="content">
-                <h4 className="name">
-                  {/* <a href="team-details.html">AHMADULLAH</a> */}
-                  AHMADULLAH
-                </h4>
-                <span className="designation">Founder</span>
-              </div>
             </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="team-item">
-              <div className="thumb">
-                <img src={teamFour} alt="img" />
-                <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
-                  <div className="popup-share-icons">
-                    <ul className="popup-icons d-flex">
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="content">
-                <h4 className="name">
-                  {/* <a href="team-details.html">CHARLES BRADFORD</a> */}
-                  CHARLES BRADFORD
-                </h4>
-                <span className="designation">Admin</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
