@@ -1567,14 +1567,11 @@ ul[class*="custom--tab"] li:last-child button {
 
 @media (max-width: 767px) {
   .navbar-brand.logo img {
-    max-width: 90px;
+    max-width: 98px !important;
   }
+  .home-two-header.header-bottom {
+    top: -4px;
 }
-
-@media (max-width: 575px) {
-  .navbar-brand.logo img {
-    max-width: 80px;
-  }
 }
 
 .header-menu {
@@ -4085,7 +4082,7 @@ ul[class*="custom--tab"] li:last-child button {
   left: 0;
   top: 0;
   background-color: #071e43;
-  opacity: 0.7;
+  opacity: 0.9;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -4923,7 +4920,7 @@ svg.radial-progress circle {
 }
 
 .footer-contact {
-  background-color: #071e43;
+  background-color: #071e43e6;
   padding: 66px 0px;
 }
 footer.footer-area.bg-img .container.py-100 {
@@ -4945,6 +4942,43 @@ footer.footer-area.bg-img .container.py-100 {
   .footer-contact-item .icon {
     margin-bottom: 0px;
   }
+  .footer-contact {
+    padding: 36px 10px;
+}
+footer.footer-area.bg-img{
+  padding: 36px 18px;  
+}
+.banner-content .subtitle{
+  font-size: 24px;
+  margin-bottom: 16px;
+  line-height: normal;
+}
+.fun-right-bg-img.bg-img {
+  width: 200px;
+  margin: 0 auto;
+}
+.testimonial-left {
+  width: 100% !important;
+  margin: 0 auto;
+}
+.btn--base.style-two{
+  margin-top: 18px;
+}
+.section-header .subtitle {
+  font-size: 30px;
+}
+.testimonial-left .slick-prev::before{
+  display: none;
+}
+.testimonial-left .slick-next:before{
+  display: none; 
+}
+.brand {
+  padding: 40px 0px;
+}
+section.home-two-banner {
+  padding: 80px 0;
+}
 }
 
 .footer-contact-item .icon img {
@@ -5664,10 +5698,9 @@ footer.footer-area.bg-img .container.py-100 {
 }
 
 .client-meta .meta-content .designation {
-  color: #f2f2f2;
-  font-weight: 300;
-  font-size: 16px;
+  font-size: 18px;
   color: #fd5901;
+  font-weight: 400;
 }
 
 .testimonial-right {
@@ -5688,6 +5721,16 @@ footer.footer-area.bg-img .container.py-100 {
   .testimonial-right .right-item {
     padding: 30px 30;
   }
+  .home-two-testimonial {
+    padding: 40px 0px;
+}
+ul.banner-buttons li {
+  display: block;
+  width: 100%;
+}
+.about-right-thumb, .about-left-thumb {
+  display: none;
+}
 }
 
 @media (max-width: 575px) {
