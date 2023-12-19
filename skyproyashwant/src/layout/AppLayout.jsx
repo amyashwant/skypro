@@ -24,6 +24,7 @@ import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader
 import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
 import ViewMoreSection from "../components/packagePageComponents/ViewMoreSection";
 import ViewMorePackage from "../screens/ViewMorePackage";
+import CancelationPage from "../screens/Cancelation";
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -66,6 +67,7 @@ const AppLayout = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/refund" element={<RefundPage />} />
+            <Route path="/cancelation" element={<CancelationPage/>} />
             <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />

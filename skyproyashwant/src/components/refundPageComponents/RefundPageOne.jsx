@@ -1,6 +1,6 @@
 import React from "react";
 import refundImg from "../../assets/images/refund/WhatsApp Image 2023-11-27 at 15.40.21_0f782808.jpg";
-import refundTwo from "../../assets/images/refund/why360-patten.png"
+import refundTwo from "../../assets/images/refund/why360-patten.png";
 const RefundPageOne = () => {
   return (
     <>
@@ -10,7 +10,7 @@ const RefundPageOne = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-              <h3 className="mt-0">Refund and Cancellation Policy</h3>
+              <h3 className="mt-0">Refund Policy</h3>
 
               <p className="mb-1">
                 last updated:{" "}
@@ -19,44 +19,86 @@ const RefundPageOne = () => {
                 </span>
               </p>
               <p>
-                Refund & Cancellation Policy Our focus is complete customer
-                satisfaction. In the event, if you are displeased with the
-                services provided, we will refund back the money, provided the
-                reasons are genuine and proved after investigation. Please read
-                the fine prints of each deal before buying it, it provides all
-                the details about the services or the product you purchase.
-              </p>
-              <h4>
-                In case of dissatisfaction from our services, clients have the
-                liberty to cancel their order and request a refund from us. Our
-                Policy for the cancellation and refund will be as follows:
-              </h4>
-              <p className="cost-clr">
-                <span>
-                  <img src={refundImg} />
-                </span>
-                <b>Cancellation Policy</b>
-              </p>
-              <p>
-                For Cancellations please contact us via contact us link.
-                Requests received later than 10 business days prior to the end
-                of the current service period will be treated as cancellation of
-                services for the next service period.
+                At The skypro, our primary goal is to ensure complete customer
+                satisfaction. To ensure a transparent understanding of our
+                refund policy, please carefully read the terms outlined below:
               </p>
               <p className="cost-clr">
                 <span>
                   <img src={refundImg} />
                 </span>
-                <b>Refund Policy</b>
+                <b>Eligibility for Refund:</b>
               </p>
               <p>
-                We will try our best to provide the suitable services for our
-                clients. In case any client is not completely satisfied with our
-                services we can provide a refund. If paid by credit card,
-                refunds will be issued to the original credit card provided at
-                the time of purchase and in case of payment gateway same
-                payments refund will be made to the same account.
+                We understand that circumstances may arise where a refund is
+                warranted. To be eligible for a refund, you must meet the
+                certain criteria:
               </p>
+              <ul>
+                <li>
+                  The request for a refund must be submitted within stipulated
+                  days from the date of purchase or service activation as
+                  decided by the company rules
+                </li>
+                <li>
+                  The reason for the refund request must be genuine and
+                  supported by evidence after our investigation.
+                </li>
+              </ul>
+              <p className="cost-clr">
+                <span>
+                  <img src={refundImg} />
+                </span>
+                <b>Refund Request Procedure:</b>
+              </p>
+              <ul>
+                <li>
+                  To request a refund, please contact our customer support team
+                  at <a href="mailto:info@theskypro.in">info@theskypro.in</a>{" "}
+                  with the subject line 'Refund Request'.
+                </li>
+                <li>
+                  Provide detailed information regarding the reason for the
+                  refund along with any supporting documentation or evidence.
+                </li>
+              </ul>
+              <p className="cost-clr">
+                <span>
+                  <img src={refundImg} />
+                </span>
+                <b>Limitations:</b>
+              </p>
+              <ul>
+                <li>
+                  Refunds are processed only for eligible services or products,
+                  as specified in the fine print of each deal. Please review the
+                  details of your purchase before making any transactions.
+                </li>
+              </ul>
+              <p className="cost-clr">
+                <span>
+                  <img src={refundImg} />
+                </span>
+                <b>Our Commitment:</b>
+              </p>
+              <ul>
+                <li>
+                  We strive to provide the best services to our clients and will
+                  make every effort to address and rectify any issues. Your
+                  satisfaction is our priority.
+                </li>
+                <li>
+                  By using our services and making a purchase on{" "}
+                  <a href="http://www.theskypro.in">www.theskypro.in</a>, you
+                  agree to adhere to the terms and conditions of this refund
+                  policy.
+                </li>
+                <li>
+                  For any questions or concerns regarding our refund policy,
+                  please contact us at{" "}
+                  <a href="mailto:info@theskypro.in">info@theskypro.in</a>.
+                </li>
+              </ul>
             </div>
           </div>
         </div>

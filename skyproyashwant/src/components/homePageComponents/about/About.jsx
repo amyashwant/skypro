@@ -7,21 +7,7 @@ import { Link } from "react-router-dom";
 import VideoPlayer from "../videoPlayer/VideoPlayer";
 
 const About = () => {
-  const videoUrl = "https://youtu.be/BxeVogwTpbA?si=XT4REVi_-WFenZMf";
-  const [isVideoOpen, setVideoOpen] = useState(false);
-
-  const openVideo = () => {
-    setVideoOpen(true);
-  };
-
-  const closeVideo = () => {
-    setVideoOpen(false);
-  };
-
-  useEffect(() => {
-    if (isVideoOpen) {
-    }
-  }, [isVideoOpen]);
+  const videoUrl = "https://www.youtube.com/embed/-c345tCaU8w";
 
   return (
     <section className="about home-two-about pt-50 pb-100">
@@ -32,32 +18,19 @@ const About = () => {
       <div className="container">
         <div className="row gy-5">
           <div className="col-lg-6">
-            <div className="about-left">
-              <div className="play-button mb-0">
-              {isVideoOpen ? (
-
-          <VideoPlayer
-            videoUrl={videoUrl}
-            width="600px"
-            height="400px"
-            onClose={closeVideo}
-          />
-        ) : (
-          <button onClick={openVideo}>
-            <i className="icon-play"></i>
-          </button>
-        )}
-
-              </div>
-              <div className="home-two-about-thumb">
-                <span>
-                  <img className="w-100" src={aboutThree} alt="img" />
-                </span>
-                <span>
-                  <img className="w-100" src={aboutFour} alt="img" />
-                </span>
-              </div>
-            </div>
+          <div className="about-left">
+        <div className="home-two-about-thumb">
+          {/* Display the iframe for the video */}
+          <iframe
+            width="600"
+            height="400"
+            src={videoUrl}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Embedded youtube"
+          ></iframe>
+        </div>
+      </div>
           </div>
           <div className="col-lg-6">
             <div className="about-right-content">
