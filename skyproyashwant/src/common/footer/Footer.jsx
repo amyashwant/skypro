@@ -136,16 +136,17 @@ const Footer = () => {
                   </li> */}
                   <li>
                     <i className="fas fa-square-full"></i>
+                    <Link to="/packages">IPTV</Link>
+                  </li>
+                  <li>
+                    <i className="fas fa-square-full"></i>
                     <Link to="/packages">Our Plans</Link>
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
                     <Link to="/contact"> Contact </Link>
                   </li>
-                  <li>
-                    <i className="fas fa-square-full"></i>
-                    <Link to="/privacy">Privacy Policy</Link>
-                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -155,7 +156,7 @@ const Footer = () => {
                 <ul className="footer-menu">
                   <li>
                     <i className="fas fa-square-full"></i>
-                    <Link to="/packages">IPTV</Link>
+                    <Link to="/privacy">Privacy Policy</Link>
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
