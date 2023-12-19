@@ -4552,7 +4552,7 @@ svg.radial-progress circle {
 }
 
 .testimonial-left i.icon-quote:before {
-  font-size: 60px;
+  font-size: 52px;
   color: #fd5901;
 }
 .testimonial-item {
@@ -7772,7 +7772,7 @@ button.btn.blue-btn {
 }
 
 .contact_blok h5 {
-	font-size: 20px;
+	font-size: 30px;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #071e43;
@@ -7839,4 +7839,31 @@ section.Accordion-Div ul.accordion-innerDiv li span {
   left: 0;
   text-align: center;
   font-size: 11px;
+}
+
+
+.contact_blok form#contactusForm label {
+  color: #071e43;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px 0px 4px 3px;
+}
+
+.contact_blok form#contactusForm label span.star {
+  color: #fd5901;
+}
+.contact_blok form#contactusForm span.error {
+  color: #fd5901;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+.testimonial-left {
+  width: 680px;
+  margin: 0 auto;
+}
+.testimonial-left {
+  width: 850px;
+  margin: 0 auto;
+  padding: 40px 0px;
 }

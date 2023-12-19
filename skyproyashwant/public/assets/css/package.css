@@ -125,3 +125,6 @@
 .package-tab-sec ul li a:hover{
   color: #ffffff !important;
 }
+.package-tab-sec ul li a.nav-link:focus {
+  color: #fff;
+}
