@@ -24,6 +24,8 @@ const Testimonials = () => {
     arrows: true,
   };
 
+  
+
 return (
   <section className="home-two-testimonial pricing pt-100 pb-50 bg-img">
       <div className="container">

@@ -82,8 +82,8 @@ const PackageMainPage = () => {
               <div className="pricing-New">
                 <div className="container">
                   <div className="row">
-              {packages.map((pricing, index) => (
-                      <div className="col-sm-3 mb-4" key={index}>
+                    {packages.map((pricing, index) => (
+                      <div className="col-md-4 mb-4" key={index}>
                         <div className="single-price">
                           <div className="deal-top">
                             <h3>{pricing.title}</h3>
@@ -113,9 +113,9 @@ const PackageMainPage = () => {
                           </div>
                         </div>
                       </div>
-              ))}
-              </div>
+                    ))}
                   </div>
+                </div>
               </div>
             </div>
           </div>

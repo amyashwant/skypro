@@ -36,7 +36,7 @@ const OfferPage = () => {
                 <div className="offer-button-price">
                   <div className="offer-button flex-shrink-0">
                     <Link to="/contact" className="btn--base">
-                      DISCOVER MORE
+                      CONTACT US
                     </Link>
                   </div>
                   <div className="offer-price flex-grow-1">

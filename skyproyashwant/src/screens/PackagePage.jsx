@@ -13,7 +13,6 @@ const PackagePage = () => {
     <div>
       {/* <LoaderComponent /> */}
       <Header />
-
       <PackageMainPage />
       <PaymentSection />
       <FooterContact />
