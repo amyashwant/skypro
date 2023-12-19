@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import VideoPlayer from "../videoPlayer/VideoPlayer";
 
 const About = () => {
-  const videoUrl = "https://www.youtube.com/watch?v=0pWsCiBvLOk";
+  const videoUrl = "https://youtu.be/BxeVogwTpbA?si=XT4REVi_-WFenZMf";
   const [isVideoOpen, setVideoOpen] = useState(false);
 
   const openVideo = () => {
@@ -33,17 +33,17 @@ const About = () => {
         <div className="row gy-5">
           <div className="col-lg-6">
             <div className="about-left">
-              <div className="play-button">
+              <div className="play-button mb-0">
               {isVideoOpen ? (
           <VideoPlayer
             videoUrl={videoUrl}
-            width="100%"
-            height="100%"
+            width="600px"
+            height="400px"
             onClose={closeVideo}
           />
         ) : (
           <button onClick={openVideo}>
-            <i className="icon-play">Play</i>
+            <i className="icon-play"></i>
           </button>
         )}
               </div>

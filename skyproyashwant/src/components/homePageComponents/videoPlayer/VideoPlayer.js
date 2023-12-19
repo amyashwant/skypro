@@ -12,7 +12,7 @@ const VideoPlayer = ({ videoUrl, width, height, onClose }) => {
   return (
     <div className="video-player-container">
       <div className="close-button" onClick={handleClose}>
-        &times; Close
+       <span>&times; </span>
       </div>
       <ReactPlayer
         url={videoUrl}
