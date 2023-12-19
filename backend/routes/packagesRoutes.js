@@ -16,6 +16,10 @@ const {
   getPackage,
   createPackageBouque,
   getPackageBouque,
+  createBouqueChannel,
+  getBouqueChannel,
+  createCategory,
+  getCategory,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
@@ -43,7 +47,7 @@ const {
 
 router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
-  const { name, type, language, channelPrice } = req.body;
+  const { name, type, language, category } = req.body;
 
   try {
     const existingChannel = await Channel.findOne({ name });
@@ -57,8 +61,9 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
       name,
       type,
       language,
+      category,
       image,
-      channelPrice,
+      // channelPrice,
     });
 
     res.status(200).json(channel);
@@ -107,5 +112,9 @@ router.get("/pack", getPackage);
 
 router.post("/package-bouque", createPackageBouque);
 router.get("/package-bouque", getPackageBouque);
+router.post("/bouque-channel", createBouqueChannel);
+router.get("/bouque-channel", getBouqueChannel);
+router.post("/category", createCategory);
+router.get("/category", getCategory);
 
 module.exports = router;

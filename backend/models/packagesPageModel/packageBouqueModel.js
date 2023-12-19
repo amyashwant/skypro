@@ -5,18 +5,18 @@ const packageBouqueSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Package",
   },
-  broadcasterRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Broadcaster",
-    },
-  ],
+  broadcasterRef: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Broadcaster",
+  },
+
   bouqueRef: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Bouque",
+      ref: "Bouquet",
     },
   ],
+
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
 });

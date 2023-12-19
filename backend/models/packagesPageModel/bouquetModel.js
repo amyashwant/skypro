@@ -10,12 +10,12 @@ const bouquetSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  channelRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Channel",
-    },
-  ],
+  // channelRef: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Channel",
+  //   },
+  // ],
   broadcasterRef: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Broadcaster",

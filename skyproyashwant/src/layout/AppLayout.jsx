@@ -25,6 +25,10 @@ import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage
 import TypeFormPage from "../components/adminPageComponents/TypeFormPage";
 import PackageFormPage from "../components/adminPageComponents/PackageFormPage";
 import PackageBouque from "../components/adminPageComponents/PackageBouque";
+import ViewPackageBouque from "../components/adminPageComponents/ViewPackageBouque";
+import BouqueChannel from "../components/adminPageComponents/BouqueChannel";
+import ParentBouque from "../components/adminPageComponents/boqueChannel/ParentBouque";
+import CategoryFormPage from "../components/adminPageComponents/CategoryFormPage";
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -96,6 +100,22 @@ const AppLayout = () => {
             <Route
               path="/admin/settings/package-bouque"
               element={<PackageBouque />}
+            />
+            <Route
+              path="/admin/settings/view"
+              element={<ViewPackageBouque />}
+            />
+            <Route
+              path="/admin/settings/bouque-channel"
+              element={<BouqueChannel />}
+            />
+            <Route
+              path="/admin/settings/parent-bouque"
+              element={<ParentBouque />}
+            />
+            <Route
+              path="/admin/settings/category"
+              element={<CategoryFormPage />}
             />
           </Routes>
         </Router>

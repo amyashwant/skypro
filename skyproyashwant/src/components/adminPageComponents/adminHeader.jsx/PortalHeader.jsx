@@ -200,6 +200,26 @@ const settingsLinks = [
     handle: "/account/settings/security",
   },
   {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "Language",
+    handle: "/admin/settings/languages",
+  },
+  {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "Category",
+    handle: "/admin/settings/category",
+  },
+  {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "Types",
+    handle: "/admin/settings/types",
+  },
+  {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "Channels",
+    handle: "/admin/settings/channels",
+  },
+  {
     icon: <CellTowerIcon fontSize="medium" />,
     title: "Broadcaster",
     handle: "/admin/settings/broadcasters",
@@ -209,30 +229,31 @@ const settingsLinks = [
     title: "Bouquet",
     handle: "/admin/settings/bouquets",
   },
-  {
-    icon: <GroupAddIcon fontSize="medium" />,
-    title: "Channels",
-    handle: "/admin/settings/channels",
-  },
-  {
-    icon: <GroupAddIcon fontSize="medium" />,
-    title: "Language",
-    handle: "/admin/settings/languages",
-  },
-  {
-    icon: <GroupAddIcon fontSize="medium" />,
-    title: "Types",
-    handle: "/admin/settings/types",
-  },
-  {
-    icon: <GroupAddIcon fontSize="medium" />,
-    title: "Packages",
-    handle: "/admin/settings/packages",
-  },
+  // {
+  //   icon: <GroupAddIcon fontSize="medium" />,
+  //   title: "BouqueChannel",
+  //   handle: "/admin/settings/bouque-channel",
+  // },
+  // {
+  //   icon: <GroupAddIcon fontSize="medium" />,
+  //   title: "parentBouque",
+  //   handle: "/admin/settings/parent-bouque",
+  // },
+
+  // {
+  //   icon: <GroupAddIcon fontSize="medium" />,
+  //   title: "Packages",
+  //   handle: "/admin/settings/packages",
+  // },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Package-Bouque",
     handle: "/admin/settings/package-bouque",
+  },
+  {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "view All",
+    handle: "/admin/settings/view",
   },
 ];
 

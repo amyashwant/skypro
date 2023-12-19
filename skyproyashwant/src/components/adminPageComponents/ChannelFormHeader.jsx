@@ -24,10 +24,13 @@ const MenuProps = {
 };
 
 const ChannelFormPage = () => {
-  const [channelName, setchannelName] = useState([]);
   const [languageName, setlanguageName] = useState([]);
   const [languageData, setLanguageData] = useState([]);
   var [languageId, setLanguageId] = useState("");
+  const [categoryName, setCategoryName] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+  const [categoryId, setCategoryId] = useState([]);
+  const [channelName, setchannelName] = useState([]);
   const [channelType, setChannelType] = useState();
   const [channelId, setChannelId] = useState([]);
   const [modal, setModal] = useState("");
@@ -68,6 +71,12 @@ const ChannelFormPage = () => {
     );
   };
 
+  const handleCategoryChange = (e) => {
+    const value = e.target.value;
+
+    setCategoryName(typeof value === "string" ? value.split(",") : value);
+  };
+
   console.log("languageName>>>>,,,>>", languageName);
 
   const getLanguageId = () => {
@@ -84,7 +93,7 @@ const ChannelFormPage = () => {
 
   const getChannelTypeId = () => {
     try {
-      const data = channelType.data;
+      const data = channelType?.data;
 
       // let newData = data?.find((item) => item?.name === channelName[0]);
 
@@ -106,6 +115,18 @@ const ChannelFormPage = () => {
   };
   console.log("channelIds>>", channelId);
 
+  const getCategoryId = () => {
+    try {
+      const data = categoryData?.data;
+
+      let newData = data?.find((item) => item?.name === categoryName[0]);
+
+      setCategoryId(newData?._id);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = {
@@ -113,17 +134,21 @@ const ChannelFormPage = () => {
         "Content-Type": "multipart/form-data",
       },
     };
+    console.log("laguageId inside submit>>", languageId);
+    console.log("channelId inside submit>>", channelId);
+    console.log("categoryId inside submit>>", categoryId);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("name", formData.name.toLowerCase());
-      formDataToSend.append("price", formData.price);
+      // formDataToSend.append("price", formData.price);
       formDataToSend.append("language", languageId);
       formDataToSend.append("image", formData.image);
-      // formDataToSend.append("type", channelId);
+      formDataToSend.append("type", channelId[0]);
+      formDataToSend.append("category", categoryId);
 
-      channelId.forEach((id) => {
-        formDataToSend.append("type", id);
-      });
+      // channelId.forEach((id) => {
+      //   formDataToSend.append("type", id);
+      // });
 
       const { data } = await axios.post(
         "/api/package/channel",
@@ -206,31 +231,45 @@ const ChannelFormPage = () => {
 
     setChannelType(data);
   };
+  const getCategoryFunc = async () => {
+    const config = {
+      Headers: {
+        "Content-type": "application/json",
+        // "Content-Type": "multipart/form-data",
+      },
+    };
+
+    const data = await axios.get("/api/package/category", config);
+
+    setCategoryData(data);
+  };
 
   useEffect(() => {
     getLanguageFunc();
     getChannelTypeFunc();
     getLanguageId();
     getChannelTypeId();
-  }, [languageName, channelName]);
+    getCategoryFunc();
+    getCategoryId();
+  }, [languageName, channelName, categoryName]);
 
   useEffect(() => {
     const isNameValid = formData.name.trim() !== "";
-    const isPriceValid = formData.price.trim() !== "";
+    // const isPriceValid = formData.price.trim() !== "";
     const isImageValid = formData.image !== null;
     // const areChannelsSelected = channelName.length > 0;
     const areLanguagesSelected = languageName.length > 0;
 
     setIsFormValid(
       isNameValid &&
-        isPriceValid &&
+        // isPriceValid &&
         // areChannelsSelected &&
         areLanguagesSelected &&
         isImageValid
     );
   }, [
     formData.name,
-    formData.price,
+    // formData.price,
     formData.image,
     // channelName,
     languageName,
@@ -252,8 +291,8 @@ const ChannelFormPage = () => {
         </div>
         <div style={{ color: "red" }}>{error && error}</div>
 
-        <div className="mb-3">
-          <label className="form-label">Channel Price:</label>
+        {/* <div className="mb-3">
+          <label className="form-label">Channel Price: (If Ala Carte):</label>
           <input
             type="text"
             className="form-control"
@@ -261,13 +300,11 @@ const ChannelFormPage = () => {
             value={formData.price}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
-        {/* <div>
+        <div>
           <FormControl sx={{ m: 1, width: 600 }}>
-            <InputLabel id="demo-multiple-checkbox-label">
-              Channel Type
-            </InputLabel>
+            <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
             <Select
               labelId="demo-multiple-checkbox-label"
               id="demo-multiple-checkbox"
@@ -275,21 +312,21 @@ const ChannelFormPage = () => {
               value={channelName}
               onChange={handleChannelChange}
               // onChange={handleChange}
-              input={<OutlinedInput label="Channel Type" />}
+              input={<OutlinedInput label="Language" />}
               renderValue={(selected) => selected.join(", ")}
               MenuProps={MenuProps}
             >
               {channelType?.data
                 ?.map((item) => item.name)
-                ?.map((channel) => (
-                  <MenuItem key={channel} value={channel}>
-                    <Checkbox checked={channelName.indexOf(channel) > -1} />
-                    <ListItemText primary={channel} />
+                ?.map((language) => (
+                  <MenuItem key={language} value={language}>
+                    <Checkbox checked={channelName.indexOf(language) > -1} />
+                    <ListItemText primary={language} />
                   </MenuItem>
                 ))}
             </Select>
           </FormControl>
-        </div> */}
+        </div>
 
         <div>
           <FormControl sx={{ m: 1, width: 600 }}>
@@ -310,6 +347,31 @@ const ChannelFormPage = () => {
                 ?.map((language) => (
                   <MenuItem key={language} value={language}>
                     <Checkbox checked={languageName.indexOf(language) > -1} />
+                    <ListItemText primary={language} />
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div>
+          <FormControl sx={{ m: 1, width: 600 }}>
+            <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              // multiple
+              value={categoryName}
+              onChange={handleCategoryChange}
+              // onChange={handleChange}
+              input={<OutlinedInput label="Language" />}
+              renderValue={(selected) => selected.join(", ")}
+              MenuProps={MenuProps}
+            >
+              {categoryData?.data
+                ?.map((item) => item.name)
+                ?.map((language) => (
+                  <MenuItem key={language} value={language}>
+                    <Checkbox checked={categoryName.indexOf(language) > -1} />
                     <ListItemText primary={language} />
                   </MenuItem>
                 ))}

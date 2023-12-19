@@ -5,6 +5,8 @@ const Language = require("../models/packagesPageModel/languageModel");
 const Type = require("../models/packagesPageModel/typeModel");
 const Package = require("../models/packagesPageModel/packageModel");
 const PackageBouque = require("../models/packagesPageModel/packageBouqueModel");
+const BouqueChannel = require("../models/packagesPageModel/bouqueChannel");
+const Category = require("../models/packagesPageModel/categoryModel");
 // const multer = require("multer");
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -46,7 +48,8 @@ const PackageBouque = require("../models/packagesPageModel/packageBouqueModel");
 
 const getChannels = async (req, res) => {
   try {
-    const channels = await Channel.find().populate("type").populate("language");
+    const channels = await Channel.find();
+    // .populate("type").populate("language");
     res.status(200).json(channels);
   } catch (error) {
     console.error(error);
@@ -83,7 +86,7 @@ const getLanguage = async (req, res) => {
 
 // Bouque Controller------------------------------------------------------------------------------------
 const createBouquet = async (req, res) => {
-  const { name, price, channelRef, broadcasterRef } = req.body;
+  const { name, price, broadcasterRef } = req.body;
   try {
     const existingBouquet = await Bouquet.findOne({ name });
     if (existingBouquet) {
@@ -93,7 +96,7 @@ const createBouquet = async (req, res) => {
     const bouquet = await Bouquet.create({
       name,
       price,
-      channelRef,
+      // channelRef,
       broadcasterRef,
     });
     res.status(200).json(bouquet);
@@ -109,13 +112,14 @@ const getBouquets = async (req, res) => {
     //   .populate("broadcasterRef")
     //   .populate("channelRef");
     const bouquets = await Bouquet.find().populate("broadcasterRef");
+    // .populate("broadcasterRef")
     // .populate({
     //   path: "channelRef",
     //   // select: "name",
     //   populate: {
     //     path: "language",
     //   },
-    // })
+    // });
     // .populate({
     //   path: "broadcasterRef",
     // });
@@ -229,6 +233,7 @@ const createPackageBouque = async (req, res) => {
     if (existingPackageBouque) {
       return res.status(400).json({ error: "Duplicate Package! Not Allowed" });
     }
+    
     const packageBouque = await PackageBouque.create({
       packageRef,
       broadcasterRef,
@@ -243,10 +248,54 @@ const createPackageBouque = async (req, res) => {
 
 const getPackageBouque = async (req, res) => {
   try {
-    const packageBouque = await PackageBouque.find();
+    const packageBouque = await PackageBouque.find()
+      .populate("packageRef")
+      .populate("broadcasterRef")
+      .populate("bouqueRef");
     res.status(200).json(packageBouque);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const createBouqueChannel = async (req, res) => {
+  const { bouqueRef, channelRef } = req.body;
+  try {
+    const bouqueChannel = await BouqueChannel.create({ bouqueRef, channelRef });
+    res.status(200).json(bouqueChannel);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+const getBouqueChannel = async (req, res) => {
+  try {
+    const bouqueChannel = await BouqueChannel.find();
+    res.status(200).json(bouqueChannel);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const createCategory = async (req, res) => {
+  const { name } = req.body;
+  try {
+    const category = await Category.create({ name });
+    res.status(200).json(category);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getCategory = async (req, res) => {
+  try {
+    const category = await Category.find();
+    res.status(200).json(category);
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -266,4 +315,8 @@ module.exports = {
   getPackage,
   createPackageBouque,
   getPackageBouque,
+  createBouqueChannel,
+  getBouqueChannel,
+  createCategory,
+  getCategory,
 };

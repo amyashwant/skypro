@@ -127,6 +127,7 @@ const PackageFormPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("channelIdsubmit>>>>", channelId);
     try {
       const config = {
         Headers: {
@@ -135,8 +136,9 @@ const PackageFormPage = () => {
       };
 
       const { name, price } = formData;
-      console.log("channelIdsubmit>>>>", channelId);
 
+
+      
       const data = await axios.post("/api/package/pack", { name }, config);
 
       console.log("data submit>>", data);
@@ -200,16 +202,6 @@ const PackageFormPage = () => {
           />
         </div>
         <div style={{ color: "red" }}>{error && error}</div>
-        {/* <div className="mb-3">
-          <label className="form-label">Pa Price:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-        </div> */}
 
         <button
           type="submit"
