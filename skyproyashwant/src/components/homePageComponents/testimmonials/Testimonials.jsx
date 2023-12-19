@@ -32,7 +32,7 @@ return (
         <div className="row align-items-center">
           <div className="col-12">
             <div className="section-header">
-              <h4 className="subtitle text-white">Client Testimonials</h4>
+              <h4 className="subtitle text-white text-center">Client Testimonials</h4>
             </div>
             <div className="testimonial-left position-relative py-100">
               <div className="row align-items-center">
