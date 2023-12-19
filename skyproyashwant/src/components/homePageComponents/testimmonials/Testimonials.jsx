@@ -40,13 +40,13 @@ return (
                   <Slider {...settings} className="">
                     {testimonialData.map((item, i) => (
                       <div className="testi-content" key={i}>
-                        <div className="icon mb-lg-4">
-                          <img src={item?.image} alt="img" />
+                        {/* <div className="icon mb-lg-4"> */}
                         <div className="meta-thumb">
-                          {console.log("iamge 1", item.image)}
+                          <img src={item?.image} alt="img" />
+                          {console.log("image 1", item?.image)}
+                        {/* </div> */}
                         </div>
-                        </div>
-                        <p className="para text-white"><i class="fa-solid fa-quote-left"></i>{item.description}<i class="fa-solid fa-quote-right"></i></p>
+                        <p className="para text-white"><i className="fa-solid fa-quote-left"></i>{item.description}<i class="fa-solid fa-quote-right"></i></p>
                         <div className="client-meta d-flex align-items-center flex-wrap mt-5">
                           <div className="meta-content">
                             <h5 className="name">{item.name}</h5>
@@ -79,14 +79,14 @@ const testimonialData = [
   {
     icon: "icon-quote",
     description: "I have changed my perception about the services that I was experiencing in the past during 2001-2009. It is so comforting to see your engineer, Mangesh Ghatge, drop in at our place within half an hour of our registering a complaint.",
-    image: testTwo,
+    image: testThree,
     name: "Wade Warren",
     designation: "CEO"
   },
   {
     icon: "icon-quote",
     description: "One of the two YOU Broadband connections wasn't working in our office for some time. It is so comforting to see your engineer, Mangesh Ghatge, drop in at our place within half an hour of our registering a complaint.",
-    image: testTwo ,
+    image: testFour ,
     name: "Abby Covert",
     designation: "CO-founder"
   },

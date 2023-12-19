@@ -87,7 +87,7 @@ const PackageMainPage = () => {
                         <div className="single-price">
                           <div className="deal-top">
                             <h3>{pricing.title}</h3>
-                            <h4>₹ {pricing.price} <span>/mo</span></h4>
+                            <h4>₹ {pricing.price} <span>-/mo</span></h4>
                           </div>
                           <div className="deal-bottom">
                             <ul className="deal-item" style={{display: 'inline-block'}}>

@@ -164,7 +164,11 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
-                    <Link to="/refund">Refund & Cancellation</Link>
+                    <Link to="/refund">Refund Policy</Link>
+                  </li>
+                  <li>
+                    <i className="fas fa-square-full"></i>
+                    <Link to="/cancelation">Cancelation Policy</Link>
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
