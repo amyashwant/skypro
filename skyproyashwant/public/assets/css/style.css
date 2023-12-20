@@ -3632,6 +3632,10 @@ ul[class*="custom--tab"] li:last-child button {
   max-height: 490px;
 }
 
+a.btn--base.div-01-contact {
+  margin-left: 10px;
+} 
+
 .about-right-thumb img:first-child {
   width: 58px;
   height: 200px;
@@ -5674,16 +5678,12 @@ section.home-two-banner {
   right: 19px;
 }
 
-.testi-content .icon img{
-  width: 72px;
-  width: 72px;
+.testi-content .meta-thumb img{
   border-radius: 50%;
-  overflow: hidden;
-  -o-object-fit: cover;
-  object-fit: cover;
-  position: absolute;
-  right: 50%;
   border: 1px solid #3e3e3e;
+  width: 10%;
+  text-align: center;
+  margin: 0 auto;
 } 
 
 .client-meta .meta-content {
@@ -7946,7 +7946,7 @@ section.Accordion-Div ul.accordion-innerDiv li span {
 }
 .testimonial-left p.para {
   font-size: 18px;
-  padding-top: 12%;
+  padding-top: 5%;
 }
 
 .video-player-container .close-button {

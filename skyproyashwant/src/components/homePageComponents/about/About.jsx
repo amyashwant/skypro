@@ -16,14 +16,14 @@ const About = () => {
         <img src={aboutTwo} alt="img" />
       </div>
       <div className="container">
-        <div className="row gy-5">
+        <div className="row gy-5 display-flex align-items-center">
           <div className="col-lg-6">
           <div className="about-left">
         <div className="home-two-about-thumb">
           {/* Display the iframe for the video */}
           <iframe
             width="600"
-            height="400"
+            height="450"
             src={videoUrl}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -48,10 +48,10 @@ const About = () => {
                       possible experience, and we offer a variety of plans and
                       services to meet their needs.
                     </p>
-                    <p className="para mt-lg-4 mt-3">
+                    {/* <p className="para mt-lg-4 mt-3">
                       Our mission is to provide our customers with the best
                       possible internet, TV, and phone services.
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@ const About = () => {
                 <Link to="/about" className="btn--base">
                   READ MORE
                 </Link>
-                <Link to="/contact" className="btn--base">
+                <Link to="/contact" className="btn--base div-01-contact">
                   CONTACT US
                 </Link>
               </div>
