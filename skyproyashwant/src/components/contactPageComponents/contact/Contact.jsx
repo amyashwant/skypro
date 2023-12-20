@@ -47,9 +47,9 @@ const Contact = () => {
     }
 
     // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
+    // if (!formData.message.trim()) {
+    //   newErrors.message = "Message is required";
+    // }
 
     setErrors(newErrors);
 
@@ -170,21 +170,21 @@ const Contact = () => {
                         )}
                       </div>
                       <div class="form-group col-sm-12 mb-3">
-                      <label for="message" className="">Enter Your Message <span className="star"> *</span></label>
+                      <label for="message" className="">Enter Your Message <span className="star"></span></label>
                         <textarea
                           class="form-control"
                           name="message"
                           id="message"
                           value={formData.message}
-                          required={true}
+                          // required={true}
                           onChange={handleChange}
                           placeholder="Message"
                           rows="4"
                           cols="30"
                         ></textarea>
-                        {errors.message && (
+                        {/* {errors.message && (
                           <span className="error">{errors.message}</span>
-                        )}
+                        )} */}
                       </div>
                     </div>
                     <div class="mt-3 d-flex align-items-center position-relative">

@@ -68,13 +68,13 @@ const PaymentModal = ({ handleClose, show, children }) => {
   return (
     <>
       <div>
-        <div style={overlayStyle}></div>
+        <div style={overlayStyle} onClick={handleClose}></div>
         <div style={modalStyle}>
           <div className="your-shoping-cart">
             <div className="container">
               <div className="title-box">
                 <h1>Your Cart</h1>
-                <span className="close-icon" style={{color:"black"}} onClick={handleClose}>x</span>
+                <span className="close-icon">x</span>
               </div>
               <div className="product-box">
                 <div className="info-box">

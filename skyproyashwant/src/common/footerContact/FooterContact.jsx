@@ -4,6 +4,22 @@ import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
 import footerThree from "../../assets/images/home-01/footer_contact/phone.png";
 import { Link } from "react-router-dom";
 const FooterContact = () => {
+
+  const phone = '+919803596035';
+    const phoneLink = `tel:${phone}`;
+
+    const callOnPhone = () => {
+        window.location.href = phoneLink;
+    };
+
+    const email = 'info@skypro.co.in';
+    const mailtoLink = `mailto:${email}`;
+
+    const openMail = () => {
+        window.open(mailtoLink);
+    };
+
+
   return (
     <section className="footer-contact py-80">
       <div className="container">
@@ -30,7 +46,7 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">SEND US A MESSAGE</h6>
                 <p className="para">
-                  <Link to="/contact">info@skypro.co.in</Link>
+                <a href={mailtoLink} onClick={openMail}>info@skypro.co.in</a>
                 </p>
 
                 <p className="para">
@@ -48,10 +64,10 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">GIVE US A CALL</h6>
                 <p className="para">
-                  <a href="tel:">+(91) 9803596035</a>
+                <a href={phoneLink} onClick={callOnPhone}>+(91) 9803596035</a>
                 </p>
                 {/* <p className="para">
-                  <a href="tel:">+(91) 9803596035</a>
+                  <a href="tel:" onClick={callOnPhone}>+(91) 9803596035</a>
                 </p> */}
               </div>
             </div>

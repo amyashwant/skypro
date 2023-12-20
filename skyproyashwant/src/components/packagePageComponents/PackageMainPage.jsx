@@ -32,7 +32,7 @@ const PackageMainPage = () => {
   };
 
   const languageClick = (language) => {
-    setLang(language.toUpperCase());
+    setLang(language.toLowerCase());
   };
 
   const getPackagesDetails = async () => {

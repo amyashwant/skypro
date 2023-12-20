@@ -1,52 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
 import faqOne from "../../../assets/images/home-01/about/offer-bg.png";
 
 const FaqPage = () => {
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? -1 : index));
+  };
   return (
-    <section className="faq py-100 bg-img overlay-bg" style={{backgroundImage: `url(${faqOne})`}}>
-      <div className="container">
-        <div className="row justify-content-end">
-          <div className="col-lg-6">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="section-header style-two">
-                  {/* <h4 className="subtitle"> FAQ </h4> */}
-                  <h2 className="title">FREQUENTLY ASKED QUESTIONS</h2>
-                </div>
-              </div>
-            </div>
-            <div className="accordion custom--accordion" id="accordionExample">
-              {faqData.map((item, index) => (
-                <div className="accordion-item" key={index}>
-                  <h5 className="accordion-header" id={`heading${index + 1}`}>
-                    <button
-                      className="accordion-button"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#collapse${index + 1}`}
-                      aria-expanded={index === 0 ? "true" : "false"}
-                      aria-controls={`collapse${index + 1}`}
-                    >
-                      {item.question}
-                    </button>
-                  </h5>
-                  <div
-                    id={`collapse${index + 1}`}
-                    className={`accordion-collapse collapse ${index === 0 ? "" : ""}`}
-                    aria-labelledby={`heading${index + 1}`}
-                    data-bs-parent="#accordionExample"
+    // <section className="faq py-100 bg-img overlay-bg" style={{backgroundImage: `url(${faqOne})`}}>
+    //   <div className="container">
+    //     <div className="row justify-content-end">
+    //       <div className="col-lg-6">
+    //         <div className="row">
+    //           <div className="col-lg-12">
+    //             <div className="section-header style-two">
+    //               {/* <h4 className="subtitle"> FAQ </h4> */}
+    //               <h2 className="title">FREQUENTLY ASKED QUESTIONS</h2>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <div className="accordion custom--accordion" id="accordionExample">
+    //           {faqData.map((item, index) => (
+    //             <div className="accordion-item" key={index}>
+    //               <h5 className="accordion-header" id={`heading${index + 1}`}>
+    //                 <button
+    //                   className="accordion-button"
+    //                   type="button"
+    //                   data-bs-toggle="collapse"
+    //                   data-bs-target={`#collapse${index + 1}`}
+    //                   aria-expanded={index === 0 ? "true" : "false"}
+    //                   aria-controls={`collapse${index + 1}`}
+    //                 >
+    //                   {item.question}
+    //                 </button>
+    //               </h5>
+    //               <div
+    //                 id={`collapse${index + 1}`}
+    //                 className={`accordion-collapse collapse ${index === 0 ? "" : ""}`}
+    //                 aria-labelledby={`heading${index + 1}`}
+    //                 data-bs-parent="#accordionExample"
+    //               >
+    //                 <div className="accordion-body">
+    //                   <p>{item.answer}</p>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
+    <section
+    className="faq py-100 bg-img overlay-bg"
+    style={{ backgroundImage: `url(${faqOne})` }}
+  >
+    <div className="container">
+      <div className="row justify-content-end">
+        <div className="col-lg-6">
+          <div className="package-header" style={{ textAlign: "left" }}>
+            <h1>FREQUENTLY ASKED QUESTIONS</h1>
+          </div>
+          <div className="accordion" id="accordionExample">
+            {faqData.map((item, index) => (
+              <div className="accordion-item faq-question" key={index}>
+                <h2 className="accordion-header" id={`heading${index + 1}`}>
+                  <button
+                    className={`accordion-button ${
+                      index === activeIndex ? "" : "collapsed"
+                    }`}
+                    type="button"
+                    onClick={() => toggleAccordion(index)}
+                    aria-expanded={index === activeIndex}
+                    aria-controls={`collapse${index + 1}`}
                   >
-                    <div className="accordion-body">
-                      <p>{item.answer}</p>
-                    </div>
+                    {item.question}
+                  </button>
+                </h2>
+                <div
+                  id={`collapse${index + 1}`}
+                  className={`accordion-collapse collapse ${
+                    index === activeIndex ? "show" : ""
+                  }`}
+                  aria-labelledby={`heading${index + 1}`}
+                >
+                  <div className="accordion-body">
+                    <p>{item.answer}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 

@@ -19,6 +19,7 @@
     "multiselect-react-dropdown": "^2.0.25",
     "node": "^16.17.1",
     "react": "^18.2.0",
+    "react-accessible-accordion": "^5.0.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
