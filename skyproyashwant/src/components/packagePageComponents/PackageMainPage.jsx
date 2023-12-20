@@ -24,8 +24,11 @@ const PackageMainPage = () => {
     setSelectedPack(arg);
   };
 
-  const handleViewClick = () => {
+  const handleViewClick = () => { 
+   
+
     setView(true);
+
   };
 
   const languageClick = (language) => {
@@ -48,12 +51,14 @@ const PackageMainPage = () => {
     setPackages(packages);
   }, [lang]);
 
+
   useEffect(() => {
     getPackagesDetails();
   }, []);
 
   console.log("lang>>>>>", lang);
   console.log("packagessss>>>>>", packages);
+
 
   return (
     <div>
@@ -96,12 +101,17 @@ const PackageMainPage = () => {
                     <div className="container">
                       <div className="row">
                         {packages.map((pricing, index) => (
+             
+
                           <div className="col-md-4 mb-4" key={index}>
+
                             <div className="single-price">
                               <div className="deal-top">
                                 <h3>{pricing.title}</h3>
                                 <h4>
+
                                   ₹ {pricing.price} <span>-/mo</span>
+
                                 </h4>
                               </div>
                               <div className="deal-bottom">
@@ -119,10 +129,12 @@ const PackageMainPage = () => {
                                   )}
                                 </ul>
                                 <div className="btn-area">
+
                                   <Link
                                     to="/viewmorepackage"
                                     onClick={handleViewClick}
                                   >
+
                                     View More
                                   </Link>
                                   <Link

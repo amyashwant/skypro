@@ -22,9 +22,19 @@ import BroadcasterFormPage from "../components/adminPageComponents/BroadcasterFo
 import BouqetFormPage from "../components/adminPageComponents/BouqetFormPage";
 import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader";
 import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
+
+import TypeFormPage from "../components/adminPageComponents/TypeFormPage";
+import PackageFormPage from "../components/adminPageComponents/PackageFormPage";
+import PackageBouque from "../components/adminPageComponents/PackageBouque";
+import ViewPackageBouque from "../components/adminPageComponents/ViewPackageBouque";
+import BouqueChannel from "../components/adminPageComponents/BouqueChannel";
+import ParentBouque from "../components/adminPageComponents/boqueChannel/ParentBouque";
+import CategoryFormPage from "../components/adminPageComponents/CategoryFormPage";
+
 import ViewMoreSection from "../components/packagePageComponents/ViewMoreSection";
 import ViewMorePackage from "../screens/ViewMorePackage";
 import CancelationPage from "../screens/Cancelation";
+
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -74,10 +84,47 @@ const AppLayout = () => {
             <Route path="/cancel" element={<CancelPage />} />
             <Route path="/viewmorepackage" element={<ViewMorePackage/>}/>
             <Route path="/admin" element={<AdminPage />} />
-            <Route path="/admin/settings/broadcasters" element={<BroadcasterFormPage />}/>
-            <Route path="/admin/settings/bouquets" element={<BouqetFormPage />}/>
-            <Route path="/admin/settings/channels" element={<ChannelFormPage />}/>
-            <Route path="/admin/settings/languages" element={<LanguageFormPage />}/>
+            <Route
+              path="/admin/settings/broadcasters"
+              element={<BroadcasterFormPage />}
+            />
+            <Route
+              path="/admin/settings/bouquets"
+              element={<BouqetFormPage />}
+            />
+            <Route
+              path="/admin/settings/channels"
+              element={<ChannelFormPage />}
+            />
+            <Route
+              path="/admin/settings/languages"
+              element={<LanguageFormPage />}
+            />
+            <Route path="/admin/settings/types" element={<TypeFormPage />} />
+            <Route
+              path="/admin/settings/packages"
+              element={<PackageFormPage />}
+            />
+            <Route
+              path="/admin/settings/package-bouque"
+              element={<PackageBouque />}
+            />
+            <Route
+              path="/admin/settings/view"
+              element={<ViewPackageBouque />}
+            />
+            <Route
+              path="/admin/settings/bouque-channel"
+              element={<BouqueChannel />}
+            />
+            <Route
+              path="/admin/settings/parent-bouque"
+              element={<ParentBouque />}
+            />
+            <Route
+              path="/admin/settings/category"
+              element={<CategoryFormPage />}
+            />
           </Routes>
         </Router>
       </AccountContext.Provider>

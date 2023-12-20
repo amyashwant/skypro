@@ -6,21 +6,23 @@ const bouquetSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  type: {
-    type: String,
-    trim: true,
-  },
-  channelsRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Channel",
-    },
-  ],
   price: {
     type: String,
     trim: true,
   },
-  // Add any other bouquet-related fields here
+  // channelRef: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Channel",
+  //   },
+  // ],
+  broadcasterRef: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Broadcaster",
+  },
+
+  createdAt: { type: Date, default: Date.now },
+  modifiedAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Bouquet", bouquetSchema);

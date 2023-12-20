@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Channel = require("../models/packagesPageModel/channelModel");
+const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
 const {
   // createChannel,
   getChannels,
@@ -7,8 +8,18 @@ const {
   getLanguage,
   createBouquet,
   getBouquets,
-  createBroadcaster,
+  // createBroadcaster,
   getBroadcasters,
+  createType,
+  getType,
+  createPackage,
+  getPackage,
+  createPackageBouque,
+  getPackageBouque,
+  createBouqueChannel,
+  getBouqueChannel,
+  createCategory,
+  getCategory,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
@@ -33,18 +44,26 @@ const {
 // });
 
 // router.route("/channel").post(createChannel);
+
 router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
+  const { name, type, language, category } = req.body;
+
   try {
-    const { name, type, language, channelPrice } = req.body;
-    const image = req.file.path;
+    const existingChannel = await Channel.findOne({ name });
+    if (existingChannel) {
+      return res.status(400).json({ error: "Channel Already Added" });
+    }
+
+    const image = req?.file?.filename;
     // console.log(image, "image>>>");
     const channel = await Channel.create({
       name,
       type,
       language,
+      category,
       image,
-      channelPrice,
+      // channelPrice,
     });
 
     res.status(200).json(channel);
@@ -53,12 +72,49 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 router.route("/channel").get(getChannels);
 router.route("/language").post(createLanguage);
 router.route("/language").get(getLanguage);
 router.route("/bouquet").post(createBouquet);
 router.route("/bouquet").get(getBouquets);
-router.route("/broadcaster").post(createBroadcaster);
+// router.route("/broadcaster").post(createBroadcaster);
+router.post(
+  "/broadcaster",
+  imageUploadMiddleware("image"),
+  async (req, res) => {
+    const { name } = req.body;
+    try {
+      const existingBroadcaster = await Broadcaster.findOne({ name });
+      if (existingBroadcaster) {
+        return res.status(400).json({ error: "Broadcaster Already Added" });
+      }
+
+      const image = req.file.filename;
+      const broadcaster = await Broadcaster.create({
+        name,
+        image,
+        // bouqueRef,
+      });
+      res.status(200).json(broadcaster);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+);
 router.route("/broadcaster").get(getBroadcasters);
+
+router.post("/type", createType);
+router.get("/type", getType);
+router.post("/pack", createPackage);
+router.get("/pack", getPackage);
+
+router.post("/package-bouque", createPackageBouque);
+router.get("/package-bouque", getPackageBouque);
+router.post("/bouque-channel", createBouqueChannel);
+router.get("/bouque-channel", getBouqueChannel);
+router.post("/category", createCategory);
+router.get("/category", getCategory);
 
 module.exports = router;

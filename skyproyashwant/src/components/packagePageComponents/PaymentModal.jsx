@@ -9,6 +9,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
 
   const cartItems = useSelector((state) => state.cart.items);
+  console.log("cartItems.items>?>", cartItems);
 
   console.log("cart in packages", cartItems);
 

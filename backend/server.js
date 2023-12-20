@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const dbConnect = require("./config/db");
 dbConnect();
@@ -13,17 +14,12 @@ const userRoutes = require("./routes/userRoutes");
 const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
-const contactRoutes = require("./routes/contactRoutes")
-const path = require("path");
-// console.log("google mail>>", process.env.GOOGLE_MAIL);
-// console.log("google pass>>", process.env.GOOGLE_PASS);
 //middlewares
 app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
-app.use("/api/contact", contactRoutes);
 
 //error handeling mechanism
 // app.use(notFound);
@@ -55,3 +51,64 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // --------------------------deployment------------------------------
+
+// sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe
+// bouquet: price_1OKcfxSBYt5a6mPeuFEF0QBc
+// bouquetTwo: price_1OKcliSBYt5a6mPe7OHM2nUO
+
+// const express = require("express");
+var cors = require("cors");
+const stripe = require("stripe")(
+  "sk_test_51OKbt1SBYt5a6mPeZIypG17yCrMcbBOqbxiFvDGsvaeg6ssl5bYvfh4UfJxBYDa9I58zKOBGtJblnZFFEoV2xbbv00cIhviCDe"
+);
+
+// const app = express();
+app.use(cors());
+app.use(express.static("public"));
+app.use(express.json());
+
+app.post("/checkout", async (req, res) => {
+  /*
+  req.body.items
+  [
+      {
+          id: 1,
+          quantity: 3
+      }
+  ]
+
+  stripe wants
+  [
+      {
+          price: 1,
+          quantity: 3
+      }
+  ]
+  */
+  console.log(req.body);
+  const items = req.body.items;
+  console.log("items>", items);
+  console.log("items>>36", items);
+  let lineItems = [];
+  items.forEach((item) => {
+    lineItems.push({
+      price: item.id,
+      quantity: item.quantity,
+    });
+  });
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: lineItems,
+    mode: "payment",
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
+  });
+
+  res.send(
+    JSON.stringify({
+      url: session.url,
+    })
+  );
+});
+
+// app.listen(4000, () => console.log("Listening on port 4000!"));
