@@ -73,7 +73,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
             <div className="container">
               <div className="title-box">
                 <h1>Your Cart</h1>
-                <span className="close-icon" onClick={handleClose}>x</span>
+                <span className="close-icon" style={{color:"black"}} onClick={handleClose}>x</span>
               </div>
               <div className="product-box">
                 <div className="info-box">
