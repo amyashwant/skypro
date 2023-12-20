@@ -23,7 +23,7 @@ const About = () => {
           {/* Display the iframe for the video */}
           <iframe
             width="600"
-            height="450"
+            height="400"
             src={videoUrl}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

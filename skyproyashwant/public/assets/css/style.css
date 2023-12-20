@@ -7970,3 +7970,21 @@ section.Accordion-Div ul.accordion-innerDiv li span {
   color: #fd5901;
   margin: 3px 7px;
 }
+
+/* faq classes */
+.faq-question button.accordion-button {
+  background-color: #fff;
+  color: #141414;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  padding: 25px 20px 15px;
+}
+
+.accordion-collapse {
+  transition: height 0.3s ease-in-out;
+}
+
+.accordion-button.collapsed {
+  background-color: #fff;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import footerOne from "../../assets/images/home-01/logo/footer-logo.png";
 import logo from "../../assets/images/home-01/logo/white-logo.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
@@ -27,14 +28,25 @@ const Footer = () => {
     return Object.keys(newError).length === 0;
   };
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
 
-    const isValidEmail = validateEmail();
-
-    if (isValidEmail) {
+    if (!validateEmail()) {
+      // Form is not valid, do not proceed
+      return;
+    }
+    try {
+      console.log(email,"email")
+      await axios.post(
+        "/api/contact/newsletter",
+        { email: email },
+        { Headers: { "Content-type": "application/json" } }
+      );
       setEmail("");
-      alert("Thank you for Subscribing");
+      alert("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Error sending email. Please try again later.");
     }
   };
 
@@ -96,7 +108,10 @@ const Footer = () => {
                 </p>
                 <ul className="social-icons d-flex align-items-center flex-wrap pt-4">
                   <li>
-                    <Link to="https://www.facebook.com/tvskypro/" target="_blank">
+                    <Link
+                      to="https://www.facebook.com/tvskypro/"
+                      target="_blank"
+                    >
                       <i className="fab fa-facebook-f"></i>
                     </Link>
                   </li>
@@ -106,12 +121,18 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="https://www.linkedin.com/company/skyprotv/" target="_blank">
+                    <Link
+                      to="https://www.linkedin.com/company/skyprotv/"
+                      target="_blank"
+                    >
                       <i className="fab fa-linkedin-in"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="https://in.pinterest.com/skyprotv/" target="_blank">
+                    <Link
+                      to="https://in.pinterest.com/skyprotv/"
+                      target="_blank"
+                    >
                       <i className="fab fa-pinterest-p"></i>
                     </Link>
                   </li>
@@ -146,7 +167,6 @@ const Footer = () => {
                     <i className="fas fa-square-full"></i>
                     <Link to="/contact"> Contact </Link>
                   </li>
-                  
                 </ul>
               </div>
             </div>
@@ -191,7 +211,11 @@ const Footer = () => {
                       placeholder="Enter Your Email"
                       required
                     />
-                    {error.email && <div className="" style={{color:"#fd5901"}}>{error.email}*</div>}
+                    {error.email && (
+                      <div className="" style={{ color: "#fd5901" }}>
+                        {error.email}*
+                      </div>
+                    )}
                     <button type="submit" className="btn--base w-100 mt-3">
                       SUBSCRIBE NOW!
                     </button>
@@ -205,9 +229,9 @@ const Footer = () => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-12 text-center">
-              <p className="bottom-footer-text text-white">
-                Copyright &copy; {currentYear}. All Rights Reserved By Skypro
-              </p>
+                <p className="bottom-footer-text text-white">
+                  Copyright &copy; {currentYear}. All Rights Reserved By Skypro
+                </p>
               </div>
             </div>
           </div>
