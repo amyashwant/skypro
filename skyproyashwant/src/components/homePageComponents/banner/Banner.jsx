@@ -3,6 +3,7 @@ import React from "react";
 // import shapeTwo from "../../../assets/images/home-02/banner/shape-02.png";
 // import shapeThree from "../../../assets/images/home-02/banner/shape-03.png";
 import banner from "../../../assets/images/home-02/banner/banner-earth.png";
+import bannerimg from "../../../assets/images/home-02/banner/banner-image.png";
 import shapeLeft from '../../../assets/images/home-02/banner/shape-002.png'
 import shapeRight from '../../../assets/images/home-02/banner/shape-003.png'
 import shapeOne from "../../../assets/images/home-02/banner/shape-01.png";
@@ -61,8 +62,8 @@ const Banner = () => {
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="banner-right-image">
-              <img src= {banner} alt="img" />
+            <div className="">
+              <img src= {bannerimg} alt="img" />
             </div>
           </div>
         </div>

@@ -22,6 +22,7 @@ import BroadcasterFormPage from "../components/adminPageComponents/BroadcasterFo
 import BouqetFormPage from "../components/adminPageComponents/BouqetFormPage";
 import ChannelFormPage from "../components/adminPageComponents/ChannelFormHeader";
 import LanguageFormPage from "../components/adminPageComponents/LanguageFormPage";
+
 import TypeFormPage from "../components/adminPageComponents/TypeFormPage";
 import PackageFormPage from "../components/adminPageComponents/PackageFormPage";
 import PackageBouque from "../components/adminPageComponents/PackageBouque";
@@ -29,6 +30,11 @@ import ViewPackageBouque from "../components/adminPageComponents/ViewPackageBouq
 import BouqueChannel from "../components/adminPageComponents/BouqueChannel";
 import ParentBouque from "../components/adminPageComponents/boqueChannel/ParentBouque";
 import CategoryFormPage from "../components/adminPageComponents/CategoryFormPage";
+
+import ViewMoreSection from "../components/packagePageComponents/ViewMoreSection";
+import ViewMorePackage from "../screens/ViewMorePackage";
+import CancelationPage from "../screens/Cancelation";
+
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
   const [login, setLogin] = useState(false);
@@ -71,10 +77,12 @@ const AppLayout = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/refund" element={<RefundPage />} />
+            <Route path="/cancelation" element={<CancelationPage/>} />
             <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
+            <Route path="/viewmorepackage" element={<ViewMorePackage/>}/>
             <Route path="/admin" element={<AdminPage />} />
             <Route
               path="/admin/settings/broadcasters"

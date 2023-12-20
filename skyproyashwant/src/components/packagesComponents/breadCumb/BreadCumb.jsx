@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BreadCumb = ({ headerName }) => {
   return (
@@ -15,11 +16,11 @@ const BreadCumb = ({ headerName }) => {
               </h4>
               <ul className="breadcumb-list d-flex justify-content-center align-items-center">
                 <li>
-                  <a href="index.html">HOME</a>
+                  <Link to="/">HOME</Link>
                 </li>
-                <li>
+                {/* <li>
                   <span>/</span>
-                </li>
+                </li> */}
                 <li>{headerName}</li>
               </ul>
             </div>

@@ -7,21 +7,7 @@ import { Link } from "react-router-dom";
 import VideoPlayer from "../videoPlayer/VideoPlayer";
 
 const About = () => {
-  const videoUrl = "https://www.youtube.com/watch?v=0pWsCiBvLOk";
-  const [isVideoOpen, setVideoOpen] = useState(false);
-
-  const openVideo = () => {
-    setVideoOpen(true);
-  };
-
-  const closeVideo = () => {
-    setVideoOpen(false);
-  };
-
-  useEffect(() => {
-    if (isVideoOpen) {
-    }
-  }, [isVideoOpen]);
+  const videoUrl = "https://www.youtube.com/embed/-c345tCaU8w";
 
   return (
     <section className="about home-two-about pt-50 pb-100">
@@ -30,32 +16,21 @@ const About = () => {
         <img src={aboutTwo} alt="img" />
       </div>
       <div className="container">
-        <div className="row gy-5">
+        <div className="row gy-5 display-flex align-items-center">
           <div className="col-lg-6">
-            <div className="about-left">
-              <div className="play-button">
-              {isVideoOpen ? (
-          <VideoPlayer
-            videoUrl={videoUrl}
-            width="100%"
-            height="100%"
-            onClose={closeVideo}
-          />
-        ) : (
-          <button onClick={openVideo}>
-            <i className="icon-play">Play</i>
-          </button>
-        )}
-              </div>
-              <div className="home-two-about-thumb">
-                <span>
-                  <img className="w-100" src={aboutThree} alt="img" />
-                </span>
-                <span>
-                  <img className="w-100" src={aboutFour} alt="img" />
-                </span>
-              </div>
-            </div>
+          <div className="about-left">
+        <div className="home-two-about-thumb">
+          {/* Display the iframe for the video */}
+          <iframe
+            width="600"
+            height="450"
+            src={videoUrl}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Embedded youtube"
+          ></iframe>
+        </div>
+      </div>
           </div>
           <div className="col-lg-6">
             <div className="about-right-content">
@@ -73,16 +48,19 @@ const About = () => {
                       possible experience, and we offer a variety of plans and
                       services to meet their needs.
                     </p>
-                    <p className="para mt-lg-4 mt-3">
+                    {/* <p className="para mt-lg-4 mt-3">
                       Our mission is to provide our customers with the best
                       possible internet, TV, and phone services.
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
               <div className="about-button ps-lg-5 mt-xl-0 mt-3">
                 <Link to="/about" className="btn--base">
                   READ MORE
+                </Link>
+                <Link to="/contact" className="btn--base div-01-contact">
+                  CONTACT US
                 </Link>
               </div>
             </div>

@@ -2,6 +2,34 @@ import React from "react";
 import testiOne from "../../../assets/images/home-01/about/testimonial-01.png";
 import testiTwo from "../../../assets/images/home-01/about/testimonial-01.png";
 import testiThree from "../../../assets/images/home-01/about/testimonial-01.png";
+
+const testimonialData = [
+  {
+    id: 1,
+    image: testiOne,
+    content:
+      "Broadband internet is Rocket supplier. Their staff is proficient and truly available. They deal with us and cause us to feel they esteem our business.",
+    rating: 4.0,
+    client: "BROOKLYN SIMMONS",
+  },
+  {
+    id: 2,
+    image: testiTwo,
+    content:
+      "This is internet is “Our sales rep has been very helpful and has gone out of his way to make our transition to Broadband a painless process.",
+    rating: 5.0,
+    client: "DARLENE DOBERTSON",
+  },
+  {
+    id: 3,
+    image: testiThree,
+    content:
+      "I am pleased to recommend the internet service provided by Broadband. The speed and service are excellent and they are the best in the market at this moment.",
+    rating: 4.0,
+    client: "CONRTNEY HENRY",
+  },
+];
+
 const TestimonialPage = () => {
   return (
     <section className="testimonial style-two py-100 pb-50">
@@ -15,152 +43,51 @@ const TestimonialPage = () => {
           </div>
         </div>
         <div className="row justify-content-center g-4">
-          <div className="col-lg-4 col-md-6">
-            <div className="testimonail-wrapper">
-              <div className="testimonial-item">
-                <div className="thumb">
-                  <img src={testiOne} alt="img" />
-                </div>
-                <div
-                  className="background-img"
-                  //  style="background-image: url(assets/images/home-01/testimonial/testi-shape.png);"
-                  // style={{
-                  //   backgroundImage: `url(${testiOne})`,
-                  // }}
-                ></div>
-                <div className="content">
-                  <div className="icon">
-                    <i className="icon-quote"></i>
+          {testimonialData.map((testimonial) => (
+            <div key={testimonial.id} className="col-lg-4 col-md-6">
+              <div className="testimonail-wrapper">
+                <div className="testimonial-item">
+                  <div className="thumb">
+                    <img src={testimonial.image} alt="img" />
                   </div>
-                  <p className="para">
-                    Broadband internet is Rocket supplier. Their staff is
-                    proficient and truly available. They deal with us and cause
-                    us to feel they esteem our business."
-                  </p>
-                  <ul className="rating-star d-flex flex-wrap align-items-center justify-content-start ">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="far fa-star"></i>
-                    </li>
-                    <li>
-                      <span>4.0</span>
-                    </li>
-                  </ul>
-                  <div className="client-name">
-                    <h6 className="name">BROOKLYN SIMMONS</h6>
-                    <span>Client</span>
+                  <div
+                    className="background-img"
+                    // style={{ backgroundImage: `url(${testimonial.image})` }}
+                  ></div>
+                  <div className="content">
+                    <div className="icon">
+                      <i className="icon-quote"></i>
+                    </div>
+                    <p className="para">{testimonial.content}</p>
+                    <ul className="rating-star d-flex flex-wrap align-items-center justify-content-start">
+                      <li>
+                        <i className={testimonial.rating >= 1 ? "fas fa-star" : "far fa-star"}></i>
+                      </li>
+                      <li>
+                        <i className={testimonial.rating >= 2 ? "fas fa-star" : "far fa-star"}></i>
+                      </li>
+                      <li>
+                        <i className={testimonial.rating >= 3 ? "fas fa-star" : "far fa-star"}></i>
+                      </li>
+                      <li>
+                        <i className={testimonial.rating >= 4 ? "fas fa-star" : "far fa-star"}></i>
+                      </li>
+                      <li>
+                        <i className={testimonial.rating >= 5 ? "fas fa-star" : "far fa-star"}></i>
+                      </li>
+                      <li>
+                        <span>{testimonial.rating}</span>
+                      </li>
+                    </ul>
+                    <div className="client-name">
+                      <h6 className="name">{testimonial.client}</h6>
+                      <span>Client</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="testimonail-wrapper">
-              <div className="testimonial-item">
-                <div className="thumb">
-                  <img src={testiTwo} alt="img" />
-                </div>
-                <div
-                  className="background-img"
-                  //  style="background-image: url(assets/images/home-01/testimonial/testi-shape.png);"
-                ></div>
-                <div className="content">
-                  <div className="icon">
-                    <i className="icon-quote"></i>
-                  </div>
-                  <p className="para">
-                    This is internet is “Our sales rep has been very helpful and
-                    has gone out of his way to make our transition to Broadband
-                    a painless process.”
-                  </p>
-                  <ul className="rating-star d-flex flex-wrap align-items-center justify-content-start ">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      
-                      <span>5.0</span>
-                    </li>
-                  </ul>
-                  <div className="client-name">
-                    <h6 className="name">DARLENE DOBERTSON</h6>
-                    <span>Client</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="testimonail-wrapper">
-              <div className="testimonial-item">
-                <div className="thumb">
-                  <img src={testiThree} alt="img" />
-                </div>
-                <div
-                  className="background-img"
-                  // style="background-image: url(assets/images/home-01/testimonial/testi-shape.png);"
-                ></div>
-                <div className="content">
-                  <div className="icon">
-                    <i className="icon-quote"></i>
-                  </div>
-                  <p className="para">
-                    I am pleased to recommend the internet service provided by
-                    Broadband. The speed and service is excellent and they best
-                    in market at this moment.
-                  </p>
-                  <ul className="rating-star d-flex flex-wrap align-items-center justify-content-start ">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="far fa-star"></i>
-                    </li>
-                    <li>
-                      {" "}
-                      <span>4.0</span>{" "}
-                    </li>
-                  </ul>
-                  <div className="client-name">
-                    <h6 className="name">CONRTNEY HENRY</h6>
-                    <span>Client</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

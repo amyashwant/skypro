@@ -5,16 +5,53 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
-
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [error, setError] = useState({});
+  const [email, setEmail] = useState("");
+
+  const validateEmail = () => {
+    const newError = {};
+
+    if (!email.trim()) {
+      newError.email = "Email is required";
+    } else if (/\s/.test(email)) {
+      newError.email = "Email should not contain spaces";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newError.email = "Invalid email format";
+    } else {
+      setError({});
+    }
+
+    setError(newError);
+
+    return Object.keys(newError).length === 0;
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    const isValidEmail = validateEmail();
+
+    if (isValidEmail) {
+      setEmail("");
+      alert("Thank you for Subscribing");
+    }
+  };
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+
+    setEmail(value);
+
+    setError((prevErrors) => ({
+      ...prevErrors,
+      email: "",
+    }));
+  };
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
-
-  const handleClick = () => {
-    alert("Thanks ");
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,16 +136,17 @@ const Footer = () => {
                   </li> */}
                   <li>
                     <i className="fas fa-square-full"></i>
+                    <Link to="/packages">IPTV</Link>
+                  </li>
+                  <li>
+                    <i className="fas fa-square-full"></i>
                     <Link to="/packages">Our Plans</Link>
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
                     <Link to="/contact"> Contact </Link>
                   </li>
-                  <li>
-                    <i className="fas fa-square-full"></i>
-                    <Link to="/privacy">Privacy Policy</Link>
-                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -118,7 +156,7 @@ const Footer = () => {
                 <ul className="footer-menu">
                   <li>
                     <i className="fas fa-square-full"></i>
-                    <Link to="/packages">IPTV</Link>
+                    <Link to="/privacy">Privacy Policy</Link>
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
@@ -126,7 +164,11 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
-                    <Link to="/refund">Refund & Cancellation</Link>
+                    <Link to="/refund">Refund Policy</Link>
+                  </li>
+                  <li>
+                    <i className="fas fa-square-full"></i>
+                    <Link to="/cancelation">Cancelation Policy</Link>
                   </li>
                   <li>
                     <i className="fas fa-square-full"></i>
@@ -142,10 +184,14 @@ const Footer = () => {
                   <form onSubmit={handleClick} autoComplete="off">
                     <input
                       type="email"
+                      name="email"
+                      value={email}
+                      onChange={handleChange}
                       className="form-control form--control text-center"
                       placeholder="Enter Your Email"
                       required
                     />
+                    {error.email && <div className="" style={{color:"#fd5901"}}>{error.email}*</div>}
                     <button type="submit" className="btn--base w-100 mt-3">
                       SUBSCRIBE NOW!
                     </button>
@@ -180,4 +226,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

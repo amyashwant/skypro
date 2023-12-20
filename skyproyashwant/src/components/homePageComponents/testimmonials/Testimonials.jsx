@@ -20,32 +20,34 @@ const Testimonials = () => {
     autoplay: true,
     pauseOnHover: false,
     easing: "linear",
-    fade: true,
+    fade: false,
     arrows: true,
   };
 
+  
+
 return (
-  <section className="home-two-testimonial overflow-hidden">
+  <section className="home-two-testimonial pricing pt-100 pb-50 bg-img">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-12">
-            <div className="testimonial-heading text-center mb-4">
-              <h2 className="text-uppercase text-white">Client Testimonials</h2>
+            <div className="section-header">
+              <h4 className="subtitle text-white text-center">Client Testimonials</h4>
             </div>
-            <div className="testimonial-left py-100">
+            <div className="testimonial-left position-relative py-100">
               <div className="row align-items-center">
-                <div className="col-xxl-6 col-xl-12 col-lg-5">
+                <div className="col-sm-12 text-center">
                   <Slider {...settings} className="">
                     {testimonialData.map((item, i) => (
                       <div className="testi-content" key={i}>
-                        <div className="icon mb-lg-4">
-                          <i className={item?.icon}></i>
+                        {/* <div className="icon mb-lg-4"> */}
+                        <div className="meta-thumb">
+                          <img src={item?.image} alt="img" />
+                          {console.log("image 1", item?.image)}
+                        {/* </div> */}
                         </div>
-                        <p className="para text-white">{item.description}</p>
+                        <p className="para text-white"><i className="fa-solid fa-quote-left"></i>{item.description}<i class="fa-solid fa-quote-right"></i></p>
                         <div className="client-meta d-flex align-items-center flex-wrap mt-5">
-                          <div className="meta-thumb">
-                            <img src={item.image} alt="img" />
-                          </div>
                           <div className="meta-content">
                             <h5 className="name">{item.name}</h5>
                             <span className="designation">{item.designation}</span>
@@ -84,7 +86,7 @@ const testimonialData = [
   {
     icon: "icon-quote",
     description: "One of the two YOU Broadband connections wasn't working in our office for some time. It is so comforting to see your engineer, Mangesh Ghatge, drop in at our place within half an hour of our registering a complaint.",
-    image: testFour,
+    image: testFour ,
     name: "Abby Covert",
     designation: "CO-founder"
   },

@@ -2,23 +2,20 @@ import React from "react";
 import Header from "../common/header/Header";
 import FooterContact from "../common/footerContact/FooterContact";
 import Footer from "../common/footer/Footer";
-import PackageMainPage from "../components/packagePageComponents/PackageMainPage";
-import BeadCumb from "../components/aboutPageComponents/beadCumb/BeadCumb";
-import PaymentSection from "../components/packagePageComponents/PaymentSection";
 import LoaderComponent from "../common/loaderComponent.jsx/LoaderComponent";
+import CancelationPageOne from "../components/cancelationComponents/CancelationPageOne";
 
-const PackagePage = () => {
+const CancelationPage = () => {
   window.scrollTo(0, 0);
   return (
     <div>
-      {/* <LoaderComponent /> */}
+      {/* <LoaderComponent/> */}
       <Header />
-      <PackageMainPage />
-      <PaymentSection />
+      <CancelationPageOne/>
       <FooterContact />
       <Footer />
     </div>
   );
 };
 
-export default PackagePage;
+export default CancelationPage;

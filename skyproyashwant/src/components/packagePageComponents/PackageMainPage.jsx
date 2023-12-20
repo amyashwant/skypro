@@ -5,7 +5,7 @@ import imgThree from "../../assets/images/packageNew/dangal.png";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, clearItem } from "../../utils/cartSlice";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 const PackageMainPage = () => {
   const dispatch = useDispatch();
 
@@ -24,12 +24,26 @@ const PackageMainPage = () => {
     setSelectedPack(arg);
   };
 
-  const handleViewClick = () => {
-    alert("hello");
+  const handleViewClick = () => { 
+   
+
+    setView(true);
+
   };
 
   const languageClick = (language) => {
-    setLang(language.toLowerCase());
+    setLang(language.toUpperCase());
+  };
+
+  const getPackagesDetails = async () => {
+    const config = {
+      Headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const data = await axios.get("/api/package/package-bouque", config);
+    console.log("data>getPackageDetails>>", data);
   };
 
   useEffect(() => {
@@ -37,8 +51,14 @@ const PackageMainPage = () => {
     setPackages(packages);
   }, [lang]);
 
+
+  useEffect(() => {
+    getPackagesDetails();
+  }, []);
+
   console.log("lang>>>>>", lang);
   console.log("packagessss>>>>>", packages);
+
 
   return (
     <div>
@@ -81,12 +101,17 @@ const PackageMainPage = () => {
                     <div className="container">
                       <div className="row">
                         {packages.map((pricing, index) => (
-                          <div className="col-sm-3 mb-4" key={index}>
+             
+
+                          <div className="col-md-4 mb-4" key={index}>
+
                             <div className="single-price">
                               <div className="deal-top">
                                 <h3>{pricing.title}</h3>
                                 <h4>
-                                  ₹ {pricing.price} <span>/mo</span>
+
+                                  ₹ {pricing.price} <span>-/mo</span>
+
                                 </h4>
                               </div>
                               <div className="deal-bottom">
@@ -104,7 +129,12 @@ const PackageMainPage = () => {
                                   )}
                                 </ul>
                                 <div className="btn-area">
-                                  <Link to="#" onClick={handleViewClick}>
+
+                                  <Link
+                                    to="/viewmorepackage"
+                                    onClick={handleViewClick}
+                                  >
+
                                     View More
                                   </Link>
                                   <Link

@@ -32,7 +32,7 @@ const FaqPage = () => {
                   </h5>
                   <div
                     id={`collapse${index + 1}`}
-                    className={`accordion-collapse collapse ${index === 0 ? "show" : ""}`}
+                    className={`accordion-collapse collapse ${index === 0 ? "" : ""}`}
                     aria-labelledby={`heading${index + 1}`}
                     data-bs-parent="#accordionExample"
                   >

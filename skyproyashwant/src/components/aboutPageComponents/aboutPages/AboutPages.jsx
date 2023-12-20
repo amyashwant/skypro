@@ -33,7 +33,7 @@ const AboutPages = () => {
                   <div className="section-header style-two">
                     {/* <h4 className="subtitle"> ABOUT US</h4> */}
                     <h2 className="title">
-                      DISCOVER A WINDER WORD OF RERATION
+                      Where Innovation Meets Connectivity
                     </h2>
                   </div>
                 </div>
