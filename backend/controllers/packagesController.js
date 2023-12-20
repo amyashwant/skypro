@@ -7,6 +7,7 @@ const Package = require("../models/packagesPageModel/packageModel");
 const PackageBouque = require("../models/packagesPageModel/packageBouqueModel");
 const BouqueChannel = require("../models/packagesPageModel/bouqueChannel");
 const Category = require("../models/packagesPageModel/categoryModel");
+const mongoose = require("mongoose");
 // const multer = require("multer");
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -226,20 +227,115 @@ const getPackage = async (req, res) => {
   }
 };
 
+// const createPackageBouque = async (req, res) => {
+//   const { packageRef, broadcasterRef, bouqueRef } = req.body;
+//   try {
+//     const existingPackageBouque = await PackageBouque.findOne({ packageRef });
+//     if (existingPackageBouque) {
+//       return res.status(400).json({ error: "Duplicate Package! Not Allowed" });
+//     }
+
+//     const packageBouque = await PackageBouque.create({
+//       packageRef,
+//       broadcasterRef,
+//       bouqueRef,
+//     });
+//     res.status(200).json(packageBouque);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+//-----------------------working normally but not corresponding
+// const createPackageBouque = async (req, res) => {
+//   try {
+//     const { packageRef, broadcasterRef, bouqueRef } = req.body;
+
+//     const packageBouques = [];
+
+//     const broadcasterRefs = Array.isArray(broadcasterRef)
+//       ? broadcasterRef
+//       : [broadcasterRef];
+
+//     const bouqueRefs = Array.isArray(bouqueRef) ? bouqueRef : [bouqueRef];
+
+//     broadcasterRefs.forEach((broadcasterId) => {
+//       bouqueRefs.forEach((bouqueId) => {
+//         const packageBouque = new PackageBouque({
+//           packageRef,
+//           broadcasterRef: broadcasterId,
+//           bouqueRef: bouqueId,
+//         });
+//         packageBouques.push(packageBouque.save());
+//       });
+//     });
+
+//     await Promise.all(packageBouques);
+
+//     res.status(200).json({ success: true });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
+// const createPackageBouque = async (req, res) => {
+//   try {
+//     const { packageRef, broadcasters } = req.body;
+
+//     const packageBouques = [];
+
+//     for (const broadcaster of broadcasters) {
+//       const { broadcasterRef, selectedBouques } = broadcaster;
+
+//       for (const bouqueRef of selectedBouques) {
+//         const packageBouque = new PackageBouque({
+//           packageRef,
+//           broadcasterRef,
+//           bouqueRef,
+//         });
+//         packageBouques.push(packageBouque.save());
+//       }
+//     }
+
+//     await Promise.all(packageBouques);
+
+//     res.status(200).json({ success: true });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
 const createPackageBouque = async (req, res) => {
-  const { packageRef, broadcasterRef, bouqueRef } = req.body;
   try {
-    const existingPackageBouque = await PackageBouque.findOne({ packageRef });
-    if (existingPackageBouque) {
-      return res.status(400).json({ error: "Duplicate Package! Not Allowed" });
+    const { packageRef, broadcasters } = req.body;
+
+    // Ensure broadcasters is an array
+    const broadcastersArray = Array.isArray(broadcasters)
+      ? broadcasters
+      : [broadcasters];
+
+    const packageBouques = [];
+
+    for (const broadcaster of broadcastersArray) {
+      const { broadcasterRef, selectedBouques } = broadcaster;
+
+      for (const bouqueRef of selectedBouques) {
+        const packageBouque = new PackageBouque({
+          packageRef,
+          broadcasterRef,
+          bouqueRef,
+          // broadcasterRef: mongoose.Types.ObjectId(broadcasterRef), // Convert to ObjectId
+          // bouqueRef: mongoose.Types.ObjectId(bouqueRef), // Convert to ObjectId
+        });
+        packageBouques.push(packageBouque.save());
+      }
     }
-    
-    const packageBouque = await PackageBouque.create({
-      packageRef,
-      broadcasterRef,
-      bouqueRef,
-    });
-    res.status(200).json(packageBouque);
+
+    await Promise.all(packageBouques);
+
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -248,10 +344,10 @@ const createPackageBouque = async (req, res) => {
 
 const getPackageBouque = async (req, res) => {
   try {
-    const packageBouque = await PackageBouque.find()
-      .populate("packageRef")
-      .populate("broadcasterRef")
-      .populate("bouqueRef");
+    const packageBouque = await PackageBouque.find();
+    // .populate("packageRef")
+    // .populate("broadcasterRef")
+    // .populate("bouqueRef");
     res.status(200).json(packageBouque);
   } catch (error) {
     console.error(error);

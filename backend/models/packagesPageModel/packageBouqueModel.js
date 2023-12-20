@@ -8,14 +8,14 @@ const packageBouqueSchema = new mongoose.Schema({
   broadcasterRef: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Broadcaster",
+    // type: String,
+    // required: true,
   },
 
-  bouqueRef: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Bouquet",
-    },
-  ],
+  bouqueRef: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Bouquet",
+  },
 
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },

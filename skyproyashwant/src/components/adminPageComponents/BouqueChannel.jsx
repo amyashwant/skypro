@@ -10,7 +10,7 @@ import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 const channels = ["star plus", "mtv", "aat tak"];
 

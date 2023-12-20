@@ -131,102 +131,76 @@ const PackageBouque = () => {
     }
   };
 
-  // const handleSubmitTwo = async (e) => {
-  //   e.preventDefault();
-
-  // const config = {
-  //   Headers: {
-  //     "Content-type": "application/json",
-  //   },
-  // };
-
-  // const { name, price } = formData;
-
-  // const data = await axios.post("/api/package/pack", { name }, config);
-
-  //   console.log("data submit>>", data);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // const config = {
+      //   Headers: {
+      //     "Content-type": "application/json",
+      //   },
+      // };
+
+      // const { name } = formData;
+      // const firstData = await axios.post("/api/package/pack", { name }, config);
+
+      // // Create an array of objects containing broadcasterRef and selectedBouques
+      // const broadcastersData = selectedBroadcasters.map((broadcaster) => ({
+      //   broadcasterRef: broadcaster,
+      //   selectedBouques: bouqueData.data
+      //     .filter(
+      //       (bouquet) =>
+      //         bouqueName.includes(bouquet.name) &&
+      //         bouquet.broadcasterRef.name === broadcaster
+      //     )
+      //     .map((bouquet) => bouquet._id),
+      // }));
+
+      // // Send the request for each combination of broadcaster and bouquet
+      // await Promise.all(
+      //   broadcastersData.map(({ broadcasterRef, selectedBouques }) =>
+      //     axios.post("/api/package/package-bouque", {
+      //       packageRef: firstData?.data?._id,
+      //       broadcasterRef,
+      //       selectedBouques,
+      //     })
+      //   )
+      // );
+
       const config = {
         Headers: {
           "Content-type": "application/json",
         },
       };
+
       const { name } = formData;
-
       const firstData = await axios.post("/api/package/pack", { name }, config);
-      console.log("firstData>>", firstData);
-      // const packageRefId = packageData.data.find(
-      //   (item) => item.name === selectedPackage
-      // )._id;
 
-      const broadcasterRefIds = broadcasterData.data
-        .filter((item) => selectedBroadcasters.includes(item.name))
-        .map((item) => item._id);
+      // Create an array of objects containing broadcasterRef and selectedBouques
+      console.log("selectedBroadcasters check>>", selectedBroadcasters);
+      console.log("broadcasterdata check>>", broadcasterData);
 
-      const bouqueRefIds = bouqueData.data
-        .filter((item) => bouqueName.includes(item.name))
-        .map((item) => item._id);
+      const broadcastersData = selectedBroadcasters.map((broadcaster,index) => ({
+        // broadcasterRef: broadcaster,
+        broadcasterRef: broadcasterData?.data
+          ?.filter((item) => selectedBroadcasters[index]?.includes(item?.name))
+          ?.map((item) => item?._id),
+        selectedBouques: bouqueData.data
+          .filter(
+            (bouquet) =>
+              bouqueName.includes(bouquet.name) &&
+              bouquet.broadcasterRef.name === broadcaster
+          )
+          .map((bouquet) => bouquet._id),
+      }));
 
-      console.log(".......broadcasterRefIds>>submit,>>", broadcasterRefIds);
-      console.log(".......bouqueRefIds>>submit,>>", bouqueRefIds);
-      console.log(".......differentiateBouque>>submit,>>", differentiateBouque);
+      console.log("broadcastersData plural check>>", broadcastersData);
 
-      // let data = "";
-      await Promise.all(
-        broadcasterRefIds.map(
-          async (item) =>
-            await axios.post(
-              "/api/package/package-bouque",
-              {
-                // packageRef: packageRefId,
-                packageRef: firstData?.data?._id,
-                broadcasterRef: item,
-                bouqueRef: bouqueRefIds,
-              },
-              config
-            )
-        )
-      );
-
-      // const data = await axios.post(
-      //   "/api/package/package-bouque",
-      //   {
-      //     // packageRef: packageRefId,
-      //     packageRef: firstData?.data?._id,
-      //     broadcasterRef: broadcasterRefIds,
-      //     bouqueRef: bouqueRefIds,
-      //   },
-      //   config
-      // );
-
-      // await Promise.all(
-      //   channelId?.map(
-      //     async (Id) =>
-      //       await axios.post(
-      //         "/api/package/bouque-channel",
-      //         { bouqueRef: data?.data?._id, channelRef: Id },
-      //         config
-      //       )
-      //   )
-      // );
-
-      // console.log("data submit>>", data);
-
-      // // Calculate total price based on selected bouquets
-      // const selectedBouquetPrices = bouqueData.data
-      //   .filter((item) => bouqueName.includes(item.name))
-      //   .map((item) => Number(item.price));
-
-      // const totalPrice = selectedBouquetPrices.reduce(
-      //   (acc, price) => acc + price,
-      //   0
-      // );
-      // setTotalPrice(totalPrice);
+      // Send the request for each combination of broadcaster and bouquet
+      await axios.post("/api/package/package-bouque", {
+        packageRef: firstData?.data?._id,
+        broadcasters: broadcastersData, // Make sure it's an array
+      });
 
       const selectedBouquetPrices = bouqueData.data
         .filter((item) => bouqueName.includes(item.name))
@@ -242,7 +216,6 @@ const PackageBouque = () => {
 
       setTotalPrice(totalPrice);
 
-      // data &&
       toast.success("package has been created successfully", {
         position: "top-center",
         autoClose: 5000,
@@ -269,6 +242,7 @@ const PackageBouque = () => {
 
       resetFormFields();
     }
+
     resetFormFields();
     setSelectedBroadcasters([]);
     setSelectedPackage("");
@@ -282,7 +256,7 @@ const PackageBouque = () => {
 
   useEffect(() => {
     const areChannelsSelected = selectedBroadcasters.length > 0;
-    //  && selectedPackage !== "";
+
     setIsFormValid(areChannelsSelected);
   }, [selectedBroadcasters, selectedPackage]);
 
@@ -298,23 +272,12 @@ const PackageBouque = () => {
         const data = await axios.get("/api/package/bouquet", config);
         console.log("selectedBroadcaster>>useeffect>", selectedBroadcasters);
         console.log("Bouquetdata>>>useeffect>Data>", data.data);
-        // Filter bouquets based on the selected broadcasters
+
         const filteredBouquets = data?.data
-          .filter(
-            (bouquet) =>
-              selectedBroadcasters?.includes(bouquet?.broadcasterRef.name)
-            // selectedBroadcasters?.includes(bouquet?.broadcasterRef?.name)
+          .filter((bouquet) =>
+            selectedBroadcasters?.includes(bouquet?.broadcasterRef.name)
           )
           .map((item) => item.name);
-
-        // const filteredBouquetTwo = data?.data
-        //   .filter(
-        //     (bouquet) =>
-        //       selectedBroadcasters?.includes(bouquet?.broadcasterRef.name)
-        //     // selectedBroadcasters?.includes(bouquet?.broadcasterRef?.name)
-        //   )
-        //   .map((item) => item._id);
-        // setDifferentiateBouque(filteredBouquetTwo);
 
         console.log(
           "selectedBroadcaster>>>useeffect>filteredBouquets>",
@@ -329,47 +292,7 @@ const PackageBouque = () => {
     fetchBouquets();
   }, [selectedBroadcasters]);
 
-  // useEffect(() => {
-  //   const fetchBouquets = async () => {
-  //     try {
-  //       const config = {
-  //         Headers: {
-  //           "Content-type": "application/json",
-  //         },
-  //       };
-
-  //       const data = await axios.get("/api/package/bouquet", config);
-
-  //       // Filter bouquets based on the selected broadcasters
-  //       const filteredBouquets = data.data
-  //         .filter((bouquet) =>
-  //           selectedBroadcasters.includes(bouquet.broadcasterRef.name)
-  //         )
-  //         .map((item) => item.name);
-  //       setFilteredBouquets(filteredBouquets);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchBouquets();
-  // }, [selectedBroadcasters]);
-
-  // useEffect(() => {
-  //   // Calculate total price based on selected bouquets
-  //   const selectedBouquetPrices = bouqueData.data
-  //     .filter((item) => bouqueName.includes(item.name))
-  //     .map((item) => Number(item.price));
-
-  //   const totalPrice = selectedBouquetPrices.reduce(
-  //     (acc, price) => acc + price,
-  //     0
-  //   );
-  //   setTotalPrice(totalPrice);
-  // }, [bouqueName, filteredBouquets]);
-
   useEffect(() => {
-    // Calculate total price based on selected bouquets
     const selectedBouquetPrices = bouqueData.data
       ?.filter((item) => bouqueName.includes(item.name))
       ?.map((item) => Number(item.price));
@@ -385,46 +308,7 @@ const PackageBouque = () => {
     <PortalHeader>
       <ToastContainer />
 
-      {/* <form onSubmit={handleSubmitTwo} className="broadcaster-form p-5 m-5">
-        <div className="mb-3">
-          <label className="form-label">Package Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ color: "red" }}>{error && error}</div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          disabled={!isFormValid}
-        >
-          Submit
-        </button>
-      </form> */}
-
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
-        {/* <div>
-          <h4 style={{ marginBottom: "20px" }}>Select a package Name</h4>
-          {packageData?.data?.map((item) => (
-            <FormControlLabel
-              key={item.name}
-              control={
-                <Checkbox
-                  checked={selectedPackage === item.name}
-                  onChange={handlePackageChange}
-                  name={item.name}
-                />
-              }
-              label={item.name}
-            />
-          ))}
-        </div> */}
-        {/* <div style={{ color: "red" }}>{error && error}</div> */}
-
         <div className="mb-3">
           <label className="form-label">Package Name:</label>
           <input
@@ -452,35 +336,9 @@ const PackageBouque = () => {
           ))}
         </div>
 
-        {/* {selectedBroadcasters.length > 0 && (
-          <div>
-            <h4>Bouquet Name</h4>
-            {filteredBouquets?.map((name) => {
-              const selectedBouquet = bouqueData.data.find(
-                (bouquet) => bouquet.name === name
-              );
-
-              return (
-                <div key={name}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={bouqueName.includes(name)}
-                        onChange={handleBouqueChange}
-                        name={name}
-                      />
-                    }
-                    label={`${name} Price: Rs ${selectedBouquet.price}`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        )} */}
         <h4 style={{ marginBottom: "20px" }}>Bouquet Name</h4>
         {selectedBroadcasters.length > 0 && (
           <div>
-            {/* <h4>Bouquet Name</h4> */}
             {selectedBroadcasters?.map((broadcasterName) => {
               const broadcasterBouquets = filteredBouquets?.filter((name) => {
                 const selectedBouquet = bouqueData.data.find(
@@ -554,6 +412,756 @@ const PackageBouque = () => {
 
 export default PackageBouque;
 
+//---------------------------------------------------------------------------------------------
+//-------------------------------------------array form data -------------------------------------
+// import React, { useEffect, useState } from "react";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import Checkbox from "@mui/material/Checkbox";
+// import PortalHeader from "./adminHeader.jsx/PortalHeader";
+// import axios from "axios";
+
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+// const PackageBouque = () => {
+//   const [selectedPackage, setSelectedPackage] = useState("");
+//   const [broadcasterData, setBroadcasterData] = useState([]);
+//   const [error, setError] = useState([]);
+//   const [isFormValid, setIsFormValid] = useState(false);
+//   const [packageData, setPackageData] = useState([]);
+//   const [bouqueName, setBouqueName] = useState([]);
+//   const [bouqueData, setBouqueData] = useState([]);
+//   const [selectedBroadcasters, setSelectedBroadcasters] = useState([]);
+//   const [filteredBouquets, setFilteredBouquets] = useState([]);
+//   const [differentiateBouque, setDifferentiateBouque] = useState([]);
+//   const [totalPrice, setTotalPrice] = useState(0);
+
+//   const [networkCarriageFee, setNetworkCarriageFee] = useState(0);
+//   const [discount, setDiscount] = useState(0);
+
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     price: "",
+//   });
+
+//   const resetFormFields = () => {
+//     setFormData({
+//       name: "",
+//       price: "",
+//     });
+//   };
+
+//   const handleChange = (e) => {
+//     const { name, value, type } = e.target;
+
+//     setFormData((prevData) => ({
+//       ...prevData,
+//       [name]: value,
+//     }));
+
+//     setError(null);
+//   };
+
+//   const handleNetworkCarriageFeeChange = (event) => {
+//     setNetworkCarriageFee(Number(event.target.value) || 0);
+//   };
+
+//   const handleDiscountChange = (event) => {
+//     setDiscount(Number(event.target.value) || 0);
+//   };
+
+//   const handlePackageChange = (event) => {
+//     const {
+//       target: { name, checked },
+//     } = event;
+
+//     setSelectedPackage(checked ? name : "");
+//     setError(null);
+//   };
+
+//   const handleBroadcasterChange = (event) => {
+//     const {
+//       target: { name, checked },
+//     } = event;
+
+//     setSelectedBroadcasters((prevBroadcasters) =>
+//       checked
+//         ? [...prevBroadcasters, name]
+//         : prevBroadcasters.filter((b) => b !== name)
+//     );
+//     setError(null);
+//   };
+
+//   const handleBouqueChange = (event) => {
+//     const {
+//       target: { name, checked },
+//     } = event;
+
+//     setBouqueName((prevNames) =>
+//       checked ? [...prevNames, name] : prevNames.filter((n) => n !== name)
+//     );
+//     setError(null);
+//   };
+
+//   const getBroadcasterFunc = async () => {
+//     try {
+//       const config = {
+//         Headers: {
+//           "Content-type": "application/json",
+//         },
+//       };
+
+//       const data = await axios.get("/api/package/Broadcaster", config);
+
+//       setBroadcasterData(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const getPackageFunc = async () => {
+//     try {
+//       const config = {
+//         Headers: {
+//           "Content-type": "application/json",
+//         },
+//       };
+//       const data = await axios.get("/api/package/pack", config);
+//       setPackageData(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const getBouqueFunc = async () => {
+//     try {
+//       const config = {
+//         Headers: {
+//           "Content-type": "application/json",
+//         },
+//       };
+//       const data = await axios.get("/api/package/bouquet", config);
+//       setBouqueData(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   // const handleSubmitTwo = async (e) => {
+//   //   e.preventDefault();
+
+//   // const config = {
+//   //   Headers: {
+//   //     "Content-type": "application/json",
+//   //   },
+//   // };
+
+//   // const { name, price } = formData;
+
+//   // const data = await axios.post("/api/package/pack", { name }, config);
+
+//   //   console.log("data submit>>", data);
+//   // };
+
+//   const handleSubmitFour = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const config = {
+//         Headers: {
+//           "Content-type": "application/json",
+//         },
+//       };
+//       const { name } = formData;
+
+//       const firstData = await axios.post("/api/package/pack", { name }, config);
+
+//       const broadcasterRefIds = broadcasterData.data
+//         .filter((item) => selectedBroadcasters.includes(item.name))
+//         .map((item) => item._id);
+
+//       // Iterate through each selected broadcaster and corresponding bouquets
+//       await Promise.all(
+//         broadcasterRefIds.map(async (broadcasterId) => {
+//           const bouquetsForBroadcaster = bouqueData.data
+//             .filter((bouquet) => bouquet.broadcasterRef.name === broadcasterId)
+//             .map((item) => item._id);
+
+//           // Send a separate request for each bouquet
+//           await Promise.all(
+//             bouquetsForBroadcaster.map(async (bouquetId) => {
+//               await axios.post(
+//                 "/api/package/package-bouque",
+//                 {
+//                   packageRef: firstData?.data?._id,
+//                   broadcasterRef: broadcasterId,
+//                   bouqueRef: bouquetId,
+//                 },
+//                 config
+//               );
+//             })
+//           );
+//         })
+//       );
+
+//       // Calculate total price based on selected bouquets
+//       const selectedBouquetPrices = bouqueData.data
+//         .filter((item) => bouqueName.includes(item.name))
+//         .map((item) => Number(item.price));
+
+//       const totalPriceWithoutAdditionalCharges = selectedBouquetPrices.reduce(
+//         (acc, price) => acc + price,
+//         0
+//       );
+
+//       const totalPrice =
+//         totalPriceWithoutAdditionalCharges + networkCarriageFee - discount;
+
+//       setTotalPrice(totalPrice);
+
+//       toast.success("Package has been created successfully", {
+//         position: "top-center",
+//         autoClose: 5000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         progress: undefined,
+//         style: { fontSize: "18px", textAlign: "center" },
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       setError(error?.response?.data?.error);
+//       toast.error("Failed to create the package", {
+//         position: "top-center",
+//         autoClose: 5000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         progress: undefined,
+//         style: { fontSize: "18px", textAlign: "center", color: "red" },
+//       });
+
+//       resetFormFields();
+//     }
+
+//     resetFormFields();
+//     setSelectedBroadcasters([]);
+//     setSelectedPackage("");
+//   };
+
+//   const handleSubmitThree = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const config = {
+//         Headers: {
+//           "Content-type": "application/json",
+//         },
+//       };
+//       const { name } = formData;
+
+//       const firstData = await axios.post("/api/package/pack", { name }, config);
+
+//       const broadcasterRefIds = broadcasterData.data
+//         .filter((item) => selectedBroadcasters.includes(item.name))
+//         .map((item) => item._id);
+
+//       // Iterate through each selected broadcaster
+//       await Promise.all(
+//         broadcasterRefIds.map(async (broadcasterId) => {
+//           // Filter bouquets based on the selected broadcaster
+//           const bouquetsForBroadcaster = bouqueData.data
+//             .filter((bouquet) => bouquet.broadcasterRef.name === broadcasterId)
+//             .map((item) => item._id);
+
+//           // Send a single request for the current broadcaster with all bouquets
+//           await axios.post(
+//             "/api/package/package-bouque",
+//             {
+//               packageRef: firstData?.data?._id,
+//               broadcasterRef: broadcasterId,
+//               bouqueRef: bouquetsForBroadcaster,
+//             },
+//             config
+//           );
+//         })
+//       );
+
+//       // Calculate total price based on selected bouquets
+//       const selectedBouquetPrices = bouqueData.data
+//         .filter((item) => bouqueName.includes(item.name))
+//         .map((item) => Number(item.price));
+
+//       const totalPriceWithoutAdditionalCharges = selectedBouquetPrices.reduce(
+//         (acc, price) => acc + price,
+//         0
+//       );
+
+//       const totalPrice =
+//         totalPriceWithoutAdditionalCharges + networkCarriageFee - discount;
+
+//       setTotalPrice(totalPrice);
+
+//       toast.success("Package has been created successfully", {
+//         position: "top-center",
+//         autoClose: 5000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         progress: undefined,
+//         style: { fontSize: "18px", textAlign: "center" },
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       setError(error?.response?.data?.error);
+//       toast.error("Failed to create the package", {
+//         position: "top-center",
+//         autoClose: 5000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         progress: undefined,
+//         style: { fontSize: "18px", textAlign: "center", color: "red" },
+//       });
+
+//       resetFormFields();
+//     }
+
+//     resetFormFields();
+//     setSelectedBroadcasters([]);
+//     setSelectedPackage("");
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const config = {
+//         Headers: {
+//           "Content-type": "application/json",
+//         },
+//       };
+//       const { name } = formData;
+
+//       const firstData = await axios.post("/api/package/pack", { name }, config);
+//       console.log("firstData>>", firstData);
+//       // const packageRefId = packageData.data.find(
+//       //   (item) => item.name === selectedPackage
+//       // )._id;
+
+//       const broadcasterRefIds = broadcasterData.data
+//         .filter((item) => selectedBroadcasters.includes(item.name))
+//         .map((item) => item._id);
+
+//       const bouqueRefIds = bouqueData.data
+//         .filter((item) => bouqueName.includes(item.name))
+//         .map((item) => item._id);
+
+//       // console.log(".......broadcasterRefIds>>submit,>>", broadcasterRefIds);
+//       // console.log(".......bouqueRefIds>>submit,>>", bouqueRefIds);
+//       // console.log(".......differentiateBouque>>submit,>>", differentiateBouque);
+
+//       // let data = "";
+
+//       // await Promise.all(
+//       //   broadcasterRefIds.map(
+//       //     async (item) =>
+//       //       await axios.post(
+//       //         "/api/package/package-bouque",
+//       //         {
+//       //           // packageRef: packageRefId,
+//       //           packageRef: firstData?.data?._id,
+//       //           broadcasterRef: item,
+//       //           bouqueRef: bouqueRefIds,
+//       //         },
+//       //         config
+//       //       )
+//       //   )
+//       // );
+
+//       // await Promise.all(
+//       //   broadcasterRefIds.map(async (broadcasterId) => {
+//       //     // Iterate through each selected bouquet for the current broadcaster
+//       //     for (const bouquetId of bouqueRefIds) {
+//       //       // Send a separate request for each bouquet
+//       //       await axios.post(
+//       //         "/api/package/package-bouque",
+//       //         {
+//       //           packageRef: firstData?.data?._id,
+//       //           broadcasterRef: broadcasterId,
+//       //           bouqueRef: bouquetId,
+//       //         },
+//       //         config
+//       //       );
+//       //     }
+//       //   })
+//       // );
+
+//       const data = await axios.post(
+//         "/api/package/package-bouque",
+//         {
+//           // packageRef: packageRefId,
+//           packageRef: firstData?.data?._id,
+//           broadcasterRef: broadcasterRefIds,
+//           bouqueRef: bouqueRefIds,
+//         },
+//         config
+//       );
+
+//       // await Promise.all(
+//       //   channelId?.map(
+//       //     async (Id) =>
+//       //       await axios.post(
+//       //         "/api/package/bouque-channel",
+//       //         { bouqueRef: data?.data?._id, channelRef: Id },
+//       //         config
+//       //       )
+//       //   )
+//       // );
+
+//       // console.log("data submit>>??>>", data);
+
+//       // // Calculate total price based on selected bouquets
+//       // const selectedBouquetPrices = bouqueData.data
+//       //   .filter((item) => bouqueName.includes(item.name))
+//       //   .map((item) => Number(item.price));
+
+//       // const totalPrice = selectedBouquetPrices.reduce(
+//       //   (acc, price) => acc + price,
+//       //   0
+//       // );
+//       // setTotalPrice(totalPrice);
+
+//       const selectedBouquetPrices = bouqueData.data
+//         .filter((item) => bouqueName.includes(item.name))
+//         .map((item) => Number(item.price));
+
+//       const totalPriceWithoutAdditionalCharges = selectedBouquetPrices.reduce(
+//         (acc, price) => acc + price,
+//         0
+//       );
+
+//       const totalPrice =
+//         totalPriceWithoutAdditionalCharges + networkCarriageFee - discount;
+
+//       setTotalPrice(totalPrice);
+
+//       // data &&
+//       toast.success("package has been created successfully", {
+//         position: "top-center",
+//         autoClose: 5000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         progress: undefined,
+//         style: { fontSize: "18px", textAlign: "center" },
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       setError(error?.response?.data?.error);
+//       toast.error("Failed to create the package", {
+//         position: "top-center",
+//         autoClose: 5000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         progress: undefined,
+//         style: { fontSize: "18px", textAlign: "center", color: "red" },
+//       });
+
+//       resetFormFields();
+//     }
+//     resetFormFields();
+//     setSelectedBroadcasters([]);
+//     setSelectedPackage("");
+//   };
+
+//   useEffect(() => {
+//     getBroadcasterFunc();
+//     getPackageFunc();
+//     getBouqueFunc();
+//   }, []);
+
+//   useEffect(() => {
+//     const areChannelsSelected = selectedBroadcasters.length > 0;
+//     //  && selectedPackage !== "";
+//     setIsFormValid(areChannelsSelected);
+//   }, [selectedBroadcasters, selectedPackage]);
+
+//   useEffect(() => {
+//     const fetchBouquets = async () => {
+//       try {
+//         const config = {
+//           Headers: {
+//             "Content-type": "application/json",
+//           },
+//         };
+
+//         const data = await axios.get("/api/package/bouquet", config);
+//         console.log("selectedBroadcaster>>useeffect>", selectedBroadcasters);
+//         console.log("Bouquetdata>>>useeffect>Data>", data.data);
+//         // Filter bouquets based on the selected broadcasters
+//         const filteredBouquets = data?.data
+//           .filter(
+//             (bouquet) =>
+//               selectedBroadcasters?.includes(bouquet?.broadcasterRef.name)
+//             // selectedBroadcasters?.includes(bouquet?.broadcasterRef?.name)
+//           )
+//           .map((item) => item.name);
+
+//         // const filteredBouquetTwo = data?.data
+//         //   .filter(
+//         //     (bouquet) =>
+//         //       selectedBroadcasters?.includes(bouquet?.broadcasterRef.name)
+//         //     // selectedBroadcasters?.includes(bouquet?.broadcasterRef?.name)
+//         //   )
+//         //   .map((item) => item._id);
+//         // setDifferentiateBouque(filteredBouquetTwo);
+
+//         console.log(
+//           "selectedBroadcaster>>>useeffect>filteredBouquets>",
+//           filteredBouquets
+//         );
+//         setFilteredBouquets(filteredBouquets);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     };
+
+//     fetchBouquets();
+//   }, [selectedBroadcasters]);
+
+//   // useEffect(() => {
+//   //   const fetchBouquets = async () => {
+//   //     try {
+//   //       const config = {
+//   //         Headers: {
+//   //           "Content-type": "application/json",
+//   //         },
+//   //       };
+
+//   //       const data = await axios.get("/api/package/bouquet", config);
+
+//   //       // Filter bouquets based on the selected broadcasters
+//   //       const filteredBouquets = data.data
+//   //         .filter((bouquet) =>
+//   //           selectedBroadcasters.includes(bouquet.broadcasterRef.name)
+//   //         )
+//   //         .map((item) => item.name);
+//   //       setFilteredBouquets(filteredBouquets);
+//   //     } catch (error) {
+//   //       console.log(error);
+//   //     }
+//   //   };
+
+//   //   fetchBouquets();
+//   // }, [selectedBroadcasters]);
+
+//   // useEffect(() => {
+//   //   // Calculate total price based on selected bouquets
+//   //   const selectedBouquetPrices = bouqueData.data
+//   //     .filter((item) => bouqueName.includes(item.name))
+//   //     .map((item) => Number(item.price));
+
+//   //   const totalPrice = selectedBouquetPrices.reduce(
+//   //     (acc, price) => acc + price,
+//   //     0
+//   //   );
+//   //   setTotalPrice(totalPrice);
+//   // }, [bouqueName, filteredBouquets]);
+
+//   useEffect(() => {
+//     // Calculate total price based on selected bouquets
+//     const selectedBouquetPrices = bouqueData.data
+//       ?.filter((item) => bouqueName.includes(item.name))
+//       ?.map((item) => Number(item.price));
+
+//     const totalPrice = selectedBouquetPrices?.reduce(
+//       (acc, price) => acc + price,
+//       0
+//     );
+//     setTotalPrice(totalPrice);
+//   }, [bouqueName, bouqueData]);
+
+//   return (
+//     <PortalHeader>
+//       <ToastContainer />
+
+//       {/* <form onSubmit={handleSubmitTwo} className="broadcaster-form p-5 m-5">
+//         <div className="mb-3">
+//           <label className="form-label">Package Name:</label>
+//           <input
+//             type="text"
+//             className="form-control"
+//             name="name"
+//             value={formData.name}
+//             onChange={handleChange}
+//           />
+//         </div>
+//         <div style={{ color: "red" }}>{error && error}</div>
+//         <button
+//           type="submit"
+//           className="btn btn-primary"
+//           disabled={!isFormValid}
+//         >
+//           Submit
+//         </button>
+//       </form> */}
+
+//       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
+//         {/* <div>
+//           <h4 style={{ marginBottom: "20px" }}>Select a package Name</h4>
+//           {packageData?.data?.map((item) => (
+//             <FormControlLabel
+//               key={item.name}
+//               control={
+//                 <Checkbox
+//                   checked={selectedPackage === item.name}
+//                   onChange={handlePackageChange}
+//                   name={item.name}
+//                 />
+//               }
+//               label={item.name}
+//             />
+//           ))}
+//         </div> */}
+//         {/* <div style={{ color: "red" }}>{error && error}</div> */}
+
+//         <div className="mb-3">
+//           <label className="form-label">Package Name:</label>
+//           <input
+//             type="text"
+//             className="form-control"
+//             name="name"
+//             value={formData.name}
+//             onChange={handleChange}
+//           />
+//         </div>
+//         <div>
+//           <h4>Broadcaster Name</h4>
+//           {broadcasterData?.data?.map((item) => (
+//             <FormControlLabel
+//               key={item.name}
+//               control={
+//                 <Checkbox
+//                   checked={selectedBroadcasters.includes(item.name)}
+//                   onChange={handleBroadcasterChange}
+//                   name={item.name}
+//                 />
+//               }
+//               label={item.name}
+//             />
+//           ))}
+//         </div>
+
+//         {/* {selectedBroadcasters.length > 0 && (
+//           <div>
+//             <h4>Bouquet Name</h4>
+//             {filteredBouquets?.map((name) => {
+//               const selectedBouquet = bouqueData.data.find(
+//                 (bouquet) => bouquet.name === name
+//               );
+
+//               return (
+//                 <div key={name}>
+//                   <FormControlLabel
+//                     control={
+//                       <Checkbox
+//                         checked={bouqueName.includes(name)}
+//                         onChange={handleBouqueChange}
+//                         name={name}
+//                       />
+//                     }
+//                     label={`${name} Price: Rs ${selectedBouquet.price}`}
+//                   />
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         )} */}
+//         <h4 style={{ marginBottom: "20px" }}>Bouquet Name</h4>
+//         {selectedBroadcasters.length > 0 && (
+//           <div>
+//             {/* <h4>Bouquet Name</h4> */}
+//             {selectedBroadcasters?.map((broadcasterName) => {
+//               const broadcasterBouquets = filteredBouquets?.filter((name) => {
+//                 const selectedBouquet = bouqueData.data.find(
+//                   (bouquet) => bouquet.name === name
+//                 );
+//                 return selectedBouquet.broadcasterRef.name === broadcasterName;
+//               });
+
+//               return (
+//                 <div key={broadcasterName}>
+//                   <h5>{broadcasterName}</h5>
+//                   {broadcasterBouquets.map((name) => {
+//                     const selectedBouquet = bouqueData.data.find(
+//                       (bouquet) => bouquet.name === name
+//                     );
+
+//                     return (
+//                       <FormControlLabel
+//                         key={name}
+//                         control={
+//                           <Checkbox
+//                             checked={bouqueName.includes(name)}
+//                             onChange={handleBouqueChange}
+//                             name={name}
+//                           />
+//                         }
+//                         label={`${name} Price: Rs ${selectedBouquet.price}`}
+//                       />
+//                     );
+//                   })}
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         )}
+
+//         <div>
+//           <h4>Network Carriage Fee</h4>
+//           <input
+//             type="number"
+//             value={networkCarriageFee}
+//             onChange={handleNetworkCarriageFeeChange}
+//           />
+//         </div>
+
+//         <div>
+//           <h4>Discount</h4>
+//           <input
+//             type="number"
+//             value={discount}
+//             onChange={handleDiscountChange}
+//           />
+//         </div>
+
+//         <div>
+//           <h4>Total Price</h4>
+//           <p>{totalPrice}</p>
+//         </div>
+
+//         <button
+//           type="submit"
+//           className="btn btn-primary"
+//           disabled={!isFormValid}
+//         >
+//           Submit
+//         </button>
+//       </form>
+//     </PortalHeader>
+//   );
+// };
+
+// export default PackageBouque;
+//--------------------------------------------------------------------------------------------------
 //----------------------------only individual broadcaster selected---------------------------------------------------------------------
 // import React, { useEffect, useState } from "react";
 // import FormControlLabel from "@mui/material/FormControlLabel";
