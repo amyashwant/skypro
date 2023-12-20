@@ -180,19 +180,23 @@ const PackageBouque = () => {
       console.log("selectedBroadcasters check>>", selectedBroadcasters);
       console.log("broadcasterdata check>>", broadcasterData);
 
-      const broadcastersData = selectedBroadcasters.map((broadcaster,index) => ({
-        // broadcasterRef: broadcaster,
-        broadcasterRef: broadcasterData?.data
-          ?.filter((item) => selectedBroadcasters[index]?.includes(item?.name))
-          ?.map((item) => item?._id),
-        selectedBouques: bouqueData.data
-          .filter(
-            (bouquet) =>
-              bouqueName.includes(bouquet.name) &&
-              bouquet.broadcasterRef.name === broadcaster
-          )
-          .map((bouquet) => bouquet._id),
-      }));
+      const broadcastersData = selectedBroadcasters.map(
+        (broadcaster, index) => ({
+          // broadcasterRef: broadcaster,
+          broadcasterRef: broadcasterData?.data
+            ?.filter((item) =>
+              selectedBroadcasters[index]?.includes(item?.name)
+            )
+            ?.map((item) => item?._id),
+          selectedBouques: bouqueData.data
+            .filter(
+              (bouquet) =>
+                bouqueName.includes(bouquet.name) &&
+                bouquet.broadcasterRef.name === broadcaster
+            )
+            .map((bouquet) => bouquet._id),
+        })
+      );
 
       console.log("broadcastersData plural check>>", broadcastersData);
 

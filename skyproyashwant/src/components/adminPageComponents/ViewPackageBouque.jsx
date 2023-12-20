@@ -119,19 +119,23 @@ const ViewPackageBouque = () => {
           {packageBouqueData?.data?.map((item) => {
             return (
               <div>
-                <div style={{ color: "red", fontSize: "30px",marginTop:"20px" }}>
+                <div
+                  style={{ color: "red", fontSize: "30px", marginTop: "20px" }}
+                >
                   {item?.packageRef?.name}
                 </div>
                 <div>
                   <div style={{ color: "blue", fontSize: "20px" }}>
-                    {item?.broadcasterRef?.map((innerItem) => (
+                    {/* {item?.broadcasterRef?.map((innerItem) => (
                       <div>{innerItem?.name}</div>
-                    ))}
+                    ))} */}
+                    {item?.broadcasterRef?.name}
                   </div>
                   <div style={{ color: "green", fontSize: "10px" }}>
-                    {item?.bouqueRef?.map((innerItem) => (
+                    {/* {item?.bouqueRef?.map((innerItem) => (
                       <div>{innerItem?.name}</div>
-                    ))}
+                    ))} */}
+                    {item?.bouqueRef?.name}
                   </div>
                 </div>
               </div>

@@ -344,10 +344,10 @@ const createPackageBouque = async (req, res) => {
 
 const getPackageBouque = async (req, res) => {
   try {
-    const packageBouque = await PackageBouque.find();
-    // .populate("packageRef")
-    // .populate("broadcasterRef")
-    // .populate("bouqueRef");
+    const packageBouque = await PackageBouque.find()
+      .populate("packageRef")
+      .populate("broadcasterRef")
+      .populate("bouqueRef");
     res.status(200).json(packageBouque);
   } catch (error) {
     console.error(error);
