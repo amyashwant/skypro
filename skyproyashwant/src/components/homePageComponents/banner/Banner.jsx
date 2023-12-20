@@ -2,11 +2,12 @@ import React from "react";
 // import shapeOne from "../../../assets/images/home-02/banner/shape-01.png";
 // import shapeTwo from "../../../assets/images/home-02/banner/shape-02.png";
 // import shapeThree from "../../../assets/images/home-02/banner/shape-03.png";
-import banner from "../../../assets/images/home-02/banner/banner.png";
-
+import banner from "../../../assets/images/home-02/banner/banner-earth.png";
+import shapeLeft from '../../../assets/images/home-02/banner/shape-002.png'
+import shapeRight from '../../../assets/images/home-02/banner/shape-003.png'
 import shapeOne from "../../../assets/images/home-02/banner/shape-01.png";
-import shapeTwo from "../../../assets/images/home-02/banner/fun-bg.png";
-import shapeThree from "../../../assets/images/home-02/banner/unnamed.png";
+// import shapeTwo from "../../../assets/images/home-02/banner/fun-bg.png";
+// import shapeThree from "../../../assets/images/home-02/banner/unnamed.png";
 // import banner from "../../../assets/images/home-02/banner/";
 import { Link } from "react-router-dom";
 
@@ -30,10 +31,10 @@ const Banner = () => {
           <img src={shapeOne} alt="img" />
         </span>
         <span>
-          <img src={shapeTwo} alt="img" />
+          <img src={shapeLeft} alt="img" />
         </span>
         <span>
-          <img src={shapeThree} alt="img" />
+          <img src={shapeRight} alt="img" />
         </span>
       </div>
       <div className="container">
@@ -44,8 +45,8 @@ const Banner = () => {
               <h1 className="title">SKYPRO FOR THE FAST INTERNET</h1>
               <ul className="banner-buttons d-flex flex-wrap">
                 <li className="banner-buttons__item">
-                  <Link to="/signup" className="btn--base banner-buttons__link">
-                    START FROM $20 <i className="icon-checked"></i>
+                  <Link to="/packages" className="btn--base banner-buttons__link">
+                    View our latest Plans <i className="icon-checked"></i>
                   </Link>
                 </li>
                 <li className="banner-buttons__item">

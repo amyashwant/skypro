@@ -17,6 +17,7 @@ import ToggleBar from "../components/packagesComponents/toggleBar/ToggleBar";
 import { useNavigate } from "react-router-dom";
 import AccountContext from "../utils/AccountContext";
 import LoaderComponent from "../common/loaderComponent.jsx/LoaderComponent";
+import FaqPage from "../components/servicePageComponents/faqPage/FaqPage";
 
 const Dashboard = () => {
   window.scrollTo(0, 0);
@@ -25,8 +26,8 @@ const Dashboard = () => {
 
   const { login } = useContext(AccountContext);
   useEffect(() => {
-    if (!login) {
-      navigate("/login");
+    if (login) {
+      navigate("/");
     }
   }, [login]);
 
@@ -63,6 +64,7 @@ const Dashboard = () => {
       <PricingPlans />
       <FootPrints />
       <Blogs />
+      <FaqPage/>
       <FooterContact />
       <Footer />
     </div>

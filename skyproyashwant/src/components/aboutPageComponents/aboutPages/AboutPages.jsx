@@ -31,7 +31,7 @@ const AboutPages = () => {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="section-header style-two">
-                    <h4 className="subtitle"> ABOUT US</h4>
+                    {/* <h4 className="subtitle"> ABOUT US</h4> */}
                     <h2 className="title">
                       DISCOVER A WINDER WORD OF RERATION
                     </h2>

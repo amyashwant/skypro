@@ -57,7 +57,7 @@ const TeamPage = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">DARLENE ROBERTSON</a>
+                  {/* <a href="team-details.html">DARLENE ROBERTSON</a> */}DARLENE ROBERTSON
                 </h4>
                 <span className="designation">Ceo</span>
               </div>
@@ -97,7 +97,8 @@ const TeamPage = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">AHMADULLAH</a>
+                  {/* <a href="team-details.html">AHMADULLAH</a> */}
+                  AHMADULLAH
                 </h4>
                 <span className="designation">Founder</span>
               </div>
@@ -137,7 +138,8 @@ const TeamPage = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">CHARLES BRADFORD</a>
+                  {/* <a href="team-details.html">CHARLES BRADFORD</a> */}
+                  CHARLES BRADFORD
                 </h4>
                 <span className="designation">Admin</span>
               </div>

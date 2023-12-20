@@ -19,7 +19,7 @@ const ServicePages = () => {
               <div className="icon">
                 <span className="icon-satellite"></span>
               </div>
-              <h4 className="title">SATELLITE TV</h4>
+              <h4 className="title">Weather Proof Signal</h4>
               <p className="para">
                 The last and slowest broadband service is provided by satellite.
                 Offering devoted web association with different price to
@@ -42,7 +42,7 @@ const ServicePages = () => {
               <div className="icon">
                 <span className="icon-wifi-1"></span>
               </div>
-              <h4 className="title">WIFI INTERNET</h4>
+              <h4 className="title">Cost effective then OTT's</h4>
               <p className="para">
                 Broadband Internet is giving one of the quickest broadband web
                 and organization arrangements all through.
@@ -64,7 +64,7 @@ const ServicePages = () => {
               <div className="icon">
                 <span className="icon-tv-box"></span>
               </div>
-              <h4 className="title">PRO TV BOX</h4>
+              <h4 className="title">Pay per View Options</h4>
               <p className="para">
                 Make it reasonable! Golden IT programs are quite often 33% to
                 one around 50% of the expense of practically identical.
@@ -87,7 +87,7 @@ const ServicePages = () => {
               <div className="icon">
                 <span className="icon-satellite"></span>
               </div>
-              <h4 className="title">HOME SECURITY</h4>
+              <h4 className="title">Zero Data Utilization</h4>
               <p className="para">
                 The networking of computers in the home is made easier with a
                 broadband connection, by either using wireless or wired modems.
@@ -110,7 +110,7 @@ const ServicePages = () => {
               <div className="icon">
                 <span className="icon-wifi-1"></span>
               </div>
-              <h4 className="title">MOBILE CONNECTION</h4>
+              <h4 className="title">4K Ultra HD STB</h4>
               <p className="para">
                 A broadband association permits you to play numerous famous PC
                 games that depend on a quick Internet association.
@@ -133,7 +133,7 @@ const ServicePages = () => {
               <div className="icon">
                 <span className="icon-tv-box"></span>
               </div>
-              <h4 className="title">HOME BROADBAND</h4>
+              <h4 className="title">Unlimited NewContent Live TV</h4>
               <p className="para">
                 Broadband association, dissimilar to the old dial-up web
                 association, won't draw in your telephone line when being used.

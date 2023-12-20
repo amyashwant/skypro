@@ -7,8 +7,10 @@ import MapCompany from "../components/contactPageComponents/map/MapCompany";
 import Footer from "../common/footer/Footer";
 import Header from "../common/header/Header";
 import BeadCumbCommon from "../common/beadcumbCommon/BeadCumbCommon";
-import contactImg from "../assets/images/breadcumb/_1530667899_390_yEZPsIaoTI3ZNDdB-croppedUundb-jpg-details.jpg";
+// import contactImg from "../assets/images/breadcumb/_1530667899_390_yEZPsIaoTI3ZNDdB-croppedUundb-jpg-details.jpg";
+import contactImg from "../assets/images/breadcumb/contact-backup.webp";
 import LoaderComponent from "../common/loaderComponent.jsx/LoaderComponent";
+import FooterContact from "../common/footerContact/FooterContact";
 
 const ContactPage = () => {
   window.scrollTo(0, 0);
@@ -22,6 +24,7 @@ const ContactPage = () => {
       <BeadCumbCommon titleOne="CONTACT US" titleTwo="CONTACT US" bgImg={contactImg}/>
       <Contact />
       <MapCompany />
+      <FooterContact/>
       <Footer />
     </>
   );

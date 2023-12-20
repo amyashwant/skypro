@@ -1,7 +1,8 @@
 import React from "react";
-import footerOne from "../../assets/images/home-01/footer_contact/contact-01.png";
-import footerTwo from "../../assets/images/home-01/footer_contact/contact-02.png";
-import footerThree from "../../assets/images/home-01/footer_contact/contact-03.png";
+import footerOne from "../../assets/images/home-01/footer_contact/location.png";
+import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
+import footerThree from "../../assets/images/home-01/footer_contact/phone.png";
+import { Link } from "react-router-dom";
 const FooterContact = () => {
   return (
     <section className="footer-contact py-80">
@@ -15,9 +16,9 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">OFFICIAL LOCATION</h6>
                 <p className="para">
-                  SCO 37, Second floor, Sector 67  
+                Abacus Cloud, B-70 ,Sector-74, Phase-7  
                 </p>
-                <p className="para">SAS Nagar - 160062(PUNJAB)</p>
+                <p className="para">Mohali, Punjab, IN</p>
               </div>
             </div>
           </div>
@@ -29,11 +30,13 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">SEND US A MESSAGE</h6>
                 <p className="para">
-                  <a href="mailto:">info123@gmail.com</a>
+                  <Link to="/contact">info@skypro.co.in</Link>
                 </p>
+
                 <p className="para">
-                  <a href="mailto:">text123@etob.com</a>
+                  {/* <Link to="/contact">info@skypro.co.in</Link> */}
                 </p>
+
               </div>
             </div>
           </div>
@@ -47,9 +50,9 @@ const FooterContact = () => {
                 <p className="para">
                   <a href="tel:">+(91) 9803596035</a>
                 </p>
-                <p className="para">
+                {/* <p className="para">
                   <a href="tel:">+(91) 9803596035</a>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

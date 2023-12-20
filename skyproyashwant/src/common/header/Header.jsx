@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import bottomImg from "../../assets/images/home-01/logo/Skypro_New_Logo.png";
 import headerLogo from "../../assets/images/home-01/logo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+
 import ToggleHeader from "./ToggleHeader";
 import AccountContext from "../../utils/AccountContext";
 const Header = () => {
@@ -24,13 +25,13 @@ const Header = () => {
               <ul class="top-contact-menu d-flex flex-wrap justify-content-between align-items-center">
                 <li class="item">
                   <span class="icon-pin"></span>
-                  <p>1901 Thornridge Cir. Shiloh, Hawaii 81063</p>
+                  <p>Abacus Cloud, B-70 ,Sector-74, Phase-7 Mohali, Punjab</p>
                 </li>
-                <li class="item">|</li>
+                {/* <li class="item">|</li>
                 <li class="item">
                   <span class="icon-mail"></span>
                   <a href="mailto:">info123@gmail.com</a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div class="top-button d-flex flex-wrap justify-content-between align-items-center">
@@ -44,6 +45,28 @@ const Header = () => {
                   </li>
                 ) : (
                   <>
+                  <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
+                  <li>
+                    <Link to="https://www.facebook.com/tvskypro/" target="_blank">
+                      <i className="fab fa-facebook-f"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="https://twitter.com/Skypro_TV" target="_blank">
+                      <i className="fab fa-twitter"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="https://www.linkedin.com/company/skyprotv/" target="_blank">
+                      <i className="fab fa-linkedin-in"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="https://in.pinterest.com/skyprotv/" target="_blank">
+                      <i className="fab fa-pinterest-p"></i>
+                    </Link>
+                  </li>
+                  </span> 
                     <li>
                       <Link to="/login">
                         <span class="icon-user-1"></span>
@@ -107,7 +130,7 @@ const Header = () => {
                     ABOUT
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <Link
                     className="nav-link"
                     to="/service"
@@ -116,7 +139,7 @@ const Header = () => {
                   >
                     SERVICES
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link"

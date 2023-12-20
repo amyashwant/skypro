@@ -14,7 +14,6 @@ const userRoutes = require("./routes/userRoutes");
 const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
-
 //middlewares
 app.use(express.json());
 app.use("/api/user", userRoutes);

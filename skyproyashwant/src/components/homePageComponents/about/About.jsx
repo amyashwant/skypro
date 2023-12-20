@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import aboutOne from "../../../assets/images/home-02/about/about-left-bg.png";
 import aboutTwo from "../../../assets/images/home-02/about/about-right-bg.png";
 import aboutThree from "../../../assets/images/home-02/about/about-01.png";
 import aboutFour from "../../../assets/images/home-02/about/about-02.png";
 import { Link } from "react-router-dom";
+import VideoPlayer from "../videoPlayer/VideoPlayer";
 
 const About = () => {
+  const videoUrl = "https://www.youtube.com/watch?v=0pWsCiBvLOk";
+  const [isVideoOpen, setVideoOpen] = useState(false);
+
+  const openVideo = () => {
+    setVideoOpen(true);
+  };
+
+  const closeVideo = () => {
+    setVideoOpen(false);
+  };
+
+  useEffect(() => {
+    if (isVideoOpen) {
+    }
+  }, [isVideoOpen]);
+
   return (
     <section className="about home-two-about pt-50 pb-100">
       <div className="home-two-about-bg">
@@ -17,12 +34,18 @@ const About = () => {
           <div className="col-lg-6">
             <div className="about-left">
               <div className="play-button">
-                <a
-                  href="https://www.youtube.com/watch?v=_D-mh3aZK_4"
-                  className="magnific-video"
-                >
-                  <i className="icon-play"></i>
-                </a>
+              {isVideoOpen ? (
+          <VideoPlayer
+            videoUrl={videoUrl}
+            width="100%"
+            height="100%"
+            onClose={closeVideo}
+          />
+        ) : (
+          <button onClick={openVideo}>
+            <i className="icon-play">Play</i>
+          </button>
+        )}
               </div>
               <div className="home-two-about-thumb">
                 <span>

@@ -6,6 +6,12 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
 
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   const handleClick = () => {
     alert("Thanks ");
   };
@@ -53,22 +59,22 @@ const Footer = () => {
                 </p>
                 <ul className="social-icons d-flex align-items-center flex-wrap pt-4">
                   <li>
-                    <Link to="/">
+                    <Link to="https://www.facebook.com/tvskypro/" target="_blank">
                       <i className="fab fa-facebook-f"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="active">
+                    <Link to="https://twitter.com/Skypro_TV" target="_blank">
                       <i className="fab fa-twitter"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/">
+                    <Link to="https://www.linkedin.com/company/skyprotv/" target="_blank">
                       <i className="fab fa-linkedin-in"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/">
+                    <Link to="https://in.pinterest.com/skyprotv/" target="_blank">
                       <i className="fab fa-pinterest-p"></i>
                     </Link>
                   </li>
@@ -153,9 +159,9 @@ const Footer = () => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-12 text-center">
-                <p className="bottom-footer-text text-white">
-                  Copyright &copy; 2023. All Rights Reserved By Skypro
-                </p>
+              <p className="bottom-footer-text text-white">
+                Copyright &copy; {currentYear}. All Rights Reserved By Skypro
+              </p>
               </div>
             </div>
           </div>
@@ -174,3 +180,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
