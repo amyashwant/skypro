@@ -4,11 +4,14 @@ import contactTwo from "../../../assets/images/contact/contact-icon-02.png";
 import contactThree from "../../../assets/images/contact/contact-icon-03.png";
 import contactImage from "../../../assets/images/contact/contact-us-form-image.jpg";
 import axios from "axios";
+import { toast } from "react-toastify";
+import countriesData from "../../../common/stdCode/stdCodes.json";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    countryCode: "+91",
     phone: "",
     subject: "",
     message: "",
@@ -68,14 +71,15 @@ const Contact = () => {
       setFormData({
         name: "",
         email: "",
+        countryCode: "+91",
         phone: "",
         subject: "",
         message: "",
       });
-      alert("Email sent successfully");
+      toast.success("Email sent successfully");
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Error sending email. Please try again later.");
+      toast.error("Error sending email. Please try again later.");
     }
   };
 
@@ -101,11 +105,17 @@ const Contact = () => {
             <div className="contact_blok">
               <div className="row align-items-center1 align-items-stretch">
                 <div className="col-sm-7 d-flex align-items-center">
-                  <form class="form contactForm p-3 p-xl-4" id="contactusForm" onSubmit={handleClick}>
+                  <form
+                    class="form contactForm p-3 p-xl-4"
+                    id="contactusForm"
+                    onSubmit={handleClick}
+                  >
                     <h5 class="mb-3">Send us a message</h5>
                     <div class="row">
                       <div class="form-group col-sm-6 mb-3">
-                      <label for="name" className="">Enter Your Name <span className="star">*</span></label>
+                        <label for="name" className="">
+                          Enter Your Name <span className="star">*</span>
+                        </label>
                         <input
                           type="text"
                           name="name"
@@ -121,7 +131,9 @@ const Contact = () => {
                         )}
                       </div>
                       <div class="form-group col-sm-6 mb-3">
-                      <label for="email" className="">Enter Your Email <span className="star">*</span></label>
+                        <label for="email" className="">
+                          Enter Your Email <span className="star">*</span>
+                        </label>
                         <input
                           type="email"
                           name="email"
@@ -137,24 +149,47 @@ const Contact = () => {
                         )}
                       </div>
                       <div class="form-group col-sm-6 mb-3">
-                      <label for="phone" className="">Enter Your Phone <span className="star">*</span></label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          id="phone"
-                          maxLength={10}
-                          value={formData.phone}
-                          required={true}
-                          onChange={handleChange}
-                          class="form-control"
-                          placeholder="Enter Your Phone"
-                        />
+                        <label for="phone" className="">
+                          Enter Your Phone <span className="star">*</span>
+                        </label>
+                        <div className="d-flex align-items-center">
+                          <select
+                            name="countryCode"
+                            id="countryCode"
+                            value={formData.countryCode}
+                            onChange={handleChange}
+                            className="form-control mr-2"
+                            style={{ width: "80px" }}
+                          >
+                            {countriesData.map((country) => (
+                              <option
+                                key={country.code}
+                                value={country.dial_code}
+                              >
+                                {`${country.dial_code} ${country.code} `}
+                              </option>
+                            ))}
+                          </select>
+                          <input
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            maxLength={10}
+                            value={formData.phone}
+                            required={true}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder="Enter Your Phone"
+                          />
+                        </div>
                         {errors.phone && (
                           <span className="error">{errors.phone}</span>
                         )}
                       </div>
                       <div class="form-group col-sm-6 mb-3">
-                      <label for="Subject" className="">Enter Your Subject <span className="star">*</span></label>
+                        <label for="Subject" className="">
+                          Enter Your Subject <span className="star">*</span>
+                        </label>
                         <input
                           type="text"
                           name="subject"
@@ -170,7 +205,9 @@ const Contact = () => {
                         )}
                       </div>
                       <div class="form-group col-sm-12 mb-3">
-                      <label for="message" className="">Enter Your Message <span className="star"></span></label>
+                        <label for="message" className="">
+                          Enter Your Message <span className="star"></span>
+                        </label>
                         <textarea
                           class="form-control"
                           name="message"
@@ -191,7 +228,7 @@ const Contact = () => {
                       <button type="submit" class="btn blue-btn" id="">
                         <span></span>Submit
                       </button>
-                    {/* <ul class="social-icons d-flex align-items-center flex-wrap ContactUS-icon">
+                      {/* <ul class="social-icons d-flex align-items-center flex-wrap ContactUS-icon">
                     <li><a href="" target="_blank"><i class="fa-solid fa-phone"></i></a></li>
                       <li><a href="" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
                     </ul> */}

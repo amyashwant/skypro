@@ -32,6 +32,26 @@ const ViewMoreSection = () => {
         { id: 4, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
         { id: 5, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
         { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
+        { id: 6, channleImage: 'https://www.d2h.com/MasterChannel/colors.png', label: 'Colors' },
       ],
     },
   ];
@@ -40,7 +60,7 @@ const ViewMoreSection = () => {
     <>
        <section className="Accordion-Div">
         <div className="container">
-          <h2>Hindi Gold HD Suggestive Bouquet:</h2>
+          <h2>Hindi Gold HD Suggestive Bouquet</h2>
           <h3>Price: 234*/-per month</h3>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             {accordionData.map((accordionItem) => (
@@ -63,20 +83,21 @@ const ViewMoreSection = () => {
                   aria-labelledby={`panelsStayOpen-heading${accordionItem.id}`}
                 >
                   <div className="accordion-body">
-                    <div className="accordion-innerDiv">
-                      <strong>Bouquets:</strong>
-                        {accordionItem.bouquet.map((bouquet, index) => (
-                          <span key={index}>&nbsp; {bouquet},</span>
-                        ))}
-                    </div>
-                    <ul className="accordion-innerDiv">
-                      {accordionItem.channels.map((item) => (
-                        <li key={item.id}>
-                          <img src={item.channleImage} alt={item.label} />
-                          <span>{item.label}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="accordion-innerDiv">
+                    <strong>Bouquets:</strong>
+                    {accordionItem.bouquet.map((bouquet, index) => (
+                      <span key={index}>&nbsp; {bouquet},</span>
+                    ))}
+                  </div>
+                  <ul className="accordion-channelList">
+                    {accordionItem.channels.map((item) => (
+                      <li key={item.id}>
+                        <img src={item.channleImage} alt={item.label} />
+                        <span>{item.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+
                   </div>
                 </div>
               </div>
