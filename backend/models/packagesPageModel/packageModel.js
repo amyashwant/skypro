@@ -6,6 +6,9 @@ const packageSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  packagePrice: {
+    type: String,
+  },
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
   // price: {

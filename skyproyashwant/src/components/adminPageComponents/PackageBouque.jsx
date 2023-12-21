@@ -174,7 +174,11 @@ const PackageBouque = () => {
       };
 
       const { name } = formData;
-      const firstData = await axios.post("/api/package/pack", { name }, config);
+      const firstData = await axios.post(
+        "/api/package/pack",
+        { name, packagePrice: totalPrice },
+        config
+      );
 
       // Create an array of objects containing broadcasterRef and selectedBouques
       console.log("selectedBroadcasters check>>", selectedBroadcasters);
@@ -198,14 +202,6 @@ const PackageBouque = () => {
         })
       );
 
-      console.log("broadcastersData plural check>>", broadcastersData);
-
-      // Send the request for each combination of broadcaster and bouquet
-      await axios.post("/api/package/package-bouque", {
-        packageRef: firstData?.data?._id,
-        broadcasters: broadcastersData, // Make sure it's an array
-      });
-
       const selectedBouquetPrices = bouqueData.data
         .filter((item) => bouqueName.includes(item.name))
         .map((item) => Number(item.price));
@@ -215,10 +211,32 @@ const PackageBouque = () => {
         0
       );
 
-      const totalPrice =
+      const totalPrices =
         totalPriceWithoutAdditionalCharges + networkCarriageFee - discount;
 
-      setTotalPrice(totalPrice);
+      setTotalPrice(totalPrices);
+
+      console.log("broadcastersData plural check>>", broadcastersData);
+
+      // Send the request for each combination of broadcaster and bouquet
+      await axios.post("/api/package/package-bouque", {
+        packageRef: firstData?.data?._id,
+        broadcasters: broadcastersData, // Make sure it's an array
+      });
+
+      // const selectedBouquetPrices = bouqueData.data
+      //   .filter((item) => bouqueName.includes(item.name))
+      //   .map((item) => Number(item.price));
+
+      // const totalPriceWithoutAdditionalCharges = selectedBouquetPrices.reduce(
+      //   (acc, price) => acc + price,
+      //   0
+      // );
+
+      // const totalPrice =
+      //   totalPriceWithoutAdditionalCharges + networkCarriageFee - discount;
+
+      // setTotalPrice(totalPrice);
 
       toast.success("package has been created successfully", {
         position: "top-center",
