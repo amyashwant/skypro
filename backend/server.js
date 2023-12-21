@@ -7,6 +7,7 @@ const chats = require("./data/data");
 const colors = require("colors");
 const cookieparser = require("cookie-parser");
 require("dotenv").config();
+const crypto = require("crypto")
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
