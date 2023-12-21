@@ -137,8 +137,6 @@ const PackageFormPage = () => {
 
       const { name, price } = formData;
 
-
-      
       const data = await axios.post("/api/package/pack", { name }, config);
 
       console.log("data submit>>", data);

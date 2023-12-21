@@ -190,7 +190,7 @@ const getType = async (req, res) => {
 };
 
 const createPackage = async (req, res) => {
-  const { name } = req.body;
+  const { name, packagePrice } = req.body;
   try {
     // const existingPackage = await Package.findOne({ name });
     const existingPackage = await Package.findOne({
@@ -200,7 +200,7 @@ const createPackage = async (req, res) => {
       return res.status(400).json({ error: "Package Already Added" });
     }
 
-    const package = await Package.create({ name });
+    const package = await Package.create({ name, packagePrice });
     res.status(200).json(package);
   } catch (error) {
     console.error(error);
@@ -367,7 +367,14 @@ const createBouqueChannel = async (req, res) => {
 };
 const getBouqueChannel = async (req, res) => {
   try {
-    const bouqueChannel = await BouqueChannel.find();
+    const bouqueChannel = await BouqueChannel.find()
+      .populate("bouqueRef")
+      .populate({
+        path: "channelRef",
+        populate: {
+          path: "language",
+        },
+      });
     res.status(200).json(bouqueChannel);
   } catch (error) {
     console.log(error);
