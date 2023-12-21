@@ -77,12 +77,12 @@ const AppLayout = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/refund" element={<RefundPage />} />
-            <Route path="/cancelation" element={<CancelationPage/>} />
+            <Route path="/cancelation" element={<CancelationPage />} />
             <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
-            <Route path="/viewmorepackage" element={<ViewMorePackage/>}/>
+            <Route path="/packages/:packageId" element={<ViewMorePackage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route
               path="/admin/settings/broadcasters"

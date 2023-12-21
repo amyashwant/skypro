@@ -58,8 +58,9 @@ const PaymentModal = ({ handleClose, show, children }) => {
     return subtotal * gstRate;
   };
 
-  const subtotal = cartItems[0]?.price || 0;
+  const subtotal = cartItems[0]?.packagePrice || 0;
   console.log(subtotal);
+  
   const gstAmount = calculateGST(subtotal);
   console.log(gstAmount);
   const total = subtotal + gstAmount;
@@ -73,14 +74,13 @@ const PaymentModal = ({ handleClose, show, children }) => {
           <div className="your-shoping-cart">
             <div className="container">
               <div className="title-box">
-                <h1>Your Cart</h1>
+                <h1>Your Package Cart</h1>
                 <span className="close-icon">x</span>
               </div>
               <div className="product-box">
                 <div className="info-box">
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    {cartItems[0]?.name}
                   </p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
                   <p>
                     {cartItems[0]?.title ? cartItems[0]?.title : "your package"}
                   </p>
-                  <p>₹ {cartItems[0]?.price}</p>
+                  <p>₹ {cartItems[0]?.packagePrice}</p>
                 </div>
                 <div>
                   <p>GST (18%)</p>
