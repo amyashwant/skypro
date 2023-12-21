@@ -15,6 +15,7 @@ const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
 const contactRoutes = require("./routes/contactRoutes")
+const orderRoutes = require("./routes/orderRoutes")
 //middlewares
 app.use(express.json());
 app.use("/api/user", userRoutes);
@@ -22,6 +23,7 @@ app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/checkout", orderRoutes)
 
 //error handeling mechanism
 // app.use(notFound);

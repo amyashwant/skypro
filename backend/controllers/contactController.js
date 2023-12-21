@@ -8,8 +8,8 @@ const nodemailer = require("nodemailer");
 // console.log("google pass contoller>>", process.env.GOOGLE_PASS);
 
 const contactController = asyncHandler(async (req, res) => {
-  const { name, email, phone, subject, message } = req.body;
-  console.log(name, email, phone, subject, message);
+  const { name, email, phone, countryCode, subject, message } = req.body;
+  console.log(name, email, phone, countryCode, subject, message);
 
   // contactMiddleware(name, email, phone, subject, message)
 
@@ -30,7 +30,7 @@ const contactController = asyncHandler(async (req, res) => {
       from: email,
       to: process.env.GOOGLE_MAIL,
       subject: subject,
-      text: `${message} sen by ${email}`,
+      text: `A message was sent: ${message}. Contact details - Email: ${email}, Phone: ${countryCode} ${phone}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

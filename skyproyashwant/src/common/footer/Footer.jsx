@@ -3,6 +3,7 @@ import footerOne from "../../assets/images/home-01/logo/footer-logo.png";
 import logo from "../../assets/images/home-01/logo/white-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
@@ -43,10 +44,10 @@ const Footer = () => {
         { Headers: { "Content-type": "application/json" } }
       );
       setEmail("");
-      alert("Email sent successfully");
+      toast.success("ThankYou for subscibing our Newsletter");
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Error sending email. Please try again later.");
+      toast.error("Error sending email. Please try again later.");
     }
   };
 

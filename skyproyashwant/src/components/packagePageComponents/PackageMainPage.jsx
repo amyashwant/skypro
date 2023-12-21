@@ -3,9 +3,15 @@ import imgOne from "../../assets/images/packageNew/aljazeera.png";
 import imgTwo from "../../assets/images/packageNew/b4u.png";
 import imgThree from "../../assets/images/packageNew/dangal.png";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, clearItem } from "../../utils/cartSlice";
-import { Link } from "react-router-dom";
+import {
+  addItem,
+  clearItem,
+  viewClearItem,
+  viewItem,
+} from "../../utils/cartSlice";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
 const PackageMainPage = () => {
   const dispatch = useDispatch();
 
@@ -13,11 +19,16 @@ const PackageMainPage = () => {
   const [view, setView] = useState(false);
   const [selectedPack, setSelectedPack] = useState(null);
   const [packages, setPackages] = useState([]);
-  const cartItems = useSelector((store) => store.cart.items);
   const [packageData, setPackageData] = useState([]);
   const [languagesData, setLanguagesData] = useState([]);
   const [bouqueData, setBouqueData] = useState([]);
   const [packageResult, setPackageResult] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const cartItems = useSelector((store) => store.cart.items);
+  const viewCartItems = useSelector((store) => store.cart.viewItems);
+  // const parameterName = useParams();
+  // console.log("parameterName>>>>....>>", parameterName);
   const handleClick = (arg) => {
     if (cartItems.length > 0) {
       dispatch(clearItem());
@@ -26,8 +37,12 @@ const PackageMainPage = () => {
     setSelectedPack(arg);
   };
 
-  const handleViewClick = () => {
+  const handleViewClick = (arg) => {
     setView(true);
+    if (viewCartItems.length > 0) {
+      dispatch(viewClearItem());
+    }
+    dispatch(viewItem(arg));
   };
 
   const languageClick = (language) => {
@@ -220,8 +235,8 @@ const PackageMainPage = () => {
                               <div className="deal-top">
                                 <h3>{pricing.name}</h3>
                                 <h4>
-                                  {/* ₹ {pricing.packagePrice} <span>-/mo</span> */}
-                                  <span>₹ 138</span>
+                                  ₹ {pricing.packagePrice} <span>-/mo</span>
+                                  {/* {/ <span>₹ 138</span> /} */}
                                 </h4>
                               </div>
                               <div className="deal-bottom">
@@ -240,8 +255,10 @@ const PackageMainPage = () => {
                                 </ul>
                                 <div className="btn-area">
                                   <Link
-                                    to="/viewmorepackage"
-                                    onClick={handleViewClick}
+                                    // to={`/packages/${pricing.name.replaceAll(" ","-")}`}
+                                    to={`/packages/${pricing._id}`}
+                                    // onClick={handleViewClick(pricing)}
+                                    onClick={() => handleViewClick(pricing)}
                                   >
                                     View More
                                   </Link>

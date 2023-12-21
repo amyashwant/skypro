@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
+    viewItems: [],
   },
 
   reducers: {
@@ -16,8 +17,15 @@ const cartSlice = createSlice({
     clearItem: (state) => {
       state.items = [];
     },
+    viewClearItem: (state) => {
+      state.viewItems = [];
+    },
+    viewItem: (state, action) => {
+      state.viewItems.push(action.payload);
+    },
   },
 });
 
-export const { addItem, removeItem, clearItem } = cartSlice.actions;
+export const { addItem, removeItem, clearItem, viewItem, viewClearItem } =
+  cartSlice.actions;
 export default cartSlice.reducer;
