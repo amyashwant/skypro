@@ -32,71 +32,95 @@ const PaymentModal = ({ handleClose, show, children }) => {
   //   //   });
   // };
 
-  const handleCheckout = async (e) => {
-    
+  const calculateGST = (subtotal) => {
+    const gstRate = 0.18;
+    return subtotal * gstRate;
+  };
 
-   
+  const subtotal = cartItems[0]?.packagePrice || 0;
+  console.log(subtotal);
+
+  const gstAmount = calculateGST(subtotal);
+  console.log(gstAmount);
+  const total = subtotal + gstAmount;
+  console.log(total);
+
   const amount = 500;
   const currency = "INR";
   const receiptId = "qwsaq1";
-
+  
   const handleCheckout = async (e) => {
-    const response = await fetch("http://localhost:5000/api/checkout", {
-      method: "POST",
-      body: JSON.stringify({
+    console.log("hello rohit", total, amount, currency, receiptId);
+    try {
+      const response = await axios.post("/api/checkout", {
         amount,
         currency,
-        receipt: receiptId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
+        receipt: receiptId
       },
-    });
-    const order = await response.json();
-    console.log(order);
+      { headers: { "Content-Type": "application/json" }});
 
-    var options = {
-      key: "rzp_test_9HKVEPG7qmotGQ", // Enter the Key ID generated from the Dashboard
-      amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency,
-      name: "Acme Corp", //your business name
-      description: "Test Transaction",
-      image: "https://example.com/your_logo",
-      order_id: "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
-      },
-      prefill: {
-        //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-        name: "Gaurav Kumar", //your customer's name
-        email: "gaurav.kumar@example.com",
-        contact: "9000090000", //Provide the customer's phone number for better conversion rates
-      },
-      notes: {
-        address: "Razorpay Corporate Office",
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    var rzp1 = new window.Razorpay(options);
-  rzp1.on("payment.failed", function (response) {
-    alert(response.error.code);
-    alert(response.error.description);
-    alert(response.error.source);
-    alert(response.error.step);
-    alert(response.error.reason);
-    alert(response.error.metadata.order_id);
-    alert(response.error.metadata.payment_id);
-  });
-  rzp1.open();
-  e.preventDefault();
+      const order = await response.data;
+      console.log(order);
+
+      const options = {
+        key: 'rzp_test_IGNCUX7tGetoC3', // Replace with your Razorpay key
+        amount: order.amount,
+        currency: order.currency,
+        order_id: order.id,
+        name: 'SKYPRO',
+        description: 'Test Transaction',
+        handler: async function (response) {
+          const body = {
+            ...response,
+          };
+        
+          try {
+            const validateRes = await axios.post("/api/checkout/validatepayment", body, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+        
+            const validateresponse = validateRes.data;
+            console.log(validateresponse);
+          } catch (error) {
+            console.error("Error during validation:", error);
+          }
+        },
+        prefill: {
+          name: "Web Dev Matrix", // your customer's name
+          email: "webdevmatrix@example.com",
+          contact: "9000000000",
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+  
+      // Corrected line: Remove the misplaced "var" keyword
+      const rzp1 = new window.Razorpay(options);
+  
+      rzp1.on("payment.failed", function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+  
+      rzp1.open();
+      e.preventDefault();
+    } catch (error) {
+      console.error("Error doing payment:", error);
+      toast.error("Error doing payment. Please try again later.");
+    }
   };
 
-
-  
   const modalStyle = {
     position: "fixed",
     top: "50%",
@@ -118,19 +142,6 @@ const PaymentModal = ({ handleClose, show, children }) => {
     display: show ? "block" : "none",
     zIndex: 999,
   };
-
-  const calculateGST = (subtotal) => {
-    const gstRate = 0.18;
-    return subtotal * gstRate;
-  };
-
-  const subtotal = cartItems[0]?.packagePrice || 0;
-  console.log(subtotal);
-
-  const gstAmount = calculateGST(subtotal);
-  console.log(gstAmount);
-  const total = subtotal + gstAmount;
-  console.log(total);
 
   return (
     <>
