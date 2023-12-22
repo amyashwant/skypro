@@ -34,6 +34,8 @@ import CategoryFormPage from "../components/adminPageComponents/CategoryFormPage
 import ViewMoreSection from "../components/packagePageComponents/ViewMoreSection";
 import ViewMorePackage from "../screens/ViewMorePackage";
 import CancelationPage from "../screens/Cancelation";
+import Register from "../components/adminPageComponents/adminAuthentication/Register";
+import Login from "../components/adminPageComponents/adminAuthentication/Login";
 
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
@@ -77,13 +79,15 @@ const AppLayout = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/refund" element={<RefundPage />} />
-            <Route path="/cancelation" element={<CancelationPage/>} />
+            <Route path="/cancelation" element={<CancelationPage />} />
             <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
-            <Route path="/packages/:packageId" element={<ViewMorePackage/>}/>
+            <Route path="/packages/:packageId" element={<ViewMorePackage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/adminsignup" element={<Register />} />
+            {/* <Route path="/adminlogin" element={<Login />} /> */}
             <Route
               path="/admin/settings/broadcasters"
               element={<BroadcasterFormPage />}

@@ -16,9 +16,10 @@ const AccountPage = () => {
 
   const { login, setLogin, setUserData } = useContext(AccountContext);
   console.log("login>", login);
+
   useEffect(() => {
     if (login) {
-      navigate("/");
+      navigate("/admin");
     }
   }, [login]);
 
@@ -88,7 +89,7 @@ const AccountPage = () => {
         // window.location.reload(false); //seen from comment lect. 12 youtube
         setLogin(true);
         setUserData(data);
-        navigate("/");
+        navigate("/admin");
       } catch (error) {
         console.log("login >> ", "went wrong while logging in");
       }
@@ -125,7 +126,7 @@ const AccountPage = () => {
           <div className="col-lg-5 ps-lg-5">
             <div className="account-form">
               <div className="section-header style-two">
-                <h4 className="subtitle">LOG IN</h4>
+                <h4 className="subtitle">LOG IN ADMIN</h4>
                 <h2 className="title">WELCOME BACK</h2>
               </div>
               <form className='cust-formdiv' onSubmit={handleSubmit} autoComplete="off" noValidate>

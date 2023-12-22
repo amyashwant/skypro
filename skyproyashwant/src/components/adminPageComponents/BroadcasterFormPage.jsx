@@ -37,7 +37,7 @@ const BroadcasterFormPage = () => {
   const [channelData, setChannelData] = useState([]);
   const [error, setError] = useState([]);
   const [isFormValid, setIsFormValid] = useState(false);
-
+  const [viewBroadcasterData, setViewBroadcasterData] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     // price: "",
@@ -101,6 +101,8 @@ const BroadcasterFormPage = () => {
     // const channels = data?.data?.map((item) => item.name);
 
     setChannelData(data);
+    const viewData = await axios.get("/api/package/broadcaster");
+    setViewBroadcasterData(viewData?.data);
   };
 
   const getChannelId = () => {
@@ -265,6 +267,12 @@ const BroadcasterFormPage = () => {
           Submit
         </button>
       </form>
+      <div style={{ marginLeft: "30px" }}>
+        <h3>Broadcaster Aailable:</h3>
+        {viewBroadcasterData.map((item) => (
+          <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
+        ))}
+      </div>
     </PortalHeader>
   );
 };

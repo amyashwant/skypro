@@ -66,124 +66,19 @@ const PaymentModal = ({ handleClose, show, children }) => {
 
   const gstAmount = calculateGST(subtotal);
   // console.log(gstAmount);
-  const amount = subtotal + getViewItemsPrice() + gstAmount;
+  const total = subtotal + getViewItemsPrice() + gstAmount;
   // console.log(total);
-
-  const currency = "INR";
-  const receiptId = "rohit";
-
-  const handleCheckout = async (e) => {
-
-    // const {data:key} = await axios.get("/api/getkeys")
-    // console.log(key)
-
-    console.log("hello rohit", amount, currency, receiptId);
-    try {
-      console.log("amount>>>>>",amount)
-      const response = await axios.post(
-        "/api/checkout",
-        {
-          amount,
-          currency,
-          receipt: receiptId,
-        },
-        { headers: { "Content-Type": "application/json" } }
-      );
-      
-      const order = await response.data;
-      console.log(order);
-
-      const user = {
-        name: "John Doe", // Replace with the user's name
-        email: "john.doe@example.com", // Replace with the user's email
-        contact: "0000000000", // Replace with the user's contact number
-      };
-
-      const options = {
-        key: "rzp_test_EC1xn57ne3LN2r", // Replace with your Razorpay key
-        amount: order.amount,
-        currency: order.currency,
-        order_id: order.id,
-        name: "SKYPRO",
-        description: "Test Transaction",
-        handler: async function (response) {
-          const body = {
-            ...response,
-          };
-
-          try {
-            const validateRes = await axios.post(
-              "/api/checkout/validatepayment",
-              body,
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-
-            const validateresponse = validateRes.data;
-            console.log(validateresponse,"validate response");
-          } catch (error) {
-            console.error("Error during validation:", error);
-          }
-        },
-        prefill: user,
-        // prefill: {
-        //   name: "customer", // your customer's name
-        //   email: "customers@example.com",
-        //   contact: "0000000000",
-        // },
-        notes: {
-          address: "Razorpay Corporate Office",
-        },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-
-      // Corrected line: Remove the misplaced "var" keyword
-      const rzp1 = new window.Razorpay(options);
-
-      rzp1.on("payment.success", function (response) {
-        // Handle the successful payment here
-        console.log("Payment successful:", response);
-  
-        // Add the redirect logic here
-        window.location.href = 'http://localhost:3000';
-      });
-  
-
-      rzp1.on("payment.failed", function (response) {
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
-      });
-
-      rzp1.open();
-      e.preventDefault();
-
-     
-    } catch (error) {
-      console.error("Error doing payment:", error);
-      toast.error("Error doing payment. Please try again later.");
-    }
-  };
 
   return (
     <>
       <div>
-        <div style={overlayStyle} onClick={handleClose}></div>
+        <div style={overlayStyle} ></div>
         <div style={modalStyle}>
           <div className="your-shoping-cart">
             <div className="container">
               <div className="title-box">
                 <h1>Your Package Cart</h1>
-                <span className="close-icon">x</span>
+                <span className="close-icon" onClick={handleClose}>x</span>
               </div>
               <div className="product-box">
                 <div className="info-box">
@@ -195,10 +90,14 @@ const PaymentModal = ({ handleClose, show, children }) => {
                 <div>
                   <p>
                     {cartItems[0]?.title ? cartItems[0]?.title : "your package"}
-                    {/* {/ {cartItems[0]?.name ? cartItems[0]?.name : "your package"} /} */}
+                    {/* {cartItems[0]?.name ? cartItems[0]?.name : "your package"} */}
                   </p>
-                  {cartItems[0]?<p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p>:"₹ 0"}
-                   {/* {/ <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> /} */}
+                  {cartItems[0] ? (
+                    <p>₹ {Math.floor(cartItems[0]?.packagePrice)}.00</p>
+                  ) : (
+                    "₹ 0"
+                  )}
+                  {/* <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> */}
                 </div>
                 <div>
                   {viewCartItems?.map((item) => {
@@ -216,14 +115,14 @@ const PaymentModal = ({ handleClose, show, children }) => {
                 </div>
                 <div>
                   <p>Total</p>
-                  <p className="NOK">₹ {amount.toFixed(2)}</p>
+                  <p className="NOK">₹ {total.toFixed(2)}</p>
                 </div>
               </div>
-              {/* // {/ <button className="checkout-btn" onClick={checkout}> /}
-              // {/ <Link to="/payment"> /}
-              // {/ Checkout /}
-              // {/ </Link> /}
-              // {/ </button> /} */}
+              {/* <button className="checkout-btn" onClick={checkout}> */}
+              {/* <Link to="/payment"> */}
+              {/* Checkout */}
+              {/* </Link> */}
+              {/* </button> */}
               <button
                 className="checkout-btn"
                 style={{
@@ -233,9 +132,8 @@ const PaymentModal = ({ handleClose, show, children }) => {
                 }}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                onClick={handleCheckout}
               >
-                {/* {/ <Link to="/payment"> /} */}
+                {/* <Link to="/payment"> */}
                 Checkout
                 {/* {/ </Link> /} */}
               </button>

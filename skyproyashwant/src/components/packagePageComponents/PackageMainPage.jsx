@@ -238,7 +238,7 @@ const PackageMainPage = () => {
                                   ₹ {Math.floor(Number(pricing.packagePrice))}
                                   .00
                                   <span>-/mo</span>
-                                  {/* {/ <span>₹ 138</span> /} */}
+                                  {/* <span>₹ 138</span> */}
                                 </h4>
                               </div>
                               <div className="deal-bottom">
@@ -293,7 +293,313 @@ const PackageMainPage = () => {
     </div>
   );
 };
-
-const languages = ["Hindi", "Punjabi", "Marathi", "Oriya"]
-
 export default PackageMainPage;
+const languages = ["Hindi", "Punjabi", "Marathi", "Oriya"];
+
+// bouquet: price_1OKcfxSBYt5a6mPeuFEF0QBc
+// bouquetTwo: price_1OKcliSBYt5a6mPe7OHM2nUO
+
+// const broadcaster = [
+//   {
+//     id: "price_1OKcfxSBYt5a6mPeuFEF0QBc",
+//     title: "Discovery Communications India",
+//     price: 150,
+//     subTitle: "View channels",
+//     images: [imgThree, imgTwo, imgOne],
+//     channels: 272,
+//     quantity: 1,
+//     priceTitle: "*Prices are excluding taxes",
+//     language: "hindi",
+//   },
+//   {
+//     id: "price_1OKcliSBYt5a6mPe7OHM2nUO",
+//     title: "Celebrities Management Pvt Ltd",
+//     price: 450,
+//     subTitle: "View channels",
+//     images: [imgThree, imgTwo, imgOne],
+//     channels: 272,
+//     priceTitle: "*Prices are excluding taxes",
+//     language: "hindi",
+//   },
+
+const broadcaster = [
+  {
+    id: "1",
+    title: "Basic Service Tier (BST )",
+    price: 150,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi",
+  },
+  {
+    id: "2",
+    title: "NORTH FTA",
+    price: 450,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi",
+  },
+  {
+    id: "3",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi",
+  },
+  {
+    id: "4",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "punjabi",
+  },
+  {
+    id: "5",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "punjabi",
+  },
+  {
+    id: "6",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "marathi",
+  },
+  {
+    id: "7",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "marathi",
+  },
+  {
+    id: "8",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "oriya",
+  },
+  {
+    id: "9",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "oriya",
+  },
+  {
+    id: "10",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "oriya",
+  },
+  {
+    id: "11",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi",
+  },
+  {
+    id: "12",
+    title: "SILVER BUDGET HINDI",
+    price: 260,
+    features: [
+      "1+ 18 000 chaines",
+      "+ 2 000 Series",
+      "4K / HD / Full HD",
+      "100% Stable",
+    ],
+    language: "hindi",
+  },
+];
+
+// // package Data-
+// [
+//   {
+//     _id: "6582a3977ca48ef1cea16e50",
+//     bouqueData: [
+//       {
+//         _id: "65827e9202bb961e20c2258d",
+//         bouqueRef: {
+//           _id: "65827e9202bb961e20c2258b",
+//           name: "ALA-CARTE-COLOR-RISHTEY",
+//           price: "0.1",
+//           broadcasterRef: "65827e0902bb961e20c22575",
+//           createdAt: "2023-12-20T05:41:38.346Z",
+//           modifiedAt: "2023-12-20T05:41:38.346Z",
+//           __v: 0,
+//         },
+//         channelRef: {
+//           _id: "65827c3102bb961e20c224ca",
+//           name: "colors rishtey",
+//           type: "65827b5a02bb961e20c22460",
+//           language: {
+//             _id: "65827a2102bb961e20c21ce8",
+//             name: "HINDI",
+//             createdAt: "2023-12-20T05:22:41.309Z",
+//             modifiedAt: "2023-12-20T05:22:41.309Z",
+//             __v: 0,
+//           },
+//           category: "65827b2102bb961e20c222f7",
+//           image:
+//             "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg ",
+//           createdAt: "2023-12-20T05:31:29.595Z",
+//           modifiedAt: "2023-12-20T05:31:29.595Z",
+//           __v: 0,
+//         },
+//         createdAt: "2023-12-20T05:41:38.562Z",
+//         modifiedAt: "2023-12-20T05:41:38.562Z",
+//         __v: 0,
+//       },
+//     ],
+//     packageRef: {
+//       _id: "6582a3967ca48ef1cea16e4c",
+//       name: "Hindi Bronze SD Suggestive Bouquet",
+//       packagePrice: "2.3200000000000003",
+//       createdAt: "2023-12-20T08:19:34.799Z",
+//       modifiedAt: "2023-12-20T08:19:34.799Z",
+//       __v: 0,
+//     },
+//     broadcasterRef: {
+//       _id: "65827e0902bb961e20c22575",
+//       name: "TV18 Broadcast Limited",
+//       image: "1703050761476-IMG_20221005_170359-01 (1).jpeg",
+//       createdAt: "2023-12-20T05:39:21.526Z",
+//       modifiedAt: "2023-12-20T05:39:21.526Z",
+//       __v: 0,
+//     },
+//     bouqueRef: {
+//       _id: "65827e9202bb961e20c2258b",
+//       name: "ALA-CARTE-COLOR-RISHTEY",
+//       price: "0.1",
+//       broadcasterRef: "65827e0902bb961e20c22575",
+//       createdAt: "2023-12-20T05:41:38.346Z",
+//       modifiedAt: "2023-12-20T05:41:38.346Z",
+//       __v: 0,
+//     },
+//     createdAt: "2023-12-20T08:19:35.060Z",
+//     modifiedAt: "2023-12-20T08:19:35.060Z",
+//     __v: 0,
+//   },
+//   {
+//     _id: "6582a3977ca48ef1cea16e4f",
+//     bouqueData: [
+//       {
+//         _id: "65827e7702bb961e20c22588",
+//         bouqueRef: {
+//           _id: "65827e7702bb961e20c22586",
+//           name: "ALA-CARTE-NEWS18-PUNJABI",
+//           price: "0.1",
+//           broadcasterRef: "65827e0902bb961e20c22575",
+//           createdAt: "2023-12-20T05:41:11.236Z",
+//           modifiedAt: "2023-12-20T05:41:11.236Z",
+//           __v: 0,
+//         },
+//         channelRef: {
+//           _id: "65827bd002bb961e20c224bb",
+//           name: "news18 punjab haryana",
+//           type: "65827b5a02bb961e20c22460",
+//           language: {
+//             _id: "65827a7d02bb961e20c21f00",
+//             name: "PUNJABI",
+//             createdAt: "2023-12-20T05:24:13.161Z",
+//             modifiedAt: "2023-12-20T05:24:13.161Z",
+//             __v: 0,
+//           },
+//           category: "65827acf02bb961e20c220f5",
+//           image: "1703050192954-jsdownload.png",
+//           createdAt: "2023-12-20T05:29:52.999Z",
+//           modifiedAt: "2023-12-20T05:29:52.999Z",
+//           __v: 0,
+//         },
+//         createdAt: "2023-12-20T05:41:11.450Z",
+//         modifiedAt: "2023-12-20T05:41:11.450Z",
+//         __v: 0,
+//       },
+//     ],
+//     packageRef: {
+//       _id: "6582a3967ca48ef1cea16e4c",
+//       name: "Hindi Bronze SD Suggestive Bouquet",
+//       packagePrice: "2.3200000000000003",
+//       createdAt: "2023-12-20T08:19:34.799Z",
+//       modifiedAt: "2023-12-20T08:19:34.799Z",
+//       __v: 0,
+//     },
+//     broadcasterRef: {
+//       _id: "65827e0902bb961e20c22575",
+//       name: "TV18 Broadcast Limited",
+//       image: "1703050761476-IMG_20221005_170359-01 (1).jpeg",
+//       createdAt: "2023-12-20T05:39:21.526Z",
+//       modifiedAt: "2023-12-20T05:39:21.526Z",
+//       __v: 0,
+//     },
+//     bouqueRef: {
+//       _id: "65827e7702bb961e20c22586",
+//       name: "ALA-CARTE-NEWS18-PUNJABI",
+//       price: "0.1",
+//       broadcasterRef: "65827e0902bb961e20c22575",
+//       createdAt: "2023-12-20T05:41:11.236Z",
+//       modifiedAt: "2023-12-20T05:41:11.236Z",
+//       __v: 0,
+//     },
+//     createdAt: "2023-12-20T08:19:35.060Z",
+//     modifiedAt: "2023-12-20T08:19:35.060Z",
+//     __v: 0,
+//   },
+// ];
