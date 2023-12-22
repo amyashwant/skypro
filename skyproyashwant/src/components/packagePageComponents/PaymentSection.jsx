@@ -25,6 +25,7 @@ const PaymentSection = () => {
   };
 
   const cartItems = useSelector((store) => store.cart.items);
+  const viewItems = useSelector((store) => store.cart.viewItems);
 
   return (
     <>
@@ -42,8 +43,11 @@ const PaymentSection = () => {
                   </span>
                   <p>
                     <span>
-                      <span className="add_cart">{cartItems.length}</span>View
-                      Cart
+                      {/* <span className="add_cart">{cartItems.length}</span>View */}
+                      <span className="add_cart">
+                        {[...cartItems, ...viewItems].length}
+                      </span>
+                      View Cart
                     </span>
                   </p>
                 </div>

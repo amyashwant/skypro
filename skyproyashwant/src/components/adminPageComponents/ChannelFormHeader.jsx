@@ -36,6 +36,7 @@ const ChannelFormPage = () => {
   const [modal, setModal] = useState("");
   const [error, setError] = useState(null);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [viewChannelData, setViewChannelData] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -212,8 +213,9 @@ const ChannelFormPage = () => {
         },
       };
       const data = await axios.get("/api/package/language", config);
-
       setLanguageData(data);
+      const viewData = await axios.get("/api/package/channel");
+      setViewChannelData(viewData?.data);
     } catch (error) {
       console.log(error);
     }
@@ -276,22 +278,23 @@ const ChannelFormPage = () => {
   ]);
 
   return (
-    <PortalHeader>
-      <ToastContainer />
-      <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
-        <div className="mb-3">
-          <label className="form-label">Channel Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ color: "red" }}>{error && error}</div>
+    <>
+      <PortalHeader>
+        <ToastContainer />
+        <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
+          <div className="mb-3">
+            <label className="form-label">Channel Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div style={{ color: "red" }}>{error && error}</div>
 
-        {/* <div className="mb-3">
+          {/* <div className="mb-3">
           <label className="form-label">Channel Price: (If Ala Carte):</label>
           <input
             type="text"
@@ -302,103 +305,115 @@ const ChannelFormPage = () => {
           />
         </div> */}
 
-        <div>
-          <FormControl sx={{ m: 1, width: 600 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              // multiple
-              value={channelName}
-              onChange={handleChannelChange}
-              // onChange={handleChange}
-              input={<OutlinedInput label="Language" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {channelType?.data
-                ?.map((item) => item.name)
-                ?.map((language) => (
-                  <MenuItem key={language} value={language}>
-                    <Checkbox checked={channelName.indexOf(language) > -1} />
-                    <ListItemText primary={language} />
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        </div>
+          <div>
+            <FormControl sx={{ m: 1, width: 600 }}>
+              <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                // multiple
+                value={channelName}
+                onChange={handleChannelChange}
+                // onChange={handleChange}
+                input={<OutlinedInput label="Language" />}
+                renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {channelType?.data
+                  ?.map((item) => item.name)
+                  ?.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox checked={channelName.indexOf(language) > -1} />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+          </div>
 
-        <div>
-          <FormControl sx={{ m: 1, width: 600 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Language</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              // multiple
-              value={languageName}
-              onChange={handleLanguageChange}
-              // onChange={handleChange}
-              input={<OutlinedInput label="Language" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {languageData?.data
-                ?.map((item) => item.name)
-                ?.map((language) => (
-                  <MenuItem key={language} value={language}>
-                    <Checkbox checked={languageName.indexOf(language) > -1} />
-                    <ListItemText primary={language} />
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div>
-          <FormControl sx={{ m: 1, width: 600 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              // multiple
-              value={categoryName}
-              onChange={handleCategoryChange}
-              // onChange={handleChange}
-              input={<OutlinedInput label="Language" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {categoryData?.data
-                ?.map((item) => item.name)
-                ?.map((language) => (
-                  <MenuItem key={language} value={language}>
-                    <Checkbox checked={categoryName.indexOf(language) > -1} />
-                    <ListItemText primary={language} />
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        </div>
+          <div>
+            <FormControl sx={{ m: 1, width: 600 }}>
+              <InputLabel id="demo-multiple-checkbox-label">
+                Language
+              </InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                // multiple
+                value={languageName}
+                onChange={handleLanguageChange}
+                // onChange={handleChange}
+                input={<OutlinedInput label="Language" />}
+                renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {languageData?.data
+                  ?.map((item) => item.name)
+                  ?.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox checked={languageName.indexOf(language) > -1} />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+          </div>
+          <div>
+            <FormControl sx={{ m: 1, width: 600 }}>
+              <InputLabel id="demo-multiple-checkbox-label">
+                Category
+              </InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                // multiple
+                value={categoryName}
+                onChange={handleCategoryChange}
+                // onChange={handleChange}
+                input={<OutlinedInput label="Language" />}
+                renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {categoryData?.data
+                  ?.map((item) => item.name)
+                  ?.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox checked={categoryName.indexOf(language) > -1} />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+          </div>
 
-        <div className="mb-3">
-          <label className="form-label">Channel Image:</label>
-          <input
-            type="file"
-            className="form-control"
-            name="image"
-            onChange={handleChange}
-          />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Channel Image:</label>
+            <input
+              type="file"
+              className="form-control"
+              name="image"
+              onChange={handleChange}
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary"
-          disabled={!isFormValid}
-        >
-          Submit
-        </button>
-        <div style={{ color: "green" }}>{modal && modal}</div>
-      </form>
-    </PortalHeader>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={!isFormValid}
+          >
+            Submit
+          </button>
+
+          <div style={{ color: "green" }}>{modal && modal}</div>
+        </form>
+        <div style={{marginLeft:"30px"}}>
+          <h3>Channels Aailable:</h3>
+          {viewChannelData.map((item) => (
+            <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
+          ))}
+        </div>
+      </PortalHeader>
+    </>
   );
 };
 

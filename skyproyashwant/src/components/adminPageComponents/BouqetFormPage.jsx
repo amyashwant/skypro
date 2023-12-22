@@ -33,6 +33,7 @@ const BouqetFormPage = () => {
   const [broadcasterData, setBroadcasterData] = useState([]);
   const [broadcasterName, setBroadcasterName] = useState([]);
   const [broadcasterId, setBroadcasterId] = useState([]);
+  const [viewBouqueData, setViewBouqueData] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -90,6 +91,8 @@ const BouqetFormPage = () => {
 
     const data = await axios.get("/api/package/channel", config);
     setChannelData(data);
+    const viewData = await axios.get("/api/package/bouquet", config);
+    setViewBouqueData(viewData?.data);
   };
 
   const getBroadcasterFunc = async () => {
@@ -310,6 +313,12 @@ const BouqetFormPage = () => {
             Submit
           </button>
         </form>
+        <div style={{ marginLeft: "30px" }}>
+          <h3>Bouque Aailable:</h3>
+          {viewBouqueData.map((item) => (
+            <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
+          ))}
+        </div>
       </PortalHeader>
     </>
   );

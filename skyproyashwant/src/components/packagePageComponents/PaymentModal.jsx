@@ -7,29 +7,22 @@ import { Link } from "react-router-dom";
 
 const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [allTotal, setAllTotal] = useState(0);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   const cartItems = useSelector((state) => state.cart.items);
+  const viewCartItems = useSelector((state) => state.cart.viewItems);
   console.log("cartItems.items>?>", cartItems);
 
   console.log("cart in packages", cartItems);
-
-  // const checkout = async () => {
-  //   // await fetch("http://localhost:4000/checkout", {
-  //   //   method: "POST",
-  //   //   headers: {
-  //   //     "Content-Type": "application/json",
-  //   //   },
-  //   //   body: JSON.stringify({ items: cartItems.items }),
-  //   // })
-  //   //   .then((response) => {
-  //   //     return response.json();
-  //   //   })
-  //   //   .then((response) => {
-  //   //     if (response.url) {
-  //   //       window.location.assign(response.url); // Forwarding user to Stripe
-  //   //     }
-  //   //   });
-  // };
 
   const modalStyle = {
     position: "fixed",
@@ -53,18 +46,26 @@ const PaymentModal = ({ handleClose, show, children }) => {
     zIndex: 999,
   };
 
-  const calculateGST = (subtotal) => {
-    const gstRate = 0.18;
-    return subtotal * gstRate;
+  const getViewItemsPrice = () => {
+    const totalPrice = viewCartItems.reduce((acc, item) => {
+      return acc + parseFloat(item.price);
+    }, 0);
+
+    return totalPrice;
   };
 
-  const subtotal = cartItems[0]?.packagePrice || 0;
-  console.log(subtotal);
-  
+  const calculateGST = (subtotal) => {
+    const gstRate = 0.18;
+    return (subtotal + getViewItemsPrice()) * gstRate;
+  };
+
+  const subtotal = Math.floor(cartItems[0]?.packagePrice) || 0;
+  // console.log(subtotal);
+
   const gstAmount = calculateGST(subtotal);
-  console.log(gstAmount);
-  const total = subtotal + gstAmount;
-  console.log(total);
+  // console.log(gstAmount);
+  const total = subtotal + getViewItemsPrice() + gstAmount;
+  // console.log(total);
 
   return (
     <>
@@ -79,9 +80,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
               </div>
               <div className="product-box">
                 <div className="info-box">
-                  <p>
-                    {cartItems[0]?.name}
-                  </p>
+                  <p>{cartItems[0]?.name}</p>
                 </div>
               </div>
               <hr />
@@ -89,24 +88,45 @@ const PaymentModal = ({ handleClose, show, children }) => {
                 <div>
                   <p>
                     {cartItems[0]?.title ? cartItems[0]?.title : "your package"}
+                    {/* {cartItems[0]?.name ? cartItems[0]?.name : "your package"} */}
                   </p>
-                  <p>₹ {cartItems[0]?.packagePrice}</p>
+                  {cartItems[0]?<p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p>:"₹ 0"}
+                   {/* <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> */}
+                </div>
+                <div>
+                  {viewCartItems?.map((item) => {
+                    return (
+                      <>
+                        <p>{item?.name?.slice(0, 9)}</p>
+                        <p>{item?.price}</p>
+                      </>
+                    );
+                  })}
                 </div>
                 <div>
                   <p>GST (18%)</p>
-                  <p className="VAT">₹ {gstAmount}</p>
+                  <p className="VAT">₹ {gstAmount.toFixed(2)}</p>
                 </div>
                 <div>
                   <p>Total</p>
-                  <p className="NOK">₹ {total}</p>
+                  <p className="NOK">₹ {total.toFixed(2)}</p>
                 </div>
               </div>
               {/* <button className="checkout-btn" onClick={checkout}> */}
-                {/* <Link to="/payment"> */}
-                {/* Checkout */}
-                {/* </Link> */}
+              {/* <Link to="/payment"> */}
+              {/* Checkout */}
+              {/* </Link> */}
               {/* </button> */}
-              <button className="checkout-btn">
+              <button
+                className="checkout-btn"
+                style={{
+                  color: isHovered ? "white" : "#071e43",
+                  fontWeight: isHovered ? "" : "bold",
+                  backgroundColor: isHovered ? "#071e43" : "#fd7e14",
+                }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 {/* <Link to="/payment"> */}
                 Checkout
                 {/* </Link> */}

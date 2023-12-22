@@ -172,10 +172,7 @@ const PackageBouque = () => {
           "Content-type": "application/json",
         },
       };
-      console.log(
-        "price before sending API post totalPrice..............................",
-        totalPrice
-      );
+
       const { name } = formData;
       const firstData = await axios.post(
         "/api/package/pack",
@@ -317,37 +314,17 @@ const PackageBouque = () => {
     fetchBouquets();
   }, [selectedBroadcasters]);
 
-  // useEffect(() => {
-  //   const selectedBouquetPrices = bouqueData.data
-  //     ?.filter((item) => bouqueName.includes(item.name))
-  //     ?.map((item) => Number(item.price));
-
-  //   const totalPrice = selectedBouquetPrices?.reduce(
-  //     (acc, price) => acc + price,
-  //     0
-  //   );
-  //   setTotalPrice(totalPrice);
-  // }, [bouqueName, bouqueData]);
-
   useEffect(() => {
-    const calculateTotalPrice = () => {
-      const selectedBouquetPrices = bouqueData.data
-        ?.filter((item) => bouqueName.includes(item.name))
-        ?.map((item) => Number(item.price));
+    const selectedBouquetPrices = bouqueData.data
+      ?.filter((item) => bouqueName.includes(item.name))
+      ?.map((item) => Number(item.price));
 
-      const totalPriceWithoutAdditionalCharges = selectedBouquetPrices?.reduce(
-        (acc, price) => acc + price,
-        0
-      );
-
-      const totalPrices =
-        totalPriceWithoutAdditionalCharges + networkCarriageFee - discount;
-
-      setTotalPrice(totalPrices);
-    };
-
-    calculateTotalPrice();
-  }, [bouqueName, bouqueData, networkCarriageFee, discount]);
+    const totalPrice = selectedBouquetPrices?.reduce(
+      (acc, price) => acc + price,
+      0
+    );
+    setTotalPrice(totalPrice);
+  }, [bouqueName, bouqueData]);
 
   return (
     <PortalHeader>

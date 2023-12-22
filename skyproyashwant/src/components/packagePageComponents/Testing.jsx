@@ -1,3 +1,41 @@
+<div className="accordion-body">
+<div className="accordion-innerDiv">
+  <strong>Bouquets:</strong>
+  {accordionItem.bouqueData.map((bouquet, index) => (
+    <span
+      key={index}
+      style={{
+        color: "black",
+        fontSize: "20px",
+        marginRight: "10px",
+      }}
+    >
+      &nbsp; {bouquet.bouqueRef.name},
+    </span>
+  ))}
+</div>
+{/* <ul className="accordion-channelList"> */}
+{accordionItem.bouqueData.map((item) => (
+  <li key={item._id}>
+    {/* <img src={item.channleImage} alt={item.label} /> */}
+    <span>
+      {item.channelRefs.map((channel) => (
+        <span
+          style={{ color: "black", marginRight: "10px" }}
+        >
+          {channel.name}
+        </span>
+      ))}
+    </span>
+  </li>
+))}
+{/* </ul> */}
+</div>
+
+
+
+
+
 //-----------------------------------------------------------------------------------------------------
 // import React, { useEffect, useState } from "react";
 // import imgOne from "../../assets/images/packageNew/aljazeera.png";
