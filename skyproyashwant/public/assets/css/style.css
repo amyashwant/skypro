@@ -7150,8 +7150,7 @@ a.downloadbtn {
 .your-shoping-cart {
   padding: 40px;
   background-color: #f3f5f7;
-  max-width: 440px;
-  width: 95%;
+
 }
 .your-shoping-cart .title-box > h1 {
   font-size: 32px;
@@ -7327,18 +7326,29 @@ form.cust-formdiv label {
 }
 .your-shoping-cart {
   position: relative;
+  width: 450px;
 }
-
+.your-shoping-cart button.checkout-btn {
+  padding: 12px 10px;
+  font-size: 16px;
+  color: #fff !important;
+}
+.faq-question button.accordion-button:focus {
+  box-shadow: none;
+}
+.brand.brand-logo-img img{
+  width: 178px !important;
+} 
 .your-shoping-cart .close-icon {
   background: #071e43;
   border-radius: 50%;
   color: #fff;
-  font-weight: bold;
   height: 30px;
-  width: 32px;
+  width: 30px;
   position: absolute;
-  left: 90%;
-  top: 2%;
+  top: 0%;
+  font-size: 20px;
+  left: 93%;
 }
 
 /* admin page css */

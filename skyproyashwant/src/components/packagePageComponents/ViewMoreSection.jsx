@@ -235,7 +235,7 @@ const ViewMoreSection = () => {
                                   bouquet?.bouqueRef?.name
                                 )}
                               >
-                                {disableBouqueArray.includes(
+                                {/* {disableBouqueArray.includes(
                                   bouquet?.bouqueRef?.name
                                 ) ? (
                                   <span style={{ color: "lightgreen" }}>
@@ -243,7 +243,7 @@ const ViewMoreSection = () => {
                                   </span>
                                 ) : (
                                   "Select"
-                                )}
+                                )} */}
                               </button>
                             </span>
                           </div>

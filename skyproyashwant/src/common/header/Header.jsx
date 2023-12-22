@@ -73,9 +73,9 @@ const Header = () => {
                         Login
                       </Link>
                     </li>
-                    <li>/</li>
+                    {/* <li>/</li> */}
                     <li>
-                      <Link to="/register">Register</Link>
+                      {/* <Link to="/register">Register</Link> */}
                     </li>
                   </>
                 )}

@@ -16,14 +16,14 @@ const About = () => {
         <img src={aboutTwo} alt="img" />
       </div>
       <div className="container">
-        <div className="row gy-5 display-flex align-items-center">
+        <div className="row gy-5">
           <div className="col-lg-6">
           <div className="about-left">
         <div className="home-two-about-thumb">
           {/* Display the iframe for the video */}
           <iframe
-            width="600"
-            height="400"
+            width="650"
+            height="450"
             src={videoUrl}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

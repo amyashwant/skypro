@@ -34,6 +34,8 @@ import CategoryFormPage from "../components/adminPageComponents/CategoryFormPage
 import ViewMoreSection from "../components/packagePageComponents/ViewMoreSection";
 import ViewMorePackage from "../screens/ViewMorePackage";
 import CancelationPage from "../screens/Cancelation";
+import Register from "../components/adminPageComponents/adminAuthentication/Register";
+import Login from "../components/adminPageComponents/adminAuthentication/Login";
 
 // import Checkout from "../components/packagePageComponents/CheckoutForm";
 const AppLayout = () => {
@@ -84,6 +86,8 @@ const AppLayout = () => {
             <Route path="/cancel" element={<CancelPage />} />
             <Route path="/packages/:packageId" element={<ViewMorePackage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/adminsignup" element={<Register />} />
+            {/* <Route path="/adminlogin" element={<Login />} /> */}
             <Route
               path="/admin/settings/broadcasters"
               element={<BroadcasterFormPage />}

@@ -70,13 +70,13 @@ const PaymentModal = ({ handleClose, show, children }) => {
   return (
     <>
       <div>
-        <div style={overlayStyle} onClick={handleClose}></div>
+        <div style={overlayStyle} ></div>
         <div style={modalStyle}>
           <div className="your-shoping-cart">
             <div className="container">
               <div className="title-box">
                 <h1>Your Package Cart</h1>
-                <span className="close-icon">x</span>
+                <span className="close-icon" onClick={handleClose}>x</span>
               </div>
               <div className="product-box">
                 <div className="info-box">
@@ -90,8 +90,12 @@ const PaymentModal = ({ handleClose, show, children }) => {
                     {cartItems[0]?.title ? cartItems[0]?.title : "your package"}
                     {/* {cartItems[0]?.name ? cartItems[0]?.name : "your package"} */}
                   </p>
-                  {cartItems[0]?<p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p>:"₹ 0"}
-                   {/* <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> */}
+                  {cartItems[0] ? (
+                    <p>₹ {Math.floor(cartItems[0]?.packagePrice)}.00</p>
+                  ) : (
+                    "₹ 0"
+                  )}
+                  {/* <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> */}
                 </div>
                 <div>
                   {viewCartItems?.map((item) => {

@@ -235,7 +235,8 @@ const PackageMainPage = () => {
                               <div className="deal-top">
                                 <h3>{pricing.name}</h3>
                                 <h4>
-                                ₹ {Math.floor(Number(pricing.packagePrice))}.00
+                                  ₹ {Math.floor(Number(pricing.packagePrice))}
+                                  .00
                                   <span>-/mo</span>
                                   {/* <span>₹ 138</span> */}
                                 </h4>
@@ -292,7 +293,7 @@ const PackageMainPage = () => {
     </div>
   );
 };
-
+export default PackageMainPage;
 const languages = ["Hindi", "Punjabi", "Marathi", "Oriya"];
 
 // bouquet: price_1OKcfxSBYt5a6mPeuFEF0QBc
@@ -467,8 +468,6 @@ const broadcaster = [
     language: "hindi",
   },
 ];
-
-export default PackageMainPage;
 
 // // package Data-
 // [

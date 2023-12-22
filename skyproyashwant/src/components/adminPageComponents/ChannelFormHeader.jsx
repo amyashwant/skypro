@@ -406,7 +406,7 @@ const ChannelFormPage = () => {
 
           <div style={{ color: "green" }}>{modal && modal}</div>
         </form>
-        <div style={{marginLeft:"30px"}}>
+        <div style={{ marginLeft: "30px" }}>
           <h3>Channels Aailable:</h3>
           {viewChannelData.map((item) => (
             <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
