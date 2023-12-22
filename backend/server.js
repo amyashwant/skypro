@@ -25,6 +25,9 @@ app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/checkout", orderRoutes)
+app.use("/api/getkeys", (req,res) => {
+  res.status(200).json({ key: process.env.RAJORPAY_KEY_ID})
+})
 
 //error handeling mechanism
 // app.use(notFound);
