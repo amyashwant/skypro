@@ -4,6 +4,8 @@ import MultiForm from "./multiform/MultiForm";
 import SecondModal from "./SecondModal";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
@@ -133,7 +135,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
               >
                 {/* <Link to="/payment"> */}
                 Checkout
-                {/* </Link> */}
+                {/* {/ </Link> /} */}
               </button>
             </div>
           </div>

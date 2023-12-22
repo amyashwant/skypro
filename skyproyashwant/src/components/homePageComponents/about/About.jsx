@@ -4,7 +4,6 @@ import aboutTwo from "../../../assets/images/home-02/about/about-right-bg.png";
 import aboutThree from "../../../assets/images/home-02/about/about-01.png";
 import aboutFour from "../../../assets/images/home-02/about/about-02.png";
 import { Link } from "react-router-dom";
-import VideoPlayer from "../videoPlayer/VideoPlayer";
 
 const About = () => {
   const videoUrl = "https://www.youtube.com/embed/-c345tCaU8w";
@@ -20,10 +19,14 @@ const About = () => {
           <div className="col-lg-6">
           <div className="about-left">
         <div className="home-two-about-thumb">
-          {/* Display the iframe for the video */}
           <iframe
+<<<<<<< HEAD
             width="650"
             height="450"
+=======
+            width='100%'
+            height="400"
+>>>>>>> staging
             src={videoUrl}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -46,7 +49,9 @@ const About = () => {
                       phone services to residential and business customers. We
                       are committed to providing our customers with the best
                       possible experience, and we offer a variety of plans and
-                      services to meet their needs.
+                      services to meet their needs.Our mission is to provide 
+                      our customers with the best possible internet, TV, and 
+                      phone services.
                     </p>
                     {/* <p className="para mt-lg-4 mt-3">
                       Our mission is to provide our customers with the best

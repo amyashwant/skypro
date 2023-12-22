@@ -7,6 +7,7 @@ const chats = require("./data/data");
 const colors = require("colors");
 const cookieparser = require("cookie-parser");
 require("dotenv").config();
+const crypto = require("crypto")
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
@@ -15,6 +16,7 @@ const userChats = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const packageRoutes = require("./routes/packagesRoutes");
 const contactRoutes = require("./routes/contactRoutes")
+const orderRoutes = require("./routes/orderRoutes")
 //middlewares
 app.use(express.json());
 app.use("/api/user", userRoutes);
@@ -22,6 +24,10 @@ app.use("/api/chat", userChats);
 app.use("/api/message", messageRoutes);
 app.use("/api/package", packageRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/checkout", orderRoutes)
+app.use("/api/getkeys", (req,res) => {
+  res.status(200).json({ key: process.env.RAJORPAY_KEY_ID})
+})
 
 //error handeling mechanism
 // app.use(notFound);

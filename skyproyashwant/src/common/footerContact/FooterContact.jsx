@@ -2,7 +2,6 @@ import React from "react";
 import footerOne from "../../assets/images/home-01/footer_contact/location.png";
 import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
 import footerThree from "../../assets/images/home-01/footer_contact/phone.png";
-import { Link } from "react-router-dom";
 const FooterContact = () => {
 
   const phone = '+919803596035';

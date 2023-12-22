@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import bottomImg from "../../assets/images/home-01/logo/Skypro_New_Logo.png";
-import headerLogo from "../../assets/images/home-01/logo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
-import ToggleHeader from "./ToggleHeader";
 import AccountContext from "../../utils/AccountContext";
 const Header = () => {
   const { login, setLogin, setUserData } = useContext(AccountContext);

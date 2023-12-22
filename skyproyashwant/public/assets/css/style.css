@@ -7980,19 +7980,71 @@ section.Accordion-Div ul.accordion-channelList li span {
 }
 
 /* faq classes */
-.faq-question button.accordion-button {
-  background-color: #fff;
-  color: #141414;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Roboto", sans-serif;
-  padding: 25px 20px 15px;
+/* Add this CSS to your stylesheet */
+
+/* FAQ section */
+.faq-accordion {
+  position: relative;
+  overflow: hidden;
 }
 
-.accordion-collapse {
-  transition: height 0.3s ease-in-out;
+.faq-accordian .container {
+  position: relative;
+} 
+
+/* Package header */
+.faq-accordion .package-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 30px;
+} 
+
+.faq-accordion .accordion-item {
+  margin-bottom: 20px;
 }
 
-.accordion-button.collapsed {
+.faq-accordion .accordion-button {
   background-color: #fff;
+  color: #333;
+  font-weight: 600;
+  padding: 15px;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+.faq-accordion .accordion-button:hover {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.faq-accordion .accordion-body {
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+/* Toggle animation on accordion open/close */
+.faq-accordion .accordion-button.collapsed {
+  background-color: #fff;
+  color: #333;
+}
+
+.faq-accordion .accordion-button.collapsed:hover {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.faq-accordion .accordion-body.collapse {
+  display: none;
+}
+
+.faq-accordion .accordion-body.show {
+  display: block;
+}
+
