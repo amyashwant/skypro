@@ -82,7 +82,7 @@ const AppLayout = () => {
             <Route path="/payment" element={<MultiForm />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
-            <Route path="/viewmorepackage" element={<ViewMorePackage/>}/>
+            <Route path="/packages/:packageId" element={<ViewMorePackage/>}/>
             <Route path="/admin" element={<AdminPage />} />
             <Route
               path="/admin/settings/broadcasters"
