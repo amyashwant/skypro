@@ -89,9 +89,15 @@ const PaymentModal = ({ handleClose, show, children }) => {
         },
         { headers: { "Content-Type": "application/json" } }
       );
-
+      
       const order = await response.data;
       console.log(order);
+
+      const user = {
+        name: "John Doe", // Replace with the user's name
+        email: "john.doe@example.com", // Replace with the user's email
+        contact: "0000000000", // Replace with the user's contact number
+      };
 
       const options = {
         key: "rzp_test_EC1xn57ne3LN2r", // Replace with your Razorpay key
@@ -122,11 +128,12 @@ const PaymentModal = ({ handleClose, show, children }) => {
             console.error("Error during validation:", error);
           }
         },
-        prefill: {
-          name: "customer", // your customer's name
-          email: "customers@example.com",
-          contact: "0000000000",
-        },
+        prefill: user,
+        // prefill: {
+        //   name: "customer", // your customer's name
+        //   email: "customers@example.com",
+        //   contact: "0000000000",
+        // },
         notes: {
           address: "Razorpay Corporate Office",
         },
@@ -137,6 +144,15 @@ const PaymentModal = ({ handleClose, show, children }) => {
 
       // Corrected line: Remove the misplaced "var" keyword
       const rzp1 = new window.Razorpay(options);
+
+      rzp1.on("payment.success", function (response) {
+        // Handle the successful payment here
+        console.log("Payment successful:", response);
+  
+        // Add the redirect logic here
+        window.location.href = 'http://localhost:3000';
+      });
+  
 
       rzp1.on("payment.failed", function (response) {
         alert(response.error.code);
@@ -150,6 +166,8 @@ const PaymentModal = ({ handleClose, show, children }) => {
 
       rzp1.open();
       e.preventDefault();
+
+     
     } catch (error) {
       console.error("Error doing payment:", error);
       toast.error("Error doing payment. Please try again later.");

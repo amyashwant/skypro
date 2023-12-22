@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import footerOne from "../../assets/images/home-01/logo/footer-logo.png";
 import logo from "../../assets/images/home-01/logo/white-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
