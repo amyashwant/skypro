@@ -2,13 +2,13 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import brandOne from "../../../assets/images/home-01/brand/footer-logo-01.png";
-import brandTwo from "../../../assets/images/home-01/brand/footer-logo-02.png";
-import brandThree from "../../../assets/images/home-01/brand/footer-logo-03.png";
-import brandFour from "../../../assets/images/home-01/brand/footer-logo-04 (1).png";
-import brandFive from "../../../assets/images/home-01/brand/footer-logo-04.png";
-import brandSix from "../../../assets/images/home-01/brand/footer-logo-05.png";
-import brandSeven from "../../../assets/images/home-01/brand/footer-logo-06.png";
+import brandOne from "../../../assets/images/home-01/brand/logo1.png";
+import brandTwo from "../../../assets/images/home-01/brand/logo2.png";
+import brandThree from "../../../assets/images/home-01/brand/logo3.png";
+import brandFour from "../../../assets/images/home-01/brand/logo4.png";
+import brandFive from "../../../assets/images/home-01/brand/logo7.jpg";
+import brandSix from "../../../assets/images/home-01/brand/logo5.jpg";
+import brandSeven from "../../../assets/images/home-01/brand/logo6.png";
 
 const BrandPage = () => {
 

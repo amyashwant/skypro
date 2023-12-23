@@ -43,11 +43,7 @@ const PaymentSection = () => {
                   </span>
                   <p>
                     <span>
-<<<<<<< HEAD
-                      {/* <span className="add_cart">{cartItems.length}</span>View */}
-=======
                       {/* {/ <span className="add_cart">{cartItems.length}</span>View /} */}
->>>>>>> staging
                       <span className="add_cart">
                         {[...cartItems, ...viewItems].length}
                       </span>
