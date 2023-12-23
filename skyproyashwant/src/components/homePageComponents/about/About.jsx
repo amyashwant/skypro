@@ -20,13 +20,8 @@ const About = () => {
           <div className="about-left">
         <div className="home-two-about-thumb">
           <iframe
-<<<<<<< HEAD
-            width="650"
-            height="450"
-=======
             width='100%'
             height="400"
->>>>>>> staging
             src={videoUrl}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

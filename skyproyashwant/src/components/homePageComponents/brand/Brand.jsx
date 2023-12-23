@@ -3,12 +3,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import brandOne from "../../../assets/images/home-01/brand/logo1.png";
-import brandTwo from "../../../assets/images/home-01/brand/logo3.png";
+import brandTwo from "../../../assets/images/home-01/brand/logo2.png";
 import brandThree from "../../../assets/images/home-01/brand/logo3.png";
 import brandFour from "../../../assets/images/home-01/brand/logo4.png";
-import brandFive from "../../../assets/images/home-01/brand/logo1.png";
-import brandSix from "../../../assets/images/home-01/brand/logo4.png";
-import brandSeven from "../../../assets/images/home-01/brand/logo3.png";
+import brandFive from "../../../assets/images/home-01/brand/logo5.jpg";
+import brandSix from "../../../assets/images/home-01/brand/logo6.png";
+import brandSeven from "../../../assets/images/home-01/brand/logo7.jpg";
 
 const Brand = () => {
   const slickSettings = {
