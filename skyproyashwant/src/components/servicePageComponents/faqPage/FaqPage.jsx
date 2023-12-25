@@ -55,7 +55,7 @@ const FaqPage = () => {
     // </section>
     <section
     className="faq-accordion py-100 bg-img overlay-bg"
-    style={{ backgroundImage: `url(${faqOne})` }}>
+    style={{ backgroundSize: '100%', backgroundImage: `url(${faqOne})` }}>
     <div className="container">
       <div className="row justify-content-end">
         <div className="col-lg-6">

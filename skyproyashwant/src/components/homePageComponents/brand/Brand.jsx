@@ -2,13 +2,13 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import brandOne from "../../../assets/images/home-01/brand/logo1.png";
+import brandOne from "../../../assets/images/home-01/brand/logo2.png";
 import brandTwo from "../../../assets/images/home-01/brand/logo2.png";
-import brandThree from "../../../assets/images/home-01/brand/logo3.png";
-import brandFour from "../../../assets/images/home-01/brand/logo4.png";
-import brandFive from "../../../assets/images/home-01/brand/logo5.jpg";
-import brandSix from "../../../assets/images/home-01/brand/logo6.png";
-import brandSeven from "../../../assets/images/home-01/brand/logo7.jpg";
+import brandThree from "../../../assets/images/home-01/brand/logo2.png";
+import brandFour from "../../../assets/images/home-01/brand/logo2.png";
+import brandFive from "../../../assets/images/home-01/brand/logo2.png";
+import brandSix from "../../../assets/images/home-01/brand/logo2.png";
+import brandSeven from "../../../assets/images/home-01/brand/logo2.png";
 
 const Brand = () => {
   const slickSettings = {
@@ -48,7 +48,7 @@ const Brand = () => {
   };
 
   return (
-    <div className="brand brand-logo-img pt-100 pb-50">
+    <div className="brand brand-logo-img pt-25 pb-25">
       <div className="container">
         <Slider {...slickSettings}>
           <img src={brandOne} alt="img" className="px-2"/>

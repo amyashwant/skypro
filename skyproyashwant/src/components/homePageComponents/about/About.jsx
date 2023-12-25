@@ -21,7 +21,7 @@ const About = () => {
         <div className="home-two-about-thumb">
           <iframe
             width='100%'
-            height="400"
+            height="420"
             src={videoUrl}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
