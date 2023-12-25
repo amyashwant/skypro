@@ -3710,7 +3710,6 @@ a.btn--base.div-01-contact {
 }
 
 .about-right-content .para {
-  max-width: 370px;
   margin-top: -8px;
 }
 
@@ -4539,7 +4538,6 @@ svg.radial-progress circle {
 
 .testimonail-wrapper {
   background-color: #fff;
-  padding: 80px 30px 0px;
 }
 
 @media (max-width: 1199px) {
@@ -4642,22 +4640,6 @@ svg.radial-progress circle {
   border-radius: 40px;
 }
 
-.testimonial-item .background-img {
-  background-color: #071e43;
-  width: 100%;
-  height: 100%;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  z-index: -1;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: 0.7s ease-in-out;
-  transition: 0.7s ease-in-out;
-}
-
 .testimonial-item:hover .background-img {
   visibility: visible;
   opacity: 1;
@@ -4677,13 +4659,13 @@ svg.radial-progress circle {
 }
 
 .testimonial-item .content .para {
-  line-height: 2;
   margin-bottom: 20px;
   letter-spacing: 1px;
   max-width: 265px;
   color: #071e43;
   font-size: 16px;
   font-weight: 500;
+  line-height: 26px;
 }
 
 @media (max-width: 575px) {
@@ -4928,9 +4910,13 @@ footer.footer-area.bg-img .container.py-100 {
   padding: 52px 0px;
 }
 .footer-contact-item .icon {
-  position: relative;
-  z-index: 1;
   width: 70px;
+}
+.footer-contact-item .icon img {
+  background: #071e43;
+  width: 48px;
+  padding: 9px;
+  border-radius: 10px;
 }
 
 @media (max-width: 991px) {
@@ -4981,11 +4967,6 @@ footer.footer-area.bg-img .container.py-100 {
     padding: 80px 0;
   }
 }
-
-.footer-contact-item .icon img {
-  width: 40px;
-}
-
 @media (max-width: 767px) {
   .footer-contact-item .icon img {
     width: 35px;
@@ -4996,16 +4977,6 @@ footer.footer-area.bg-img .container.py-100 {
   .footer-contact-item .icon img {
     width: 30px;
   }
-}
-
-.footer-contact-item .icon::before {
-  position: absolute;
-  content: "";
-  width: 50px;
-  height: 50px;
-  background-color: #071e43;
-  border-radius: 50%;
-  z-index: -1;
 }
 
 .footer-contact-item .content {
@@ -5277,7 +5248,7 @@ footer.footer-area.bg-img .container.py-100 {
 }
 
 .home-two-about .section-header.style-two .title {
-  margin-bottom: 32px;
+  margin-bottom: 10px;
   margin-left: 0;
 }
 
@@ -7997,23 +7968,20 @@ section.Accordion-Div ul.accordion-channelList li span {
   font-size: 36px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 30px;
 } 
 
 .faq-accordion .accordion-item {
   margin-bottom: 20px;
 }
-
 .faq-accordion .accordion-button {
   background-color: #fff;
   color: #333;
-  font-weight: 600;
-  padding: 15px;
   text-align: left;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  font-family: math;
+  font-size: 22px;
 }
 
 .faq-accordion .accordion-button:hover {
@@ -8022,13 +7990,14 @@ section.Accordion-Div ul.accordion-channelList li span {
 }
 
 .faq-accordion .accordion-body {
-  padding: 15px;
+  padding: 20px;
   background-color: #f4f4f4;
-  border-radius: 5px;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+  border-radius: 0px;
 }
-
+.faq-accordion .accordion-body p {
+  font-size: 18px;
+  font-weight: 400;
+}
 /* Toggle animation on accordion open/close */
 .faq-accordion .accordion-button.collapsed {
   background-color: #fff;
@@ -8048,3 +8017,6 @@ section.Accordion-Div ul.accordion-channelList li span {
   display: block;
 }
 
+.footprint-left a.phone:hover {
+  color: #071e43 !important;
+}
