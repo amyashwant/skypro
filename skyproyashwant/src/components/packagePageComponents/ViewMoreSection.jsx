@@ -170,7 +170,7 @@ const ViewMoreSection = () => {
                     aria-expanded="true"
                     aria-controls={`panelsStayOpen-collapse${accordionItem._id}`}
                   >
-                    {accordionItem.broadcasterRef.name}
+                    <strong>Broadcaster:</strong> &nbsp;{accordionItem.broadcasterRef.name}
                   </button>
                 </h2>
                 <div
@@ -321,7 +321,7 @@ const ViewMoreSection = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> 
         </div>
       </section>
     </>
