@@ -258,8 +258,8 @@ const PackageMainPage = () => {
                                 <div className="btn-area">
                                   <Link
                                     // to={`/packages/${pricing.name.replaceAll(" ","-")}`}
-                                    to={`/packages/${pricing._id}`}
-                                    // to={`/${pricing._id}`}
+                                    // to={`/packages/${pricing._id}`}
+                                    to={`/${pricing._id}`}
                                     // onClick={handleViewClick(pricing)}
                                     onClick={() => handleViewClick(pricing)}
                                   >

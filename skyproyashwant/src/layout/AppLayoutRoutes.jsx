@@ -122,14 +122,14 @@ const AppLayoutRoutes = () => {
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/cancel" element={<CancelPage />} />
                 {/* <Route path="/packages123" element={<PaymentTest />} /> */}
-                <Route
+                {/* <Route
                   path="/packages/:packageId"
                   element={<ViewMorePackage />}
-                />
-                {/* <Route
+                /> */}
+                <Route
                   path="/:packageId"
                   element={<ViewMorePackage />}
-                /> */}
+                />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/adminsignup" element={<Register />} />
                 {/* <Route path="/adminlogin" element={<Login />} /> */}
