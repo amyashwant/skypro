@@ -121,7 +121,7 @@ const Header = () => {
                 <li className="nav-item d-block d-lg-none"></li>
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link"
+                    className="nav-link active"
                     to="/"
                     role="button"
                     aria-expanded="false"
