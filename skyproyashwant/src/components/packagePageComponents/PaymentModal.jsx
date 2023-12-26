@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
 const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -20,6 +19,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
   };
   const cartItems = useSelector((state) => state.cart.items);
   const viewCartItems = useSelector((state) => state.cart.viewItems);
+
   console.log("cartItems.items>?>", cartItems);
   console.log("cart in packages", cartItems);
   const modalStyle = {
@@ -66,7 +66,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
     // console.log(key)
     console.log("hello rohit", amount, currency, receiptId);
     try {
-      console.log("amount>>>>>",amount)
+      console.log("amount>>>>>", amount);
       const response = await axios.post(
         "/api/checkout",
         {
@@ -77,7 +77,6 @@ const PaymentModal = ({ handleClose, show, children }) => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      
       const order = await response.data;
       console.log(order);
 
@@ -109,7 +108,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
               }
             );
             const validateresponse = validateRes.data;
-            console.log(validateresponse,"validate response");
+            console.log(validateresponse, "validate response");
           } catch (error) {
             console.error("Error during validation:", error);
           }
@@ -130,9 +129,6 @@ const PaymentModal = ({ handleClose, show, children }) => {
       // Corrected line: Remove the misplaced "var" keyword
       const rzp1 = new window.Razorpay(options);
 
-      
-
-
       rzp1.on("payment.failed", function (response) {
         alert(response.error.code);
         alert(response.error.description);
@@ -150,12 +146,9 @@ const PaymentModal = ({ handleClose, show, children }) => {
         console.log("Payment successful:", response);
 
         // Add the redirect logic here
-        window.location.href = 'http://localhost:3000';
+        window.location.href = "http://localhost:3000";
       });
       e.preventDefault();
-
-
-
     } catch (error) {
       console.error("Error doing payment:", error);
       toast.error("Error doing payment. Please try again later.");
@@ -164,13 +157,15 @@ const PaymentModal = ({ handleClose, show, children }) => {
   return (
     <>
       <div>
-        <div style={overlayStyle} onClick={handleClose}></div>
+        <div style={overlayStyle}></div>
         <div style={modalStyle}>
           <div className="your-shoping-cart">
             <div className="container">
               <div className="title-box">
                 <h1>Your Package Cart</h1>
-                <span className="close-icon">x</span>
+                <span className="close-icon" onClick={handleClose}>
+                  x
+                </span>
               </div>
               <div className="product-box">
                 <div className="info-box">
@@ -184,8 +179,12 @@ const PaymentModal = ({ handleClose, show, children }) => {
                     {cartItems[0]?.title ? cartItems[0]?.title : "your package"}
                     {/* {/ {cartItems[0]?.name ? cartItems[0]?.name : "your package"} /} */}
                   </p>
-                  {cartItems[0]?<p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p>:"₹ 0"}
-                   {/* {/ <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> /} */}
+                  {cartItems[0] ? (
+                    <p>₹ {Math.floor(cartItems[0]?.packagePrice)}.00</p>
+                  ) : (
+                    "₹ 0"
+                  )}
+                  {/* {/ <p>₹ { Math.floor(cartItems[0]?.packagePrice)}.00</p> /} */}
                 </div>
                 <div>
                   {viewCartItems?.map((item) => {
@@ -222,14 +221,23 @@ const PaymentModal = ({ handleClose, show, children }) => {
                 onMouseLeave={handleMouseLeave}
                 onClick={handleCheckout}
               > */}
-              <button className="checkout-btn" style={{
+              <button
+                className="checkout-btn"
+                style={{
                   color: isHovered ? "white" : "#071e43",
                   fontWeight: isHovered ? "" : "bold",
-                  backgroundColor: isHovered ? "#071e43" : "#fd7e14",
+                  // backgroundColor: isHovered ? "#071e43" : "#fd7e14",
+                  backgroundColor:
+                    cartItems.length === 0 && viewCartItems.length === 0
+                      ? "#000"
+                      : "#fd7e14",
                 }}
-                onClick={handleCheckout}>
+                onClick={handleCheckout}
+                disabled={cartItems.length === 0 && viewCartItems.length === 0}
+              >
                 {/* {/ <Link to="/payment"> /} */}
-                Checkout
+                {cartItems.length === 0 && viewCartItems.length === 0 ?"Nothing To Checkout" : "Checkout"}
+                {/* Checkout */}
                 {/* {/ </Link> /} */}
               </button>
             </div>

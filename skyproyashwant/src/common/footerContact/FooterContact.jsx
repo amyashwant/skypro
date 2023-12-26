@@ -2,6 +2,7 @@ import React from "react";
 import footerOne from "../../assets/images/home-01/footer_contact/location.png";
 import footerTwo from "../../assets/images/home-01/footer_contact/message.png";
 import footerThree from "../../assets/images/home-01/footer_contact/phone.png";
+import { Link } from "react-router-dom";
 const FooterContact = () => {
 
   const phone = '+919803596035';
@@ -45,7 +46,7 @@ const FooterContact = () => {
               <div className="content">
                 <h6 className="title">SEND US A MESSAGE</h6>
                 <p className="para">
-                <a href={mailtoLink} onClick={openMail}>info@skypro.co.in</a>
+                <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
                 </p>
 
                 <p className="para">

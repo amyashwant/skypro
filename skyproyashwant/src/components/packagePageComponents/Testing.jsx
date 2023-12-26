@@ -1,4 +1,4 @@
-<div className="accordion-body">
+{/* <div className="accordion-body">
 <div className="accordion-innerDiv">
   <strong>Bouquets:</strong>
   {accordionItem.bouqueData.map((bouquet, index) => (
@@ -15,22 +15,22 @@
   ))}
 </div>
 {/* <ul className="accordion-channelList"> */}
-{accordionItem.bouqueData.map((item) => (
-  <li key={item._id}>
-    {/* <img src={item.channleImage} alt={item.label} /> */}
-    <span>
-      {item.channelRefs.map((channel) => (
-        <span
-          style={{ color: "black", marginRight: "10px" }}
-        >
-          {channel.name}
-        </span>
-      ))}
-    </span>
-  </li>
-))}
-{/* </ul> */}
-</div>
+// {accordionItem.bouqueData.map((item) => (
+//   <li key={item._id}>
+//     {/* <img src={item.channleImage} alt={item.label} /> */}
+//     <span>
+//       {item.channelRefs.map((channel) => (
+//         <span
+//           style={{ color: "black", marginRight: "10px" }}
+//         >
+//           {channel.name}
+//         </span>
+//       ))}
+//     </span>
+//   </li>
+// ))}
+// {/* </ul> */}
+// </div> */}
 
 
 

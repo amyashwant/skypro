@@ -6,6 +6,7 @@ import toggleFour from "../../../assets/images/home-01/toggle-bar/toggle-img-03.
 import toggleFive from "../../../assets/images/home-01/toggle-bar/toggle-img-04.png";
 import toggleSix from "../../../assets/images/home-01/toggle-bar/toggle-img-05.png";
 import toggleSeven from "../../../assets/images/home-01/toggle-bar/toggle-img-06.png";
+import { Link } from "react-router-dom";
 const ToggleBar = () => {
   return (
     <section>
@@ -13,48 +14,48 @@ const ToggleBar = () => {
         <button className="close-icon">
           <i className="fas fa-times"></i>
         </button>
-        <a className="toggler-logo" href="index.html">
+        <Link className="toggler-logo" to="index.html">
           <img src={toggleOne} alt="" />
-        </a>
+        </Link>
         <p className="text">
           Rorem ipsum dolor sit amet, consectet adipiscing elit. Ut elit
           tellusuctus
         </p>
         <h6 className="title">PHOTO GALLERY</h6>
         <div className="toggle-thumbs d-flex align-items-center flex-wrap justify-content-between">
-          <a
+          <Link
             className="gallery-popup"
-            href="assets/images/home-01/toggle-bar/toggle-img-01.png"
+            to="assets/images/home-01/toggle-bar/toggle-img-01.png"
           >
             <img src={toggleTwo} alt="" />
-          </a>
-          <a
+          </Link>
+          <Link
             className="gallery-popup"
-            href="assets/images/home-01/toggle-bar/toggle-img-02.png"
+            to="assets/images/home-01/toggle-bar/toggle-img-02.png"
           >
             <img src={toggleThree} alt="" />
-          </a>
-          <a
+          </Link>
+          <Link
             className="gallery-popup"
-            href="assets/images/home-01/toggle-bar/toggle-img-03.png"
+            to="assets/images/home-01/toggle-bar/toggle-img-03.png"
           >
             <img src={toggleFour} alt="" />
-          </a>
-          <a
+          </Link>
+          <Link
             className="gallery-popup"
-            href="assets/images/home-01/toggle-bar/toggle-img-04.png"
+            to="assets/images/home-01/toggle-bar/toggle-img-04.png"
           >
             <img src={toggleFive} alt="" />
-          </a>
-          <a
+          </Link>
+          <Link
             className="gallery-popup"
-            href="assets/images/home-01/toggle-bar/toggle-img-05.png"
+            to="assets/images/home-01/toggle-bar/toggle-img-05.png"
           >
             <img src={toggleSix} alt="" />
-          </a>
-          <a className="gallery-popup" href="">
+          </Link>
+          <Link className="gallery-popup" to="">
             <img src={toggleSeven} alt="" />
-          </a>
+          </Link>
         </div>
         <h6 className="title">CONTACT WITH US</h6>
         <div className="toggle-adress">
@@ -74,24 +75,24 @@ const ToggleBar = () => {
         <div className="toggle-social-icons pt-3">
           <ul className="social-icons d-flex align-items-center flex-wrap">
             <li>
-              <a href="#" className="active">
+              <Link to="#" className="active">
                 <i className="fab fa-facebook-f"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="#">
                 <i className="fab fa-twitter"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="#">
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="#">
                 <i className="fab fa-pinterest-p"></i>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

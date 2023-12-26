@@ -2,6 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TopHeader = () => {
+
+  const email = 'info@skypro.co.in';
+  const mailtoLink = `mailto:${email}`;
+
+  const openMail = () => {
+    window.open(mailtoLink);
+  };
+
+
   return (
     <div className="header-top d-none d-lg-block">
       <div className="container">
@@ -17,7 +26,7 @@ const TopHeader = () => {
               <li className="item">|</li>
               <li className="item">
                 <span className="icon-mail"></span>{" "}
-                <a href="mailto:">info123@gmail.com</a>
+                <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
               </li>
             </ul>
           </div>
