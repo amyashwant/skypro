@@ -7833,15 +7833,16 @@ section.Accordion-Div {
 }
 section.Accordion-Div .accordion-item {
   border-radius: 0;
-  margin-bottom: 4px;
+}
+div#accordionPanelsStayOpenExample {
+  margin-top: 16px;
 }
 section.Accordion-Div .accordion-item button.accordion-button {
-  background: #ddd;
   border-radius: 0 !important;
   color: #071e43;
   text-transform: capitalize;
   font-size: 18px;
-  font-weight: 400;
+  font-family: math;
 }
 section.Accordion-Div .accordion-item button.accordion-button:focus {
   box-shadow: none;
@@ -8019,4 +8020,11 @@ section.Accordion-Div ul.accordion-channelList li span {
 
 .footprint-left a.phone:hover {
   color: #071e43 !important;
+}
+section.Accordion-Div button.adpack-btn {
+  background-color: rgb(7 30 67);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 7px;
+  margin-bottom: 12px;
 }
