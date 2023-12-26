@@ -178,7 +178,7 @@ const ViewMoreSection = () => {
                 </h2>
                 <div
                   id={`panelsStayOpen-collapse${accordionItem._id}`}
-                  className="accordion-collapse collapse"
+                  className="accordion-collapse collapse show"
                   aria-labelledby={`panelsStayOpen-heading${accordionItem._id}`}
                 >
                   <div className="accordion-body">

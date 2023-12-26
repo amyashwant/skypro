@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const OfferPage = () => {
     
@@ -16,7 +17,7 @@ const OfferPage = () => {
               </h4>
               <ul className="breadcumb-list d-flex justify-content-center align-items-center">
                 <li>
-                  <a href="index.html">HOME</a>
+                  <Link to="index.html">HOME</Link>
                 </li>
                 <li>
                   <span>/</span>

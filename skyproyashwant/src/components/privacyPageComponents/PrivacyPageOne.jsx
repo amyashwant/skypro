@@ -1,7 +1,17 @@
 import React from "react";
 import privacyOne from "../../assets/images/refund/why360-patten.png";
+import { Link } from "react-router-dom";
 
 const PrivacyPageOne = () => {
+
+  const email = 'info@skypro.co.in';
+  const mailtoLink = `mailto:${email}`;
+
+  const openMail = () => {
+    window.open(mailtoLink);
+  };
+
+
   return (
     <section className="py-5 position-relative bglight privacy-section">
       <div className="circle-right circle-left d-none d-lg-block"></div>
@@ -21,7 +31,8 @@ const PrivacyPageOne = () => {
               At skypro Cloud, we value your privacy and are committed to protecting
               and processing your personal information responsibly. This Privacy 
               Policy outlines how we collect, use, disclose, and safeguard your 
-              information when you visit our website or use our services at <a href="">https://www.theskypro.in/</a>
+              information when you visit our website or use our services at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
+
             </p>
 
             <h4>
