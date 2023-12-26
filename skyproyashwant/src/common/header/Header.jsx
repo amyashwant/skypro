@@ -79,10 +79,10 @@ const Header = () => {
                       </li>
                     </span>
                     <li>
-                      <Link to="/login">
+                      {/* <Link to="/login">
                         <span className="icon-user-1"></span>
                         Admin
-                      </Link>
+                      </Link> */}
                     </li>
                     {/* <li>/</li> */}
                     <li>{/* <Link to="/register">Register</Link> */}</li>

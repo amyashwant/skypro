@@ -12,7 +12,7 @@ const AdminPage = () => {
   console.log(login,"kkkk")
   useEffect(() => {
     if (login) {
-      navigate("/admin");
+      navigate("/adminmain");
     }
     else{
       navigate("/login")

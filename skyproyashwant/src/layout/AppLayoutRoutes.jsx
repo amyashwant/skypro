@@ -111,7 +111,8 @@ const AppLayoutRoutes = () => {
                 {/* <Route path="/service" element={<ServicePage />} /> */}
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
-                <Route path="/login" element={<LoginPage />} />
+                {/* <Route path="/login" element={<LoginPage />} /> */}
+                <Route path="/webadmin" element={<LoginPage />} />
                 <Route path="/register" element={<SignupPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/terms" element={<TermsPage />} />
@@ -130,7 +131,7 @@ const AppLayoutRoutes = () => {
                   path="/:packageId"
                   element={<ViewMorePackage />}
                 />
-                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/adminmain" element={<AdminPage />} />
                 <Route path="/adminsignup" element={<Register />} />
                 {/* <Route path="/adminlogin" element={<Login />} /> */}
                 <Route

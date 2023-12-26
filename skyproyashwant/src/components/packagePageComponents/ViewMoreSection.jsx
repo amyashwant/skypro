@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from "react-router-dom";
 import { useParams } from "react-router";
-import { addItem, viewItem } from "../../utils/cartSlice";
+import {
+  addItem,
+  clearItem,
+  removeItem,
+  viewItem,
+} from "../../utils/cartSlice";
 // import imgone from "../../assets/images/packagesImages/1703050192954-jsdownload.png";
 // const imgone = require("../../assets/images/packagesImages/1703050192954-jsdownload.png");
 
@@ -15,21 +20,30 @@ const imageProvider = (imageName) => {
 const ViewMoreSection = () => {
   const { packageId } = useParams();
   const dispatch = useDispatch();
-  const [packageData, setPackageData] = useState([]); 
+  const [packageData, setPackageData] = useState([]);
   const [bouqueData, setBouqueData] = useState([]);
   const [packageResult, setPackageResult] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
   console.log("packageId>>>", packageId);
   const cartItems = useSelector((state) => state.cart.items);
+  console.log("CartItems>>>................>", cartItems);
 
   // const viewCartItems = useSelector((state) => state.cart.viewItems);
-  // console.log("viewCartItems>>>", viewCartItems);
   // let disableBouqueArray = [];
   const [disableBouqueArray, setDisableBouqueArray] = useState([]);
   const handleAddPackage = (pack) => {
     console.log("disabled................False........");
+    if (cartItems.length > 0) {
+      dispatch(clearItem());
+    }
+    // dispatch(addItem(arg));
 
+    // selectedPack ? setSelectedPack(null) : setSelectedPack(arg);
     dispatch(addItem(pack));
+
+    // if (packageResult[0]?.packageRef?.name === cartItems[0]?.name) {
+    //   dispatch(removeItem());
+    // }
   };
 
   const handleBouquePrice = (price, titleName) => {
@@ -133,28 +147,35 @@ const ViewMoreSection = () => {
           {console.log("packageData>>>", packageData[0]?.packageRef)}
           {console.log("packageResult>>>", packageResult)}
           <div className="row d-flex align-items-center">
-          <div className="col-sm-10">
-            <h2>{packageData[0]?.packageRef?.name}</h2>
-          <h3>
-            {/* Price: {Number(packageData[0]?.packageRef?.packagePrice).toFixed(0)} */}
-            Price:{" "}
-            {Math.floor(Number(packageData[0]?.packageRef?.packagePrice))}.00
-            */-per month
-          </h3>
+            <div className="col-sm-10">
+              <h2>{packageData[0]?.packageRef?.name}</h2>
+              <h3>
+                {/* Price: {Number(packageData[0]?.packageRef?.packagePrice).toFixed(0)} */}
+                Price:{" "}
+                {Math.floor(Number(packageData[0]?.packageRef?.packagePrice))}
+                .00 */-per month
+              </h3>
+            </div>
+            <div className="col-sm-2 text-align-right">
+              <button
+                className="adpack-btn"
+                onClick={() => handleAddPackage(packageData[0].packageRef)}
+                disabled={
+                  cartItems.length > 0 &&
+                  packageResult[0]?.packageRef?.name === cartItems[0]?.name
+                }
+              >
+                {cartItems.length > 0 &&
+                packageResult[0]?.packageRef?.name === cartItems[0]?.name ? (
+                  <span style={{ color: "lightgreen" }}>ADDED &#x2713;</span>
+                ) : (
+                  " ADD PACKAGE"
+                )}
+
+                {/* {packageResult[0]?.packageRef?.name === cartItems[0]?.name} */}
+              </button>
+            </div>
           </div>
-          <div className="col-sm-2 text-align-right">
-          <button className="adpack-btn"
-              onClick={() => handleAddPackage(packageData[0].packageRef)}
-              disabled={cartItems.length > 0}
-            >
-              {cartItems.length > 0 ? (
-                <span style={{ color: "lightgreen" }}>ADDED &#x2713;</span>
-              ) : (
-                " ADD PACKAGE"
-              )}
-            </button>
-            </div>
-            </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             {packageResultFinal?.map((accordionItem) => (
               <div className="accordion-item" key={accordionItem._id}>
