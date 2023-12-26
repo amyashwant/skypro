@@ -6,7 +6,6 @@ import axios from "axios";
 import AccountContext from "../../../utils/AccountContext";
 const AccountPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -126,18 +125,23 @@ const AccountPage = () => {
           <div className="col-lg-5 ps-lg-5">
             <div className="account-form">
               <div className="section-header style-two">
-                <h4 className="subtitle">LOG IN ADMIN</h4>
+                <h4 className="subtitle">ADMIN LOG IN </h4>
                 <h2 className="title">WELCOME BACK</h2>
               </div>
-              <form className='cust-formdiv' onSubmit={handleSubmit} autoComplete="off" noValidate>
+              <form
+                className="cust-formdiv"
+                onSubmit={handleSubmit}
+                autoComplete="off"
+                noValidate
+              >
                 <div className="row gy-3">
                   <div className="col-md-12">
-                    
                     <div className="contact-form-field">
                       <label
                         for="Emailaddress"
                         className="form-label form--label"
-                      ><span className="star">*</span>
+                      >
+                        <span className="star">*</span>
                         Email Address
                       </label>
                       <input
@@ -156,9 +160,9 @@ const AccountPage = () => {
                     </div>
                   </div>
                   <div className="col-sm-12">
-                    
                     <div className="contact-form-field">
-                      <label className="form--label" for="password"><span className="star">*</span>
+                      <label className="form--label" for="password">
+                        <span className="star">*</span>
                         Password
                       </label>
                       <div className="input--group position-relative">
@@ -199,20 +203,20 @@ const AccountPage = () => {
                       </p> */}
                     </div>
                   </div>
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <div className="remeber-me">
                       <input type="checkbox" id="rem-me" />
                       <label for="rem-me">Remember Me</label>
                     </div>
-                  </div>
-                  <div className="col-md-12">
+                  </div> */}
+                  {/* <div className="col-md-12">
                     <div className="contact-form-field">
                       <p className="text text-dark fw-normal">
                         Don't Have An Account?
                         <Link to="/register">Sign Up</Link>
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </form>
             </div>

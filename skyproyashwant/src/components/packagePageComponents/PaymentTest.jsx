@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { addItem, viewItem } from "../../utils/cartSlice";
 // import imgone from "../../assets/images/packagesImages/1703050192954-jsdownload.png";
 // const imgone = require("../../assets/images/packagesImages/1703050192954-jsdownload.png");
@@ -12,10 +11,10 @@ const imageProvider = (imageName) => {
   return imgChannel;
 };
 
-const ViewMoreSection = () => {
+const PaymentTest = () => {
   const { packageId } = useParams();
   const dispatch = useDispatch();
-  const [packageData, setPackageData] = useState([]); 
+  const [packageData, setPackageData] = useState([]);
   const [bouqueData, setBouqueData] = useState([]);
   const [packageResult, setPackageResult] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -178,7 +177,7 @@ const ViewMoreSection = () => {
                 </h2>
                 <div
                   id={`panelsStayOpen-collapse${accordionItem._id}`}
-                  className="accordion-collapse collapse show"
+                  className="accordion-collapse collapse"
                   aria-labelledby={`panelsStayOpen-heading${accordionItem._id}`}
                 >
                   <div className="accordion-body">
@@ -331,4 +330,4 @@ const ViewMoreSection = () => {
   );
 };
 
-export default ViewMoreSection;
+export default PaymentTest;

@@ -19,7 +19,7 @@ const LoginPage = () => {
       {/* <BottomHeader /> */}
       {/* <BeadCumb /> */}
       <BeadCumbCommon
-        titleOne="LOG IN YOUR ACCOUNT"
+        titleOne="LOG IN ADMIN"
         titleTwo="LOG IN"
         bgImg={bgImg}
       />
