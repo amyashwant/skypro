@@ -126,51 +126,66 @@ const AppLayoutRoutes = () => {
                   path="/packages/:packageId"
                   element={<ViewMorePackage />}
                 />
+                {/* <Route
+                  path="/:packageId"
+                  element={<ViewMorePackage />}
+                /> */}
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/adminsignup" element={<Register />} />
                 {/* <Route path="/adminlogin" element={<Login />} /> */}
                 <Route
-                  path="/admin/settings/broadcasters"
+                  // path="/admin/settings/broadcasters"
+                  path="/broadcasters"
                   element={<BroadcasterFormPage />}
                 />
                 <Route
-                  path="/admin/settings/bouquets"
+                  // path="/admin/settings/bouquets"
+                  path="/bouquets"
                   element={<BouqetFormPage />}
                 />
                 <Route
-                  path="/admin/settings/channels"
+                  // path="/admin/settings/channels"
+                  path="/channels"
                   element={<ChannelFormPage />}
                 />
                 <Route
-                  path="/admin/settings/languages"
+                  // path="/admin/settings/languages"
+                  path="/languages"
                   element={<LanguageFormPage />}
                 />
                 <Route
-                  path="/admin/settings/types"
+                  // path="/admin/settings/types"
+                  path="/types"
                   element={<TypeFormPage />}
                 />
                 <Route
-                  path="/admin/settings/packages"
+                  // path="/admin/settings/packages"
+                  path="/packages"
                   element={<PackageFormPage />}
                 />
                 <Route
-                  path="/admin/settings/package-bouque"
+                  // path="/admin/settings/package-bouque"
+                  path="/package-bouque"
                   element={<PackageBouque />}
                 />
                 <Route
-                  path="/admin/settings/view"
+                  // path="/admin/settings/view"
+                  path="/view"
                   element={<ViewPackageBouque />}
                 />
                 <Route
-                  path="/admin/settings/bouque-channel"
+                  path="/bouque-channel"
+                  // path="/admin/settings/bouque-channel"
                   element={<BouqueChannel />}
                 />
                 <Route
-                  path="/admin/settings/parent-bouque"
+                  path="/parent-bouque"
+                  // path="/admin/settings/parent-bouque"
                   element={<ParentBouque />}
                 />
                 <Route
-                  path="/admin/settings/category"
+                  path="/category"
+                  // path="/admin/settings/category"
                   element={<CategoryFormPage />}
                 />
               </Routes>

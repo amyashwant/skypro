@@ -26,7 +26,7 @@ import {
 
 const PortalHeader = ({ children }) => {
   const [isActive, setIsActive] = useState(true);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   // const { userData } = useContext(AccountContext);
   const pathname = useLocation().pathname;
 
@@ -105,7 +105,7 @@ const PortalHeader = ({ children }) => {
               </ListItemIcon>
               {isActive && (
                 <>
-                  <ListItemText primary="Settings" />
+                  <ListItemText primary="Select" />
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </>
               )}
@@ -174,12 +174,12 @@ const sideBarLinks = [
     handle: "/account/referral",
     role: "customer",
   },
-  {
-    icon: <CategoryOutlined fontSize="medium" />,
-    title: "Products",
-    handle: "/account/products",
-    role: "both",
-  },
+  // {
+  //   icon: <CategoryOutlined fontSize="medium" />,
+  //   title: "Products",
+  //   handle: "/account/products",
+  //   role: "both",
+  // },
   {
     icon: <GroupOutlined fontSize="medium" />,
     title: "Users",
@@ -189,45 +189,53 @@ const sideBarLinks = [
 ];
 
 const settingsLinks = [
-  {
-    icon: <AccountBalanceWalletOutlined fontSize="medium" />,
-    title: "Profile",
-    handle: "/account/settings/profile",
-  },
-  {
-    icon: <GroupAddIcon fontSize="medium" />,
-    title: "Security",
-    handle: "/account/settings/security",
-  },
+  // {
+  //   icon: <AccountBalanceWalletOutlined fontSize="medium" />,
+  //   title: "Profile",
+  //   // handle: "/account/settings/profile",
+  //   handle: "/profile",
+  // },
+  // {
+  //   icon: <GroupAddIcon fontSize="medium" />,
+  //   title: "Security",
+  //   // handle: "/account/settings/security",
+  //   handle: "/security",
+  // },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Language",
-    handle: "/admin/settings/languages",
+    // handle: "/admin/settings/languages",
+    handle: "/languages",
   },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Category",
-    handle: "/admin/settings/category",
+    // handle: "/admin/settings/category",
+    handle: "/category",
   },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Types",
-    handle: "/admin/settings/types",
+    // handle: "/admin/settings/types",
+    handle: "/types",
   },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Channels",
-    handle: "/admin/settings/channels",
+    // handle: "/admin/settings/channels",
+    handle: "/channels",
   },
   {
     icon: <CellTowerIcon fontSize="medium" />,
     title: "Broadcaster",
-    handle: "/admin/settings/broadcasters",
+    // handle: "/admin/settings/broadcasters",
+    handle: "/broadcasters",
   },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Bouquet",
-    handle: "/admin/settings/bouquets",
+    // handle: "/admin/settings/bouquets",
+    handle: "/bouquets",
   },
   // {
   //   icon: <GroupAddIcon fontSize="medium" />,
@@ -248,12 +256,12 @@ const settingsLinks = [
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Package-Bouque",
-    handle: "/admin/settings/package-bouque",
+    handle: "/package-bouque",
   },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "view All",
-    handle: "/admin/settings/view",
+    handle: "/view",
   },
 ];
 

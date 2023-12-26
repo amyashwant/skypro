@@ -38,43 +38,54 @@ const Header = () => {
                   <li>
                     <Link to="/">
                       <span className="icon-user-1"></span>
-                      <span onClick={logoutHandler}>LogOut</span>
+                      {/* <span onClick={logoutHandler}>LogOut</span> */}
+                      <span onClick={logoutHandler}>Admin</span>
                     </Link>
                   </li>
                 ) : (
                   <>
-                  <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
-                  <li>
-                    <Link to="https://www.facebook.com/tvskypro/" target="_blank">
-                      <i className="fab fa-facebook-f"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="https://twitter.com/Skypro_TV" target="_blank">
-                      <i className="fab fa-twitter"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="https://www.linkedin.com/company/skyprotv/" target="_blank">
-                      <i className="fab fa-linkedin-in"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="https://in.pinterest.com/skyprotv/" target="_blank">
-                      <i className="fab fa-pinterest-p"></i>
-                    </Link>
-                  </li>
-                  </span> 
+                    <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
+                      <li>
+                        <Link
+                          to="https://www.facebook.com/tvskypro/"
+                          target="_blank"
+                        >
+                          <i className="fab fa-facebook-f"></i>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="https://twitter.com/Skypro_TV"
+                          target="_blank"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="https://www.linkedin.com/company/skyprotv/"
+                          target="_blank"
+                        >
+                          <i className="fab fa-linkedin-in"></i>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="https://in.pinterest.com/skyprotv/"
+                          target="_blank"
+                        >
+                          <i className="fab fa-pinterest-p"></i>
+                        </Link>
+                      </li>
+                    </span>
                     <li>
                       <Link to="/login">
                         <span className="icon-user-1"></span>
-                        Login
+                        Admin
                       </Link>
                     </li>
                     {/* <li>/</li> */}
-                    <li>
-                      {/* <Link to="/register">Register</Link> */}
-                    </li>
+                    <li>{/* <Link to="/register">Register</Link> */}</li>
                   </>
                 )}
               </ul>

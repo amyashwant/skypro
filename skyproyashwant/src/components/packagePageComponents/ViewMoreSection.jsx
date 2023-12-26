@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { addItem, viewItem } from "../../utils/cartSlice";
 // import imgone from "../../assets/images/packagesImages/1703050192954-jsdownload.png";
 // const imgone = require("../../assets/images/packagesImages/1703050192954-jsdownload.png");
