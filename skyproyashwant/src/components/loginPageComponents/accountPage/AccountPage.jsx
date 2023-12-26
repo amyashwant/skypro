@@ -125,7 +125,7 @@ const AccountPage = () => {
           <div className="col-lg-5 ps-lg-5">
             <div className="account-form">
               <div className="section-header style-two">
-                <h4 className="subtitle">ADMIN LOG IN </h4>
+                <h4 className="subtitle">ADMIN LOGIN </h4>
                 <h2 className="title">WELCOME BACK</h2>
               </div>
               <form

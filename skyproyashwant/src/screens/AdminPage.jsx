@@ -15,7 +15,7 @@ const AdminPage = () => {
       navigate("/adminmain");
     }
     else{
-      navigate("/login")
+      navigate("/webadmin")
     }
   }, [login]);
   return <PortalHeader />;
