@@ -131,15 +131,18 @@ const ViewMoreSection = () => {
         <div className="container">
           {console.log("packageData>>>", packageData[0]?.packageRef)}
           {console.log("packageResult>>>", packageResult)}
-
-          <div>
-            <button
-              style={{
-                backgroundColor: cartItems.length > 0 ? "grey" : "#071e43",
-                color: "white",
-                padding: "10px 10px",
-                borderRadius: "20px",
-              }}
+          <div className="row d-flex align-items-center">
+          <div className="col-sm-10">
+            <h2>{packageData[0]?.packageRef?.name}</h2>
+          <h3>
+            {/* Price: {Number(packageData[0]?.packageRef?.packagePrice).toFixed(0)} */}
+            Price:{" "}
+            {Math.floor(Number(packageData[0]?.packageRef?.packagePrice))}.00
+            */-per month
+          </h3>
+          </div>
+          <div className="col-sm-2 text-align-right">
+          <button className="adpack-btn"
               onClick={() => handleAddPackage(packageData[0].packageRef)}
               disabled={cartItems.length > 0}
             >
@@ -149,14 +152,8 @@ const ViewMoreSection = () => {
                 " ADD PACKAGE"
               )}
             </button>
-            <h2>{packageData[0]?.packageRef?.name}</h2>
-          </div>
-          <h3>
-            {/* Price: {Number(packageData[0]?.packageRef?.packagePrice).toFixed(0)} */}
-            Price:{" "}
-            {Math.floor(Number(packageData[0]?.packageRef?.packagePrice))}.00
-            */-per month
-          </h3>
+            </div>
+            </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             {packageResultFinal?.map((accordionItem) => (
               <div className="accordion-item" key={accordionItem._id}>
@@ -177,7 +174,7 @@ const ViewMoreSection = () => {
                 </h2>
                 <div
                   id={`panelsStayOpen-collapse${accordionItem._id}`}
-                  className="accordion-collapse collapse"
+                  className="accordion-collapse collapse show"
                   aria-labelledby={`panelsStayOpen-heading${accordionItem._id}`}
                 >
                   <div className="accordion-body">
