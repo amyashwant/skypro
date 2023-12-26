@@ -240,9 +240,9 @@ const Footer = () => {
 
       <div>
         {showButton && (
-          <a className={`scroll-top show`} onClick={scrollToTop}>
+          <Link className={`scroll-top show`} onClick={scrollToTop}>
             <i className="fas fa-angle-double-up"></i>
-          </a>
+          </Link>
         )}
       </div>
     </>

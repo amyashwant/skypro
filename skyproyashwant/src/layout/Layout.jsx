@@ -4,12 +4,14 @@ import "react-toastify/dist/ReactToastify.css";
 import AppLayout from "./AppLayout";
 import store from "../utils/store";
 import { Provider } from "react-redux";
+import AppLayoutRoutes from "./AppLayoutRoutes";
 
 const Layout = () => {
   return (
     <div>
       <Provider store={store}>
-        <AppLayout />
+        {/* <AppLayout /> */}
+        <AppLayoutRoutes />
       </Provider>
       <ToastContainer
         position="top-center"

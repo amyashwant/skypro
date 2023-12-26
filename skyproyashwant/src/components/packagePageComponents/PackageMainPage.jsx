@@ -259,6 +259,7 @@ const PackageMainPage = () => {
                                   <Link
                                     // to={`/packages/${pricing.name.replaceAll(" ","-")}`}
                                     to={`/packages/${pricing._id}`}
+                                    // to={`/${pricing._id}`}
                                     // onClick={handleViewClick(pricing)}
                                     onClick={() => handleViewClick(pricing)}
                                   >

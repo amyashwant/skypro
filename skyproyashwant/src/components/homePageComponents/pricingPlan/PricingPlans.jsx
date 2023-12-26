@@ -24,14 +24,14 @@ const PricingPlans = () => {
           <div className="col-xl-4 col-md-6">
             <div className="price-wrapper">
               <div className="pricing-item">
-                <div className="background-img">  
+                <div className="background-img">
                   <img src={planTwo} alt="img" />
                 </div>
                 <h2 className="title">Hindi Bronze SD</h2>
                 {/* <p className="para">
                   For 12 mos when bundled, + taxes & equip fee
                 </p> */}
-                 <ul className="pricing-icons d-flex flex-wrap align-items-center justify-content-start">
+                <ul className="pricing-icons d-flex flex-wrap align-items-center justify-content-start">
                   <li>
                     <span className="icon-wifi-2"></span>
                   </li>
@@ -111,7 +111,7 @@ const PricingPlans = () => {
                 {/* <p className="para">
                   For 12 mos when bundled, + taxes & equip fee
                 </p> */}
-               <ul className="pricing-icons d-flex flex-wrap align-items-center justify-content-start">
+                <ul className="pricing-icons d-flex flex-wrap align-items-center justify-content-start">
                   <li>
                     <span className="icon-wifi-2"></span>
                   </li>
