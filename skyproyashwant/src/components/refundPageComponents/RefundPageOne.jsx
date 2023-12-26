@@ -1,6 +1,7 @@
 import React from "react";
 import refundImg from "../../assets/images/refund/WhatsApp Image 2023-11-27 at 15.40.21_0f782808.jpg";
 import refundTwo from "../../assets/images/refund/why360-patten.png";
+import { Link } from "react-router-dom";
 const RefundPageOne = () => {
   return (
     <>
@@ -54,7 +55,7 @@ const RefundPageOne = () => {
               <ul>
                 <li>
                   To request a refund, please contact our customer support team
-                  at <a href="mailto:info@theskypro.in">info@theskypro.in</a>{" "}
+                  at <Link to="mailto:info@theskypro.in">info@theskypro.in</Link>{" "}
                   with the subject line 'Refund Request'.
                 </li>
                 <li>
@@ -89,23 +90,23 @@ const RefundPageOne = () => {
                 </li>
                 <li>
                   By using our services and making a purchase on{" "}
-                  <a href="http://www.theskypro.in">www.theskypro.in</a>, you
+                  <Link to="http://www.theskypro.in">www.theskypro.in</Link>, you
                   agree to adhere to the terms and conditions of this refund
                   policy.
                 </li>
                 <li>
                   For any questions or concerns regarding our refund policy,
                   please contact us at{" "}
-                  <a href="mailto:info@theskypro.in">info@theskypro.in</a>.
+                  <Link to="mailto:info@theskypro.in">info@theskypro.in</Link>.
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
-      <a className="scroll-top">
+      <Link className="scroll-top">
         <i className="fas fa-angle-double-up"></i>
-      </a>
+      </Link>
     </>
   );
 };

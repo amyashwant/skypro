@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PricingPlan = () => {
   return (
@@ -38,9 +39,9 @@ const PricingPlan = () => {
                     $30.00 <span>/ Month</span>
                   </h2>
                   <div className="icon-plus">
-                    <a href="packages.html">
+                    <Link to="packages.html">
                       <span className="icon-add-1"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -79,9 +80,9 @@ const PricingPlan = () => {
                     $59.00 <span>/ Month</span>
                   </h2>
                   <div className="icon-plus">
-                    <a href="packages.html">
+                    <Link to="packages.html">
                       <span className="icon-add-1"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -114,9 +115,9 @@ const PricingPlan = () => {
                     $30.00 <span>/ Month</span>
                   </h2>
                   <div className="icon-plus">
-                    <a href="packages.html">
+                    <Link to="packages.html">
                       <span className="icon-add-1"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

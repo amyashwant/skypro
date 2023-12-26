@@ -1,5 +1,6 @@
 import React from "react";
 import footPrint from "../../../assets/images/home-01/footprint/map_image.png";
+import { Link } from "react-router-dom";
 const FootPrints = () => {
   return (
     <section className="footprint pb-100 pt-50">
@@ -19,14 +20,14 @@ const FootPrints = () => {
               </div>
               <div className="footprint-contact mb-3">
                 <p className="contact">Call Us Now For Connect </p>
-                <a href="tel:" className="phone">
+                <Link to="tel:" className="phone">
                   +(91) 98035-96035
-                </a>
+                </Link>
               </div>
                 {/* <div className="footprint-button mt-4 pt-lg-3">
-                  <a href="index.html" className="btn--base">
+                  <Link href="index.html" className="btn--base">
                     DISCOVER MORE
-                  </a>
+                  </Link>
                 </div> */}
             </div>
           </div>

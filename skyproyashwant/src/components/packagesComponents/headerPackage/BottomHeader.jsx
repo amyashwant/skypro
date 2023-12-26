@@ -59,13 +59,13 @@ const BottomHeader = () => {
                     {/* <li className="nav-item d-block d-lg-none">
                       <ul className="login-registration d-flex flex-wrap align-items-center justify-content-start">
                         <li>
-                          <a href="login.html">
+                          <Link to="login.html">
                             <span className="icon-user-1"></span> Login
-                          </a>
+                          </Link>
                         </li>
                         <li>|</li>
                         <li>
-                          <a href="registration.html">Registration</a>
+                          <Link to="registration.html">Registration</Link>
                         </li>
                       </ul>
                     </li> */}
@@ -84,9 +84,9 @@ const BottomHeader = () => {
                       </Link>
                       {/* <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" href="home-two.html">
+                          <Link className="dropdown-item" to="home-two.html">
                             HOME
-                          </a>
+                          </Link>
                         </li>
                       </ul> */}
                     </li>
@@ -103,29 +103,29 @@ const BottomHeader = () => {
                       </Link>
                       {/* <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" href="about.html">
+                          <Link className="dropdown-item" to="about.html">
                             ABOUT
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="team.html">
+                          <Link className="dropdown-item" to="team.html">
                             TEAM
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="team-details.html">
+                          <Link className="dropdown-item" to="team-details.html">
                             TEAM DETAILS
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="packages.html">
+                          <Link className="dropdown-item" to="packages.html">
                             PACKAGES
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="404.html">
+                          <Link className="dropdown-item" to="404.html">
                             404
-                          </a>
+                          </Link>
                         </li>
                       </ul> */}
                     </li>
@@ -142,31 +142,31 @@ const BottomHeader = () => {
                       </Link>
                       {/* <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" href="services.html">
+                          <Link className="dropdown-item" to="services.html">
                             IPTV
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a
+                          <Link
                             className="dropdown-item"
-                            href="services-details.html"
+                            to="services-details.html"
                           >
                             Cable TV
-                          </a>
+                          </Link>
                         </li>
                       </ul> */}
                     </li>
                     <li className="nav-item dropdown">
-                      <a
+                      <Link
                         className="nav-link"
-                        href="#"
+                        to="#"
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
                         PACKAGES
                         <i className="fa-solid fa-angle-down"></i>
-                      </a>
+                      </Link>
                       <ul className="dropdown-menu">
                         <li>
                           <Link className="dropdown-item" to="/packages">
@@ -199,48 +199,48 @@ const BottomHeader = () => {
           <button className="close-icon">
             <i className="fas fa-times"></i>
           </button>
-          <a className="toggler-logo" href="index.html">
+          <Link className="toggler-logo" to="index.html">
             <img src={toggleOne} alt="" />
-          </a>
+          </Link>
           <p className="text">
             Rorem ipsum dolor sit amet, consectet adipiscing elit. Ut elit
             tellusuctus
           </p>
           <h6 className="title">PHOTO GALLERY</h6>
           <div className="toggle-thumbs d-flex align-items-center flex-wrap justify-content-between">
-            <a
+            <Link
               className="gallery-popup"
-              href="assets/images/home-01/toggle-bar/toggle-img-01.png"
+              to="assets/images/home-01/toggle-bar/toggle-img-01.png"
             >
               <img src={toggleTwo} alt="" />
-            </a>
-            <a
+            </Link>
+            <Link
               className="gallery-popup"
-              href="assets/images/home-01/toggle-bar/toggle-img-02.png"
+              to="assets/images/home-01/toggle-bar/toggle-img-02.png"
             >
               <img src={toggleThree} alt="" />
-            </a>
-            <a
+            </Link>
+            <Link
               className="gallery-popup"
-              href="assets/images/home-01/toggle-bar/toggle-img-03.png"
+              to="assets/images/home-01/toggle-bar/toggle-img-03.png"
             >
               <img src={toggleFour} alt="" />
-            </a>
-            <a
+            </Link>
+            <Link
               className="gallery-popup"
-              href="assets/images/home-01/toggle-bar/toggle-img-04.png"
+              to="assets/images/home-01/toggle-bar/toggle-img-04.png"
             >
               <img src={toggleFive} alt="" />
-            </a>
-            <a
+            </Link>
+            <Link
               className="gallery-popup"
-              href="assets/images/home-01/toggle-bar/toggle-img-05.png"
+              to="assets/images/home-01/toggle-bar/toggle-img-05.png"
             >
               <img src={toggleSix} alt="" />
-            </a>
-            <a className="gallery-popup" href="">
+            </Link>
+            <Link className="gallery-popup" to="">
               <img src={toggleSeven} alt="" />
-            </a>
+            </Link>
           </div>
           <h6 className="title">CONTACT WITH US</h6>
           <div className="toggle-adress">
@@ -260,24 +260,24 @@ const BottomHeader = () => {
           <div className="toggle-social-icons pt-3">
             <ul className="social-icons d-flex align-items-center flex-wrap">
               <li>
-                <a href="#" className="active">
+                <Link to="#" className="active">
                   <i className="fab fa-facebook-f"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#">
+                <Link to="#">
                   <i className="fab fa-twitter"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#">
+                <Link to="#">
                   <i className="fab fa-linkedin-in"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#">
+                <Link to="#">
                   <i className="fab fa-pinterest-p"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

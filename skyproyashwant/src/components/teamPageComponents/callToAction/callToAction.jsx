@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const callToAction = () => {
   return (
@@ -13,9 +15,9 @@ const callToAction = () => {
               <h3 className="title text-white mb-xl-4 mb-3">
                 SAVE MONEY BY BUNDLING YOUR INTERNET SERVICE
               </h3>
-              <a href="contact.html" className="btn--base style-two">
+              <Link to="contact.html" className="btn--base style-two">
                 CONTACT US $20 <i className="icon-check-mark"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

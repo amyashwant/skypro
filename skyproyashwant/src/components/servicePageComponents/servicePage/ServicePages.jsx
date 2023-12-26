@@ -25,7 +25,7 @@ const ServicePages = () => {
                 Offering devoted web association with different price to
                 purchase.
               </p>
-              {/* <a
+              {/* <Link
                 href="services-details.html"
                 className="btn--base-two style-two"
               >
@@ -47,7 +47,7 @@ const ServicePages = () => {
                 Broadband Internet is giving one of the quickest broadband web
                 and organization arrangements all through.
               </p>
-              {/* <a
+              {/* <Link
                 href="services-details.html"
                 className="btn--base-two style-two"
               >
@@ -69,7 +69,7 @@ const ServicePages = () => {
                 Make it reasonable! Golden IT programs are quite often 33% to
                 one around 50% of the expense of practically identical.
               </p>
-              {/* <a
+              {/* <Link
                 href="services-details.html"
                 className="btn--base-two style-two"
               >

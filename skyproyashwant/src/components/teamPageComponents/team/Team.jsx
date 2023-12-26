@@ -5,6 +5,8 @@ import teamThree from "../../../assets/images/team/team-03.png";
 import teamFour from "../../../assets/images/team/team-04.png";
 import teamFive from "../../../assets/images/team/team-05.png";
 import teamSix from "../../../assets/images/team/team-06.png";
+import { Link } from "react-router-dom";
+
 const Team = () => {
   return (
     <section className="team py-100">
@@ -15,28 +17,28 @@ const Team = () => {
               <div className="thumb">
                 <img src={teamOne} alt="" />
                 <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
+                  <Link to="javascript: void(0)" className="icon-share"></Link>
                   <div className="popup-share-icons">
                     <ul className="popup-icons d-flex">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -44,7 +46,7 @@ const Team = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">DARLENE ROBERTSON</a>
+                  <Link to="team-details.html">DARLENE ROBERTSON</Link>
                 </h4>
                 <span className="designation">Ceo</span>
               </div>
@@ -55,28 +57,28 @@ const Team = () => {
               <div className="thumb">
                 <img src={teamTwo} alt="" />
                 <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
+                  <Link to="javascript: void(0)" className="icon-share"></Link>
                   <div className="popup-share-icons">
                     <ul className="popup-icons d-flex">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -84,7 +86,7 @@ const Team = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">AHMADULLAH</a>
+                  <Link to="team-details.html">AHMADULLAH</Link>
                 </h4>
                 <span className="designation">Founder</span>
               </div>
@@ -95,28 +97,28 @@ const Team = () => {
               <div className="thumb">
                 <img src={teamThree} alt="" />
                 <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
+                  <Link to="javascript: void(0)" className="icon-share"></Link>
                   <div className="popup-share-icons">
                     <ul className="popup-icons d-flex">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -124,7 +126,7 @@ const Team = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">CHARLES BRADFORD</a>
+                  <Link to="team-details.html">CHARLES BRADFORD</Link>
                 </h4>
                 <span className="designation">Admin</span>
               </div>
@@ -135,28 +137,28 @@ const Team = () => {
               <div className="thumb">
                 <img src={teamFour} alt="" />
                 <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
+                  <Link to="javascript: void(0)" className="icon-share"></Link>
                   <div className="popup-share-icons">
                     <ul className="popup-icons d-flex">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -164,7 +166,7 @@ const Team = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">Brandon Tailor</a>
+                  <Link to="team-details.html">Brandon Tailor</Link>
                 </h4>
                 <span className="designation">Member</span>
               </div>
@@ -175,28 +177,28 @@ const Team = () => {
               <div className="thumb">
                 <img src={teamFive} alt="" />
                 <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
+                  <Link to="javascript: void(0)" className="icon-share"></Link>
                   <div className="popup-share-icons">
                     <ul className="popup-icons d-flex">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -204,7 +206,7 @@ const Team = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">Elizabeth Paulsen</a>
+                  <Link to="team-details.html">Elizabeth Paulsen</Link>
                 </h4>
                 <span className="designation">Co-Founder</span>
               </div>
@@ -215,28 +217,28 @@ const Team = () => {
               <div className="thumb">
                 <img src={teamSix} alt="" />
                 <div className="share-icon">
-                  <a href="javascript: void(0)" className="icon-share"></a>
+                  <Link to="javascript: void(0)" className="icon-share"></Link>
                   <div className="popup-share-icons">
                     <ul className="popup-icons d-flex">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -244,7 +246,7 @@ const Team = () => {
               </div>
               <div className="content">
                 <h4 className="name">
-                  <a href="team-details.html">Thomas Deloach</a>
+                  <Link to="team-details.html">Thomas Deloach</Link>
                 </h4>
                 <span className="designation">Technician</span>
               </div>
