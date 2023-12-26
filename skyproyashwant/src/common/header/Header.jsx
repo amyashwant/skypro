@@ -16,28 +16,28 @@ const Header = () => {
 
   return (
     <>
-      <div class="header-top d-none d-lg-block">
-        <div class="container">
-          <div class="top-header-wrapper d-flex flex-wrap justify-content-between align-items-center">
-            <div class="top-contact">
-              <ul class="top-contact-menu d-flex flex-wrap justify-content-between align-items-center">
-                <li class="item">
-                  <span class="icon-pin"></span>
+      <div className="header-top d-none d-lg-block">
+        <div className="container">
+          <div className="top-header-wrapper d-flex flex-wrap justify-content-between align-items-center">
+            <div className="top-contact">
+              <ul className="top-contact-menu d-flex flex-wrap justify-content-between align-items-center">
+                <li className="item">
+                  <span className="icon-pin"></span>
                   <p>Abacus Cloud, B-70 ,Sector-74, Phase-7 Mohali, Punjab</p>
                 </li>
-                {/* <li class="item">|</li>
-                <li class="item">
-                  <span class="icon-mail"></span>
+                {/* <li className="item">|</li>
+                <li className="item">
+                  <span className="icon-mail"></span>
                   <a href="mailto:">info123@gmail.com</a>
                 </li> */}
               </ul>
             </div>
-            <div class="top-button d-flex flex-wrap justify-content-between align-items-center">
-              <ul class="login-registration d-flex flex-wrap justify-content-between align-items-center">
+            <div className="top-button d-flex flex-wrap justify-content-between align-items-center">
+              <ul className="login-registration d-flex flex-wrap justify-content-between align-items-center">
                 {localStorage.getItem("userInfo") ? (
                   <li>
                     <Link to="/">
-                      <span class="icon-user-1"></span>
+                      <span className="icon-user-1"></span>
                       <span onClick={logoutHandler}>LogOut</span>
                     </Link>
                   </li>
@@ -67,7 +67,7 @@ const Header = () => {
                   </span> 
                     <li>
                       <Link to="/login">
-                        <span class="icon-user-1"></span>
+                        <span className="icon-user-1"></span>
                         Login
                       </Link>
                     </li>

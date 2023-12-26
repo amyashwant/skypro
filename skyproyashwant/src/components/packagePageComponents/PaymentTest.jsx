@@ -11,10 +11,10 @@ const imageProvider = (imageName) => {
   return imgChannel;
 };
 
-const ViewMoreSection = () => {
+const PaymentTest = () => {
   const { packageId } = useParams();
   const dispatch = useDispatch();
-  const [packageData, setPackageData] = useState([]); 
+  const [packageData, setPackageData] = useState([]);
   const [bouqueData, setBouqueData] = useState([]);
   const [packageResult, setPackageResult] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -330,4 +330,4 @@ const ViewMoreSection = () => {
   );
 };
 
-export default ViewMoreSection;
+export default PaymentTest;
