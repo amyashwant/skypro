@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import bottomImg from "../../assets/images/home-01/logo/Skypro_New_Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -14,6 +14,11 @@ const Header = () => {
     navigate("/login");
   };
 
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path ? "active" : "";
+  };
   return (
     <>
       <div className="header-top d-none d-lg-block">
@@ -35,13 +40,7 @@ const Header = () => {
             <div className="top-button d-flex flex-wrap justify-content-between align-items-center">
               <ul className="login-registration d-flex flex-wrap justify-content-between align-items-center">
                 {localStorage.getItem("userInfo") ? (
-                  <li>
-                    <Link to="/">
-                      <span className="icon-user-1"></span>
-                      {/* <span onClick={logoutHandler}>LogOut</span> */}
-                      <span onClick={logoutHandler}>Admin</span>
-                    </Link>
-                  </li>
+
                 ) : (
                   <>
                     <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
@@ -78,14 +77,7 @@ const Header = () => {
                         </Link>
                       </li>
                     </span>
-                    <li>
-                      {/* <Link to="/login">
-                        <span className="icon-user-1"></span>
-                        Admin
-                      </Link> */}
-                    </li>
-                    {/* <li>/</li> */}
-                    <li>{/* <Link to="/register">Register</Link> */}</li>
+
                   </>
                 )}
               </ul>
@@ -121,7 +113,9 @@ const Header = () => {
                 <li className="nav-item d-block d-lg-none"></li>
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link"
+
+                    className={`nav-link ${isActive("/")}`}
+
                     to="/"
                     role="button"
                     aria-expanded="false"
@@ -131,7 +125,9 @@ const Header = () => {
                 </li>
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link"
+
+                    className={`nav-link ${isActive("/about")}`}
+
                     to="/about"
                     role="button"
                     aria-expanded="false"
@@ -139,19 +135,17 @@ const Header = () => {
                     ABOUT
                   </Link>
                 </li>
-                {/* <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link"
-                    to="/service"
-                    role="button"
-                    aria-expanded="false"
-                  >
-                    SERVICES
-                  </Link>
-                </li> */}
+
+                {/* {/ Add similar logic for other navigation items /} */}
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link"
+                    className={`nav-link ${isActive("/packages")}`}
+
+        
+                 
+               
+                
+        
                     to="/packages"
                     role="button"
                     aria-expanded="false"
@@ -161,7 +155,11 @@ const Header = () => {
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to="/contact">
+
+                  <Link
+                    className={`nav-link ${isActive("/contact")}`}
+                    to="/contact"
+
                     CONTACT US
                   </Link>
                 </li>
