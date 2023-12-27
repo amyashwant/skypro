@@ -1,24 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import bottomImg from "../../assets/images/home-01/logo/Skypro_New_Logo.png";
-import { Link, useNavigate } from "react-router-dom";
-
-import AccountContext from "../../utils/AccountContext";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Header = () => {
-  const { login, setLogin, setUserData } = useContext(AccountContext);
-  const navigate = useNavigate();
-  const logoutHandler = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("userInfo");
-    setLogin(false);
-    setUserData(null);
-    navigate("/login");
-  };
-
   const location = useLocation();
 
   const isActive = (path) => {
     return location.pathname === path ? "active" : "";
   };
+
   return (
     <>
       <div className="header-top d-none d-lg-block">
@@ -30,56 +19,43 @@ const Header = () => {
                   <span className="icon-pin"></span>
                   <p>Abacus Cloud, B-70 ,Sector-74, Phase-7 Mohali, Punjab</p>
                 </li>
-                {/* <li className="item">|</li>
-                <li className="item">
-                  <span className="icon-mail"></span>
-                  <a href="mailto:">info123@gmail.com</a>
-                </li> */}
               </ul>
             </div>
             <div className="top-button d-flex flex-wrap justify-content-between align-items-center">
               <ul className="login-registration d-flex flex-wrap justify-content-between align-items-center">
-                {localStorage.getItem("userInfo") ? (
-
-                ) : (
-                  <>
-                    <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
-                      <li>
-                        <Link
-                          to="https://www.facebook.com/tvskypro/"
-                          target="_blank"
-                        >
-                          <i className="fab fa-facebook-f"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="https://twitter.com/Skypro_TV"
-                          target="_blank"
-                        >
-                          <i className="fab fa-twitter"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="https://www.linkedin.com/company/skyprotv/"
-                          target="_blank"
-                        >
-                          <i className="fab fa-linkedin-in"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="https://in.pinterest.com/skyprotv/"
-                          target="_blank"
-                        >
-                          <i className="fab fa-pinterest-p"></i>
-                        </Link>
-                      </li>
-                    </span>
-
-                  </>
-                )}
+                <>
+                  <span className="social-icons d-flex align-items-center flex-wrap header-social-icon">
+                    <li>
+                      <Link
+                        to="https://www.facebook.com/tvskypro/"
+                        target="_blank"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="https://twitter.com/Skypro_TV" target="_blank">
+                        <i className="fab fa-twitter"></i>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="https://www.linkedin.com/company/skyprotv/"
+                        target="_blank"
+                      >
+                        <i className="fab fa-linkedin-in"></i>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="https://in.pinterest.com/skyprotv/"
+                        target="_blank"
+                      >
+                        <i className="fab fa-pinterest-p"></i>
+                      </Link>
+                    </li>
+                  </span>
+                </>
               </ul>
             </div>
           </div>
@@ -113,9 +89,7 @@ const Header = () => {
                 <li className="nav-item d-block d-lg-none"></li>
                 <li className="nav-item dropdown">
                   <Link
-
                     className={`nav-link ${isActive("/")}`}
-
                     to="/"
                     role="button"
                     aria-expanded="false"
@@ -125,9 +99,7 @@ const Header = () => {
                 </li>
                 <li className="nav-item dropdown">
                   <Link
-
                     className={`nav-link ${isActive("/about")}`}
-
                     to="/about"
                     role="button"
                     aria-expanded="false"
@@ -140,12 +112,6 @@ const Header = () => {
                 <li className="nav-item dropdown">
                   <Link
                     className={`nav-link ${isActive("/packages")}`}
-
-        
-                 
-               
-                
-        
                     to="/packages"
                     role="button"
                     aria-expanded="false"
@@ -155,11 +121,10 @@ const Header = () => {
                 </li>
 
                 <li className="nav-item">
-
                   <Link
                     className={`nav-link ${isActive("/contact")}`}
                     to="/contact"
-
+                  >
                     CONTACT US
                   </Link>
                 </li>
