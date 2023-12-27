@@ -191,7 +191,7 @@ const ViewMoreSection = () => {
                     aria-expanded="true"
                     aria-controls={`panelsStayOpen-collapse${accordionItem._id}`}
                   >
-                    {accordionItem.broadcasterRef.name}
+                    <strong>Broadcaster:</strong> &nbsp;{accordionItem.broadcasterRef.name}
                   </button>
                 </h2>
                 <div
@@ -201,19 +201,27 @@ const ViewMoreSection = () => {
                 >
                   <div className="accordion-body">
                     <div className="accordion-innerDiv">
-                      <strong style={{ color: "#4CAF50", fontSize: "24px" }}>
+                      <strong
+                        style={{
+                          color: "rgb(7, 30, 67)",
+                          fontSize: "18px",
+                          textTransform: "uppercase",
+                          marginBottom: "13px",
+                          display: "inline-block",
+                        }}
+                      >
                         Bouquets:
                       </strong>
                       {accordionItem.bouqueData.map((bouquet, index) => (
                         <div
                           key={index}
                           style={{
-                            color: "#4CAF50", // Green color for bouquets
-                            fontSize: "20px",
-                            marginRight: "10px",
-                            backgroundColor: "#f2f2f2", // Light gray background color
+                            color: "rgb(253 89 1)", // Green color for bouquets
+                            fontSize: "16px",
+                            backgroundColor: "#e7f1ff", // Light gray background color
                             padding: "8px",
-                            borderRadius: "100px",
+                            fontWeight: "500",
+                            marginBottom: '10px'
                           }}
                         >
                           <div
@@ -273,7 +281,11 @@ const ViewMoreSection = () => {
                       {accordionItem.bouqueData.map((item) => (
                         <div key={item._id}>
                           <strong
-                            style={{ color: "#2196F3", fontSize: "20px" }}
+                            style={{
+                              color: "rgb(7 30 67)",
+                              textTransform: "uppercase",
+                              fontSize: "17px",
+                            }}
                           >
                             Channels for {item.bouqueRef.name}:
                           </strong>
@@ -283,17 +295,9 @@ const ViewMoreSection = () => {
                           >
                             {item.channelRefs.map((channel, index) => (
                               <div key={index}>
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    marginBottom: "20px",
-                                    marginRight: "40px",
-                                  }}
-                                >
+                                <div>
                                   <li
                                     key={channel._id}
-                                    style={{ marginBottom: "-20px" }}
                                   >
                                     <img
                                       src={imageProvider(channel.image)}
@@ -301,13 +305,10 @@ const ViewMoreSection = () => {
                                       //   "../../assets/images/packagesImages/1703050192954-jsdownload.png"
                                       // }
                                       // alt={channel.name}
-                                      style={{
-                                        marginRight: "10px",
-                                        // borderRadius: "50%",
-                                        width: "50px",
-                                        height: "50px",
-                                      }}
                                     />
+                                       <span>
+                                    {channel.name}
+                                  </span>
                                     {/* <span
                                   style={{
                                     color: "#2196F3",
@@ -320,7 +321,7 @@ const ViewMoreSection = () => {
                                   {channel.name}
                                 </span> */}
                                   </li>
-                                  <span
+                                  {/* <span
                                     style={{
                                       color: "#2196F3",
                                       fontSize: "16px",
@@ -330,7 +331,7 @@ const ViewMoreSection = () => {
                                     }}
                                   >
                                     {channel.name}
-                                  </span>
+                                  </span> */}
                                 </div>
                               </div>
                             ))}
@@ -342,7 +343,7 @@ const ViewMoreSection = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> 
         </div>
       </section>
     </>

@@ -1617,7 +1617,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .header-bottom {
-  position: absolute;
+  position: sticky;
   width: 100%;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -1627,7 +1627,7 @@ ul[class*="custom--tab"] li:last-child button {
   padding: 0 18px;
   -webkit-transition: all ease-in 0.4s;
   transition: all ease-in 0.4s;
-  margin-top: 52px;
+  box-shadow: 0px 0px 3px 0px #071e43;
 }
 
 @media (max-width: 991px) {
@@ -1702,7 +1702,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .nav-menu .nav-item {
-  position: relative;
+  padding: 18px 0 !important;
 }
 
 @media (max-width: 991px) {
@@ -1723,12 +1723,17 @@ ul[class*="custom--tab"] li:last-child button {
 .nav-menu .nav-item:hover .nav-link::before {
   width: 100%;
 }
+ul.navbar-nav a.nav-link.active{
+  color: #fd5901 !important;
+}
+ul.navbar-nav a:hover {
+  color: #fd5901 !important;
+}
 
 .nav-menu .nav-link {
   font-weight: 500;
   font-size: 16px;
   color: #071e43 !important;
-  padding: 33px 0 !important;
   position: relative;
   margin: 0 10px;
   cursor: pointer;
@@ -1746,19 +1751,6 @@ ul[class*="custom--tab"] li:last-child button {
   left: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-
-.nav-menu .nav-link::before {
-  position: absolute;
-  content: "";
-  right: 0;
-  bottom: 32px;
-  width: 0;
-  height: 3px;
-  /* background-color: #fd5901; */
-  background-color: #fd5901;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
 }
 
 .nav-menu .nav-link i {
@@ -1903,7 +1895,7 @@ ul[class*="custom--tab"] li:last-child button {
 
 .header-top {
   background-color: #071e43;
-  padding: 14px 0 60px;
+  padding: 14px 0 14px;
 }
 
 .top-contact-menu {
@@ -2086,6 +2078,9 @@ ul[class*="custom--tab"] li:last-child button {
   .breadcumb {
     padding: 100px 0 50px;
   }
+  .nav-menu .nav-item {
+    padding: 2px 0px 10px 0px !important;
+}
 }
 
 @media (max-width: 575px) {
@@ -2287,7 +2282,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .footer-item a img {
-  width: 100%;
+  width: 150px;
   padding-bottom: 20px;
 }
 
@@ -4904,7 +4899,7 @@ svg.radial-progress circle {
 
 .footer-contact {
   background-color: #071e43e6;
-  padding: 66px 0px;
+  padding: 56px 0px;
 }
 footer.footer-area.bg-img .container.py-100 {
   padding: 52px 0px;
@@ -4961,8 +4956,11 @@ footer.footer-area.bg-img .container.py-100 {
     display: none;
   }
   .brand {
-    padding: 40px 0px;
+    padding: 0px 0px;
   }
+  .faq-accordion {
+    background: none !IMPORTANT;
+}
   section.home-two-banner {
     padding: 80px 0;
   }
@@ -7848,31 +7846,28 @@ section.Accordion-Div .accordion-item button.accordion-button:focus {
   box-shadow: none;
 }
 section.Accordion-Div ul.accordion-channelList li {
-  list-style-type: none;
-  margin-bottom: 0;
-  margin-top: 8px;
-  margin-right: 17px;
-  padding: 20px;
-  border: 0 !important;
-  box-shadow: 2px 2px 12px 0 rgba(188, 188, 188, 0.75);
-  float: left;
+  padding: 14px;
+  border: 1px solid #071e43;
   position: relative;
+  line-height: 100px;
+  width: 180px;
+  text-align: center;
 }
 
 section.Accordion-Div ul.accordion-channelList li img {
   margin-bottom: 10px;
-  height: auto;
-  max-height: 80px;
-  width: 80px;
 }
 
 section.Accordion-Div ul.accordion-channelList li span {
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: -40px;
   left: 0;
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #fd5901;
+  font-weight: 500;
 }
 
 .accordion-channelList {

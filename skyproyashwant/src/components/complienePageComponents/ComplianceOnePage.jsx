@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 const ComplianceOnePage = () => {
   return (
     <>
-      <div className="package-section-new" style={{ marginTop: "100px" }}>
+      <div className="package-section-new privacy-section">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-sm-12">
-              <div className="package-header">
-                <h1>Compliances</h1>
-              </div>
-            </div>
-            <div className="documents-main">
+            <div className="documents-main"style={{ marginTop: "50px" }}>
               <div className="container">
+                <div className="row">
+                  <div className="col-sm-12">
+                  <h3 class="mt-0">Compliances</h3>
+                  </div>
+                </div>
                 <div className="row">
                   <div className="col-sm-9">
                     <h6>Document Title</h6>

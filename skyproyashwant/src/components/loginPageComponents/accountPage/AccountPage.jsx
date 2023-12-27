@@ -126,7 +126,7 @@ const AccountPage = () => {
             <div className="account-form">
               <div className="section-header style-two">
                 <h4 className="subtitle">ADMIN LOGIN </h4>
-                <h2 className="title">WELCOME BACK</h2>
+                {/* <h2 className="title">WELCOME BACK</h2> */}
               </div>
               <form
                 className="cust-formdiv"

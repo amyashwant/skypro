@@ -25,9 +25,9 @@ const RefundPageOne = () => {
                 for our users.
               </p>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Flexible Options:</b>
               </p>
 
@@ -40,9 +40,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Cancellation Deadline:</b>
               </p>
               <ul>
@@ -54,9 +54,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Transparent Communication:</b>
               </p>
               <ul>
@@ -69,9 +69,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>User support:</b>
               </p>
               <ul>
@@ -84,9 +84,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Continuous Improvement:</b>
               </p>
               <ul>
@@ -98,9 +98,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Intellectual property:</b>
               </p>
               <ul>

@@ -10,7 +10,7 @@ const Facts = () => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="section-header style-two ps-lg-5">
-                  <h4 className="subtitle">OUR FACT</h4>
+                  {/* <h4 className="subtitle">OUR FACT</h4> */}
                   <h2 className="title">
                     UNLIMITED MOVIES,K TV SHOWS AND MORE
                   </h2>
