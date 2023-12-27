@@ -19,7 +19,7 @@ const PrivacyPageOne = () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <h3 className="mt-0">SkyPro Privacy Policy</h3>
+            <h3 className="mt-0">Privacy Policy</h3>
 
             <p className="mb-1">
               Policy last updated:

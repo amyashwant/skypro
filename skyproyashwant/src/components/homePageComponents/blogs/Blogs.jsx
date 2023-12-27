@@ -16,7 +16,7 @@ const Blogs = () => {
         <div className="row justify-content-center">
           <div className="col-lg-6">
             <div className="section-header">
-              <h4 className="subtitle">BLOG POST</h4>
+              {/* <h4 className="subtitle">BLOG POST</h4> */}
               <h2 className="title">YOUR LATEST BLOG POST & ARTICLES</h2>
             </div>
           </div>

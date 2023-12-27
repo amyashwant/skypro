@@ -3,6 +3,14 @@ import refundImg from "../../assets/images/refund/WhatsApp Image 2023-11-27 at 1
 import refundTwo from "../../assets/images/refund/why360-patten.png";
 import { Link } from "react-router-dom";
 const RefundPageOne = () => {
+
+  const email = 'info@skypro.co.in';
+  const mailtoLink = `mailto:${email}`;
+
+  const openMail = () => {
+    window.open(mailtoLink);
+  };
+
   return (
     <>
       <section className="py-5 position-relative bglight privacy-section">
@@ -25,9 +33,9 @@ const RefundPageOne = () => {
                 refund policy, please carefully read the terms outlined below:
               </p>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Eligibility for Refund:</b>
               </p>
               <p>
@@ -47,15 +55,15 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Refund Request Procedure:</b>
               </p>
               <ul>
                 <li>
                   To request a refund, please contact our customer support team
-                  at <Link to="mailto:info@theskypro.in">info@theskypro.in</Link>{" "}
+                  at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
                   with the subject line 'Refund Request'.
                 </li>
                 <li>
@@ -64,9 +72,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Limitations:</b>
               </p>
               <ul>
@@ -77,9 +85,9 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                <span>
+                {/* <span>
                   <img src={refundImg} />
-                </span>
+                </span> */}
                 <b>Our Commitment:</b>
               </p>
               <ul>
@@ -90,14 +98,14 @@ const RefundPageOne = () => {
                 </li>
                 <li>
                   By using our services and making a purchase on{" "}
-                  <Link to="http://www.theskypro.in">www.theskypro.in</Link>, you
+                  <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>, you
                   agree to adhere to the terms and conditions of this refund
                   policy.
                 </li>
                 <li>
                   For any questions or concerns regarding our refund policy,
                   please contact us at{" "}
-                  <Link to="mailto:info@theskypro.in">info@theskypro.in</Link>.
+                  <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>.
                 </li>
               </ul>
             </div>

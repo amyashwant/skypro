@@ -147,10 +147,10 @@ const Footer = () => {
                     <i className="fas fa-square-full"></i>
                     <Link to="/about">About Us</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <i className="fas fa-square-full"></i>
                     <Link to="/service">Services</Link>
-                  </li>
+                  </li> */}
                   {/* <li>
                     <i className="fas fa-square-full"></i>
                     <Link to="/signup">Appointment</Link>
