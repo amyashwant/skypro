@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Skyprologo from "../../../assets/images/skypro/Skypro_New_Logo.png";
 import smallSkyprologo from "../../../assets/images/skypro/skypro-logo-icon.png";
 // import UserProfile from '../dashboard/userProfile';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -22,6 +22,7 @@ import {
   AccountBalanceWalletOutlined,
   GroupOutlined,
 } from "@mui/icons-material";
+import AccountContext from "../../../utils/AccountContext";
 // import { AccountContext } from "../../App";
 
 const PortalHeader = ({ children }) => {
@@ -29,7 +30,8 @@ const PortalHeader = ({ children }) => {
   const [open, setOpen] = useState(true);
   // const { userData } = useContext(AccountContext);
   const pathname = useLocation().pathname;
-
+  const { login, setLogin, setUserData } = useContext(AccountContext);
+  const navigate = useNavigate();
   const handleClick = (event) => {
     setIsActive((current) => !current);
   };
@@ -38,6 +40,14 @@ const PortalHeader = ({ children }) => {
   const filteredLinks = sideBarLinks.filter((index) => {
     return index.role === "both";
   });
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("userInfo");
+    setLogin(false);
+    setUserData(null);
+    navigate("/webadmin");
+  };
 
   useEffect(() => {
     if (pathname.includes("settings")) {
@@ -51,6 +61,7 @@ const PortalHeader = ({ children }) => {
         className={!isActive ? "is_active dashboard_left" : "dashboard_left"}
       >
         <div className="form-style-div01">
+          {/* <div>logout</div> */}
           <List
             sx={{ width: "100%", maxWidth: 360 }}
             component="nav"
@@ -68,6 +79,7 @@ const PortalHeader = ({ children }) => {
                     <img src={smallSkyprologo} alt="logo" />
                   )}
                 </Link>
+                {/* <Link>logout</Link> */}
               </ListSubheader>
             }
           >
@@ -151,9 +163,15 @@ const PortalHeader = ({ children }) => {
               <MenuOutlined fontSize="large" />
             )}
           </div>
-          {/* <div className='header_right'>
-                        <UserProfile initialLetter={initialLetter} userData={userData}/>
-                    </div> */}
+          <div className="header_right">
+            <button
+              onClick={logoutHandler}
+              style={{ backgroundColor: "#071e43", color: "#fd5901",borderRadius:"5px",width:"80px",height:"30px" }}
+            >
+              logout
+            </button>
+            {/* <UserProfile initialLetter={initialLetter} userData={userData}/> */}
+          </div>
         </div>
         <div className="form-style-div02">{children}</div>
       </div>
@@ -201,6 +219,12 @@ const settingsLinks = [
   //   // handle: "/account/settings/security",
   //   handle: "/security",
   // },
+  {
+    icon: <GroupAddIcon fontSize="medium" />,
+    title: "Compliance",
+    // handle: "/admin/settings/languages",
+    handle: "/complianceadmin",
+  },
   {
     icon: <GroupAddIcon fontSize="medium" />,
     title: "Language",
