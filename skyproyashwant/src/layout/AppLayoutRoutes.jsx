@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AccountContext from "../utils/AccountContext";
 import Loader from "../common/loaderComponent.jsx/Loader";
 import PaymentTest from "../components/packagePageComponents/PaymentTest";
+import NewsLetterPage from "../components/adminPageComponents/NewsLetterPage";
 import ComplianceAdminPage from "../components/adminPageComponents/ComplianceAdminPage";
 
 const TeamsPage = lazy(() => import("../screens/TeamsPage"));
@@ -189,9 +190,14 @@ const AppLayoutRoutes = () => {
                   element={<CategoryFormPage />}
                 />
                 <Route
+                  path="/subscriber"
+                  // path="/admin/settings/category"
+                  element={<NewsLetterPage />}
+                />
+                <Route
                   path="/complianceadmin"
                   // path="/admin/settings/category"
-                  element={<ComplianceAdminPage/>}
+                  element={<ComplianceAdminPage />}
                 />
               </Routes>
             </Suspense>

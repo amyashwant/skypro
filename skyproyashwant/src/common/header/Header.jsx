@@ -7,7 +7,6 @@ const Header = () => {
   const isActive = (path) => {
     return location.pathname === path ? "active" : "";
   };
-
   return (
     <>
       <div className="header-top d-none d-lg-block">
