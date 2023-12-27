@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from "react-router-dom";
 import { useParams } from "react-router";
-import { addItem, viewItem } from "../../utils/cartSlice";
+import {
+  addItem,
+  clearItem,
+  removeItem,
+  viewItem,
+} from "../../utils/cartSlice";
 // import imgone from "../../assets/images/packagesImages/1703050192954-jsdownload.png";
 // const imgone = require("../../assets/images/packagesImages/1703050192954-jsdownload.png");
 
@@ -21,15 +26,24 @@ const ViewMoreSection = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   console.log("packageId>>>", packageId);
   const cartItems = useSelector((state) => state.cart.items);
+  console.log("CartItems>>>................>", cartItems);
 
   // const viewCartItems = useSelector((state) => state.cart.viewItems);
-  // console.log("viewCartItems>>>", viewCartItems);
   // let disableBouqueArray = [];
   const [disableBouqueArray, setDisableBouqueArray] = useState([]);
   const handleAddPackage = (pack) => {
     console.log("disabled................False........");
+    if (cartItems.length > 0) {
+      dispatch(clearItem());
+    }
+    // dispatch(addItem(arg));
 
+    // selectedPack ? setSelectedPack(null) : setSelectedPack(arg);
     dispatch(addItem(pack));
+
+    // if (packageResult[0]?.packageRef?.name === cartItems[0]?.name) {
+    //   dispatch(removeItem());
+    // }
   };
 
   const handleBouquePrice = (price, titleName) => {
@@ -142,17 +156,23 @@ const ViewMoreSection = () => {
                 .00 */-per month
               </h3>
             </div>
-            <div className="col-sm-2" style={{ textAlign: "right" }}>
+            <div className="col-sm-2 text-align-right">
               <button
                 className="adpack-btn"
                 onClick={() => handleAddPackage(packageData[0].packageRef)}
-                disabled={cartItems.length > 0}
+                disabled={
+                  cartItems.length > 0 &&
+                  packageResult[0]?.packageRef?.name === cartItems[0]?.name
+                }
               >
-                {cartItems.length > 0 ? (
-                  <span style={{ color: "#fd5901" }}>ADDED &#x2713;</span>
+                {cartItems.length > 0 &&
+                packageResult[0]?.packageRef?.name === cartItems[0]?.name ? (
+                  <span style={{ color: "lightgreen" }}>ADDED &#x2713;</span>
                 ) : (
                   " ADD PACKAGE"
                 )}
+
+                {/* {packageResult[0]?.packageRef?.name === cartItems[0]?.name} */}
               </button>
             </div>
           </div>

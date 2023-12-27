@@ -18,7 +18,7 @@ const AccountPage = () => {
 
   useEffect(() => {
     if (login) {
-      navigate("/admin");
+      navigate("/adminmain");
     }
   }, [login]);
 
@@ -88,7 +88,7 @@ const AccountPage = () => {
         // window.location.reload(false); //seen from comment lect. 12 youtube
         setLogin(true);
         setUserData(data);
-        navigate("/admin");
+        navigate("/webadmin");
       } catch (error) {
         console.log("login >> ", "went wrong while logging in");
       }

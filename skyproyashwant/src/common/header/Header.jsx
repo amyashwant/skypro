@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <>
-      <div className={`header-top d-none d-lg-block`}>
+      <div className="header-top d-none d-lg-block">
         <div className="container">
           <div className="top-header-wrapper d-flex flex-wrap justify-content-between align-items-center">
             <div className="top-contact">
@@ -108,6 +108,7 @@ const Header = () => {
                   </Link>
                 </li>
 
+                {/* {/ Add similar logic for other navigation items /} */}
                 <li className="nav-item dropdown">
                   <Link
                     className={`nav-link ${isActive("/packages")}`}

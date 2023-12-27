@@ -36,7 +36,7 @@ const BeadCumbCommon = ({ titleOne, titleTwo, bgImg, urlPackages}) => {
                     </h4>
                     <ul className="breadcumb-list d-flex justify-content-center align-items-center">
                       <li>
-                        <Link to="/">HOME</Link>
+                        {/* <Link to="/">HOME</Link> */}
                       </li>
                       {/* <li>
                         <span>/</span>
