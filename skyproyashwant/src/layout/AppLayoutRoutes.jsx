@@ -102,7 +102,7 @@ const AppLayoutRoutes = () => {
           <Router>
             {/* <Suspense fallback={Loader}> */}
             {/* <Suspense fallback={<div>Loading.....</div>}> */}
-            <Suspense fallback={<Loader />}>
+            <Suspense >
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/packages" element={<PackagePage />} />
