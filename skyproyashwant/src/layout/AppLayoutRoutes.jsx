@@ -4,6 +4,8 @@ import AccountContext from "../utils/AccountContext";
 import Loader from "../common/loaderComponent.jsx/Loader";
 import PaymentTest from "../components/packagePageComponents/PaymentTest";
 import NewsLetterPage from "../components/adminPageComponents/NewsLetterPage";
+import ComplianceAdminPage from "../components/adminPageComponents/ComplianceAdminPage";
+
 const TeamsPage = lazy(() => import("../screens/TeamsPage"));
 const Dashboard = lazy(() => import("../screens/Dashboard"));
 const AboutPage = lazy(() => import("../screens/AboutPage"));
@@ -103,7 +105,7 @@ const AppLayoutRoutes = () => {
           <Router>
             {/* <Suspense fallback={Loader}> */}
             {/* <Suspense fallback={<div>Loading.....</div>}> */}
-            <Suspense fallback={<Loader />}>
+            <Suspense>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/packages" element={<PackagePage />} />
@@ -112,7 +114,8 @@ const AppLayoutRoutes = () => {
                 {/* <Route path="/service" element={<ServicePage />} /> */}
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
-                <Route path="/login" element={<LoginPage />} />
+                {/* <Route path="/login" element={<LoginPage />} /> */}
+                <Route path="/webadmin" element={<LoginPage />} />
                 <Route path="/register" element={<SignupPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/terms" element={<TermsPage />} />
@@ -123,15 +126,12 @@ const AppLayoutRoutes = () => {
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/cancel" element={<CancelPage />} />
                 {/* <Route path="/packages123" element={<PaymentTest />} /> */}
-                {/* <Route
+                {/* <Route  
                   path="/packages/:packageId"
                   element={<ViewMorePackage />}
                 /> */}
-                <Route
-                  path="/:packageId"
-                  element={<ViewMorePackage />}
-                />
-                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/:packageId" element={<ViewMorePackage />} />
+                <Route path="/adminmain" element={<AdminPage />} />
                 <Route path="/adminsignup" element={<Register />} />
                 {/* <Route path="/adminlogin" element={<Login />} /> */}
                 <Route
@@ -193,6 +193,11 @@ const AppLayoutRoutes = () => {
                   path="/subscriber"
                   // path="/admin/settings/category"
                   element={<NewsLetterPage />}
+                />
+                <Route
+                  path="/complianceadmin"
+                  // path="/admin/settings/category"
+                  element={<ComplianceAdminPage />}
                 />
               </Routes>
             </Suspense>
