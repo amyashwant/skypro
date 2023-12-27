@@ -1,17 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+const pdfProvider = (pdfName) => {
+  const pdfFile = require(`../../assets/images/complianceFilePDF/${pdfName}`);
+  return pdfFile;
+};
+
 const ComplianceOnePage = () => {
+  const [complianceData, setComplianceData] = useState();
+  const getComplianceFunc = async (req, res) => {
+    const data = await axios.get("/api/compliancepdf");
+    setComplianceData(data?.data);
+    // console.log(com);
+  };
+  useEffect(() => {
+    getComplianceFunc();
+  }, []);
+  console.log("complianceData>>>", complianceData);
   return (
     <>
       <div className="package-section-new privacy-section">
         <div className="container-fluid">
           <div className="row">
-            <div className="documents-main"style={{ marginTop: "50px" }}>
+            <div className="documents-main" style={{ marginTop: "50px" }}>
               <div className="container">
                 <div className="row">
                   <div className="col-sm-12">
-                  <h3 class="mt-0">Compliances</h3>
+                    <h3 class="mt-0">Compliances</h3>
                   </div>
                 </div>
                 <div className="row">
@@ -22,202 +38,26 @@ const ComplianceOnePage = () => {
                     <h6>Download</h6>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Declaration of Network Capacity Fee
+                {complianceData?.map((item, index) => (
+                  <div className="row">
+                    <div className="col-sm-9">
+                      <div className="comp-description">{item.title}</div>
+                    </div>
+                    <div className="col-sm-3">
+                      <Link
+                        to={pdfProvider(item.pdfFile)}
+                        target="_blank"
+                        className="downloadbtn"
+                      >
+                        <img
+                          src="https://www.hathway.com/about_images/download.png"
+                          alt="download"
+                        />
+                        <p>Download</p>
+                      </Link>
                     </div>
                   </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Application to Access Skypro Network
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      RIO for Carriage of Channels
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">CAF Form</div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">Manual of Practice</div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Declaration under Section 4(4)
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Declaration under Section 4(4)
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Declaration under Section 4(4)
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Declaration under Section 4(4)
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-9">
-                    <div className="comp-description">
-                      Declaration under Section 4(4)
-                    </div>
-                  </div>
-                  <div className="col-sm-3">
-                    <a
-                      href="https://www.skypro.co.in/_files/ugd/8d7056_2249f320deb949a6b40cf0d4700921a7.pdf"
-                      target="_blank"
-                      className="downloadbtn"
-                    >
-                      <img
-                        src="https://www.hathway.com/about_images/download.png"
-                        alt="download"
-                      />
-                      <p>Download</p>
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

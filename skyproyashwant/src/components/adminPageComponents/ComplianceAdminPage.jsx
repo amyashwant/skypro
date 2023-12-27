@@ -140,19 +140,19 @@ const ComplianceAdminPage = () => {
     console.log("categoryId inside submit>>", categoryId);
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name.toLowerCase());
+      formDataToSend.append("title", formData.name);
       // formDataToSend.append("price", formData.price);
-      formDataToSend.append("language", languageId);
+      // formDataToSend.append("language", languageId);
       formDataToSend.append("pdfFile", formData.pdfFile);
-      formDataToSend.append("type", channelId[0]);
-      formDataToSend.append("category", categoryId);
+      // formDataToSend.append("type", channelId[0]);
+      // formDataToSend.append("category", categoryId);
 
       // channelId.forEach((id) => {
       //   formDataToSend.append("type", id);
       // });
 
       const { data } = await axios.post(
-        "/api/package/channel",
+        "/api/compliancepdf",
         formDataToSend,
         config
       );
@@ -258,23 +258,23 @@ const ComplianceAdminPage = () => {
   useEffect(() => {
     const isNameValid = formData.name.trim() !== "";
     // const isPriceValid = formData.price.trim() !== "";
-    const isImageValid = formData.image !== null;
+    const isImageValid = formData.pdfFile !== null;
     // const areChannelsSelected = channelName.length > 0;
-    const areLanguagesSelected = languageName.length > 0;
+    // const areLanguagesSelected = languageName.length > 0;
 
     setIsFormValid(
       isNameValid &&
         // isPriceValid &&
         // areChannelsSelected &&
-        areLanguagesSelected &&
+        // areLanguagesSelected &&
         isImageValid
     );
   }, [
     formData.name,
     // formData.price,
-    formData.image,
+    formData.pdfFile,
     // channelName,
-    languageName,
+    // languageName,
   ]);
 
   return (
@@ -283,7 +283,7 @@ const ComplianceAdminPage = () => {
         <ToastContainer />
         <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
           <div className="mb-3">
-            <label className="form-label">Channel Name:</label>
+            <label className="form-label">Compliance Name:</label>
             <input
               type="text"
               className="form-control"
@@ -306,7 +306,7 @@ const ComplianceAdminPage = () => {
           </div> */}
 
           <div className="mb-3">
-            <label className="form-label">Channel Image:</label>
+            <label className="form-label">Compliance pdf:</label>
             <input
               type="file"
               className="form-control"
@@ -325,12 +325,12 @@ const ComplianceAdminPage = () => {
 
           <div style={{ color: "green" }}>{modal && modal}</div>
         </form>
-        <div style={{ marginLeft: "30px" }}>
+        {/* <div style={{ marginLeft: "30px" }}>
           <h3>compliance Aailable:</h3>
           {viewChannelData.map((item) => (
             <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
           ))}
-        </div>
+        </div> */}
       </PortalHeader>
     </>
   );
