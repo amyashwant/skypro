@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from "react-router-dom";
 import { useParams } from "react-router";
-import { addItem, viewItem } from "../../utils/cartSlice";
+import {
+  addItem,
+  clearItem,
+  removeItem,
+  viewItem,
+} from "../../utils/cartSlice";
 // import imgone from "../../assets/images/packagesImages/1703050192954-jsdownload.png";
 // const imgone = require("../../assets/images/packagesImages/1703050192954-jsdownload.png");
 
@@ -21,15 +26,24 @@ const ViewMoreSection = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   console.log("packageId>>>", packageId);
   const cartItems = useSelector((state) => state.cart.items);
+  console.log("CartItems>>>................>", cartItems);
 
   // const viewCartItems = useSelector((state) => state.cart.viewItems);
-  // console.log("viewCartItems>>>", viewCartItems);
   // let disableBouqueArray = [];
   const [disableBouqueArray, setDisableBouqueArray] = useState([]);
   const handleAddPackage = (pack) => {
     console.log("disabled................False........");
+    if (cartItems.length > 0) {
+      dispatch(clearItem());
+    }
+    // dispatch(addItem(arg));
 
+    // selectedPack ? setSelectedPack(null) : setSelectedPack(arg);
     dispatch(addItem(pack));
+
+    // if (packageResult[0]?.packageRef?.name === cartItems[0]?.name) {
+    //   dispatch(removeItem());
+    // }
   };
 
   const handleBouquePrice = (price, titleName) => {
@@ -142,17 +156,23 @@ const ViewMoreSection = () => {
                 .00 */-per month
               </h3>
             </div>
-            <div className="col-sm-2" style={{ textAlign: "right" }}>
+            <div className="col-sm-2 text-align-right">
               <button
                 className="adpack-btn"
                 onClick={() => handleAddPackage(packageData[0].packageRef)}
-                disabled={cartItems.length > 0}
+                disabled={
+                  cartItems.length > 0 &&
+                  packageResult[0]?.packageRef?.name === cartItems[0]?.name
+                }
               >
-                {cartItems.length > 0 ? (
-                  <span style={{ color: "#fd5901" }}>ADDED &#x2713;</span>
+                {cartItems.length > 0 &&
+                packageResult[0]?.packageRef?.name === cartItems[0]?.name ? (
+                  <span style={{ color: "lightgreen" }}>ADDED &#x2713;</span>
                 ) : (
                   " ADD PACKAGE"
                 )}
+
+                {/* {packageResult[0]?.packageRef?.name === cartItems[0]?.name} */}
               </button>
             </div>
           </div>
@@ -171,7 +191,7 @@ const ViewMoreSection = () => {
                     aria-expanded="true"
                     aria-controls={`panelsStayOpen-collapse${accordionItem._id}`}
                   >
-                    <strong>Broadcaster:</strong> &nbsp;{accordionItem.broadcasterRef.name}
+                    {accordionItem.broadcasterRef.name}
                   </button>
                 </h2>
                 <div
@@ -180,92 +200,11 @@ const ViewMoreSection = () => {
                   aria-labelledby={`panelsStayOpen-heading${accordionItem._id}`}
                 >
                   <div className="accordion-body">
-                    <div className="accordion-innerDiv">
-                      <strong
-                        style={{
-                          color: "rgb(7, 30, 67)",
-                          fontSize: "18px",
-                          textTransform: "uppercase",
-                          marginBottom: "13px",
-                          display: "inline-block",
-                        }}
-                      >
-                        Bouquets:
-                      </strong>
-                      {accordionItem.bouqueData.map((bouquet, index) => (
-                        <div
-                          key={index}
-                          style={{
-                            color: "rgb(253 89 1)", // Green color for bouquets
-                            fontSize: "16px",
-                            backgroundColor: "#e7f1ff", // Light gray background color
-                            padding: "8px",
-                            fontWeight: "500",
-                            marginBottom: '10px'
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                            }}
-                          >
-                            <span>{bouquet.bouqueRef.name}</span>
-                            <span>
-                              <span
-                                style={{
-                                  color: "black",
-                                  marginRight: "20px",
-                                  marginLeft: "20px",
-                                }}
-                              >
-                                ₹{bouquet.bouqueRef.price}
-                              </span>
-                              <button
-                                style={{
-                                  backgroundColor: disableBouqueArray.includes(
-                                    bouquet?.bouqueRef?.name
-                                  )
-                                    ? "grey"
-                                    : "#071e43",
-                                  color: "white",
-                                  padding: "0px 10px",
-                                  borderRadius: "50px",
-                                }}
-                                onClick={() =>
-                                  handleBouquePrice(
-                                    bouquet?.bouqueRef,
-                                    bouquet?.bouqueRef?.name
-                                  )
-                                }
-                                disabled={disableBouqueArray.includes(
-                                  bouquet?.bouqueRef?.name
-                                )}
-                              >
-                                {/* {disableBouqueArray.includes(
-                                  bouquet?.bouqueRef?.name
-                                ) ? (
-                                  <span style={{ color: "lightgreen" }}>
-                                    Selected &#x2713;
-                                  </span>
-                                ) : (
-                                  "Select"
-                                )} */}
-                              </button>
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
                     <div style={{ marginTop: "25px" }}>
                       {accordionItem.bouqueData.map((item) => (
                         <div key={item._id}>
                           <strong
-                            style={{
-                              color: "rgb(7 30 67)",
-                              textTransform: "uppercase",
-                              fontSize: "17px",
-                            }}
+                            style={{ color: "#2196F3", fontSize: "20px" }}s
                           >
                             Channels for {item.bouqueRef.name}:
                           </strong>
@@ -275,9 +214,17 @@ const ViewMoreSection = () => {
                           >
                             {item.channelRefs.map((channel, index) => (
                               <div key={index}>
-                                <div>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    marginBottom: "20px",
+                                    marginRight: "40px",
+                                  }}
+                                >
                                   <li
                                     key={channel._id}
+                                    style={{ marginBottom: "-20px" }}
                                   >
                                     <img
                                       src={imageProvider(channel.image)}
@@ -285,10 +232,13 @@ const ViewMoreSection = () => {
                                       //   "../../assets/images/packagesImages/1703050192954-jsdownload.png"
                                       // }
                                       // alt={channel.name}
+                                      style={{
+                                        marginRight: "10px",
+                                        // borderRadius: "50%",
+                                        width: "50px",
+                                        height: "50px",
+                                      }}
                                     />
-                                       <span>
-                                    {channel.name}
-                                  </span>
                                     {/* <span
                                   style={{
                                     color: "#2196F3",
@@ -301,7 +251,7 @@ const ViewMoreSection = () => {
                                   {channel.name}
                                 </span> */}
                                   </li>
-                                  {/* <span
+                                  <span
                                     style={{
                                       color: "#2196F3",
                                       fontSize: "16px",
@@ -311,7 +261,7 @@ const ViewMoreSection = () => {
                                     }}
                                   >
                                     {channel.name}
-                                  </span> */}
+                                  </span>
                                 </div>
                               </div>
                             ))}
@@ -323,7 +273,7 @@ const ViewMoreSection = () => {
                 </div>
               </div>
             ))}
-          </div> 
+          </div>
         </div>
       </section>
     </>
