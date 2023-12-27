@@ -303,7 +303,7 @@ const ChannelFormPage = () => {
             value={formData.price}
             onChange={handleChange}
           />
-        </div> */}
+          </div> */}
 
           <div>
             <FormControl sx={{ m: 1, width: 600 }}>
