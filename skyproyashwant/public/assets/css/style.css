@@ -1617,7 +1617,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .header-bottom {
-  position: absolute;
+  position: sticky;
   width: 100%;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -1627,7 +1627,7 @@ ul[class*="custom--tab"] li:last-child button {
   padding: 0 18px;
   -webkit-transition: all ease-in 0.4s;
   transition: all ease-in 0.4s;
-  margin-top: 52px;
+  box-shadow: 0px 0px 3px 0px #071e43;
 }
 
 @media (max-width: 991px) {
@@ -1702,7 +1702,7 @@ ul[class*="custom--tab"] li:last-child button {
 }
 
 .nav-menu .nav-item {
-  padding: 33px 0 !important;
+  padding: 18px 0 !important;
 }
 
 @media (max-width: 991px) {
@@ -1895,7 +1895,7 @@ ul.navbar-nav a:hover {
 
 .header-top {
   background-color: #071e43;
-  padding: 14px 0 60px;
+  padding: 14px 0 14px;
 }
 
 .top-contact-menu {
@@ -2078,6 +2078,9 @@ ul.navbar-nav a:hover {
   .breadcumb {
     padding: 100px 0 50px;
   }
+  .nav-menu .nav-item {
+    padding: 2px 0px 10px 0px !important;
+}
 }
 
 @media (max-width: 575px) {
@@ -2279,7 +2282,7 @@ ul.navbar-nav a:hover {
 }
 
 .footer-item a img {
-  width: 100%;
+  width: 150px;
   padding-bottom: 20px;
 }
 
@@ -4896,7 +4899,7 @@ svg.radial-progress circle {
 
 .footer-contact {
   background-color: #071e43e6;
-  padding: 66px 0px;
+  padding: 56px 0px;
 }
 footer.footer-area.bg-img .container.py-100 {
   padding: 52px 0px;
@@ -4953,8 +4956,11 @@ footer.footer-area.bg-img .container.py-100 {
     display: none;
   }
   .brand {
-    padding: 40px 0px;
+    padding: 0px 0px;
   }
+  .faq-accordion {
+    background: none !IMPORTANT;
+}
   section.home-two-banner {
     padding: 80px 0;
   }

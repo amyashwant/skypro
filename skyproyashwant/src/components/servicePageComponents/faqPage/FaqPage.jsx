@@ -3,11 +3,12 @@ import faqOne from "../../../assets/images/home-01/about/offer-bg.png";
 
 const FaqPage = () => {
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const toggleAccordion = (index) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? -1 : index));
   };
+
   return (
     // <section className="faq py-100 bg-img overlay-bg" style={{backgroundImage: `url(${faqOne})`}}>
     //   <div className="container">

@@ -8,7 +8,7 @@ const testimonialData = [
     id: 1,
     image: testiOne,
     content:
-      "Broadband internet is Rocket supplier. Their staff is proficient and truly available. They deal with us and cause us to feel they esteem our business.",
+      "Broadband internet is Rocket supplier. Their staff is proficient and truly available. They deal with us and cause us to feel they esteem our business. drop in at our place within half an hour of our resgistering a complaint.",
     rating: 4.0,
     client: "BROOKLYN SIMMONS",
   },
@@ -16,7 +16,7 @@ const testimonialData = [
     id: 2,
     image: testiTwo,
     content:
-      "This is internet is “Our sales rep has been very helpful and has gone out of his way to make our transition to Broadband a painless process.",
+      "Broadband internet is Rocket supplier. Their staff is proficient and truly available. They deal with us and cause us to feel they esteem our business. drop in at our place within half an hour of our resgistering a complaint.",
     rating: 5.0,
     client: "DARLENE DOBERTSON",
   },
@@ -24,7 +24,7 @@ const testimonialData = [
     id: 3,
     image: testiThree,
     content:
-      "I am pleased to recommend the internet service provided by Broadband. The speed and service are excellent and they are the best in the market at this moment.",
+      "Broadband internet is Rocket supplier. Their staff is proficient and truly available. They deal with us and cause us to feel they esteem our business. drop in at our place within half an hour of our resgistering a complaint.",
     rating: 4.0,
     client: "CONRTNEY HENRY",
   },
