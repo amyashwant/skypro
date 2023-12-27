@@ -23,7 +23,7 @@ const MenuProps = {
   },
 };
 
-const ChannelFormPage = () => {
+const ComplianceAdminPage = () => {
   const [languageName, setlanguageName] = useState([]);
   const [languageData, setLanguageData] = useState([]);
   var [languageId, setLanguageId] = useState("");
@@ -43,7 +43,7 @@ const ChannelFormPage = () => {
     price: "",
     type: "",
     lang: "",
-    image: null,
+    pdfFile: null,
   });
 
   const resetFormFields = () => {
@@ -52,7 +52,7 @@ const ChannelFormPage = () => {
       price: "",
       type: "",
       lang: "",
-      image: null,
+      pdfFile: null,
     });
   };
 
@@ -143,7 +143,7 @@ const ChannelFormPage = () => {
       formDataToSend.append("name", formData.name.toLowerCase());
       // formDataToSend.append("price", formData.price);
       formDataToSend.append("language", languageId);
-      formDataToSend.append("image", formData.image);
+      formDataToSend.append("pdfFile", formData.pdfFile);
       formDataToSend.append("type", channelId[0]);
       formDataToSend.append("category", categoryId);
 
@@ -194,7 +194,7 @@ const ChannelFormPage = () => {
     const { name, value, type } = e.target;
 
     const newValue =
-      name === "image" && type === "file" ? e.target.files[0] : value;
+      name === "pdfFile" && type === "file" ? e.target.files[0] : value;
 
     setFormData((prevData) => ({
       ...prevData,
@@ -305,93 +305,12 @@ const ChannelFormPage = () => {
           />
           </div> */}
 
-          <div>
-            <FormControl sx={{ m: 1, width: 600 }}>
-              <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                // multiple
-                value={channelName}
-                onChange={handleChannelChange}
-                // onChange={handleChange}
-                input={<OutlinedInput label="Language" />}
-                renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {channelType?.data
-                  ?.map((item) => item.name)
-                  ?.map((language) => (
-                    <MenuItem key={language} value={language}>
-                      <Checkbox checked={channelName.indexOf(language) > -1} />
-                      <ListItemText primary={language} />
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-          </div>
-
-          <div>
-            <FormControl sx={{ m: 1, width: 600 }}>
-              <InputLabel id="demo-multiple-checkbox-label">
-                Language
-              </InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                // multiple
-                value={languageName}
-                onChange={handleLanguageChange}
-                // onChange={handleChange}
-                input={<OutlinedInput label="Language" />}
-                renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {languageData?.data
-                  ?.map((item) => item.name)
-                  ?.map((language) => (
-                    <MenuItem key={language} value={language}>
-                      <Checkbox checked={languageName.indexOf(language) > -1} />
-                      <ListItemText primary={language} />
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl sx={{ m: 1, width: 600 }}>
-              <InputLabel id="demo-multiple-checkbox-label">
-                Category
-              </InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                // multiple
-                value={categoryName}
-                onChange={handleCategoryChange}
-                // onChange={handleChange}
-                input={<OutlinedInput label="Language" />}
-                renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {categoryData?.data
-                  ?.map((item) => item.name)
-                  ?.map((language) => (
-                    <MenuItem key={language} value={language}>
-                      <Checkbox checked={categoryName.indexOf(language) > -1} />
-                      <ListItemText primary={language} />
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-          </div>
-
           <div className="mb-3">
             <label className="form-label">Channel Image:</label>
             <input
               type="file"
               className="form-control"
-              name="image"
+              name="pdfFile"
               onChange={handleChange}
             />
           </div>
@@ -407,7 +326,7 @@ const ChannelFormPage = () => {
           <div style={{ color: "green" }}>{modal && modal}</div>
         </form>
         <div style={{ marginLeft: "30px" }}>
-          <h3>Channels Aailable:</h3>
+          <h3>compliance Aailable:</h3>
           {viewChannelData.map((item) => (
             <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
           ))}
@@ -417,4 +336,4 @@ const ChannelFormPage = () => {
   );
 };
 
-export default ChannelFormPage;
+export default ComplianceAdminPage;

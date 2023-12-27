@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addItem,
   clearItem,
+  removeItem,
   viewClearItem,
   viewItem,
 } from "../../utils/cartSlice";
@@ -33,8 +34,9 @@ const PackageMainPage = () => {
     if (cartItems.length > 0) {
       dispatch(clearItem());
     }
-    dispatch(addItem(arg));
-    setSelectedPack(arg);
+    // dispatch(addItem(arg));
+    selectedPack ? dispatch(removeItem()) : dispatch(addItem(arg));
+    selectedPack ? setSelectedPack(null) : setSelectedPack(arg);
   };
 
   const handleViewClick = (arg) => {

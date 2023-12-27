@@ -11,6 +11,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [allTotal, setAllTotal] = useState(0);
+  const [checkoutLoader, setCheckoutLoader] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -64,6 +65,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
   const handleCheckout = async (e) => {
     // const {data:key} = await axios.get("/api/getkeys")
     // console.log(key)
+    setCheckoutLoader(true);
     console.log("hello rohit", amount, currency, receiptId);
     try {
       console.log("amount>>>>>", amount);
@@ -149,6 +151,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
         window.location.href = "http://localhost:3000";
       });
       e.preventDefault();
+      setCheckoutLoader(false);
     } catch (error) {
       console.error("Error doing payment:", error);
       toast.error("Error doing payment. Please try again later.");
@@ -229,14 +232,16 @@ const PaymentModal = ({ handleClose, show, children }) => {
                   // backgroundColor: isHovered ? "#071e43" : "#fd7e14",
                   backgroundColor:
                     cartItems.length === 0 && viewCartItems.length === 0
-                      ? "#000"
+                      ? "#071e43"
                       : "#fd7e14",
                 }}
                 onClick={handleCheckout}
                 disabled={cartItems.length === 0 && viewCartItems.length === 0}
               >
                 {/* {/ <Link to="/payment"> /} */}
-                {cartItems.length === 0 && viewCartItems.length === 0 ?"Nothing To Checkout" : "Checkout"}
+                {cartItems.length === 0 && viewCartItems.length === 0
+                  ? "Nothing To Checkout"
+                  :checkoutLoader?"Loading......": "Checkout"}
                 {/* Checkout */}
                 {/* {/ </Link> /} */}
               </button>
