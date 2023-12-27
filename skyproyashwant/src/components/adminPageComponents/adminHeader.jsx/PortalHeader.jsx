@@ -13,6 +13,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
+import LanguageIcon from '@mui/icons-material/Language';
+import CategoryIcon from '@mui/icons-material/Category';
+import TypeSpecimenIcon from '@mui/icons-material/TypeSpecimen';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
+import PreviewIcon from '@mui/icons-material/Preview';
 import {
   ExpandMore,
   ExpandLess,
@@ -202,25 +209,25 @@ const settingsLinks = [
   //   handle: "/security",
   // },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <LanguageIcon fontSize="medium" />,
     title: "Language",
     // handle: "/admin/settings/languages",
     handle: "/languages",
   },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <CategoryIcon fontSize="medium" />,
     title: "Category",
     // handle: "/admin/settings/category",
     handle: "/category",
   },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <TypeSpecimenIcon fontSize="medium" />,
     title: "Types",
     // handle: "/admin/settings/types",
     handle: "/types",
   },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <LiveTvIcon fontSize="medium" />,
     title: "Channels",
     // handle: "/admin/settings/channels",
     handle: "/channels",
@@ -232,7 +239,7 @@ const settingsLinks = [
     handle: "/broadcasters",
   },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <CollectionsIcon fontSize="medium" />,
     title: "Bouquet",
     // handle: "/admin/settings/bouquets",
     handle: "/bouquets",
@@ -254,14 +261,19 @@ const settingsLinks = [
   //   handle: "/admin/settings/packages",
   // },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <DesktopWindowsIcon fontSize="medium" />,
     title: "Package-Bouque",
     handle: "/package-bouque",
   },
   {
-    icon: <GroupAddIcon fontSize="medium" />,
+    icon: <PreviewIcon fontSize="medium" />,
     title: "view All",
     handle: "/view",
+  },
+  {
+    icon: <PreviewIcon fontSize="medium" />,
+    title: "Subscribed User",
+    handle: "/subscriber",
   },
 ];
 
