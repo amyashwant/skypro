@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
+import { Grid } from "@mui/material";
+import {Paper} from "@mui/material";
 
 const CategoryFormPage = () => {
   const [formData, setFormData] = useState({
@@ -71,18 +73,18 @@ const CategoryFormPage = () => {
   console.log(typeData?.data[0]?.name, "typeData>>");
   return (
     <PortalHeader>
+      <h2>Add Categories</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
-        <div className="mb-3">
-          <label className="form-label">Category Name:</label>
-          <input
+        <div className="language-div mb-3">
+          <label className="language-label form-label">Category Name:</label>
+          <input className="form-label2"
             type="text"
-            // className="form-control"
             name="name"
             value={formData.name}
             onChange={handleChange}
           />
         </div>
-        <div style={{ color: "red" }}>{error && error}</div>
+        <div style={{ color: "#071e43" }}>{error && error}</div>
         <button
           type="submit"
           className="btn btn-primary"
@@ -93,23 +95,25 @@ const CategoryFormPage = () => {
         <div
           style={{
             marginTop: "30px",
-            color: "green",
+            color: "#071e43",
             fontSize: "20px",
           }}
         >
-          Category available:
+          Category Available:
         </div>
 
         <div style={{ fontSize: "10px" }}>
           {typeData ? "" : "Loading......"}
         </div>
-        <div>
-          {typeData?.data?.map((item, index) => {
-            return (
-              <div style={{ margin: "20px", color: "red" }}>{item.name}</div>
-            );
-          })}
-        </div>
+        <Grid container spacing={2}>
+          {typeData?.data?.map((item, index) => (
+            <Grid item key={index} xs={12} sm={6} md={6} lg={2}>
+              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
+                <div style={{ color: '#071e43' }}>{item.name}</div>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
       </form>
     </PortalHeader>
   );

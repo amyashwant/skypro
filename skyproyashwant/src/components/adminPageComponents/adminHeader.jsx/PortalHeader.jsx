@@ -120,11 +120,11 @@ const PortalHeader = ({ children }) => {
               }}
             >
               <ListItemIcon>
-                <SettingsIcon />
+              <SettingsIcon style={{ color: "#fd5901" }} />
               </ListItemIcon>
               {isActive && (
                 <>
-                  <ListItemText primary="Select" />
+                  <ListItemText primary="Make Your Package" />
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </>
               )}
@@ -163,7 +163,7 @@ const PortalHeader = ({ children }) => {
         className={!isActive ? "dashboard_right is_active" : "dashboard_right"}
       >
         <div className="header">
-          <div className="cursor-pointer" onClick={handleClick}>
+        <div className="cursor-pointer" onClick={handleClick} style={{ color: "#fff" }}>
             {isActive ? (
               <MenuOpenOutlined fontSize="large" />
             ) : (
@@ -280,8 +280,8 @@ const settingsLinks = [
   // },
   {
     icon: <DesktopWindowsIcon fontSize="medium" />,
-    title: "Package-Bouque",
-    handle: "/package-bouque",
+    title: "Package",
+    handle: "/package",
   },
   {
     icon: <PreviewIcon fontSize="medium" />,

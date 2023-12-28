@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
+import { Grid } from "@mui/material";
+import {Paper} from "@mui/material";
 // import currImg from "../../assets/images/packagesImages/1702451103822-Default.jpg";
 const LanguageFormPage = () => {
   const [formData, setFormData] = useState({
@@ -75,10 +77,11 @@ const LanguageFormPage = () => {
   console.log(languageData?.data[0]?.name, "languageData>>");
   return (
     <PortalHeader>
+        <h2>Add Languages:</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
-        <div className="mb-3">
-          <label className="form-label">Language:</label>
-          <input
+        <div className="language-div mb-3">
+          <label className="language-label form-label">Language:</label>
+          <input className="form-label2"
             type="text"
             // className="form-control"
             name="name"
@@ -86,7 +89,7 @@ const LanguageFormPage = () => {
             onChange={handleChange}
           />
         </div>
-        <div style={{ color: "red" }}>{error && error}</div>
+        <div style={{ color: "#071e43" }}>{error && error}</div>
         <button
           type="submit"
           className="btn btn-primary"
@@ -97,23 +100,25 @@ const LanguageFormPage = () => {
         <div
           style={{
             marginTop: "30px",
-            color: "green",
+            color: "#081e43",
             fontSize: "20px",
           }}
         >
-          <div>language available:</div>
+          <div>Language Available:</div>
 
           <div style={{ fontSize: "10px" }}>
             {languageData ? "" : "Loading......"}
           </div>
         </div>
-        <div>
-          {languageData?.data?.map((item, index) => {
-            return (
-              <div style={{ margin: "20px", color: "red" }}>{item.name}</div>
-            );
-          })}
-        </div>
+        <Grid container spacing={2}>
+          {languageData?.data?.map((item, index) => (
+            <Grid item key={index} xs={12} sm={6} md={8} lg={2}>
+              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
+                <div style={{ color: '#071e43' }}>{item.name}</div>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
       </form>
     </PortalHeader>
   );

@@ -3,11 +3,14 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
+import { List, Paper, Typography } from '@mui/material';
+import { ListItem } from '@mui/material';
+import { ListItemText } from '@mui/material';
+import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -174,7 +177,7 @@ const BroadcasterFormPage = () => {
         pauseOnHover: true, // Pause the timer when hovered
         draggable: true, // Allow dragging the toast
         progress: undefined, // Use the default progress bar
-        style: { fontSize: "18px", textAlign: "center", color: "red" }, // Customize the style of the toast
+        style: { fontSize: "18px", textAlign: "center", color: "#071e43" }, // Customize the style of the toast
       });
 
       resetFormFields();
@@ -200,6 +203,7 @@ const BroadcasterFormPage = () => {
   return (
     <PortalHeader>
       <ToastContainer />
+      <h2>Add Broadcasters</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="mb-3">
           <label className="form-label">Broadcaster Name:</label>
@@ -211,7 +215,7 @@ const BroadcasterFormPage = () => {
             onChange={handleChange}
           />
         </div>
-        <div style={{ color: "red" }}>{error && error}</div>
+        <div style={{ color: "#071e43" }}>{error && error}</div>
         {/* <div className="mb-3">
           <label className="form-label">Broadcaster Price:</label>
           <input
@@ -266,13 +270,22 @@ const BroadcasterFormPage = () => {
         >
           Submit
         </button>
+     
+      <List>
+      <Typography variant="h5" gutterBottom>
+        Broadcaster Available:
+      </Typography>
+      <Grid container spacing={2}>
+          {viewBroadcasterData?.map((item, index) => (
+            <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
+              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
+                <div style={{ color: '#071e43' }}>{item.name}</div>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </List>
       </form>
-      <div style={{ marginLeft: "30px" }}>
-        <h3>Broadcaster Aailable:</h3>
-        {viewBroadcasterData.map((item) => (
-          <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
-        ))}
-      </div>
     </PortalHeader>
   );
 };

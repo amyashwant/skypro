@@ -323,7 +323,7 @@ const ComplianceAdminPage = () => {
             Submit
           </button>
 
-          <div style={{ color: "green" }}>{modal && modal}</div>
+          <div style={{ color: "#071e43" }}>{modal && modal}</div>
         </form>
         {/* <div style={{ marginLeft: "30px" }}>
           <h3>compliance Aailable:</h3>

@@ -89,7 +89,7 @@ const PaymentModal = ({ handleClose, show, children }) => {
       };
 
       const options = {
-        key: "rzp_test_EC1xn57ne3LN2r", // Replace with your Razorpay key
+        key: "rzp_test_Y0102teJ28X8rd", // Replace with your Razorpay key
         amount: order.amount,
         currency: order.currency,
         order_id: order.id,
