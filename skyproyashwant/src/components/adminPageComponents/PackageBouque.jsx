@@ -3,9 +3,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
-
+import { Grid } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { List, Paper, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const PackageBouque = () => {
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -262,7 +264,7 @@ const PackageBouque = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        style: { fontSize: "18px", textAlign: "center", color: "red" },
+        style: { fontSize: "18px", textAlign: "center", color: "#071e43" },
       });
 
       resetFormFields();
@@ -352,7 +354,7 @@ const PackageBouque = () => {
   return (
     <PortalHeader>
       <ToastContainer />
-
+      <h2>Add Package</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="mb-3">
           <label className="form-label">Package Name:</label>
@@ -364,7 +366,7 @@ const PackageBouque = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        {/* <div>
           <h4>Broadcaster Name</h4>
           {broadcasterData?.data?.map((item) => (
             <FormControlLabel
@@ -379,9 +381,28 @@ const PackageBouque = () => {
               label={item.name}
             />
           ))}
+        </div> */}
+        <div>
+          <h4>Broadcaster Name</h4>
+          <Grid container spacing={2} className="wrap-stylediv">
+            {broadcasterData?.data?.map((item) => (
+              <Grid item key={item.name} xs={12} sm={6} md={4} lg={3} xl={2}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={selectedBroadcasters.includes(item.name)}
+                      onChange={handleBroadcasterChange}
+                      name={item.name}
+                    />
+                  }
+                  label={item.name}
+                />
+              </Grid>
+            ))}
+          </Grid>
         </div>
 
-        <h4 style={{ marginBottom: "20px" }}>Bouquet Name</h4>
+        {/* <h4 style={{ marginBottom: "20px" }}>Bouquet Name</h4>
         {selectedBroadcasters.length > 0 && (
           <div>
             {selectedBroadcasters?.map((broadcasterName) => {
@@ -418,7 +439,132 @@ const PackageBouque = () => {
               );
             })}
           </div>
-        )}
+        )} */}
+
+        {/* <div>
+          <Typography variant="h5" style={{ marginBottom: "20px" }}>
+            Bouquet Name
+          </Typography>
+          {selectedBroadcasters.length > 0 && (
+            <Grid container spacing={2}>
+              {selectedBroadcasters?.map((broadcasterName) => {
+                const broadcasterBouquets = filteredBouquets?.filter((name) => {
+                  const selectedBouquet = bouqueData.data.find(
+                    (bouquet) => bouquet.name === name
+                  );
+                  return (
+                    selectedBouquet.broadcasterRef.name === broadcasterName
+                  );
+                });
+
+                return (
+                  <Grid item key={broadcasterName} xs={12}>
+                    <Paper
+                      elevation={3}
+                      style={{ padding: "5px", marginBottom: "10px" }}
+                    >
+                      <Typography variant="h6">{broadcasterName}</Typography>
+                      {broadcasterBouquets.map((name) => {
+                        const selectedBouquet = bouqueData.data.find(
+                          (bouquet) => bouquet.name === name
+                        );
+
+                        return (
+                          <FormControlLabel
+                            key={name}
+                            control={
+                              <Checkbox
+                                checked={bouqueName.includes(name)}
+                                onChange={handleBouqueChange}
+                                name={name}
+                              />
+                            }
+                            label={
+                              <>
+                                {name}{" "}
+                                <TextField
+                                  variant="outlined"
+                                  value={`Rs ${selectedBouquet.price}/-`}
+                                  InputProps={{ readOnly: true }}
+                                />
+                              </>
+                            }
+                          />
+                        );
+                      })}
+                    </Paper>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
+        </div> */}
+
+        <div>
+          <Typography variant="h5" style={{ marginBottom: "20px" }}>
+            Bouquet Name
+          </Typography>
+          {selectedBroadcasters.length > 0 && (
+            <Grid container spacing={2}>
+              {selectedBroadcasters?.map((broadcasterName) => {
+                const broadcasterBouquets = filteredBouquets?.filter((name) => {
+                  const selectedBouquet = bouqueData.data.find(
+                    (bouquet) => bouquet.name === name
+                  );
+                  return (
+                    selectedBouquet.broadcasterRef.name === broadcasterName
+                  );
+                });
+
+                return (
+                  <Grid item key={broadcasterName} xs={4}>
+                    <Paper className="wrap-bouque-package"
+                      elevation={3}
+                      style={{ padding: "5px", marginBottom: "10px" }}
+                    >
+                      <Typography variant="h6">{broadcasterName}</Typography>
+                      {broadcasterBouquets.map((name) => {
+                        const selectedBouquet = bouqueData.data.find(
+                          (bouquet) => bouquet.name === name
+                        );
+
+                        return (
+                          <FormControlLabel
+                            key={name}
+                            control={
+                              <Checkbox
+                                checked={bouqueName.includes(name)}
+                                onChange={handleBouqueChange}
+                                name={name}
+                              />
+                            }
+                            label={
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <div style={{ flexGrow: 1 }}>{name}</div>
+                                <TextField
+                                className="price-package-css-modify"
+                                  variant="outlined"
+                                  value={`Rs ${selectedBouquet.price}/-`}
+                                  InputProps={{ readOnly: true }}
+                                  style={{ marginLeft: "20px" }}
+                                />
+                              </div>
+                            }
+                          />
+                        );
+                      })}
+                    </Paper>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
+        </div>
 
         <div>
           <h4>Network Carriage Fee</h4>
@@ -430,6 +576,11 @@ const PackageBouque = () => {
         </div>
 
         <div>
+          <h4>Total</h4>
+          <input type="number" value={totalPrice} readonly />
+        </div>
+
+        <div>
           <h4>Discount</h4>
           <input
             type="number"
@@ -438,9 +589,19 @@ const PackageBouque = () => {
           />
         </div>
 
-        <div>
+        {/* <div>
           <h4>Total Price</h4>
           <p>{totalPrice}</p>
+        </div> */}
+
+        <div>
+          <h4>Net Subscriber Price</h4>
+          <input
+            type="number"
+            id="totalPriceInput"
+            value={totalPrice}
+            readonly
+          />
         </div>
 
         <button

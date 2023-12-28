@@ -188,6 +188,7 @@ const PackageFormPage = () => {
   return (
     <PortalHeader>
       <ToastContainer />
+      <h2>Add Package</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="mb-3">
           <label className="form-label">Package Name:</label>

@@ -1529,7 +1529,6 @@ textarea.form--control {
 ul[class*="custom--tab"] li:last-child button {
   border-right: none !important;
 }
-
 .header {
   position: -webkit-sticky;
   position: sticky;
@@ -7325,10 +7324,15 @@ form.cust-formdiv label {
 .dashboard {
   display: flex;
 }
-
+.MuiButtonBase-root.MuiListItemButton-root {
+  padding: 13px 12px;
+  width: 100%;
+  color: #fff;
+  border-top: 1px solid #ffffff45;
+}
 .dashboard_left {
-  background: #e0dfee;
-  box-shadow: 0 0 10px #898989;
+  background: #071e43;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 200px;
   overflow-x: hidden;
@@ -7347,6 +7351,8 @@ form.cust-formdiv label {
 .dashboard .header {
   width: calc(100% - 200px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #071e43;
+  padding: 13px 12px;
 }
 
 .dashboard .is_active .header {
@@ -7362,13 +7368,14 @@ form.cust-formdiv label {
 .dashboard_right.is_active {
   margin-left: 80px;
 }
-
+.dashboard .logo img {
+  width: 110px;
+}
 .dashboard .logo {
   background: #fff;
   /* width: 200px; */
   top: 0;
-  padding: 0 30px;
-  height: 70px;
+  padding: 13px 12px;
   display: flex;
   line-height: 70px;
   display: flex;
@@ -7456,9 +7463,9 @@ form.cust-formdiv label {
 }
 
 .header {
-  height: 70px;
+  /* height: 70px; */
   background-color: #e0dfee;
-  padding: 0 30px;
+  /* padding: 0 30px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7469,7 +7476,9 @@ form.cust-formdiv label {
   top: 0;
   right: 0;
 }
-
+.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+  width: 185px;
+}
 .dashboard .is_active header {
   margin-left: 80px;
 }
@@ -7630,9 +7639,9 @@ section.contact.contactus-style .contact-address a:hover {
   color: #071e43;
 }
 form.broadcaster-form {
-  width: 530px;
-  background: #e0dfee;
+  background: #00000008;
   border: 1px solid #071e43;
+  margin-top: 8px !important;
 }
 
 form.broadcaster-form .MuiFormControl-root.css-u4cvaf-MuiFormControl-root {
@@ -7659,14 +7668,14 @@ form.broadcaster-form div#demo-multiple-checkbox {
   padding: 7px 7px 7px 7px;
 }
 .form-style-div02 {
-  height: 860px;
-  display: flex;
-  align-items: center;
-  width: 100%;
+  margin-top: 120px;
 }
 .form-style-div02 form.broadcaster-form .form-label {
   color: #081e43;
   font-size: 18px;
+}
+form.broadcaster-form .language-div .language-label {
+  margin-right: 10px;
 }
 form.broadcaster-form button.btn.btn-primary:focus {
   box-shadow: none;
@@ -7679,6 +7688,7 @@ form.broadcaster-form button.btn.btn-primary {
   text-transform: uppercase;
   border-radius: 0;
   border: 0;
+  margin-top: 12px;
 }
 
 /* package css */
@@ -8022,4 +8032,39 @@ section.Accordion-Div button.adpack-btn {
   padding: 8px 10px;
   border-radius: 7px;
   margin-bottom: 12px;
+}
+
+/*---- Admin-CSS -28-12-23-----*/
+.MuiList-root.css-1mk9mw3-MuiList-root a {
+  background: #071e43;
+  width: 100%;
+  color: #fff;
+}
+
+.MuiList-root.css-1mk9mw3-MuiList-root a span {
+  font-size: 14px;
+}
+
+.MuiList-root.css-1mk9mw3-MuiList-root a svg {
+  color: #fd5901;
+}
+.css-mhc70k-MuiGrid-root {
+  padding: 10px;
+  border: 1px solid #071e43;
+  margin: 16px 0px !important;
+  border-radius: 4px;
+}
+.form-style-div02 h2 {
+  margin-left: 46px;
+}
+form.broadcaster-form input.form-label2 {
+  display: block;
+  width: 100%;
+}
+
+.wrap-bouque-package .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+  width: auto;
+}
+.price-package-css-modify {
+  width: 100px;
 }

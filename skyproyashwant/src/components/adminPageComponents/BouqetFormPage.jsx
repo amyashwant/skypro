@@ -8,6 +8,9 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
+import { List, Paper, Typography } from '@mui/material';
+import { ListItem } from '@mui/material';
+import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -199,7 +202,7 @@ const BouqetFormPage = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        style: { fontSize: "18px", textAlign: "center", color: "red" },
+        style: { fontSize: "18px", textAlign: "center", color: "#071e43" },
       });
 
       resetFormFields();
@@ -237,6 +240,7 @@ const BouqetFormPage = () => {
     <>
       <PortalHeader>
         <ToastContainer />
+        <h2>Add Bouquets</h2>
         <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
           <div className="mb-3">
             <label className="form-label">Bouquet Name:</label>
@@ -248,7 +252,7 @@ const BouqetFormPage = () => {
               onChange={handleChange}
             />
           </div>
-          <div style={{ color: "red" }}>{error && error}</div>
+          <div style={{ color: "#071e43" }}>{error && error}</div>
           <div className="mb-3">
             <label className="form-label">Bouquet Price:</label>
             <input
@@ -289,20 +293,25 @@ const BouqetFormPage = () => {
           </div>
 
           <div>
-            <h4>Channel Name</h4>
-            {channelData?.data?.map((item) => (
-              <FormControlLabel
-                key={item.name}
-                control={
-                  <Checkbox
-                    checked={channelName.includes(item.name)}
-                    onChange={handleChannelChange}
-                    name={item.name}
+            <Typography variant="h5" gutterBottom>
+              Channels Name
+            </Typography>
+            <Grid container spacing={2}>
+              {channelData?.data?.map((item) => (
+                <Grid item key={item.name} xs={12} sm={6} md={4} lg={3} xl={2}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={channelName.includes(item.name)}
+                        onChange={handleChannelChange}
+                        name={item.name}
+                      />
+                    }
+                    label={item.name}
                   />
-                }
-                label={item.name}
-              />
-            ))}
+                </Grid>
+              ))}
+            </Grid>
           </div>
 
           <button
@@ -312,13 +321,21 @@ const BouqetFormPage = () => {
           >
             Submit
           </button>
-        </form>
-        <div style={{ marginLeft: "30px" }}>
-          <h3>Bouque Aailable:</h3>
-          {viewBouqueData.map((item) => (
-            <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
+          <List>
+      <Typography variant="h5" gutterBottom>
+        Bouquets Available:
+      </Typography>
+      <Grid container spacing={2}>
+          {viewBouqueData?.map((item, index) => (
+            <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
+              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
+                <div style={{ color: '#071e43' }}>{item.name}</div>
+              </Paper>
+            </Grid>
           ))}
-        </div>
+        </Grid>
+      </List>
+      </form>
       </PortalHeader>
     </>
   );

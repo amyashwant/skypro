@@ -5,6 +5,7 @@ import Loader from "../common/loaderComponent.jsx/Loader";
 import PaymentTest from "../components/packagePageComponents/PaymentTest";
 import NewsLetterPage from "../components/adminPageComponents/NewsLetterPage";
 import ComplianceAdminPage from "../components/adminPageComponents/ComplianceAdminPage";
+import PageNotFound from "../screens/404";
 
 const TeamsPage = lazy(() => import("../screens/TeamsPage"));
 const Dashboard = lazy(() => import("../screens/Dashboard"));
@@ -130,7 +131,7 @@ const AppLayoutRoutes = () => {
                   path="/packages/:packageId"
                   element={<ViewMorePackage />}
                 /> */}
-                <Route path="/:packageId" element={<ViewMorePackage />} />
+                <Route path="/packages/:packageId" element={<ViewMorePackage />} />
                 <Route path="/adminmain" element={<AdminPage />} />
                 <Route path="/adminsignup" element={<Register />} />
                 {/* <Route path="/adminlogin" element={<Login />} /> */}
@@ -166,7 +167,7 @@ const AppLayoutRoutes = () => {
                 />
                 <Route
                   // path="/admin/settings/package-bouque"
-                  path="/package-bouque"
+                  path="/package"
                   element={<PackageBouque />}
                 />
                 <Route
@@ -198,6 +199,9 @@ const AppLayoutRoutes = () => {
                   path="/complianceadmin"
                   // path="/admin/settings/category"
                   element={<ComplianceAdminPage />}
+                />
+                <Route
+                path="*" element={<PageNotFound/>}
                 />
               </Routes>
             </Suspense>

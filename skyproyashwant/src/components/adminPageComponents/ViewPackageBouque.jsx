@@ -131,7 +131,7 @@ const ViewPackageBouque = () => {
                     ))} */}
                     {item?.broadcasterRef?.name}
                   </div>
-                  <div style={{ color: "green", fontSize: "10px" }}>
+                  <div style={{ color: "#071e43", fontSize: "10px" }}>
                     {/* {item?.bouqueRef?.map((innerItem) => (
                       <div>{innerItem?.name}</div>
                     ))} */}
