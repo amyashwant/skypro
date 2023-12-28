@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 import { Grid } from "@mui/material";
-import {Paper} from "@mui/material";
+import { Paper } from "@mui/material";
 // import currImg from "../../assets/images/packagesImages/1702451103822-Default.jpg";
 const LanguageFormPage = () => {
   const [formData, setFormData] = useState({
@@ -77,11 +77,12 @@ const LanguageFormPage = () => {
   console.log(languageData?.data[0]?.name, "languageData>>");
   return (
     <PortalHeader>
-        <h2>Add Languages:</h2>
+      <h2>Add Languages:</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
           <label className="language-label form-label">Language:</label>
-          <input className="form-label2"
+          <input
+            className="form-label2"
             type="text"
             // className="form-control"
             name="name"
@@ -113,8 +114,11 @@ const LanguageFormPage = () => {
         <Grid container spacing={2}>
           {languageData?.data?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={8} lg={2}>
-              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{item.name}</div>
+              <Paper
+                elevation={3}
+                style={{ margin: "20px", padding: "10px", textAlign: "center" }}
+              >
+                <div style={{ color: "#071e43" }}>{item.name}</div>
               </Paper>
             </Grid>
           ))}
