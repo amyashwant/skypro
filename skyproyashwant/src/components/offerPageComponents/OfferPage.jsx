@@ -13,7 +13,7 @@ const OfferPage = () => {
           <div className="col-lg-6">
             <div className="breadcumb-content">
               <h4 className="breadcumb-title text-center text-white">
-                OUR SERVICES
+                OUR SERVICE
               </h4>
               <ul className="breadcumb-list d-flex justify-content-center align-items-center">
                 <li>
