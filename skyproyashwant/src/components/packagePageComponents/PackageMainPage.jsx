@@ -130,8 +130,8 @@ const PackageMainPage = () => {
         // Check if any bouqueData has the specified language
         const hasLanguage = item?.bouqueData?.some((bouque) => {
           return (
-            bouque.channelRef.language.name.toLowerCase() ===
-            language.toLowerCase()
+            bouque?.channelRef?.language?.name?.toLowerCase() ===
+            language?.toLowerCase()
           );
         });
 
@@ -261,7 +261,7 @@ const PackageMainPage = () => {
                                   <Link
                                     // to={`/packages/${pricing.name.replaceAll(" ","-")}`}
                                     // to={`/packages/${pricing._id}`}
-                                    to={`packages/${pricing._id}`}
+                                    to={`/packages/${pricing._id}`}
                                     // onClick={handleViewClick(pricing)}
                                     onClick={() => handleViewClick(pricing)}
                                   >
