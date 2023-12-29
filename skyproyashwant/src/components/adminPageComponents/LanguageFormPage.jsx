@@ -82,7 +82,7 @@ const LanguageFormPage = () => {
         <div className="language-div mb-3">
           <label className="language-label form-label">Language:</label>
           <input
-            className="form-label2"
+            className="form-label2" 
             type="text"
             // className="form-control"
             name="name"
