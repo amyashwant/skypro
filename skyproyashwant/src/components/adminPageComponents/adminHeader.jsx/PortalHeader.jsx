@@ -129,11 +129,12 @@ const PortalHeader = ({ children }) => {
                 </>
               )}
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={open} timeout="auto" unmountOnExit >
               <List component="div" disablePadding>
                 {settingsLinks.map((link, i) => (
-                  <Link to={link.handle} key={i}>
+                  <Link className="portalheader-listbuttonlink" to={link.handle} key={i}>
                     <ListItemButton
+                      className="portalheader-listbutton"
                       sx={{
                         pl: 4,
                         ...(pathname === link.handle && {
@@ -145,8 +146,9 @@ const PortalHeader = ({ children }) => {
                     >
                       <ListItemIcon
                         sx={{
-                          ...(pathname === link.handle && { color: "#fff" }),
+                          ...(pathname === link.handle && { color: "#fd5901" }),
                         }}
+                        className="portalheader-icons"
                       >
                         {link.icon}
                       </ListItemIcon>
@@ -283,11 +285,11 @@ const settingsLinks = [
     title: "Package",
     handle: "/package",
   },
-  {
-    icon: <PreviewIcon fontSize="medium" />,
-    title: "view All",
-    handle: "/view",
-  },
+  // {
+  //   icon: <PreviewIcon fontSize="medium" />,
+  //   title: "view All",
+  //   handle: "/view",
+  // },
   {
     icon: <PreviewIcon fontSize="medium" />,
     title: "Subscribed User",

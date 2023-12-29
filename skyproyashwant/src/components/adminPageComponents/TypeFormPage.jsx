@@ -73,10 +73,10 @@ const TypeFormPage = () => {
   console.log(typeData?.data[0]?.name, "typeData>>");
   return (
     <PortalHeader>
-        <h2>Add Channel Type:</h2>
+        <h2>Add Type</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
-          <label className="language-label form-label">Channel Type:</label>
+          <label className="language-label form-label">Channel Type</label>
           <input className="form-label2"
             type="text"
             // className="form-control"
@@ -100,7 +100,7 @@ const TypeFormPage = () => {
             fontSize: "20px",
           }}
         >
-          Type Available:
+          Type Available
         </div>
 
         <div style={{ fontSize: "10px" }}>

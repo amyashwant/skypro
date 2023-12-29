@@ -7636,7 +7636,7 @@ section.contact.contactus-style .contact-address a:hover {
   color: #fd5901 !important;
 }
 .css-cveggr-MuiListItemIcon-root svg {
-  color: #071e43;
+  color: #fb610e;
 }
 form.broadcaster-form {
   background: #00000008;
@@ -8035,7 +8035,7 @@ section.Accordion-Div button.adpack-btn {
 }
 
 /*---- Admin-CSS -28-12-23-----*/
-.MuiList-root.css-1mk9mw3-MuiList-root a {
+/* .MuiList-root.css-1mk9mw3-MuiList-root a {
   background: #071e43;
   width: 100%;
   color: #fff;
@@ -8047,13 +8047,17 @@ section.Accordion-Div button.adpack-btn {
 
 .MuiList-root.css-1mk9mw3-MuiList-root a svg {
   color: #fd5901;
+} */
+
+.portalheader-listbuttonlink {
+  width: 100%;
 }
-.css-mhc70k-MuiGrid-root {
+/* .css-mhc70k-MuiGrid-root {
   padding: 10px;
   border: 1px solid #071e43;
   margin: 16px 0px !important;
   border-radius: 4px;
-}
+} */
 .form-style-div02 h2 {
   margin-left: 46px;
 }

@@ -69,7 +69,7 @@ const BouqetFormPage = () => {
 
     setBroadcasterName(
       // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
+      typeof value === "string" ? value.split(" ,") : value
     );
     setError(null);
   };
@@ -243,7 +243,7 @@ const BouqetFormPage = () => {
         <h2>Add Bouquets</h2>
         <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
           <div className="mb-3">
-            <label className="form-label">Bouquet Name:</label>
+            <label className="form-label">Bouquet Name</label>
             <input
               type="text"
               className="form-control"
@@ -254,7 +254,7 @@ const BouqetFormPage = () => {
           </div>
           <div style={{ color: "#071e43" }}>{error && error}</div>
           <div className="mb-3">
-            <label className="form-label">Bouquet Price:</label>
+            <label className="form-label">Bouquet Price</label>
             <input
               type="text"
               className="form-control"
@@ -265,6 +265,7 @@ const BouqetFormPage = () => {
           </div>
 
           <div>
+          <label className="form-label">Broadcasters</label>
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Broadcaster Name
@@ -293,12 +294,16 @@ const BouqetFormPage = () => {
           </div>
 
           <div>
-            <Typography variant="h5" gutterBottom>
-              Channels Name
+            {/* <Typography variant="h6" gutterBottom style={{ fontWeight: 500 }}>
+              Channels
             </Typography>
+            {/* <p style={{ fontSize: '1rem', marginBottom: '0.35em', fontWeight: 'bold' }}>
+  Channels
+</p> */} 
+            <label className="form-label">Channels</label>
             <Grid container spacing={2}>
               {channelData?.data?.map((item) => (
-                <Grid item key={item.name} xs={12} sm={6} md={4} lg={3} xl={2}>
+                <Grid item key={item.name} xs={12} sm={6} md={4} lg={4} xl={3}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -321,10 +326,13 @@ const BouqetFormPage = () => {
           >
             Submit
           </button>
+
+
           <List>
-      <Typography variant="h5" gutterBottom>
+          <label className="form-label">Bouquets</label>
+      {/* <Typography variant="h5" gutterBottom>
         Bouquets Available:
-      </Typography>
+      </Typography> */}
       <Grid container spacing={2}>
           {viewBouqueData?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={6} lg={3}>

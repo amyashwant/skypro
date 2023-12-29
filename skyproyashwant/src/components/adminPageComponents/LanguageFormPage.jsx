@@ -80,7 +80,7 @@ const LanguageFormPage = () => {
       <h2>Add Languages:</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
-          <label className="language-label form-label">Language:</label>
+          <label className="language-label form-label">Language</label>
           <input
             className="form-label2" 
             type="text"

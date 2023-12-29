@@ -357,7 +357,7 @@ const PackageBouque = () => {
       <h2>Add Package</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="mb-3">
-          <label className="form-label">Package Name:</label>
+          <label className="form-label">Package Name</label>
           <input
             type="text"
             className="form-control"
@@ -383,10 +383,10 @@ const PackageBouque = () => {
           ))}
         </div> */}
         <div>
-          <h4>Broadcaster Name</h4>
+        <label className="form-label">Broadcasters</label>
           <Grid container spacing={2} className="wrap-stylediv">
             {broadcasterData?.data?.map((item) => (
-              <Grid item key={item.name} xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Grid item key={item.name} xs={12} sm={6} md={4} lg={3} xl={3}>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -501,9 +501,11 @@ const PackageBouque = () => {
         </div> */}
 
         <div>
-          <Typography variant="h5" style={{ marginBottom: "20px" }}>
+        <label className="form-label">Bouquets</label>
+
+          {/* <Typography variant="h5" style={{ marginBottom: "20px" }}>
             Bouquet Name
-          </Typography>
+          </Typography> */}
           {selectedBroadcasters.length > 0 && (
             <Grid container spacing={2}>
               {selectedBroadcasters?.map((broadcasterName) => {
@@ -517,7 +519,7 @@ const PackageBouque = () => {
                 });
 
                 return (
-                  <Grid item key={broadcasterName} xs={4}>
+                  <Grid item key={broadcasterName} xs={6}>
                     <Paper className="wrap-bouque-package"
                       elevation={3}
                       style={{ padding: "5px", marginBottom: "10px" }}

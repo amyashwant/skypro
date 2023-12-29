@@ -287,7 +287,7 @@ const ChannelFormPage = () => {
         <h2>Add Channels</h2>
         <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
           <div className="mb-3">
-            <label className="form-label">Channel Name:</label>
+            <label className="form-label">Channel Name</label>
             <input
               type="text"
               className="form-control"
@@ -310,6 +310,7 @@ const ChannelFormPage = () => {
           </div> */}
 
           <div>
+          {/* <label className="form-label">Type</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
               <Select
@@ -336,6 +337,7 @@ const ChannelFormPage = () => {
           </div>
 
           <div>
+          {/* <label className="form-label">Language</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Language
@@ -363,6 +365,7 @@ const ChannelFormPage = () => {
             </FormControl>
           </div>
           <div>
+          {/* <label className="form-label">Category</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Category
@@ -391,7 +394,7 @@ const ChannelFormPage = () => {
           </div>
 
           <div className="mb-3">
-            <label className="form-label">Channel Image:</label>
+            <label className="form-label">Channel Image</label>
             <input
               type="file"
               className="form-control"
@@ -418,7 +421,7 @@ const ChannelFormPage = () => {
         </div> */}
         <List>
       <Typography variant="h5" gutterBottom>
-        Channels Available:
+        Channels
       </Typography>
       <Grid container spacing={2}>
           {viewChannelData?.map((item, index) => (

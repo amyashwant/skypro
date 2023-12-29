@@ -206,7 +206,7 @@ const BroadcasterFormPage = () => {
       <h2>Add Broadcasters</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="mb-3">
-          <label className="form-label">Broadcaster Name:</label>
+          <label className="form-label">Broadcaster Name</label>
           <input
             type="text"
             className="form-control"
@@ -227,7 +227,7 @@ const BroadcasterFormPage = () => {
           />
         </div> */}
         <div className="mb-3">
-          <label className="form-label">broadcaster Image:</label>
+          <label className="form-label">Broadcaster Image</label>
           <input
             type="file"
             className="form-control"
@@ -273,12 +273,12 @@ const BroadcasterFormPage = () => {
      
       <List>
       <Typography variant="h5" gutterBottom>
-        Broadcaster Available:
+        Broadcasters
       </Typography>
       <Grid container spacing={2}>
           {viewBroadcasterData?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
-              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
+              <Paper elevation={3} style={{ marginTop: '10px', padding: '14px', textAlign: 'center' }}>
                 <div style={{ color: '#071e43' }}>{item.name}</div>
               </Paper>
             </Grid>

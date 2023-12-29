@@ -76,7 +76,7 @@ const CategoryFormPage = () => {
       <h2>Add Categories</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
-          <label className="language-label form-label">Category Name:</label>
+          <label className="language-label form-label">Category Name</label>
           <input className="form-label2"
             type="text"
             name="name"
@@ -99,7 +99,7 @@ const CategoryFormPage = () => {
             fontSize: "20px",
           }}
         >
-          Category Available:
+          Categories
         </div>
 
         <div style={{ fontSize: "10px" }}>
