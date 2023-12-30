@@ -11,19 +11,6 @@ const channelSchema = new mongoose.Schema({
     ref: "Type",
   },
 
-  // type: [
-  //   {
-  //     type: String,
-  //     // ref: "Type",
-  //   },
-  // ],
-  // language: [
-  //   {
-  //     type: String,
-  //     // ref: "Type",
-  //   },
-  // ],
-
   language: {
     // type: String,
     type: mongoose.Schema.Types.ObjectId,
@@ -40,10 +27,6 @@ const channelSchema = new mongoose.Schema({
     default:
       "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg ",
   },
-  // channelPrice: {
-  //   type: String,
-  //   trim: true,
-  // },
   createdAt: { type: Date, default: Date.now },
   modifiedAt: { type: Date, default: Date.now },
 });

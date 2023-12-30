@@ -8,8 +8,8 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
-import { List, Paper, Typography } from '@mui/material';
-import { ListItem } from '@mui/material';
+import { List, Paper, Typography } from "@mui/material";
+import { ListItem } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -265,7 +265,8 @@ const BouqetFormPage = () => {
           </div>
 
           <div>
-          <label className="form-label">Broadcasters</label><br />
+            <label className="form-label">Broadcasters</label>
+            <br />
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Broadcaster Name
@@ -299,7 +300,7 @@ const BouqetFormPage = () => {
             </Typography>
             {/* <p style={{ fontSize: '1rem', marginBottom: '0.35em', fontWeight: 'bold' }}>
   Channels
-</p> */} 
+</p> */}
             <label className="form-label">Channels</label>
             <Grid container spacing={2}>
               {channelData?.data?.map((item) => (
@@ -312,7 +313,13 @@ const BouqetFormPage = () => {
                         name={item.name}
                       />
                     }
-                    label={item.name}
+                    // label={item.name}
+                    // label={
+                    //   item.name.charAt(0).toUpperCase() + item.name.slice(1)
+                    // }
+                    label = {
+                      item.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                    }
                   />
                 </Grid>
               ))}
@@ -327,23 +334,29 @@ const BouqetFormPage = () => {
             Submit
           </button>
 
-
           <List>
-          <label className="form-label">Bouquets</label>
-      {/* <Typography variant="h5" gutterBottom>
+            <label className="form-label">Bouquets</label>
+            {/* <Typography variant="h5" gutterBottom>
         Bouquets Available:
       </Typography> */}
-      <Grid container spacing={2}>
-          {viewBouqueData?.map((item, index) => (
-            <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
-              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{item.name}</div>
-              </Paper>
+            <Grid container spacing={2}>
+              {viewBouqueData?.map((item, index) => (
+                <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
+                  <Paper
+                    elevation={3}
+                    style={{
+                      margin: "20px",
+                      padding: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <div style={{ color: "#071e43" }}>{item.name.split(/[ -]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</div>
+                  </Paper>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </List>
-      </form>
+          </List>
+        </form>
       </PortalHeader>
     </>
   );

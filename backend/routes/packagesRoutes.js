@@ -45,33 +45,34 @@ const {
 
 // router.route("/channel").post(createChannel);
 
-router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
-  // console.log("req.file.filename>", req.file.filename);
-  const { name, type, language, category } = req.body;
+  router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
+    // console.log("req.file.filename>", req.file.filename);
+    const { name, type, language, category } = req.body;
 
-  try {
-    const existingChannel = await Channel.findOne({ name });
-    if (existingChannel) {
-      return res.status(400).json({ error: "Channel Already Added" });
+    try {
+      const existingChannel = await Channel.findOne({ name });
+      if (existingChannel) {
+        return res.status(400).json({ error: "Channel Already Added" });
+      }
+
+      // const image = req?.file?.filename;
+      const image = req?.file?.filename;
+      // console.log(image, "image>>>");
+      const channel = await Channel.create({
+        name,
+        type,
+        language,
+        category,
+        image,
+        // channelPrice,
+      });
+
+      res.status(200).json(channel);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
     }
-
-    const image = req?.file?.filename;
-    // console.log(image, "image>>>");
-    const channel = await Channel.create({
-      name,
-      type,
-      language,
-      category,
-      image,
-      // channelPrice,
-    });
-
-    res.status(200).json(channel);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
+  });
 
 router.route("/channel").get(getChannels);
 router.route("/language").post(createLanguage);

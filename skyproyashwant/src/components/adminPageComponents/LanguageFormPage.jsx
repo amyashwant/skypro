@@ -77,7 +77,7 @@ const LanguageFormPage = () => {
   console.log(languageData?.data[0]?.name, "languageData>>");
   return (
     <PortalHeader>
-      <h2>Add Languages:</h2>
+      <h2>Add Languages</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
           <label className="language-label form-label">Language</label>
@@ -105,7 +105,7 @@ const LanguageFormPage = () => {
             fontSize: "20px",
           }}
         >
-          <div>Language Available:</div>
+          <div>Language Available</div>
 
           <div style={{ fontSize: "10px" }}>
             {languageData ? "" : "Loading......"}

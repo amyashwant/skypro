@@ -279,7 +279,7 @@ const BroadcasterFormPage = () => {
           {viewBroadcasterData?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
               <Paper elevation={3} style={{ marginTop: '10px', padding: '14px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{item.name}</div>
+                <div style={{ color: '#071e43' }}>{ item.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</div>
               </Paper>
             </Grid>
           ))}

@@ -191,7 +191,8 @@ const ViewMoreSection = () => {
                     aria-expanded="true"
                     aria-controls={`panelsStayOpen-collapse${accordionItem._id}`}
                   >
-                    <strong>Broadcaster:</strong> &nbsp;{accordionItem.broadcasterRef.name}
+                    <strong>Broadcaster:</strong> &nbsp;
+                    {accordionItem.broadcasterRef.name}
                   </button>
                 </h2>
                 <div
@@ -201,7 +202,7 @@ const ViewMoreSection = () => {
                 >
                   <div className="accordion-body">
                     <div className="accordion-innerDiv">
-                      <strong
+                      {/* <strong
                         style={{
                           color: "rgb(7, 30, 67)",
                           fontSize: "18px",
@@ -211,71 +212,7 @@ const ViewMoreSection = () => {
                         }}
                       >
                         Bouquets:
-                      </strong>
-                      {accordionItem.bouqueData.map((bouquet, index) => (
-                        <div
-                          key={index}
-                          style={{
-                            color: "rgb(253 89 1)", // Green color for bouquets
-                            fontSize: "16px",
-                            backgroundColor: "#e7f1ff", // Light gray background color
-                            padding: "8px",
-                            fontWeight: "500",
-                            marginBottom: '10px'
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                            }}
-                          >
-                            <span>{bouquet.bouqueRef.name}</span>
-                            <span>
-                              <span
-                                style={{
-                                  color: "black",
-                                  marginRight: "20px",
-                                  marginLeft: "20px",
-                                }}
-                              >
-                                ₹{bouquet.bouqueRef.price}
-                              </span>
-                              <button
-                                style={{
-                                  backgroundColor: disableBouqueArray.includes(
-                                    bouquet?.bouqueRef?.name
-                                  )
-                                    ? "grey"
-                                    : "#071e43",
-                                  color: "white",
-                                  padding: "0px 10px",
-                                  borderRadius: "50px",
-                                }}
-                                onClick={() =>
-                                  handleBouquePrice(
-                                    bouquet?.bouqueRef,
-                                    bouquet?.bouqueRef?.name
-                                  )
-                                }
-                                disabled={disableBouqueArray.includes(
-                                  bouquet?.bouqueRef?.name
-                                )}
-                              >
-                                {/* {disableBouqueArray.includes(
-                                  bouquet?.bouqueRef?.name
-                                ) ? (
-                                  <span style={{ color: "lightgreen" }}>
-                                    Selected &#x2713;
-                                  </span>
-                                ) : (
-                                  "Select"
-                                )} */}
-                              </button>
-                            </span>
-                          </div>
-                        </div>
-                      ))}
+                      </strong> */}
                     </div>
                     <div style={{ marginTop: "25px" }}>
                       {accordionItem.bouqueData.map((item) => (
@@ -287,8 +224,13 @@ const ViewMoreSection = () => {
                               fontSize: "17px",
                             }}
                           >
-                            Channels for {item.bouqueRef.name}:
-                          </strong>
+                            Channels for <span style={{color:"#fd5901",fontStyle:"italic"}}>{item.bouqueRef.name}</span> :
+                            {/* <input type="number" name={item.bouqueRef.price} value={`${item.bouqueRef.price}`} style={{width:"30px",marginLeft:"10px"}} readOnly/> */}
+                            <span style={{ marginLeft:"10px",color:"#fd5901" }}>
+                              {"    ₹ "}
+                              {item.bouqueRef.price}
+                            </span>
+                          </strong> 
                           <ul
                             className="accordion-channelList"
                             style={{ listStyleType: "none", padding: 0 }}
@@ -296,19 +238,16 @@ const ViewMoreSection = () => {
                             {item.channelRefs.map((channel, index) => (
                               <div key={index}>
                                 <div>
-                                  <li
-                                    key={channel._id}
-                                  >
+                                  <li key={channel._id}>
                                     <img
                                       src={imageProvider(channel.image)}
+                                      // src={`data:image/jpeg;base64,/${channel.image}`}
                                       // src={
                                       //   "../../assets/images/packagesImages/1703050192954-jsdownload.png"
                                       // }
                                       // alt={channel.name}
                                     />
-                                       <span>
-                                    {channel.name}
-                                  </span>
+                                    <span>{channel.name}</span>
                                     {/* <span
                                   style={{
                                     color: "#2196F3",
@@ -343,7 +282,7 @@ const ViewMoreSection = () => {
                 </div>
               </div>
             ))}
-          </div> 
+          </div>
         </div>
       </section>
     </>

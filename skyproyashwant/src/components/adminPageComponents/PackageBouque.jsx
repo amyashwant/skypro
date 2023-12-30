@@ -21,6 +21,7 @@ const PackageBouque = () => {
   const [filteredBouquets, setFilteredBouquets] = useState([]);
   const [differentiateBouque, setDifferentiateBouque] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [netSubscriber, setNetSubscriber] = useState(0);
 
   const [networkCarriageFee, setNetworkCarriageFee] = useState(130);
   const [discount, setDiscount] = useState(0);
@@ -181,7 +182,7 @@ const PackageBouque = () => {
       const { name } = formData;
       const firstData = await axios.post(
         "/api/package/pack",
-        { name, packagePrice: totalPrice },
+        { name, packagePrice: netSubscriber },
         config
       );
 
@@ -349,8 +350,12 @@ const PackageBouque = () => {
     };
 
     calculateTotalPrice();
-  }, [bouqueName, bouqueData, networkCarriageFee, discount]);
+  }, [bouqueName, bouqueData, networkCarriageFee]);
 
+  useEffect(() => {
+    const total = totalPrice - discount;
+    setNetSubscriber(total);
+  }, [discount]);
   return (
     <PortalHeader>
       <ToastContainer />
@@ -383,7 +388,7 @@ const PackageBouque = () => {
           ))}
         </div> */}
         <div>
-        <label className="form-label">Broadcasters</label>
+          <label className="form-label">Broadcasters</label>
           <Grid container spacing={2} className="wrap-stylediv">
             {broadcasterData?.data?.map((item) => (
               <Grid item key={item.name} xs={12} sm={6} md={4} lg={3} xl={3}>
@@ -395,7 +400,11 @@ const PackageBouque = () => {
                       name={item.name}
                     />
                   }
-                  label={item.name}
+                  // label={item.name}
+                  label={item.name
+                    .split(" ")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}
                 />
               </Grid>
             ))}
@@ -501,7 +510,7 @@ const PackageBouque = () => {
         </div> */}
 
         <div>
-        <label className="form-label">Bouquets</label>
+          <label className="form-label">Bouquets</label>
 
           {/* <Typography variant="h5" style={{ marginBottom: "20px" }}>
             Bouquet Name
@@ -520,11 +529,20 @@ const PackageBouque = () => {
 
                 return (
                   <Grid item key={broadcasterName} xs={6}>
-                    <Paper className="wrap-bouque-package"
+                    <Paper
+                      className="wrap-bouque-package"
                       elevation={3}
                       style={{ padding: "5px", marginBottom: "10px" }}
                     >
-                      <Typography variant="h6">{broadcasterName}</Typography>
+                      <Typography variant="h6">
+                        {broadcasterName
+                          .split(/[ -]/)
+                          .map(
+                            (word) =>
+                              word.charAt(0).toUpperCase() + word.slice(1)
+                          )
+                          .join(" ")}
+                      </Typography>
                       {broadcasterBouquets.map((name) => {
                         const selectedBouquet = bouqueData.data.find(
                           (bouquet) => bouquet.name === name
@@ -547,9 +565,18 @@ const PackageBouque = () => {
                                   alignItems: "center",
                                 }}
                               >
-                                <div style={{ flexGrow: 1 }}>{name}</div>
+                                <div style={{ flexGrow: 1 }}>
+                                  {name
+                                    .split(/[ -]/)
+                                    .map(
+                                      (word) =>
+                                        word.charAt(0).toUpperCase() +
+                                        word.slice(1)
+                                    )
+                                    .join(" ")}
+                                </div>
                                 <TextField
-                                className="price-package-css-modify"
+                                  className="price-package-css-modify"
                                   variant="outlined"
                                   value={`Rs ${selectedBouquet.price}/-`}
                                   InputProps={{ readOnly: true }}
@@ -568,6 +595,14 @@ const PackageBouque = () => {
           )}
         </div>
 
+        <div>
+          <h4>Pay Channel Total</h4>
+          <input
+            type="number"
+            value={totalPrice - networkCarriageFee}
+            onChange={handleNetworkCarriageFeeChange}
+          />
+        </div>
         <div>
           <h4>Network Carriage Fee</h4>
           <input
@@ -591,17 +626,12 @@ const PackageBouque = () => {
           />
         </div>
 
-        {/* <div>
-          <h4>Total Price</h4>
-          <p>{totalPrice}</p>
-        </div> */}
-
         <div>
           <h4>Net Subscriber Price</h4>
           <input
             type="number"
             id="totalPriceInput"
-            value={totalPrice}
+            value={netSubscriber}
             readonly
           />
         </div>

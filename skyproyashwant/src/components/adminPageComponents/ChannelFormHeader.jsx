@@ -8,8 +8,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
-import { List, Paper, Typography } from '@mui/material';
-import { ListItem } from '@mui/material';
+import { List, Paper, Typography } from "@mui/material";
+import { ListItem } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -310,7 +310,7 @@ const ChannelFormPage = () => {
           </div> */}
 
           <div>
-          {/* <label className="form-label">Type</label> */}
+            {/* <label className="form-label">Type</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
               <Select
@@ -337,7 +337,7 @@ const ChannelFormPage = () => {
           </div>
 
           <div>
-          {/* <label className="form-label">Language</label> */}
+            {/* <label className="form-label">Language</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Language
@@ -365,7 +365,7 @@ const ChannelFormPage = () => {
             </FormControl>
           </div>
           <div>
-          {/* <label className="form-label">Category</label> */}
+            {/* <label className="form-label">Category</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Category
@@ -412,28 +412,43 @@ const ChannelFormPage = () => {
           </button>
 
           <div style={{ color: "#071e43" }}>{modal && modal}</div>
-      
-        {/* <div style={{ marginLeft: "30px" }}>
+
+          {/* <div style={{ marginLeft: "30px" }}>
           <h3>Channels Aailable:</h3>
           {viewChannelData.map((item) => (
             <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
           ))}
         </div> */}
-        <List>
-      <Typography variant="h5" gutterBottom>
-        Channels
-      </Typography>
-      <Grid container spacing={2}>
-          {viewChannelData?.map((item, index) => (
-            <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
-              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{item.name}</div>
-              </Paper>
+          <List>
+            <Typography variant="h5" gutterBottom>
+              Channels
+            </Typography>
+            <Grid container spacing={2}>
+              {viewChannelData?.map((item, index) => (
+                <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
+                  <Paper
+                    elevation={3}
+                    style={{
+                      margin: "20px",
+                      padding: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    {/* <div style={{ color: '#071e43' }}>{item.name}</div> */}
+                    <div style={{ color: "#071e43" }}>
+                      {item.name
+                        .split(" ")
+                        .map(
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                        )
+                        .join(" ")}
+                    </div>
+                  </Paper>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </List>
-      </form>
+          </List>
+        </form>
       </PortalHeader>
     </>
   );
