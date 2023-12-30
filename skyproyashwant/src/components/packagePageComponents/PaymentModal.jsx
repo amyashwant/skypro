@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 
 const PaymentModal = ({ handleClose, show, children }) => {
   const [showSecondModal, setShowSecondModal] = useState(false);
@@ -236,12 +237,19 @@ const PaymentModal = ({ handleClose, show, children }) => {
                       : "#fd7e14",
                 }}
                 onClick={handleCheckout}
-                disabled={cartItems.length === 0 && viewCartItems.length === 0}
+                disabled={
+                  (cartItems.length === 0 && viewCartItems.length === 0) ||
+                  checkoutLoader
+                }
               >
                 {/* {/ <Link to="/payment"> /} */}
-                {cartItems.length === 0 && viewCartItems.length === 0
-                  ? "Nothing To Checkout"
-                  :checkoutLoader?"Loading......": "Checkout"}
+                {cartItems.length === 0 && viewCartItems.length === 0 ? (
+                  "Nothing To Checkout"
+                ) : checkoutLoader ? (
+                  <Loader />
+                ) : (
+                  "Checkout"
+                )}
                 {/* Checkout */}
                 {/* {/ </Link> /} */}
               </button>

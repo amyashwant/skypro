@@ -154,13 +154,12 @@ const PackageMainPage = () => {
     // const filteredPackageDataFinal = filteredPackageData.map(
     //   (item) => item.packageRef
     // );
-    
 
     const filteredPackageDataFinal = [
       ...new Map(
         filteredPackageData.map((item) => [
-          item.packageRef.name,
-          item.packageRef,
+          item?.packageRef?.name,
+          item?.packageRef,
         ])
       ).values(),
     ];
@@ -187,8 +186,7 @@ const PackageMainPage = () => {
   // });
 
   // console.log("result>>>", result);
-
-  //--------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------
 
   return (
     <div>
@@ -211,8 +209,8 @@ const PackageMainPage = () => {
                     {languagesData.map((language, index) => (
                       <li className="nav-item" role="presentation" key={index}>
                         <Link
-                          // className={`nav-link ${index === 0 ? "active" : ""}`}
-                          className="nav-link"
+                          className={`nav-link ${index === 0 ? "active" : ""}`}
+                          // className="nav-link"
                           // data-bs-toggle="tab"
                           // to={`#ex2-tabs-${index + 1}`}
                           // role="tab"
@@ -236,9 +234,9 @@ const PackageMainPage = () => {
                           <div className="col-md-4 mb-4" key={index}>
                             <div className="single-price">
                               <div className="deal-top">
-                                <h3>{pricing.name}</h3>
+                                <h3>{pricing?.name}</h3>
                                 <h4>
-                                  ₹ {Math.floor(Number(pricing.packagePrice))}
+                                  ₹ {Math.floor(Number(pricing?.packagePrice))}
                                   .00
                                   <span>-/mo</span>
                                   {/* <span>₹ 138</span> */}
@@ -262,7 +260,7 @@ const PackageMainPage = () => {
                                   <Link
                                     // to={`/packages/${pricing.name.replaceAll(" ","-")}`}
                                     // to={`/packages/${pricing._id}`}
-                                    to={`/packages/${pricing._id}`}
+                                    to={`/packages/${pricing?._id}`}
                                     // onClick={handleViewClick(pricing)}
                                     onClick={() => handleViewClick(pricing)}
                                   >
