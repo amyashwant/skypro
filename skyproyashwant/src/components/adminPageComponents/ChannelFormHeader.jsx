@@ -319,7 +319,7 @@ const ChannelFormPage = () => {
           </div>
           <div style={{ color: "#071e43" }}>{error && error}</div>
 
-          <div>
+          <div style={{ width: "100%", margin: "12px 0px" }}>
             {/* <label className="form-label">Type</label> */}
             <FormControl sx={{ m: 1, width: 600 }}>
               <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
