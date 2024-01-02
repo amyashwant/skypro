@@ -47,6 +47,24 @@ const getLanguage = async (req, res) => {
   }
 };
 
+const updateLanguage = async (req, res) => {
+  const { name } = req.body;
+  try {
+    const updatedItem = await Language.findByIdAndUpdate(
+      req.params.itemId,
+      { name: name },
+      { new: true }
+    );
+    if (!updatedItem) {
+      return res.status(400).json({ error: "Item not found" });
+    }
+    res.json(updatedItem);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 // Bouque Controller------------------------------------------------------------------------------------
 const createBouquet = async (req, res) => {
   const { name, price, broadcasterRef } = req.body;
@@ -93,20 +111,6 @@ const getBouquets = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-// Broadcaster-----------------------------------------------------------------------------------
-// const createBroadcaster = async (req, res) => {
-//   try {
-//     const { name } = req.body;
-//     const broadcaster = await Broadcaster.create({
-//       name,
-//     });
-//     res.status(200).json(broadcaster);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
 
 const getBroadcasters = async (req, res) => {
   try {
@@ -188,86 +192,6 @@ const getPackage = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-// const createPackageBouque = async (req, res) => {
-//   const { packageRef, broadcasterRef, bouqueRef } = req.body;
-//   try {
-//     const existingPackageBouque = await PackageBouque.findOne({ packageRef });
-//     if (existingPackageBouque) {
-//       return res.status(400).json({ error: "Duplicate Package! Not Allowed" });
-//     }
-
-//     const packageBouque = await PackageBouque.create({
-//       packageRef,
-//       broadcasterRef,
-//       bouqueRef,
-//     });
-//     res.status(200).json(packageBouque);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
-//-----------------------working normally but not corresponding
-// const createPackageBouque = async (req, res) => {
-//   try {
-//     const { packageRef, broadcasterRef, bouqueRef } = req.body;
-
-//     const packageBouques = [];
-
-//     const broadcasterRefs = Array.isArray(broadcasterRef)
-//       ? broadcasterRef
-//       : [broadcasterRef];
-
-//     const bouqueRefs = Array.isArray(bouqueRef) ? bouqueRef : [bouqueRef];
-
-//     broadcasterRefs.forEach((broadcasterId) => {
-//       bouqueRefs.forEach((bouqueId) => {
-//         const packageBouque = new PackageBouque({
-//           packageRef,
-//           broadcasterRef: broadcasterId,
-//           bouqueRef: bouqueId,
-//         });
-//         packageBouques.push(packageBouque.save());
-//       });
-//     });
-
-//     await Promise.all(packageBouques);
-
-//     res.status(200).json({ success: true });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
-
-// const createPackageBouque = async (req, res) => {
-//   try {
-//     const { packageRef, broadcasters } = req.body;
-
-//     const packageBouques = [];
-
-//     for (const broadcaster of broadcasters) {
-//       const { broadcasterRef, selectedBouques } = broadcaster;
-
-//       for (const bouqueRef of selectedBouques) {
-//         const packageBouque = new PackageBouque({
-//           packageRef,
-//           broadcasterRef,
-//           bouqueRef,
-//         });
-//         packageBouques.push(packageBouque.save());
-//       }
-//     }
-
-//     await Promise.all(packageBouques);
-
-//     res.status(200).json({ success: true });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
 
 const createPackageBouque = async (req, res) => {
   try {
@@ -388,4 +312,6 @@ module.exports = {
   getBouqueChannel,
   createCategory,
   getCategory,
+  //------------------------------------------------------
+  updateLanguage,
 };

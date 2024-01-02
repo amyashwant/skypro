@@ -21,6 +21,8 @@ const {
   getBouqueChannel,
   createCategory,
   getCategory,
+  //--------------------------------------------
+  updateLanguage,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
@@ -132,5 +134,7 @@ router.post("/bouque-channel", createBouqueChannel);
 router.get("/bouque-channel", getBouqueChannel);
 router.post("/category", createCategory);
 router.get("/category", getCategory);
+//----------------------------------------------------------------
+router.put("/language/:itemId", updateLanguage);
 
 module.exports = router;

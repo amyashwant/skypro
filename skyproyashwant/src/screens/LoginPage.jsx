@@ -14,18 +14,18 @@ const LoginPage = () => {
   return (
     <>
       {/* <LoaderComponent /> */}
-      <Header />
+      {/* <Header /> */}
       {/* <TopHeader /> */}
       {/* <BottomHeader /> */}
       {/* <BeadCumb /> */}
       <BeadCumbCommon
-        titleOne="LOGIN ADMIN"
+        titleOne="ADMINISTRATOR LOGIN"
         titleTwo="LOGIN"
         bgImg={bgImg}
       />
       <AccountPage />
-      <FooterContact />
-      <Footer />
+      {/* <FooterContact /> */}
+      {/* <Footer /> */}
     </>
   );
 };
