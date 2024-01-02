@@ -351,7 +351,10 @@ const ChannelFormPage = () => {
 
           <div>
             {/* <label className="form-label">Language</label> */}
-            <FormControl sx={{ m: 1, width: 600 }}>
+            <FormControl
+              sx={{ m: 1, width: 600 }}
+              style={{ width: "100%", margin: "12px 0px" }}
+            >
               <InputLabel id="demo-multiple-checkbox-label">
                 Language
               </InputLabel>
@@ -379,7 +382,10 @@ const ChannelFormPage = () => {
           </div>
           <div>
             {/* <label className="form-label">Category</label> */}
-            <FormControl sx={{ m: 1, width: 600 }}>
+            <FormControl
+              sx={{ m: 1, width: 600 }}
+              style={{ width: "100%", margin: "12px 0px" }}
+            >
               <InputLabel id="demo-multiple-checkbox-label">
                 Category
               </InputLabel>
