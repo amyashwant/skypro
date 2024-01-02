@@ -384,9 +384,11 @@ const LanguageFormPage = () => {
       );
 
       setLoading(false);
-      await getLanguageFunc();
+
       handleClose();
+      await getLanguageFunc();
     } catch (error) {
+      // await getLanguageFunc();
       console.log(error);
     }
   };

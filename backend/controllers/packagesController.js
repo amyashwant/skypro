@@ -26,10 +26,23 @@ const createLanguage = async (req, res) => {
     const { name } = req.body;
     const existingLanguage = await Language.findOne({ name });
     if (existingLanguage) {
+      console.log("existingLanguage>>/>>>", existingLanguage);
+
+      if (existingLanguage.isDeleted === true) {
+        await Language.findByIdAndUpdate(existingLanguage._id, {
+          isDeleted: false,
+        });
+        return res.status(200).json("success");
+        // return res.status(400).json({ error: "Already added" });
+      }
       return res.status(400).json({ error: "Already added" });
     }
 
-    const language = await Language.create({ name, isActive: true });
+    const language = await Language.create({
+      name,
+      isActive: true,
+      isDeleted: false,
+    });
     res.status(200).json(language);
   } catch (error) {
     // console.error(error);
@@ -39,7 +52,7 @@ const createLanguage = async (req, res) => {
 
 const getLanguage = async (req, res) => {
   try {
-    const language = await Language.find({ isActive: true });
+    const language = await Language.find({ isActive: true, isDeleted: false });
     res.status(200).json(language);
   } catch (error) {
     console.error(error);
@@ -70,7 +83,7 @@ const deleteLanguage = async (req, res) => {
     const languageId = req.params.id;
     const updatedLanguage = await Language.findByIdAndUpdate(
       languageId,
-      { isActive: false },
+      { isDeleted: true },
       { new: true }
     );
 

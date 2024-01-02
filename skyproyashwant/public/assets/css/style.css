@@ -7645,7 +7645,7 @@ form.broadcaster-form {
 }
 
 form.broadcaster-form .MuiFormControl-root.css-u4cvaf-MuiFormControl-root {
-  width: 100%;
+  width: 100% !important;
   background: #fff;
   margin: 12px 0px;
 }
