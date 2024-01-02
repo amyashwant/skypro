@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 import { Grid } from "@mui/material";
-import {Paper} from "@mui/material";
+import { Paper } from "@mui/material";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 
 const CategoryFormPage = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ const CategoryFormPage = () => {
   const [languageOne, setLanguageOne] = useState();
   const [error, setError] = useState();
   const [typeData, setTypeData] = useState();
-
+  const [loading, setLoading] = useState(false);
   const getTypeFunc = async () => {
     const config = {
       Headers: {
@@ -26,7 +27,7 @@ const CategoryFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const config = {
         Headers: {
@@ -42,6 +43,7 @@ const CategoryFormPage = () => {
       );
       console.log("data post>>>", data?.data?.name);
       // setTypeData(data);
+      await getTypeFunc();
     } catch (error) {
       console.log("error.response>>>>", error?.response?.data?.error);
       setError(error?.response?.data?.error);
@@ -51,6 +53,7 @@ const CategoryFormPage = () => {
       ...prevData,
       name: "", // Set the 'name' property to an empty string
     }));
+    setLoading(false);
   };
 
   const handleChange = (e) => {
@@ -68,7 +71,7 @@ const CategoryFormPage = () => {
 
   useEffect(() => {
     getTypeFunc();
-  }, [handleSubmit]);
+  }, []);
 
   console.log(typeData?.data[0]?.name, "typeData>>");
   return (
@@ -77,7 +80,8 @@ const CategoryFormPage = () => {
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
           <label className="language-label form-label">Category Name</label>
-          <input className="form-label2"
+          <input
+            className="form-label2"
             type="text"
             name="name"
             value={formData.name}
@@ -88,9 +92,9 @@ const CategoryFormPage = () => {
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={formData.name === ""}
+          disabled={formData.name === "" || loading}
         >
-          Submit
+          {loading ? <Loader /> : "Submit"}
         </button>
         <div
           style={{
@@ -108,8 +112,11 @@ const CategoryFormPage = () => {
         <Grid container spacing={2}>
           {typeData?.data?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={6} lg={2}>
-              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{item.name}</div>
+              <Paper
+                elevation={3}
+                style={{ margin: "20px", padding: "10px", textAlign: "center" }}
+              >
+                <div style={{ color: "#071e43" }}>{item.name}</div>
               </Paper>
             </Grid>
           ))}

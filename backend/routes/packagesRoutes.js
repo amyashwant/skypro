@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Channel = require("../models/packagesPageModel/channelModel");
 const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
+const cloudinary = require("cloudinary").v2;
 const {
   // createChannel,
   getChannels,
@@ -24,6 +25,7 @@ const {
 const {
   imageUploadMiddleware,
 } = require("../middleware/imageUploadMiddleware");
+const { error } = require("console");
 
 // const multer = require("multer");
 // const storage = multer.diskStorage({
@@ -45,19 +47,25 @@ const {
 
 // router.route("/channel").post(createChannel);
 
-  router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
-    // console.log("req.file.filename>", req.file.filename);
-    const { name, type, language, category } = req.body;
+router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
+  // console.log("req.file.filename>", req.file.filename);
+  const { name, type, language, category } = req.body;
 
+  if (!req?.file?.path) {
+    return res.status(400).json(error);
+  }
+  const result = await cloudinary.uploader.upload(req.file.path);
+  // console.log("result>>>",result)
+  try {
+    const existingChannel = await Channel.findOne({ name });
+    if (existingChannel) {
+      return res.status(400).json({ error: "Channel Already Added" });
+    }
+
+    // const image = req?.file?.filename;
+    const image = result.secure_url;
+    // console.log(image, "image>>>");
     try {
-      const existingChannel = await Channel.findOne({ name });
-      if (existingChannel) {
-        return res.status(400).json({ error: "Channel Already Added" });
-      }
-
-      // const image = req?.file?.filename;
-      const image = req?.file?.filename;
-      // console.log(image, "image>>>");
       const channel = await Channel.create({
         name,
         type,
@@ -66,13 +74,15 @@ const {
         image,
         // channelPrice,
       });
-
       res.status(200).json(channel);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
+      res.status(400).json(error);
     }
-  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 router.route("/channel").get(getChannels);
 router.route("/language").post(createLanguage);
@@ -91,7 +101,12 @@ router.post(
         return res.status(400).json({ error: "Broadcaster Already Added" });
       }
 
-      const image = req.file.filename;
+      if (!req?.file?.path) {
+        return res.status(400).json(error);
+      }
+      const result = await cloudinary.uploader.upload(req.file.path);
+
+      const image = result.secure_url;
       const broadcaster = await Broadcaster.create({
         name,
         image,

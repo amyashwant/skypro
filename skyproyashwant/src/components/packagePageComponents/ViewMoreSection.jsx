@@ -28,22 +28,14 @@ const ViewMoreSection = () => {
   const cartItems = useSelector((state) => state.cart.items);
   console.log("CartItems>>>................>", cartItems);
 
-  // const viewCartItems = useSelector((state) => state.cart.viewItems);
-  // let disableBouqueArray = [];
   const [disableBouqueArray, setDisableBouqueArray] = useState([]);
   const handleAddPackage = (pack) => {
     console.log("disabled................False........");
     if (cartItems.length > 0) {
       dispatch(clearItem());
     }
-    // dispatch(addItem(arg));
 
-    // selectedPack ? setSelectedPack(null) : setSelectedPack(arg);
     dispatch(addItem(pack));
-
-    // if (packageResult[0]?.packageRef?.name === cartItems[0]?.name) {
-    //   dispatch(removeItem());
-    // }
   };
 
   const handleBouquePrice = (price, titleName) => {
@@ -201,19 +193,7 @@ const ViewMoreSection = () => {
                   aria-labelledby={`panelsStayOpen-heading${accordionItem._id}`}
                 >
                   <div className="accordion-body">
-                    <div className="accordion-innerDiv">
-                      {/* <strong
-                        style={{
-                          color: "rgb(7, 30, 67)",
-                          fontSize: "18px",
-                          textTransform: "uppercase",
-                          marginBottom: "13px",
-                          display: "inline-block",
-                        }}
-                      >
-                        Bouquets:
-                      </strong> */}
-                    </div>
+                    <div className="accordion-innerDiv"></div>
                     <div style={{ marginTop: "25px" }}>
                       {accordionItem.bouqueData.map((item) => (
                         <div key={item._id}>
@@ -224,13 +204,21 @@ const ViewMoreSection = () => {
                               fontSize: "17px",
                             }}
                           >
-                            Channels for <span style={{color:"#fd5901",fontStyle:"italic"}}>{item.bouqueRef.name}</span> :
+                            Channels for{" "}
+                            <span
+                              style={{ color: "#fd5901", fontStyle: "italic" }}
+                            >
+                              {item.bouqueRef.name}
+                            </span>{" "}
+                            :
                             {/* <input type="number" name={item.bouqueRef.price} value={`${item.bouqueRef.price}`} style={{width:"30px",marginLeft:"10px"}} readOnly/> */}
-                            <span style={{ marginLeft:"10px",color:"#fd5901" }}>
+                            <span
+                              style={{ marginLeft: "10px", color: "#fd5901" }}
+                            >
                               {"    ₹ "}
                               {item.bouqueRef.price}
                             </span>
-                          </strong> 
+                          </strong>
                           <ul
                             className="accordion-channelList"
                             style={{ listStyleType: "none", padding: 0 }}
@@ -240,37 +228,11 @@ const ViewMoreSection = () => {
                                 <div>
                                   <li key={channel._id}>
                                     <img
-                                      src={imageProvider(channel.image)}
-                                      // src={`data:image/jpeg;base64,/${channel.image}`}
-                                      // src={
-                                      //   "../../assets/images/packagesImages/1703050192954-jsdownload.png"
-                                      // }
-                                      // alt={channel.name}
+                                      // src={imageProvider(channel.image)}
+                                      src={`${channel.image}`}
                                     />
                                     <span>{channel.name}</span>
-                                    {/* <span
-                                  style={{
-                                    color: "#2196F3",
-                                    fontSize: "16px",
-                                    fontWeight: "bold",
-                                    marginTop:"20px"
-
-                                  }}
-                                >
-                                  {channel.name}
-                                </span> */}
                                   </li>
-                                  {/* <span
-                                    style={{
-                                      color: "#2196F3",
-                                      fontSize: "16px",
-                                      fontWeight: "bold",
-                                      marginTop: "20px",
-                                      marginLeft: "5px",
-                                    }}
-                                  >
-                                    {channel.name}
-                                  </span> */}
                                 </div>
                               </div>
                             ))}

@@ -1,0 +1,97 @@
+class A{
+private:
+void func1(){
+cout>>"inside 1"
+}
+void func1(int a){
+//
+
+}
+}
+
+class B: public A, public C{
+public:
+func1(){
+cout>>"inside 2"
+}
+}
+class C{
+public:
+func1(){
+cout>>"inside 3"
+}
+}
+
+int main(){
+C obj
+obj.func1
+
+A obj1
+obj1.func1()
+obj1.func1(5)
+}
+
+
+
+
+const user=require ('mongoose')
+
+const userSchema= mongoose.Schema({
+username:{
+type:String,
+required,
+min:3,
+max:6
+},
+password:{
+type:String,
+required,
+min:3,
+max:6
+},
+
+
+
+})
+
+
+
+module.exports=mongoose.model("User","userSchema")
+
+
+
+int flag=0;
+
+int primeno=7
+
+if(primeno==0||primeno==1)
+{
+flag=0
+}
+
+for(i=2,i<=primeno/2,i++)
+{
+if{primeno%i==0}
+{
+flag=0
+}
+flag=1
+}
+
+if(flag)
+{
+cout>>"isprime"
+}
+else
+cout>>"not prime"
+
+
+
+
+
+
+
+
+
+
+

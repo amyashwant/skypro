@@ -10,6 +10,7 @@ import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 // import "react-toastify/dist/ReactToastify.css";
 
 const channels = ["star plus", "mtv", "aat tak"];
@@ -37,7 +38,7 @@ const PackageFormPage = () => {
   const [channelData, setChannelData] = useState([]);
   const [error, setError] = useState([]);
   const [isFormValid, setIsFormValid] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -126,7 +127,7 @@ const PackageFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     console.log("channelIdsubmit>>>>", channelId);
     try {
       const config = {
@@ -170,6 +171,7 @@ const PackageFormPage = () => {
     }
     resetFormFields();
     setchannelName([]);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -205,9 +207,9 @@ const PackageFormPage = () => {
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={!isFormValid} 
+          disabled={!isFormValid || loading}
         >
-          Submit
+          {loading ? <Loader /> : "Submit"}
         </button>
       </form>
     </PortalHeader>

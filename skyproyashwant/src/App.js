@@ -1,10 +1,13 @@
 import "./App.css";
 import Layout from "./layout/Layout";
+import ErrorBoundary from "./utils/ErrorBoundary";
 
 function App() {
   return (
     <div>
-      <Layout />
+      <ErrorBoundary>
+        <Layout />
+      </ErrorBoundary>
     </div>
   );
 }

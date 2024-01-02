@@ -15,6 +15,7 @@ import { Grid } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import { FormControlLabel } from "@mui/material";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -37,6 +38,7 @@ const BouqetFormPage = () => {
   const [broadcasterName, setBroadcasterName] = useState([]);
   const [broadcasterId, setBroadcasterId] = useState([]);
   const [viewBouqueData, setViewBouqueData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -138,7 +140,7 @@ const BouqetFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const config = {
         Headers: {
@@ -210,6 +212,8 @@ const BouqetFormPage = () => {
     resetFormFields();
     setChannelName([]);
     setBroadcasterName([]);
+    setLoading(false);
+    await getChannelFunc();
   };
 
   useEffect(() => {
@@ -317,9 +321,12 @@ const BouqetFormPage = () => {
                     // label={
                     //   item.name.charAt(0).toUpperCase() + item.name.slice(1)
                     // }
-                    label = {
-                      item.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
-                    }
+                    label={item.name
+                      .split(" ")
+                      .map(
+                        (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                      )
+                      .join(" ")}
                   />
                 </Grid>
               ))}
@@ -329,9 +336,9 @@ const BouqetFormPage = () => {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={!isFormValid}
+            disabled={!isFormValid || loading}
           >
-            Submit
+            {loading ? <Loader /> : "Submit"}
           </button>
 
           <List>
@@ -350,7 +357,14 @@ const BouqetFormPage = () => {
                       textAlign: "center",
                     }}
                   >
-                    <div style={{ color: "#071e43" }}>{item.name.split(/[ -]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</div>
+                    <div style={{ color: "#071e43" }}>
+                      {item.name
+                        .split(/[ -]/)
+                        .map(
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                        )
+                        .join(" ")}
+                    </div>
                   </Paper>
                 </Grid>
               ))}

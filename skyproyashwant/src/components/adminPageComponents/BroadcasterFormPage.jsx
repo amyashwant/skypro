@@ -7,12 +7,13 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
-import { List, Paper, Typography } from '@mui/material';
-import { ListItem } from '@mui/material';
-import { ListItemText } from '@mui/material';
+import { List, Paper, Typography } from "@mui/material";
+import { ListItem } from "@mui/material";
+import { ListItemText } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 // import "react-toastify/dist/ReactToastify.css";
 
 const channels = ["star plus", "mtv", "aat tak"];
@@ -41,6 +42,7 @@ const BroadcasterFormPage = () => {
   const [error, setError] = useState([]);
   const [isFormValid, setIsFormValid] = useState(false);
   const [viewBroadcasterData, setViewBroadcasterData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     // price: "",
@@ -58,6 +60,21 @@ const BroadcasterFormPage = () => {
   // };
 
   const resetFormFields = () => {
+    // Create a new input element
+    const newInput = document.createElement("input");
+
+    // Clone the attributes from the original input
+    const oldInput = document.querySelector('input[name="image"]');
+    if (oldInput) {
+      Array.from(oldInput.attributes).forEach((attr) => {
+        newInput.setAttribute(attr.name, attr.value);
+      });
+      newInput.addEventListener("change", handleChange);
+    }
+
+    // Replace the old input with the new one
+    oldInput.parentNode.replaceChild(newInput, oldInput);
+
     setFormData({
       name: "",
       // price: "",
@@ -132,7 +149,7 @@ const BroadcasterFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const config = {
         Headers: {
@@ -184,6 +201,7 @@ const BroadcasterFormPage = () => {
     }
     resetFormFields();
     setchannelName([]);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -266,25 +284,39 @@ const BroadcasterFormPage = () => {
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={!isFormValid}
+          disabled={!isFormValid || loading}
         >
-          Submit
+          {loading ? <Loader /> : "Submit"}
         </button>
-     
-      <List>
-      <Typography variant="h5" gutterBottom>
-        Broadcasters
-      </Typography>
-      <Grid container spacing={2}>
-          {viewBroadcasterData?.map((item, index) => (
-            <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
-              <Paper elevation={3} style={{ marginTop: '10px', padding: '14px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{ item.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</div>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </List>
+
+        <List>
+          <Typography variant="h5" gutterBottom>
+            Broadcasters
+          </Typography>
+          <Grid container spacing={2}>
+            {viewBroadcasterData?.map((item, index) => (
+              <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
+                <Paper
+                  elevation={3}
+                  style={{
+                    marginTop: "10px",
+                    padding: "14px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ color: "#071e43" }}>
+                    {item.name
+                      .split(" ")
+                      .map(
+                        (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                      )
+                      .join(" ")}
+                  </div>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </List>
       </form>
     </PortalHeader>
   );

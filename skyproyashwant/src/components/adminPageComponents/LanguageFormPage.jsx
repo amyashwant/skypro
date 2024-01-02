@@ -3,6 +3,7 @@ import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { Paper } from "@mui/material";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 // import currImg from "../../assets/images/packagesImages/1702451103822-Default.jpg";
 const LanguageFormPage = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const LanguageFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     setLoading(true);
 
     try {
@@ -45,6 +46,7 @@ const LanguageFormPage = () => {
       );
       console.log("data post>>>", data?.data?.name);
       // setLanguageData(data);
+      await getLanguageFunc();
     } catch (error) {
       console.log("error.response>>>>", error?.response?.data?.error);
       setError(error?.response?.data?.error);
@@ -72,7 +74,7 @@ const LanguageFormPage = () => {
 
   useEffect(() => {
     getLanguageFunc();
-  }, [handleSubmit]);
+  }, []);
 
   console.log(languageData?.data[0]?.name, "languageData>>");
   return (
@@ -82,7 +84,7 @@ const LanguageFormPage = () => {
         <div className="language-div mb-3">
           <label className="language-label form-label">Language</label>
           <input
-            className="form-label2" 
+            className="form-label2"
             type="text"
             // className="form-control"
             name="name"
@@ -94,9 +96,9 @@ const LanguageFormPage = () => {
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={formData.name === ""}
+          disabled={formData.name === "" || loading}
         >
-          {loading ? "submitting..." : "Submit"}
+          {loading ? <Loader /> : "Submit"}
         </button>
         <div
           style={{

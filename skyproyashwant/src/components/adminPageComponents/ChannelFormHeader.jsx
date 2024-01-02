@@ -13,6 +13,7 @@ import { ListItem } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 // import "react-toastify/dist/ReactToastify.css";
 // import { ProgressBar, Icon } from "react-toastify/dist/components";
 const ITEM_HEIGHT = 48;
@@ -40,7 +41,7 @@ const ChannelFormPage = () => {
   const [error, setError] = useState(null);
   const [isFormValid, setIsFormValid] = useState(false);
   const [viewChannelData, setViewChannelData] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -50,6 +51,21 @@ const ChannelFormPage = () => {
   });
 
   const resetFormFields = () => {
+    // Create a new input element
+    const newInput = document.createElement("input");
+
+    // Clone the attributes from the original input
+    const oldInput = document.querySelector('input[name="image"]');
+    if (oldInput) {
+      Array.from(oldInput.attributes).forEach((attr) => {
+        newInput.setAttribute(attr.name, attr.value);
+      });
+      newInput.addEventListener("change", handleChange);
+    }
+
+    // Replace the old input with the new one
+    oldInput.parentNode.replaceChild(newInput, oldInput);
+
     setFormData({
       name: "",
       price: "",
@@ -98,14 +114,6 @@ const ChannelFormPage = () => {
   const getChannelTypeId = () => {
     try {
       const data = channelType?.data;
-
-      // let newData = data?.find((item) => item?.name === channelName[0]);
-
-      // const channelIds = channelName.map((name, index) => {
-      //   const newData = data?.find((item) => item?.name === name);
-      //   return newData?._id;
-      // });
-
       const channelIds = channelName.map((name) => {
         const channel = data?.find((item) => item?.name === name);
         return channel?._id;
@@ -141,6 +149,10 @@ const ChannelFormPage = () => {
     console.log("laguageId inside submit>>", languageId);
     console.log("channelId inside submit>>", channelId);
     console.log("categoryId inside submit>>", categoryId);
+    setLoading(true);
+
+    console.log("formdata.image>>>>>", formData.image);
+
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("name", formData.name.toLowerCase());
@@ -174,7 +186,9 @@ const ChannelFormPage = () => {
         });
     } catch (error) {
       console.log(error);
+
       setError(error?.response?.data?.error);
+      // setError(error?.response?.data);
       resetFormFields();
       toast.error("Failed to create the channel", {
         position: "top-center", // Set the position of the toast
@@ -191,6 +205,8 @@ const ChannelFormPage = () => {
     setlanguageName([]);
 
     resetFormFields();
+    setCategoryName([]);
+    setLoading(false);
   };
 
   const handleChange = (e) => {
@@ -236,6 +252,7 @@ const ChannelFormPage = () => {
 
     setChannelType(data);
   };
+
   const getCategoryFunc = async () => {
     const config = {
       Headers: {
@@ -260,23 +277,27 @@ const ChannelFormPage = () => {
 
   useEffect(() => {
     const isNameValid = formData.name.trim() !== "";
-    // const isPriceValid = formData.price.trim() !== "";
-    const isImageValid = formData.image !== null;
+    const isTypeValid = channelName.length > 0;
+    // const isLanguageValid = formData.language.trim() !== "";
+    // const isImageValid = formData.image !== null;
     // const areChannelsSelected = channelName.length > 0;
     const areLanguagesSelected = languageName.length > 0;
+    const areCategorySelected = categoryName.length > 0;
 
     setIsFormValid(
       isNameValid &&
-        // isPriceValid &&
+        isTypeValid &&
         // areChannelsSelected &&
         areLanguagesSelected &&
-        isImageValid
+        areCategorySelected
+      // && isImageValid
     );
   }, [
     formData.name,
-    // formData.price,
-    formData.image,
-    // channelName,
+    // formData.type,
+    // formData.image,
+    channelName,
+    categoryName,
     languageName,
   ]);
 
@@ -297,17 +318,6 @@ const ChannelFormPage = () => {
             />
           </div>
           <div style={{ color: "#071e43" }}>{error && error}</div>
-
-          {/* <div className="mb-3">
-          <label className="form-label">Channel Price: (If Ala Carte):</label>
-          <input
-            type="text"
-            className="form-control"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-          </div> */}
 
           <div>
             {/* <label className="form-label">Type</label> */}
@@ -406,19 +416,15 @@ const ChannelFormPage = () => {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={!isFormValid}
+            // disabled={!isFormValid }
+            disabled={!isFormValid || loading}
           >
-            Submit
+            {/* Submit */}
+            {loading ? <Loader /> : "Submit"}
           </button>
 
           <div style={{ color: "#071e43" }}>{modal && modal}</div>
 
-          {/* <div style={{ marginLeft: "30px" }}>
-          <h3>Channels Aailable:</h3>
-          {viewChannelData.map((item) => (
-            <p style={{ color: "black", fontWeight: "bold" }}>{item.name}</p>
-          ))}
-        </div> */}
           <List>
             <Typography variant="h5" gutterBottom>
               Channels

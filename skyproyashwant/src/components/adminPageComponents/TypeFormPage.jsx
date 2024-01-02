@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
 import { Grid } from "@mui/material";
-import {Paper} from "@mui/material";
+import { Paper } from "@mui/material";
+import Loader from "../../common/loaderComponent.jsx/Loader";
 
 const TypeFormPage = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ const TypeFormPage = () => {
   const [languageOne, setLanguageOne] = useState();
   const [error, setError] = useState();
   const [typeData, setTypeData] = useState();
-
+  const [loading, setLoading] = useState(false);
   const getTypeFunc = async () => {
     const config = {
       Headers: {
@@ -26,7 +27,7 @@ const TypeFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const config = {
         Headers: {
@@ -42,6 +43,7 @@ const TypeFormPage = () => {
       );
       console.log("data post>>>", data?.data?.name);
       // setTypeData(data);
+      await getTypeFunc();
     } catch (error) {
       console.log("error.response>>>>", error?.response?.data?.error);
       setError(error?.response?.data?.error);
@@ -51,6 +53,7 @@ const TypeFormPage = () => {
       ...prevData,
       name: "", // Set the 'name' property to an empty string
     }));
+    setLoading(false);
   };
 
   const handleChange = (e) => {
@@ -68,16 +71,17 @@ const TypeFormPage = () => {
 
   useEffect(() => {
     getTypeFunc();
-  }, [handleSubmit]);
+  }, []);
 
   console.log(typeData?.data[0]?.name, "typeData>>");
   return (
     <PortalHeader>
-        <h2>Add Type</h2>
+      <h2>Add Type</h2>
       <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
         <div className="language-div mb-3">
           <label className="language-label form-label">Channel Type</label>
-          <input className="form-label2"
+          <input
+            className="form-label2"
             type="text"
             // className="form-control"
             name="name"
@@ -89,9 +93,9 @@ const TypeFormPage = () => {
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={formData.name === ""}
+          disabled={formData.name === "" || loading}
         >
-          Submit
+          {loading ? <Loader /> : "Submit"}
         </button>
         <div
           style={{
@@ -116,8 +120,11 @@ const TypeFormPage = () => {
         <Grid container spacing={2}>
           {typeData?.data?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={6} lg={2}>
-              <Paper elevation={3} style={{ margin: '20px', padding: '10px', textAlign: 'center' }}>
-                <div style={{ color: '#071e43' }}>{item.name}</div>
+              <Paper
+                elevation={3}
+                style={{ margin: "20px", padding: "10px", textAlign: "center" }}
+              >
+                <div style={{ color: "#071e43" }}>{item.name}</div>
               </Paper>
             </Grid>
           ))}
