@@ -23,6 +23,7 @@ const {
   getCategory,
   //--------------------------------------------
   updateLanguage,
+  deleteLanguage,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
@@ -136,5 +137,5 @@ router.post("/category", createCategory);
 router.get("/category", getCategory);
 //----------------------------------------------------------------
 router.put("/language/:itemId", updateLanguage);
-
+router.delete("/language/:id", deleteLanguage);
 module.exports = router;

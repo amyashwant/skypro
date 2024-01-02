@@ -23,7 +23,7 @@ const ContactPage = () => {
       {/* <BeadCumb /> */}
       <BeadCumbCommon titleOne="CONTACT US" titleTwo="CONTACT US" bgImg={contactImg}/>
       <Contact />
-      <MapCompany />
+      {/* <MapCompany /> */}
       <FooterContact/>
       <Footer />
     </>

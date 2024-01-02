@@ -49,21 +49,15 @@ const Contact = () => {
       newErrors.subject = "Subject is required";
     }
 
-    // Message validation
-    // if (!formData.message.trim()) {
-    //   newErrors.message = "Message is required";
-    // }
-
     setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0; // Form is valid if there are no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      // Form is not valid, do not proceed
       return;
     }
     try {
@@ -219,29 +213,25 @@ const Contact = () => {
                           rows="4"
                           cols="30"
                         ></textarea>
-                        {/* {errors.message && (
-                          <span className="error">{errors.message}</span>
-                        )} */}
                       </div>
                     </div>
                     <div class="mt-3 d-flex align-items-center position-relative">
                       <button type="submit" class="btn blue-btn" id="">
                         <span></span>Submit
                       </button>
-                      {/* <ul class="social-icons d-flex align-items-center flex-wrap ContactUS-icon">
-                    <li><a href="" target="_blank"><i class="fa-solid fa-phone"></i></a></li>
-                      <li><a href="" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
-                    </ul> */}
                     </div>
                   </form>
                 </div>
                 <div className="col-sm-5">
-                  <img
-                    src={contactImage}
-                    alt="Contact"
-                    className="img-fluid"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4079.200739425459!2d76.69185718317433!3d30.71319131412005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fef99cc17fe25%3A0x6a593a19f7208f9b!2sAbacus%20Cloud!5e0!3m2!1sen!2sin!4v1700492253995!5m2!1sen!2sin"
+                    width="100%"
+                    height="500"
+                    //   style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>

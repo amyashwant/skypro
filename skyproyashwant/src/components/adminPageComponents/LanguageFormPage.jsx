@@ -260,6 +260,7 @@
 
 // export default LanguageFormPage;
 
+//-------------------------------------------------------------------------------------------------
 import React, { useEffect, useState } from "react";
 import PortalHeader from "./adminHeader.jsx/PortalHeader";
 import axios from "axios";
@@ -324,7 +325,7 @@ const LanguageFormPage = () => {
 
   // New state variable to store the selected language for editing
   const [selectedLanguage, setSelectedLanguage] = useState(null);
-
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const handleSwitch = (event) => {
     setChecked(event.target.checked);
   };
@@ -368,6 +369,7 @@ const LanguageFormPage = () => {
 
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const config = {
         Headers: {
@@ -380,6 +382,10 @@ const LanguageFormPage = () => {
         { name: name.toUpperCase() },
         config
       );
+
+      setLoading(false);
+      await getLanguageFunc();
+      handleClose();
     } catch (error) {
       console.log(error);
     }
@@ -411,6 +417,26 @@ const LanguageFormPage = () => {
     //   name: language.name,
     // });
     setOpen(true);
+  };
+
+  const handleDelete = async () => {
+    // Handle delete logic here
+    console.log("Deleting language:", selectedLanguage);
+    // Close the confirmation modal
+    const data = await axios.delete(
+      `/api/package/language/${selectedLanguage._id}`
+    );
+    await getLanguageFunc();
+    setDeleteConfirmationOpen(false);
+  };
+
+  const handleDeleteConfirmationOpen = (item) => {
+    setSelectedLanguage(item);
+    setDeleteConfirmationOpen(true);
+  };
+
+  const handleDeleteConfirmationClose = () => {
+    setDeleteConfirmationOpen(false);
   };
 
   useEffect(() => {
@@ -458,7 +484,7 @@ const LanguageFormPage = () => {
             <div>Language Available</div>
 
             <div style={{ fontSize: "10px" }}>
-              {languageData ? "" : <Loader/>}
+              {languageData ? "" : <Loader />}
             </div>
           </div>
           <Grid container spacing={2}>
@@ -479,7 +505,9 @@ const LanguageFormPage = () => {
                     <IconButton onClick={() => handleSettings(item)}>
                       <EditNoteIcon />
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                      onClick={() => handleDeleteConfirmationOpen(item)}
+                    >
                       <Delete />
                     </IconButton>
                   </ListItem>
@@ -499,14 +527,6 @@ const LanguageFormPage = () => {
         <Box sx={style}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="h6">Language</Typography>
-            {/* <FormGroup>
-              <Switch
-                checked={checked}
-                onChange={handleSwitch}
-                inputProps={{ "aria-label": "controlled" }}
-              />
-              <Typography>{checked ? "Active" : "In-active"}</Typography>
-            </FormGroup> */}
           </div>
           <form
             style={formStyle}
@@ -532,11 +552,29 @@ const LanguageFormPage = () => {
               variant="contained"
               color="primary"
               style={{ marginTop: "20px" }}
-              
             >
-              Update
+              {loading ? <Loader /> : "Update"}
             </Button>
           </form>
+        </Box>
+      </Modal>
+      <Modal
+        open={deleteConfirmationOpen}
+        onClose={handleDeleteConfirmationClose}
+        aria-labelledby="delete-confirmation-modal-title"
+        aria-describedby="delete-confirmation-modal-description"
+      >
+        <Box sx={style}>
+          <Typography variant="h6">Confirm Deletion</Typography>
+          <Typography>
+            Are you sure you want to delete this language?
+          </Typography>
+          <Button onClick={handleDeleteConfirmationClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDelete} color="secondary">
+            Delete
+          </Button>
         </Box>
       </Modal>
     </>

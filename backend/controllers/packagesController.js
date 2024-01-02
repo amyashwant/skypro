@@ -29,7 +29,7 @@ const createLanguage = async (req, res) => {
       return res.status(400).json({ error: "Already added" });
     }
 
-    const language = await Language.create({ name });
+    const language = await Language.create({ name, isActive: true });
     res.status(200).json(language);
   } catch (error) {
     // console.error(error);
@@ -39,7 +39,7 @@ const createLanguage = async (req, res) => {
 
 const getLanguage = async (req, res) => {
   try {
-    const language = await Language.find();
+    const language = await Language.find({ isActive: true });
     res.status(200).json(language);
   } catch (error) {
     console.error(error);
@@ -59,6 +59,26 @@ const updateLanguage = async (req, res) => {
       return res.status(400).json({ error: "Item not found" });
     }
     res.json(updatedItem);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const deleteLanguage = async (req, res) => {
+  try {
+    const languageId = req.params.id;
+    const updatedLanguage = await Language.findByIdAndUpdate(
+      languageId,
+      { isActive: false },
+      { new: true }
+    );
+
+    if (!updatedLanguage) {
+      return res.status(404).json({ error: "Language not found" });
+    }
+
+    res.status(200).json(updatedLanguage);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -314,4 +334,5 @@ module.exports = {
   getCategory,
   //------------------------------------------------------
   updateLanguage,
+  deleteLanguage,
 };
