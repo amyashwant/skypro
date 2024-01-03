@@ -24,31 +24,19 @@ const {
   //--------------------------------------------
   updateLanguage,
   deleteLanguage,
+  updateChannel,
+
+  updateCategory,
+  deleteCategory,
+  updateType,
+  deleteType
+
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
 } = require("../middleware/imageUploadMiddleware");
 const { error } = require("console");
 
-// const multer = require("multer");
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     // cb(null, "./skyproyashwant/src/assets/images/packagesImages"); // Uploads will be stored in the 'uploads/' directory
-//     cb(null, "uploads/"); // Uploads will be stored in the 'uploads/' directory
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, Date.now() + "-" + file.originalname); // Unique filename to avoid overwriting
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-
-// app.post("/upload-image", upload.single("image"), async (req, res) => {
-//   console.log(req.file.filename);
-//   res.send("uploaded!!");
-// });
-
-// router.route("/channel").post(createChannel);
 
 router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
@@ -138,4 +126,17 @@ router.get("/category", getCategory);
 //----------------------------------------------------------------
 router.put("/language/:itemId", updateLanguage);
 router.delete("/language/:id", deleteLanguage);
+router.put("/channel/:itemId", updateChannel);
+
+
+router.put("/category/:itemId", updateCategory);
+router.delete("/category/:id", deleteCategory)
+router.put("/type/:itemId", updateType)
+router.delete("/type/:id", deleteType)
+
+
+
+
+
+
 module.exports = router;

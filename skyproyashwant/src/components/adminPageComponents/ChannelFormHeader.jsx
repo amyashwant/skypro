@@ -8,12 +8,23 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
-import { List, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Input,
+  List,
+  Modal,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { ListItem } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
 import Loader from "../../common/loaderComponent.jsx/Loader";
+import { Delete } from "@mui/icons-material";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 // import "react-toastify/dist/ReactToastify.css";
 // import { ProgressBar, Icon } from "react-toastify/dist/components";
 const ITEM_HEIGHT = 48;
@@ -25,6 +36,28 @@ const MenuProps = {
       width: 250,
     },
   },
+};
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  border: "1px solid #ccc",
+  boxShadow: 24,
+  p: 4,
+  width: "50%",
+  borderRadius: 8,
+};
+
+const formStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "start",
+  justifyContent: "space-around",
+  paddingLeft: "2em",
+  marginBottom: "2em",
 };
 
 const ChannelFormPage = () => {
@@ -42,6 +75,7 @@ const ChannelFormPage = () => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [viewChannelData, setViewChannelData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [getLoading, setGetLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -49,6 +83,66 @@ const ChannelFormPage = () => {
     lang: "",
     image: null,
   });
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [formDataUpdate, setFormDataUpdate] = useState({
+    name: "",
+  });
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+
+  const getCategoryFunc = async () => {
+    const config = {
+      Headers: {
+        "Content-type": "application/json",
+        // "Content-Type": "multipart/form-data",
+      },
+    };
+
+    const data = await axios.get("/api/package/category", config);
+
+    setCategoryData(data);
+  };
+
+  const handleChangeUpdate = (e) => {
+    const { name } = e.target;
+
+    setFormDataUpdate((prevData) => ({
+      ...prevData,
+      [name]: e.target.value,
+    }));
+    setError(null);
+  };
+
+  const handleSubmitUpdate = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const config = {
+        Headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { name } = formDataUpdate;
+      const data = await axios.put(
+        `/api/package/channel/${selectedLanguage._id}`,
+        { name },
+        config
+      );
+
+      setLoading(false);
+
+      handleClose();
+      await getLanguageFunc();
+    } catch (error) {
+      // await getLanguageFunc();
+      setError(error?.response?.data?.error);
+      console.log(error);
+      setLoading(false);
+    }
+  };
+  //------------------------update/delete-------------------------------
 
   const resetFormFields = () => {
     // Create a new input element
@@ -74,6 +168,44 @@ const ChannelFormPage = () => {
       image: null,
     });
   };
+
+  const handleSettings = (item) => {
+    setSelectedLanguage(item);
+    // setFormDataUpdate({
+    //   name: language.name,
+    // });
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    if (selectedLanguage) {
+      setFormDataUpdate({
+        name: selectedLanguage.name,
+      });
+    }
+  }, [selectedLanguage]);
+
+  const handleDelete = async () => {
+    // Handle delete logic here
+    console.log("Deleting language:", selectedLanguage);
+    // Close the confirmation modal
+    const data = await axios.delete(
+      `/api/package/language/${selectedLanguage._id}`
+    );
+    await getLanguageFunc();
+    setDeleteConfirmationOpen(false);
+  };
+
+  const handleDeleteConfirmationOpen = (item) => {
+    setSelectedLanguage(item);
+    setDeleteConfirmationOpen(true);
+  };
+
+  const handleDeleteConfirmationClose = () => {
+    setDeleteConfirmationOpen(false);
+  };
+
+  //------------------------update/delete-close-------------------------------
 
   const handleChannelChange = (event) => {
     const value = event.target.value;
@@ -225,6 +357,7 @@ const ChannelFormPage = () => {
   };
 
   const getLanguageFunc = async () => {
+    setGetLoading(true);
     try {
       const config = {
         Headers: {
@@ -237,6 +370,8 @@ const ChannelFormPage = () => {
       setViewChannelData(viewData?.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setGetLoading(false);
     }
   };
 
@@ -251,19 +386,6 @@ const ChannelFormPage = () => {
     const data = await axios.get("/api/package/type", config);
 
     setChannelType(data);
-  };
-
-  const getCategoryFunc = async () => {
-    const config = {
-      Headers: {
-        "Content-type": "application/json",
-        // "Content-Type": "multipart/form-data",
-      },
-    };
-
-    const data = await axios.get("/api/package/category", config);
-
-    setCategoryData(data);
   };
 
   useEffect(() => {
@@ -438,6 +560,7 @@ const ChannelFormPage = () => {
             <Typography variant="h5" gutterBottom>
               Channels
             </Typography>
+            {getLoading ? <Loader /> : ""}
             <Grid container spacing={2}>
               {viewChannelData?.map((item, index) => (
                 <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
@@ -449,14 +572,26 @@ const ChannelFormPage = () => {
                       textAlign: "center",
                     }}
                   >
-                    {/* <div style={{ color: '#071e43' }}>{item.name}</div> */}
                     <div style={{ color: "#071e43" }}>
-                      {item.name
+                      <ListItem>
+                        <ListItemText>
+                          <Typography variant="body1">{item.name}</Typography>
+                        </ListItemText>
+                        <IconButton onClick={() => handleSettings(item)}>
+                          <EditNoteIcon />
+                        </IconButton>
+                        {/* <IconButton
+                          onClick={() => handleDeleteConfirmationOpen(item)}
+                        >
+                          <Delete />
+                        </IconButton> */}
+                      </ListItem>
+                      {/* {item.name
                         .split(" ")
                         .map(
                           (word) => word.charAt(0).toUpperCase() + word.slice(1)
                         )
-                        .join(" ")}
+                        .join(" ")} */}
                     </div>
                   </Paper>
                 </Grid>
@@ -465,6 +600,73 @@ const ChannelFormPage = () => {
           </List>
         </form>
       </PortalHeader>
+      <Modal
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box sx={style}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="h6" mb={4}>
+              Channels
+            </Typography>
+          </div>
+          <form
+            style={formStyle}
+            onSubmit={handleSubmitUpdate}
+            action="/addNews"
+            method="post"
+            encType="multipart/form-data"
+          >
+            <FormControl fullWidth mb={4}>
+              <InputLabel
+                htmlFor="title"
+                sx={{ fontSize: "20px", marginLeft: "-10px" }}
+              >
+                Name
+              </InputLabel>
+              <Input
+                id="title"
+                name="name"
+                type="text"
+                placeholder="Enter News Title"
+                value={formDataUpdate.name}
+                onChange={handleChangeUpdate}
+              />
+            </FormControl>
+
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{ marginTop: "20px" }}
+            >
+              {loading ? <Loader /> : "Update"}
+            </Button>
+          </form>
+        </Box>
+      </Modal>
+      <Modal
+        open={deleteConfirmationOpen}
+        onClose={handleDeleteConfirmationClose}
+        aria-labelledby="delete-confirmation-modal-title"
+        aria-describedby="delete-confirmation-modal-description"
+      >
+        <Box sx={style}>
+          <Typography variant="h6">Confirm Deletion</Typography>
+          <Typography>
+            Are you sure you want to delete this language?
+          </Typography>
+          <Button onClick={handleDeleteConfirmationClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDelete} color="secondary">
+            Delete
+          </Button>
+        </Box>
+      </Modal>
     </>
   );
 };

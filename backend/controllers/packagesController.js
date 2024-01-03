@@ -25,12 +25,13 @@ const createLanguage = async (req, res) => {
   try {
     const { name } = req.body;
     const existingLanguage = await Language.findOne({ name });
-    
+
     if (existingLanguage) {
       console.log("existingLanguage>>/>>>", existingLanguage);
 
       if (existingLanguage.isDeleted === true) {
         await Language.findByIdAndUpdate(existingLanguage._id, {
+          isActive: true,
           isDeleted: false,
         });
         return res.status(200).json("success");
@@ -64,6 +65,11 @@ const getLanguage = async (req, res) => {
 const updateLanguage = async (req, res) => {
   const { name } = req.body;
   try {
+    const existingLanguage = await Language.findOne({ name });
+
+    if (existingLanguage) {
+      return res.status(400).json({ error: "Can not update. Already" });
+    }
     const updatedItem = await Language.findByIdAndUpdate(
       req.params.itemId,
       { name: name },
@@ -72,7 +78,7 @@ const updateLanguage = async (req, res) => {
     if (!updatedItem) {
       return res.status(400).json({ error: "Item not found" });
     }
-    res.json(updatedItem);
+    res.status(200).json(updatedItem);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -84,7 +90,7 @@ const deleteLanguage = async (req, res) => {
     const languageId = req.params.id;
     const updatedLanguage = await Language.findByIdAndUpdate(
       languageId,
-      { isDeleted: true },
+      { isActive: false, isDeleted: true },
       { new: true }
     );
 
@@ -167,11 +173,26 @@ const createType = async (req, res) => {
   try {
     const { name } = req.body;
     const existingType = await Type.findOne({ name });
+
     if (existingType) {
+      // console.log("existingCategory>>/>>>", existingCategory);
+
+      if (existingType.isDeleted === true) {
+        await Type.findByIdAndUpdate(existingType._id, {
+          isActive: true,
+          isDeleted: false,
+        });
+        return res.status(200).json("success");
+        // return res.status(400).json({ error: "Already added" });
+      }
       return res.status(400).json({ error: "Already added" });
     }
 
-    const type = await Type.create({ name });
+    const type = await Type.create({
+      name,
+      isActive: true,
+      isDeleted: false,
+    });
     res.status(200).json(type);
   } catch (error) {
     // console.error(error);
@@ -181,11 +202,56 @@ const createType = async (req, res) => {
 
 const getType = async (req, res) => {
   try {
-    const type = await Type.find();
+    const type = await Type.find({ isActive: true, isDeleted: false });
     res.status(200).json(type);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+const updateType = async (req, res) => {
+  const { name } = req.body;
+  try {
+    const existingType = await Type.findOne({ name });
+
+    if (existingType) {
+      // console.log("existingCategory>>/>>>", existingCategory);
+
+      return res.status(400).json({ error: "Already added" });
+    }
+    const updateItem = await Type.findByIdAndUpdate(
+      req.params.itemId,
+      { name: name },
+      { new: true }
+    );
+    if (!updateItem) {
+      return res.status(400).json({ error: "Type not Found" });
+    }
+    res.json(updateItem);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const deleteType = async (req, res) => {
+  try {
+    const typeId = req.params.id;
+    const updateType = await Type.findByIdAndUpdate(
+      typeId,
+      { isActive: false, isDeleted: true },
+      { new: true }
+    );
+
+    if (!updateType) {
+      return res.status(400).json({ error: "Type not Found" });
+    }
+    res.status(200).json(updateType);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -303,13 +369,39 @@ const getBouqueChannel = async (req, res) => {
 };
 
 const createCategory = async (req, res) => {
-  const { name } = req.body;
   try {
+    const { name } = req.body;
     const existingCategory = await Category.findOne({ name });
+
     if (existingCategory) {
+      // console.log("existingCategory>>/>>>", existingCategory);
+
+      if (existingCategory.isDeleted === true) {
+        await Category.findByIdAndUpdate(existingCategory._id, {
+          isActive: true,
+          isDeleted: false,
+        });
+        return res.status(200).json("success");
+        // return res.status(400).json({ error: "Already added" });
+      }
       return res.status(400).json({ error: "Already added" });
     }
-    const category = await Category.create({ name });
+
+    const category = await Category.create({
+      name,
+      isActive: true,
+      isDeleted: false,
+    });
+    res.status(200).json(category);
+  } catch (error) {
+    // console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getCategory = async (req, res) => {
+  try {
+    const category = await Category.find({ isActive: true, isDeleted: false });
     res.status(200).json(category);
   } catch (error) {
     console.log(error);
@@ -317,10 +409,70 @@ const createCategory = async (req, res) => {
   }
 };
 
-const getCategory = async (req, res) => {
+const updateCategory = async (req, res) => {
+  const { name } = req.body;
   try {
-    const category = await Category.find();
-    res.status(200).json(category);
+    const existingCategory = await Category.findOne({ name });
+
+    if (existingCategory) {
+      // console.log("existingCategory>>/>>>", existingCategory);
+
+      return res.status(400).json({ error: "Already added" });
+    }
+
+    const updatedItem = await Category.findByIdAndUpdate(
+      req.params.itemId,
+      { name: name },
+      { new: true }
+    );
+    if (!updatedItem) {
+      return res.status(400).json({ error: "Item not found" });
+    }
+    res.json(updatedItem);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const deleteCategory = async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    const updateCategory = await Category.findByIdAndUpdate(
+      categoryId,
+      { isDeleted: true, isActive: false },
+      { new: true }
+    );
+
+    if (!updateCategory) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+
+    res.status(200).json(updateCategory);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const updateChannel = async (req, res) => {
+  const { name } = req.body;
+  try {
+    const existingChannel = await Channel.findOne({ name });
+
+    if (existingChannel) {
+      return res.status(400).json({ error: "Can not update. Already exists" });
+    }
+
+    const updatedData = await Channel.findByIdAndUpdate(
+      req.params.itemId,
+      { name: name },
+      { new: true }
+    );
+    if (!updatedData) {
+      res.status(400).json({ error: "Item not found" });
+    }
+    res.status(200).json(updatedData);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -349,4 +501,10 @@ module.exports = {
   //------------------------------------------------------
   updateLanguage,
   deleteLanguage,
+  updateChannel,
+
+  updateCategory,
+  deleteCategory,
+  updateType,
+  deleteType
 };
