@@ -14,15 +14,29 @@ const TypeFormPage = () => {
   const [error, setError] = useState();
   const [typeData, setTypeData] = useState();
   const [loading, setLoading] = useState(false);
+  const [getLoading, setGetLoading] = useState(false);
   const getTypeFunc = async () => {
+    setGetLoading(true);
     const config = {
       Headers: {
         "Content-type": "application/json",
-        // "Content-Type": "multipart/form-data",
       },
     };
-    const data = await axios.get("/api/package/type", config);
-    setTypeData(data);
+    try {
+      const data = await axios.get("/api/package/type", config);
+      setTypeData(data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      if (error.response) {
+        setError("Server Error. Please try again later.");
+      } else if (error.request) {
+        setError("Network Error. Please check your internet connection.");
+      } else {
+        setError("An unexpected error occurred.");
+      }
+    } finally {
+      setGetLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -107,9 +121,7 @@ const TypeFormPage = () => {
           Type Available
         </div>
 
-        <div style={{ fontSize: "10px" }}>
-          {typeData ? "" : "Loading......"}
-        </div>
+        <div style={{ fontSize: "10px" }}>{getLoading ? <Loader /> : ""}</div>
         {/* <div>
           {typeData?.data?.map((item, index) => {
             return (

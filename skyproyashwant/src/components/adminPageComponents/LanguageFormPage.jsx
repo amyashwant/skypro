@@ -293,7 +293,7 @@ const style = {
   border: "1px solid #ccc",
   boxShadow: 24,
   p: 4,
-  width: "70%",
+  width: "50%",
   borderRadius: 8,
 };
 
@@ -302,7 +302,7 @@ const formStyle = {
   flexDirection: "column",
   alignItems: "start",
   justifyContent: "space-around",
-  paddingLeft: "3em",
+  paddingLeft: "2em",
   marginBottom: "2em",
 };
 
@@ -318,6 +318,7 @@ const LanguageFormPage = () => {
   const [error, setError] = useState();
   const [languageData, setLanguageData] = useState();
   const [loading, setLoading] = useState(false);
+  const [getLoading, setGetLoading] = useState(false);
   const [checked, setChecked] = useState();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
@@ -331,26 +332,47 @@ const LanguageFormPage = () => {
   };
 
   const getLanguageFunc = async () => {
+    setGetLoading(true);
     const config = {
       Headers: {
         "Content-type": "application/json",
       },
     };
-    const data = await axios.get("/api/package/language", config);
-    setLanguageData(data);
+    try {
+      const data = await axios.get("/api/package/language", config);
+      setLanguageData(data);
+      // setLoading(false);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      if (error.response) {
+        // The request was made, but the server responded with a status code
+        // outside the range of 2xx
+        setError("Server Error. Please try again later.");
+      } else if (error.request) {
+        // The request was made, but no response was received
+        setError("Network Error. Please check your internet connection.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setError("An unexpected error occurred.");
+      }
+      // setLoading(false);
+    } finally {
+      console.log("loading??>>", loading);
+      setGetLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    const config = {
+      Headers: {
+        "Content-type": "application/json",
+      },
+    };
+    const { name } = formData;
     try {
-      const config = {
-        Headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const { name } = formData;
       const data = await axios.post(
         "/api/package/language",
         { name: name.toUpperCase() },
@@ -358,7 +380,11 @@ const LanguageFormPage = () => {
       );
       await getLanguageFunc();
     } catch (error) {
-      setError(error?.response?.data?.error);
+      if (error?.response?.data?.error) {
+        setError(error?.response?.data?.error);
+      } else {
+        setError("Something went wrong");
+      }
     }
 
     setFormData({
@@ -486,7 +512,7 @@ const LanguageFormPage = () => {
             <div>Language Available</div>
 
             <div style={{ fontSize: "10px" }}>
-              {languageData ? "" : <Loader />}
+              {getLoading ? <Loader /> : ""}
             </div>
           </div>
           <Grid container spacing={2}>
@@ -528,7 +554,9 @@ const LanguageFormPage = () => {
       >
         <Box sx={style}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="h6">Language</Typography>
+            <Typography variant="h6" mb={4}>
+              Language
+            </Typography>
           </div>
           <form
             style={formStyle}
@@ -538,7 +566,12 @@ const LanguageFormPage = () => {
             encType="multipart/form-data"
           >
             <FormControl fullWidth mb={4}>
-              <InputLabel htmlFor="title">Name</InputLabel>
+              <InputLabel
+                htmlFor="title"
+                sx={{ fontSize: "20px", marginLeft: "-10px" }}
+              >
+                Name
+              </InputLabel>
               <Input
                 id="title"
                 name="name"

@@ -25,6 +25,7 @@ const createLanguage = async (req, res) => {
   try {
     const { name } = req.body;
     const existingLanguage = await Language.findOne({ name });
+    
     if (existingLanguage) {
       console.log("existingLanguage>>/>>>", existingLanguage);
 

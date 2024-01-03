@@ -14,15 +14,31 @@ const CategoryFormPage = () => {
   const [error, setError] = useState();
   const [typeData, setTypeData] = useState();
   const [loading, setLoading] = useState(false);
+  const [getLoading, setGetLoading] = useState(false);
+
   const getTypeFunc = async () => {
+    setGetLoading(true);
     const config = {
       Headers: {
         "Content-type": "application/json",
-        // "Content-Type": "multipart/form-data",
       },
     };
-    const data = await axios.get("/api/package/category", config);
-    setTypeData(data);
+    try {
+      const data = await axios.get("/api/package/category", config);
+      setTypeData(data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      if (error.response) {
+        setError("Server Error. Please try again later.");
+      } else if (error.request) {
+        setError("Network Error. Please check your internet connection.");
+      } else {
+        setError("An unexpected error occurred.");
+      }
+    } finally {
+      console.log("loading??>>", loading);
+      setGetLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -106,9 +122,7 @@ const CategoryFormPage = () => {
           Categories
         </div>
 
-        <div style={{ fontSize: "10px" }}>
-          {typeData ? "" : "Loading......"}
-        </div>
+        <div style={{ fontSize: "10px" }}>{getLoading ? <Loader /> : ""}</div>
         <Grid container spacing={2}>
           {typeData?.data?.map((item, index) => (
             <Grid item key={index} xs={12} sm={6} md={6} lg={2}>
