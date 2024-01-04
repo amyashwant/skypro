@@ -14,15 +14,7 @@ import { Grid } from "@mui/material";
 
 import { ToastContainer, toast } from "react-toastify";
 import Loader from "../../common/loaderComponent.jsx/Loader";
-// import "react-toastify/dist/ReactToastify.css";
 
-const channels = ["star plus", "mtv", "aat tak"];
-
-const broadcasters = [
-  "Discovery Communications India",
-  "Celebrities Management Pvt Ltd",
-  "Eenadu Television Pvt Ltd",
-];
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -45,25 +37,11 @@ const BroadcasterFormPage = () => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    // price: "",
     image: null,
-    // channels: "",
   });
 
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   setBroadcasterName(
-  //     // On autofill we get a stringified value.
-  //     typeof value === "string" ? value.split(",") : value
-  //   );
-  // };
-
   const resetFormFields = () => {
-    // Create a new input element
     const newInput = document.createElement("input");
-
-    // Clone the attributes from the original input
     const oldInput = document.querySelector('input[name="image"]');
     if (oldInput) {
       Array.from(oldInput.attributes).forEach((attr) => {
@@ -72,12 +50,10 @@ const BroadcasterFormPage = () => {
       newInput.addEventListener("change", handleChange);
     }
 
-    // Replace the old input with the new one
     oldInput.parentNode.replaceChild(newInput, oldInput);
 
     setFormData({
       name: "",
-      // price: "",
       image: null,
     });
   };
@@ -88,7 +64,6 @@ const BroadcasterFormPage = () => {
     } = event;
 
     setchannelName(
-      // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
     setError(null);
@@ -116,10 +91,6 @@ const BroadcasterFormPage = () => {
     };
 
     const data = await axios.get("/api/package/Bouquet", config);
-    // console.log("datagetChannel>", data?.data);
-
-    // const channels = data?.data?.map((item) => item.name);
-
     setChannelData(data);
     const viewData = await axios.get("/api/package/broadcaster");
     setViewBroadcasterData(viewData?.data);
@@ -128,13 +99,6 @@ const BroadcasterFormPage = () => {
   const getChannelId = () => {
     try {
       const data = channelData.data;
-
-      // let newData = data?.find((item) => item?.name === channelName[0]);
-
-      // const channelIds = channelName.map((name, index) => {
-      //   const newData = data?.find((item) => item?.name === name);
-      //   return newData?._id;
-      // });
 
       const channelIds = channelName.map((name) => {
         const channel = data?.find((item) => item?.name === name);
@@ -175,26 +139,26 @@ const BroadcasterFormPage = () => {
 
       data &&
         toast.success("Broadcaster has been created successfully", {
-          position: "top-center", // Set the position of the toast
-          autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
-          hideProgressBar: false, // Show or hide the progress bar
-          closeOnClick: true, // Close the toast when clicked
-          pauseOnHover: true, // Pause the timer when hovered
-          draggable: true, // Allow dragging the toast
-          progress: undefined, // Use the default progress bar
-          style: { fontSize: "18px", textAlign: "center" }, // Customize the style of the toast
+          position: "top-center", 
+          autoClose: 5000, 
+          hideProgressBar: false, 
+          closeOnClick: true, 
+          pauseOnHover: true, 
+          draggable: true, 
+          progress: undefined, 
+          style: { fontSize: "18px", textAlign: "center" }, 
         });
     } catch (error) {
       setError(error?.response?.data?.error);
       toast.error("Failed to create the Broadcaster", {
-        position: "top-center", // Set the position of the toast
-        autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
-        hideProgressBar: false, // Show or hide the progress bar
-        closeOnClick: true, // Close the toast when clicked
-        pauseOnHover: true, // Pause the timer when hovered
-        draggable: true, // Allow dragging the toast
-        progress: undefined, // Use the default progress bar
-        style: { fontSize: "18px", textAlign: "center", color: "#071e43" }, // Customize the style of the toast
+        position: "top-center", 
+        autoClose: 5000, 
+        hideProgressBar: false, 
+        closeOnClick: true, 
+        pauseOnHover: true, 
+        draggable: true,
+        progress: undefined, 
+        style: { fontSize: "18px", textAlign: "center", color: "#071e43" }, 
       });
 
       resetFormFields();
@@ -211,8 +175,7 @@ const BroadcasterFormPage = () => {
 
   useEffect(() => {
     const isNameValid = formData.name.trim() !== "";
-    // const isPriceValid = formData.price.trim() !== "";
-    // const areChannelsSelected = channelName.length > 0;
+
     const isImageValid = formData.image !== null;
     // setIsFormValid(isNameValid && isPriceValid && areChannelsSelected);
     setIsFormValid(isNameValid && isImageValid);

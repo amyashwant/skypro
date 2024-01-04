@@ -17,7 +17,7 @@ const TermsPageOne = () => {
               </span>
             </p>
             <p>
-              Before you begin your journey with our cloud services, it is
+              Before you begin your journey with our  services, it is
               essential to understand the terms and conditions that govern our
               relationship. This overview provides a brief summary of the key
               points of our terms and conditions.
@@ -26,12 +26,12 @@ const TermsPageOne = () => {
               <h4>Acceptance of Terms:</h4>
               <li>
                 Before proceeding, carefully read and agree to comply with our
-                Terms and Conditions when accessing or using skypro Cloud
+                Terms and Conditions when accessing or using skypro 
                 Services.
               </li>
               <h4>Service Description:</h4>
               <li>
-                skypro provides a range of cloud-based services, including cloud
+                skypro provides a range of services, including 
                 storage, computing resources, and applications. Our services are
                 designed to enhance your digital experience and streamline your
                 operations.
@@ -40,39 +40,39 @@ const TermsPageOne = () => {
               <li>
                 Users are responsible for maintaining the confidentiality of
                 their account credentials and ensuring that their use of skypro
-                Cloud complies with applicable laws and regulations. Any
+                 complies with applicable laws and regulations. Any
                 unauthorized use is strictly prohibited.
               </li>
               <h4>Data Security and Privacy:</h4>
               <li>
                 We prioritize the security and privacy of your information.
-                skypro Cloud takes industry-standard measures to protect your
+                skypro  takes industry-standard measures to protect your
                 information. However, users should be aware of their
                 responsibilities regarding data security and privacy.
               </li>
               <h4>Payments and Billing:</h4>
               <li>
                 If you subscribe to Premium Services, you agree to timely pay
-                the specified fees. skypro Cloud reserves the right to modify
+                the specified fees. skypro  reserves the right to modify
                 prices and payment terms by giving notice to Users.
               </li>
               <h4>Termination of Services:</h4>
               <li>
-                skypro Cloud reserves the right to suspend or terminate services
+                skypro  reserves the right to suspend or terminate services
                 to users who violate our terms and conditions. Subject to
                 applicable cancellation policies, Users may terminate their
                 Accounts at any time.
               </li>
               <h4>Intellectual Property:</h4>
               <li>
-                All content and materials provided by skypro Cloud are protected
+                All content and materials provided by skypro  are protected
                 by intellectual property laws. Users are granted a limited,
                 non-exclusive license to use the Services for their intended
                 purpose.
               </li>
               <h4>Changes in Terms:</h4>
               <li>
-                skypro Cloud may update these Terms and Conditions from time to
+                skypro  may update these Terms and Conditions from time to
                 time. Users will be notified of any material changes, and
                 continued use of the Services implies acceptance of the revised
                 Terms.
