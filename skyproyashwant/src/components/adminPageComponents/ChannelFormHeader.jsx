@@ -575,7 +575,12 @@ const ChannelFormPage = () => {
                     <div style={{ color: "#071e43" }}>
                       <ListItem>
                         <ListItemText>
-                          <Typography variant="body1">{item.name}</Typography>
+                          <Typography variant="body1">{item.name
+                        .split(" ")
+                        .map(
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                        )
+                        .join(" ")}</Typography>
                         </ListItemText>
                         <IconButton onClick={() => handleSettings(item)}>
                           <EditNoteIcon />

@@ -28,7 +28,7 @@ const PrivacyPageOne = () => {
               </span>
             </p>
             <p>
-              At skypro, we value your privacy and are committed to protecting
+              At  Skypro Communication, we value your privacy and are committed to protecting
               and processing your personal information responsibly. This Privacy 
               Policy outlines how we collect, use, disclose, and safeguard your 
               information when you visit our website or use our services at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
@@ -117,7 +117,7 @@ const PrivacyPageOne = () => {
             </p>
 
             <p>
-              Thank you for choosing The skypro. Your privacy is our priority.
+              Thank you for choosing The Skypro Communication. Your privacy is our priority.
             </p>
           </div>
         </div>
