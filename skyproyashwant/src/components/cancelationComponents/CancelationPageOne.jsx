@@ -13,13 +13,13 @@ const RefundPageOne = () => {
               <h3 className="mt-0">Cancellation Policy</h3>
 
               <p className="mb-1">
-                last updated:{" "}
+                Last updated:{" "}
                 <span className="bluClr" style={{ color: "#337ab7" }}>
                   November 2023
                 </span>
               </p>
               <p>
-                At skypro, we understand that plans can change, and
+                At Skypro Communication, we understand that plans can change, and
                 flexibility is essential. Our cancellation policy is designed
                 with your convenience in mind, ensuring a seamless experience
                 for our users.
@@ -34,8 +34,8 @@ const RefundPageOne = () => {
               <ul>
                 <li>
                   We believe in providing flexibility to our users. Whether your
-                  needs have evolved, or circumstances have changed, skypro
-                  offers a variety of cancellation options to accommodate
+                  needs have evolved, or circumstances have changed, Skypro
+                  Communication offers a variety of cancellation options to accommodate
                   your needs. Our process is simple and hassle free.
                 </li>
               </ul>
@@ -61,7 +61,7 @@ const RefundPageOne = () => {
                   event of a cancellation, we encourage Users to communicate
                   their decision immediately. This allows us to address any
                   concerns, gather feedback, and ensure that your experience
-                  with skypro is as positive as possible.{" "}
+                  with Skypro Communication is as positive as possible.{" "}
                 </li>
               </ul>
               <p className="cost-clr">
@@ -87,7 +87,7 @@ const RefundPageOne = () => {
               </p>
               <ul>
                 <li>
-                  skypro reserves the right to suspend or terminate
+                  Skypro Communication reserves the right to suspend or terminate
                   services to users who violate our terms and conditions.
                   Subject to applicable cancellation policies, Users may
                   terminate their Accounts at any time.{" "}
@@ -104,7 +104,7 @@ const RefundPageOne = () => {
                   Your feedback matters to us. We use the insights we gain from
                   cancellations to continually improve our services. We
                   appreciate your input and strive to enhance our offerings
-                  based on user experiences. At skypro, our goal is to
+                  based on user experiences. At Skypro Communication, our goal is to
                   make your journey with us as seamless as possible, even if
                   plans change. Our cancellation policy reflects our commitment
                   to providing a user-centric and friendly experience. If you

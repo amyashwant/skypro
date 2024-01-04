@@ -22,20 +22,18 @@ const RefundPageOne = () => {
               <h3 className="mt-0">Refund Policy</h3>
 
               <p className="mb-1">
-                last updated:{" "}
+                Last updated:{" "}
                 <span className="bluClr" style={{ color: "#337ab7" }}>
                   November 2023
                 </span>
               </p>
               <p>
-                At The skypro, our primary goal is to ensure complete customer
+                At Skypro Communication, our primary goal is to ensure complete customer
                 satisfaction. To ensure a transparent understanding of our
                 refund policy, please carefully read the terms outlined below:
               </p>
               <p className="cost-clr">
-                {/* <span>
-                  <img src={refundImg} />
-                </span> */}
+              
                 <b>Eligibility for Refund:</b>
               </p>
               <p>
@@ -55,15 +53,13 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                {/* <span>
-                  <img src={refundImg} />
-                </span> */}
+                
                 <b>Refund Request Procedure:</b>
               </p>
               <ul>
                 <li>
                   To request a refund, please contact our customer support team
-                  at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
+                  at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in &nbsp;</Link>
                   with the subject line 'Refund Request'.
                 </li>
                 <li>
