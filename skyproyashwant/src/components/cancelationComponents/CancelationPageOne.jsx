@@ -19,7 +19,7 @@ const RefundPageOne = () => {
                 </span>
               </p>
               <p>
-                At skypro Cloud, we understand that plans can change, and
+                At skypro, we understand that plans can change, and
                 flexibility is essential. Our cancellation policy is designed
                 with your convenience in mind, ensuring a seamless experience
                 for our users.
@@ -35,14 +35,12 @@ const RefundPageOne = () => {
                 <li>
                   We believe in providing flexibility to our users. Whether your
                   needs have evolved, or circumstances have changed, skypro
-                  Cloud offers a variety of cancellation options to accommodate
+                  offers a variety of cancellation options to accommodate
                   your needs. Our process is simple and hassle free.
                 </li>
               </ul>
               <p className="cost-clr">
-                {/* <span>
-                  <img src={refundImg} />
-                </span> */}
+            
                 <b>Cancellation Deadline:</b>
               </p>
               <ul>
@@ -54,9 +52,7 @@ const RefundPageOne = () => {
                 </li>
               </ul>
               <p className="cost-clr">
-                {/* <span>
-                  <img src={refundImg} />
-                </span> */}
+               
                 <b>Transparent Communication:</b>
               </p>
               <ul>
@@ -65,7 +61,7 @@ const RefundPageOne = () => {
                   event of a cancellation, we encourage Users to communicate
                   their decision immediately. This allows us to address any
                   concerns, gather feedback, and ensure that your experience
-                  with skypro Cloud is as positive as possible.{" "}
+                  with skypro is as positive as possible.{" "}
                 </li>
               </ul>
               <p className="cost-clr">
@@ -91,7 +87,7 @@ const RefundPageOne = () => {
               </p>
               <ul>
                 <li>
-                  skypro Cloud reserves the right to suspend or terminate
+                  skypro reserves the right to suspend or terminate
                   services to users who violate our terms and conditions.
                   Subject to applicable cancellation policies, Users may
                   terminate their Accounts at any time.{" "}
@@ -108,7 +104,7 @@ const RefundPageOne = () => {
                   Your feedback matters to us. We use the insights we gain from
                   cancellations to continually improve our services. We
                   appreciate your input and strive to enhance our offerings
-                  based on user experiences. At skypro Cloud, our goal is to
+                  based on user experiences. At skypro, our goal is to
                   make your journey with us as seamless as possible, even if
                   plans change. Our cancellation policy reflects our commitment
                   to providing a user-centric and friendly experience. If you
