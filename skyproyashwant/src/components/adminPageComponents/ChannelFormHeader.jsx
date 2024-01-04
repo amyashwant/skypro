@@ -187,12 +187,14 @@ const ChannelFormPage = () => {
 
   const handleDelete = async () => {
     // Handle delete logic here
+    setGetLoading(true);
     console.log("Deleting language:", selectedLanguage);
     // Close the confirmation modal
     const data = await axios.delete(
-      `/api/package/language/${selectedLanguage._id}`
+      `/api/package/channel/${selectedLanguage._id}`
     );
     await getLanguageFunc();
+    setGetLoading(false);
     setDeleteConfirmationOpen(false);
   };
 
@@ -580,11 +582,11 @@ const ChannelFormPage = () => {
                         <IconButton onClick={() => handleSettings(item)}>
                           <EditNoteIcon />
                         </IconButton>
-                        {/* <IconButton
+                        <IconButton
                           onClick={() => handleDeleteConfirmationOpen(item)}
                         >
                           <Delete />
-                        </IconButton> */}
+                        </IconButton>
                       </ListItem>
                       {/* {item.name
                         .split(" ")
@@ -665,6 +667,7 @@ const ChannelFormPage = () => {
           <Button onClick={handleDelete} color="secondary">
             Delete
           </Button>
+          {getLoading ? <Loader /> : ""}
         </Box>
       </Modal>
     </>

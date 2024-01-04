@@ -29,18 +29,31 @@ const {
   updateCategory,
   deleteCategory,
   updateType,
-  deleteType
-
+  deleteType,
+  deleteChannel,
 } = require("../controllers/packagesController");
 const {
   imageUploadMiddleware,
 } = require("../middleware/imageUploadMiddleware");
 const { error } = require("console");
 
-
 router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
   const { name, type, language, category } = req.body;
+
+  const existingChannel = await Channel.findOne({ name });
+
+  if (existingChannel) {
+    if (existingChannel.isDeleted === true) {
+      await Channel.findByIdAndUpdate(existingChannel._id, {
+        isActive: true,
+        isDeleted: false,
+      });
+      return res.status(200).json("success");
+      // return res.status(400).json({ error: "Already added" });
+    }
+    return res.status(400).json({ error: "Already added" });
+  }
 
   if (!req?.file?.path) {
     return res.status(400).json(error);
@@ -63,6 +76,8 @@ router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
         language,
         category,
         image,
+        // isActive: true,
+        // isDeleted: false,
         // channelPrice,
       });
       res.status(200).json(channel);
@@ -128,15 +143,11 @@ router.put("/language/:itemId", updateLanguage);
 router.delete("/language/:id", deleteLanguage);
 router.put("/channel/:itemId", updateChannel);
 
-
 router.put("/category/:itemId", updateCategory);
-router.delete("/category/:id", deleteCategory)
-router.put("/type/:itemId", updateType)
-router.delete("/type/:id", deleteType)
+router.delete("/category/:id", deleteCategory);
+router.put("/type/:itemId", updateType);
+router.delete("/type/:id", deleteType);
 
-
-
-
-
+router.delete("/channel/:itemId", deleteChannel);
 
 module.exports = router;

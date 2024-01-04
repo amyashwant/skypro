@@ -155,7 +155,7 @@ const LanguageFormPage = () => {
       // await getLanguageFunc();
       console.log(error);
       setError(error?.response?.data?.error);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -188,13 +188,14 @@ const LanguageFormPage = () => {
   };
 
   const handleDelete = async () => {
-    // Handle delete logic here
-    console.log("Deleting language:", selectedLanguage);
-    // Close the confirmation modal
-    const data = await axios.delete(
-      `/api/package/language/${selectedLanguage._id}`
-    );
-    await getLanguageFunc();
+    try {
+      const data = await axios.delete(
+        `/api/package/language/${selectedLanguage._id}`
+      );
+      await getLanguageFunc();
+    } catch (error) {
+      setError(error?.response?.data?.errors);
+    }
     setDeleteConfirmationOpen(false);
   };
 

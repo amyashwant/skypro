@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 const getChannels = async (req, res) => {
   try {
-    const channels = await Channel.find();
+    const channels = await Channel.find({ isActive: true, isDeleted: false });
     // .populate("type").populate("language");
     res.status(200).json(channels);
   } catch (error) {
@@ -209,7 +209,6 @@ const getType = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 
 const updateType = async (req, res) => {
   const { name } = req.body;
@@ -479,6 +478,23 @@ const updateChannel = async (req, res) => {
   }
 };
 
+const deleteChannel = async (req, res) => {
+  try {
+    const updatedChannel = await Channel.findByIdAndUpdate(
+      req.params.itemId,
+      { isActive: false, isDeleted: true },
+      { new: true }
+    );
+    if (!updatedChannel) {
+      res.status(404).json({ error: "Channel not found" });
+    }
+    return res.status(200).json(updateChannel);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   // createChannel,
   getChannels,
@@ -506,5 +522,6 @@ module.exports = {
   updateCategory,
   deleteCategory,
   updateType,
-  deleteType
+  deleteType,
+  deleteChannel,
 };

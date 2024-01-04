@@ -7,7 +7,7 @@ const typeSchema = new mongoose.Schema({
   },
   isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   isDeleted: {
     type: Boolean,
