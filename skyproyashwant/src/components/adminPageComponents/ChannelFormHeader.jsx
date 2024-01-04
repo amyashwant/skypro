@@ -639,6 +639,33 @@ const ChannelFormPage = () => {
               />
             </FormControl>
 
+            <FormControl
+              sx={{ m: 1, width: 600 }}
+              style={{ width: "100%", margin: "12px 0px" }}
+            >
+              <InputLabel id="demo-multiple-checkbox-label">Type</InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                // multiple
+                value={channelName}
+                onChange={handleChannelChange}
+                // onChange={handleChange}
+                input={<OutlinedInput label="Language" />}
+                renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {channelType?.data
+                  ?.map((item) => item.name)
+                  ?.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox checked={channelName.indexOf(language) > -1} />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+
             <Button
               type="submit"
               variant="contained"
