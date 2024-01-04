@@ -115,35 +115,6 @@ const ChannelFormPage = () => {
     setError(null);
   };
 
-  const handleSubmitUpdate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const config = {
-        Headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const { name } = formDataUpdate;
-      const data = await axios.put(
-        `/api/package/channel/${selectedLanguage._id}`,
-        { name },
-        config
-      );
-
-      setLoading(false);
-
-      handleClose();
-      await getLanguageFunc();
-    } catch (error) {
-      // await getLanguageFunc();
-      setError(error?.response?.data?.error);
-      console.log(error);
-      setLoading(false);
-    }
-  };
-  //------------------------update/delete-------------------------------
-
   const resetFormFields = () => {
     // Create a new input element
     const newInput = document.createElement("input");
@@ -292,14 +263,14 @@ const ChannelFormPage = () => {
       formDataToSend.append("name", formData.name.toLowerCase());
       // formDataToSend.append("price", formData.price);
       formDataToSend.append("language", languageId);
+      formDataToSend.append("category", categoryId);
       formDataToSend.append("image", formData.image);
       formDataToSend.append("type", channelId[0]);
-      formDataToSend.append("category", categoryId);
 
       // channelId.forEach((id) => {
       //   formDataToSend.append("type", id);
       // });
-
+      console.log("formDataToSend>>>handleSubmit>>", formDataToSend);
       const { data } = await axios.post(
         "/api/package/channel",
         formDataToSend,
@@ -325,6 +296,100 @@ const ChannelFormPage = () => {
       // setError(error?.response?.data);
       resetFormFields();
       toast.error("Failed to create the channel", {
+        position: "top-center", // Set the position of the toast
+        autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
+        hideProgressBar: false, // Show or hide the progress bar
+        closeOnClick: true, // Close the toast when clicked
+        pauseOnHover: true, // Pause the timer when hovered
+        draggable: true, // Allow dragging the toast
+        progress: undefined, // Use the default progress bar
+        style: { fontSize: "18px", textAlign: "center", color: "#071e43" }, // Customize the style of the toast
+      });
+    }
+    setchannelName([]);
+    setlanguageName([]);
+
+    resetFormFields();
+    setCategoryName([]);
+    setLoading(false);
+  };
+
+  // const handleSubmitUpdate = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     const config = {
+  //       Headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //     };
+  //     const { name } = formDataUpdate;
+  //     const data = await axios.put(
+  //       `/api/package/channel/${selectedLanguage._id}`,
+  //       { name },
+  //       config
+  //     );
+
+  //     setLoading(false);
+
+  //     handleClose();
+  //     await getLanguageFunc();
+  //   } catch (error) {
+  //     // await getLanguageFunc();
+  //     setError(error?.response?.data?.error);
+  //     console.log(error);
+  //     setLoading(false);
+  //   }
+  // };
+  //------------------------update/delete-------------------------------
+
+  const handleSubmitUpdate = async (e) => {
+    e.preventDefault();
+    const config = {
+      Headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    setLoading(true);
+
+    console.log("formdatato send TYPE channelId>>", channelId[0]);
+    console.log("formDataUpdate.name>>,.....>>", formDataUpdate.name);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formDataUpdate.name);
+      formDataToSend.append("type", channelId[0]);
+      formDataToSend.append("language", languageId);
+      formDataToSend.append("category", categoryId);
+
+      // console.log("formdatatosend name channelId>>", formDataToSend);
+      // console.log("formdataUpdate name channelId>>", formDataUpdate);
+      // const { name } = formDataUpdate;
+      // const { name } = formDataToSend;
+      const data = await axios.put(
+        `/api/package/channel/${selectedLanguage._id}`,
+        formDataToSend,
+        config
+      );
+
+      // data && setModal("channel has been created successfully");
+      data &&
+        toast.success("channel has been updated successfully", {
+          position: "top-center", // Set the position of the toast
+          autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
+          hideProgressBar: false, // Show or hide the progress bar
+          closeOnClick: true, // Close the toast when clicked
+          pauseOnHover: true, // Pause the timer when hovered
+          draggable: true, // Allow dragging the toast
+          progress: undefined, // Use the default progress bar
+          style: { fontSize: "18px", textAlign: "center" }, // Customize the style of the toast
+        });
+    } catch (error) {
+      console.log(error);
+
+      setError(error?.response?.data?.error);
+      // setError(error?.response?.data);
+      resetFormFields();
+      toast.error("Failed to update the channel", {
         position: "top-center", // Set the position of the toast
         autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
         hideProgressBar: false, // Show or hide the progress bar
@@ -577,7 +642,15 @@ const ChannelFormPage = () => {
                     <div style={{ color: "#071e43" }}>
                       <ListItem>
                         <ListItemText>
-                          <Typography variant="body1">{item.name}</Typography>
+                          <Typography variant="body1">
+                            {item.name
+                              .split(" ")
+                              .map(
+                                (word) =>
+                                  word.charAt(0).toUpperCase() + word.slice(1)
+                              )
+                              .join(" ")}
+                          </Typography>
                         </ListItemText>
                         <IconButton onClick={() => handleSettings(item)}>
                           <EditNoteIcon />
@@ -665,6 +738,69 @@ const ChannelFormPage = () => {
                   ))}
               </Select>
             </FormControl>
+
+            {/* <div> */}
+            {/* <label className="form-label">Language</label> */}
+            <FormControl
+              sx={{ m: 1, width: 600 }}
+              style={{ width: "100%", margin: "12px 0px" }}
+            >
+              <InputLabel id="demo-multiple-checkbox-label">
+                Language
+              </InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                // multiple
+                value={languageName}
+                onChange={handleLanguageChange}
+                // onChange={handleChange}
+                input={<OutlinedInput label="Language" />}
+                renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {languageData?.data
+                  ?.map((item) => item.name)
+                  ?.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox checked={languageName.indexOf(language) > -1} />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+            {/* </div> */}
+            {/* <div> */}
+            {/* <label className="form-label">Category</label> */}
+            <FormControl
+              sx={{ m: 1, width: 600 }}
+              style={{ width: "100%", margin: "12px 0px" }}
+            >
+              <InputLabel id="demo-multiple-checkbox-label">
+                Category
+              </InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                // multiple
+                value={categoryName}
+                onChange={handleCategoryChange}
+                // onChange={handleChange}
+                input={<OutlinedInput label="Language" />}
+                renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {categoryData?.data
+                  ?.map((item) => item.name)
+                  ?.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox checked={categoryName.indexOf(language) > -1} />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+            {/* </div> */}
 
             <Button
               type="submit"

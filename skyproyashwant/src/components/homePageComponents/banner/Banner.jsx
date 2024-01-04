@@ -55,7 +55,7 @@ const Banner = () => {
                     to="/contact"
                     className="btn--base style-two banner-buttons__link"
                   >
-                    CONTACT US $20 <i className="icon-next"></i>
+                    CONTACT US <i className="icon-next"></i>
                   </Link>
                 </li>
               </ul>

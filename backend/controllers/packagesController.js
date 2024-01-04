@@ -455,8 +455,10 @@ const deleteCategory = async (req, res) => {
 };
 
 const updateChannel = async (req, res) => {
-  const { name } = req.body;
+  const { name, type, language, category } = req.body;
+  // const { buffer } = req.file;
   try {
+    // const name = buffer.toString("utf-8");
     const existingChannel = await Channel.findOne({ name });
 
     if (existingChannel) {
@@ -465,7 +467,7 @@ const updateChannel = async (req, res) => {
 
     const updatedData = await Channel.findByIdAndUpdate(
       req.params.itemId,
-      { name: name },
+      { name: name, type: type, language: language, category: category },
       { new: true }
     );
     if (!updatedData) {

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Channel = require("../models/packagesPageModel/channelModel");
 const Broadcaster = require("../models/packagesPageModel/broadcasterModel");
 const cloudinary = require("cloudinary").v2;
+const multer = require("multer");
 const {
   // createChannel,
   getChannels,
@@ -36,6 +37,8 @@ const {
   imageUploadMiddleware,
 } = require("../middleware/imageUploadMiddleware");
 const { error } = require("console");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.post("/channel", imageUploadMiddleware("image"), async (req, res) => {
   // console.log("req.file.filename>", req.file.filename);
@@ -141,7 +144,16 @@ router.get("/category", getCategory);
 //----------------------------------------------------------------
 router.put("/language/:itemId", updateLanguage);
 router.delete("/language/:id", deleteLanguage);
-router.put("/channel/:itemId", updateChannel);
+router.put(
+  "/channel/:itemId",
+  upload.fields([
+    { name: "name" },
+    { name: "price" },
+    { name: "language" },
+    { name: "category" },
+  ]),
+  updateChannel
+);
 
 router.put("/category/:itemId", updateCategory);
 router.delete("/category/:id", deleteCategory);
