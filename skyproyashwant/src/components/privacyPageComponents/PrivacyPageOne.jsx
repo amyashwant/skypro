@@ -28,7 +28,7 @@ const PrivacyPageOne = () => {
               </span>
             </p>
             <p>
-              At skypro Cloud, we value your privacy and are committed to protecting
+              At skypro, we value your privacy and are committed to protecting
               and processing your personal information responsibly. This Privacy 
               Policy outlines how we collect, use, disclose, and safeguard your 
               information when you visit our website or use our services at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>
@@ -59,7 +59,7 @@ const PrivacyPageOne = () => {
             <ul className="list-style">
               <li>
                 <strong>Service Delivery:</strong><br/>
-                We use your information to provide, improve, and personalize our cloud computing services, responding to inquiries, and delivering customer support. 
+                We use your information to provide, improve, and personalize, responding to inquiries, and delivering customer support. 
               </li>
               <li>
                 <strong>Communication:</strong><br/>
