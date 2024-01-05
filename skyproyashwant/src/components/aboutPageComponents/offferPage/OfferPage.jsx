@@ -41,8 +41,8 @@ const OfferPage = () => {
                   </div>
                   <div className="offer-price flex-grow-1">
                     <h2 className="price">
-                      $30.00<span className="month">/MONTH </span>{" "}
-                      <span className="previous-price">$58.00</span>
+                    ₹30.00<span className="month">/MONTH </span>{" "}
+                      <span className="previous-price">₹58.00</span>
                     </h2>
                   </div>
                 </div>

@@ -113,7 +113,7 @@ const PrivacyPageOne = () => {
               Contact Us
             </h4>
             <p>
-              If you have questions or concerns about this Privacy Policy, please contact us at info@theskypro.in.
+              If you have questions or concerns about this Privacy Policy, please contact us at <Link to={mailtoLink} onClick={openMail}>info@skypro.co.in</Link>.
             </p>
 
             <p>

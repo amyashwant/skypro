@@ -50,7 +50,7 @@ const PricingPlans = () => {
                 </ul>
                 <div className="price-amount-icon d-flex flex-wrap align-items-center justify-content-between">
                   <h2 className="price">
-                    30.00 <span>/ Month</span>
+                  ₹30.00 <span>/ Month</span>
                   </h2>
                   <div className="icon-plus">
                     <Link to="/packages">
@@ -90,7 +90,7 @@ const PricingPlans = () => {
                 </ul>
                 <div className="price-amount-icon d-flex flex-wrap align-items-center justify-content-between">
                   <h2 className="price">
-                    59.00 <span>/ Month</span>
+                  ₹59.00 <span>/ Month</span>
                   </h2>
                   <div className="icon-plus">
                     <Link to="/packages">
@@ -130,7 +130,7 @@ const PricingPlans = () => {
                 </ul>
                 <div className="price-amount-icon d-flex flex-wrap align-items-center justify-content-between">
                   <h2 className="price">
-                    30.00 <span>/ Month</span>
+                  ₹30.00 <span>/ Month</span>
                   </h2>
                   <div className="icon-plus">
                     <Link to="/packages">

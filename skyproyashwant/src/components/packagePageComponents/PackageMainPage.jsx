@@ -165,7 +165,7 @@ const PackageMainPage = () => {
                                     ₹{" "}
                                     {Math.floor(Number(pricing?.packagePrice))}
                                     .00
-                                    <span>-/mo</span>
+                                    <span>-/month</span>
                                   </h4>
                                 </div>
                                 <div className="deal-bottom">
