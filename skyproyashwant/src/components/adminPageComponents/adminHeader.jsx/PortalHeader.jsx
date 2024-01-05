@@ -13,13 +13,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
-import LanguageIcon from '@mui/icons-material/Language';
-import CategoryIcon from '@mui/icons-material/Category';
-import TypeSpecimenIcon from '@mui/icons-material/TypeSpecimen';
-import LiveTvIcon from '@mui/icons-material/LiveTv';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
-import PreviewIcon from '@mui/icons-material/Preview';
+import LanguageIcon from "@mui/icons-material/Language";
+import CategoryIcon from "@mui/icons-material/Category";
+import TypeSpecimenIcon from "@mui/icons-material/TypeSpecimen";
+import LiveTvIcon from "@mui/icons-material/LiveTv";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import DesktopWindowsIcon from "@mui/icons-material/DesktopWindows";
+import PreviewIcon from "@mui/icons-material/Preview";
 import {
   ExpandMore,
   ExpandLess,
@@ -78,6 +78,7 @@ const PortalHeader = ({ children }) => {
                 component="div"
                 id="nested-list-subheader"
                 sx={{ ...(isActive && { padding: 0 }) }}
+                style={{ paddingLeft: "0px" }}
               >
                 <Link className="logo" to="/" alt="logo">
                   {isActive ? (
@@ -118,21 +119,37 @@ const PortalHeader = ({ children }) => {
                 setOpen((prev) => !prev);
                 setIsActive(true);
               }}
+              // style={{display:"none"}}
+              // style={{ display: isActive ? "" : "none" }}
             >
               <ListItemIcon>
-              <SettingsIcon style={{ color: "#fd5901" }} />
+                <SettingsIcon
+                  style={{
+                    marginLeft: isActive ? "" : "10px",
+                    color: "#fd5901",
+                  }}
+                />
               </ListItemIcon>
               {isActive && (
                 <>
-                  <ListItemText primary="Make Your Package" />
+                  <ListItemText
+                    primary="Make Your Package"
+                    style={{ display: isActive ? "" : "none" }}
+                  />
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </>
               )}
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit >
+            <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {settingsLinks.map((link, i) => (
-                  <Link className="portalheader-listbuttonlink" to={link.handle} key={i}>
+                  <Link
+                    className="portalheader-listbuttonlink"
+                    to={link.handle}
+                    key={i}
+                    // style={{ width: "150%" }}
+                    style={{ paddingLeft: isActive ? "" : "10px" }}
+                  >
                     <ListItemButton
                       className="portalheader-listbutton"
                       sx={{
@@ -152,7 +169,10 @@ const PortalHeader = ({ children }) => {
                       >
                         {link.icon}
                       </ListItemIcon>
-                      <ListItemText primary={link.title} />
+                      <ListItemText
+                        primary={link.title}
+                        style={{ display: isActive ? "" : "none" }}
+                      />
                     </ListItemButton>
                   </Link>
                 ))}
@@ -165,7 +185,11 @@ const PortalHeader = ({ children }) => {
         className={!isActive ? "dashboard_right is_active" : "dashboard_right"}
       >
         <div className="header">
-        <div className="cursor-pointer" onClick={handleClick} style={{ color: "#fff" }}>
+          <div
+            className="cursor-pointer"
+            onClick={handleClick}
+            style={{ color: "#fff" }}
+          >
             {isActive ? (
               <MenuOpenOutlined fontSize="large" />
             ) : (
@@ -175,7 +199,13 @@ const PortalHeader = ({ children }) => {
           <div className="header_right">
             <button
               onClick={logoutHandler}
-              style={{ backgroundColor: "#071e43", color: "#fd5901",borderRadius:"5px",width:"80px",height:"30px" }}
+              style={{
+                backgroundColor: "#071e43",
+                color: "#fd5901",
+                borderRadius: "5px",
+                width: "80px",
+                height: "30px",
+              }}
             >
               logout
             </button>

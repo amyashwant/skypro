@@ -76,16 +76,44 @@ const BouqetFormPage = () => {
     setError(null);
   };
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+
+  //   setError(null);
+  // };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-
-    setError(null);
+  
+    if (name === "price") {
+      // Ensure that the entered value is a non-negative number greater than 0
+      const isValidInput = /^[1-9]\d*(\.\d{1,2})?$/.test(value) || value === "";
+  
+      if (isValidInput) {
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+        setError(null);
+      } else {
+        // If the input is invalid, you can set an error or take other actions
+        setError("Please enter a positive number greater than zero");
+      }
+    } else {
+      // Handle other input fields if needed
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+      setError(null);
+    }
   };
+  
 
   const getChannelFunc = async () => {
     const config = {

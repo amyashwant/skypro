@@ -444,6 +444,7 @@ const PackageBouque = () => {
             type="number"
             value={totalPrice - networkCarriageFee}
             onChange={handleNetworkCarriageFeeChange}
+            readOnly
           />
         </div>
         <div>
@@ -452,12 +453,13 @@ const PackageBouque = () => {
             type="number"
             value={networkCarriageFee}
             onChange={handleNetworkCarriageFeeChange}
+            readOnly
           />
         </div>
 
         <div>
           <h4>Total</h4>
-          <input type="number" value={totalPrice} readonly />
+          <input type="number" value={totalPrice} readOnly />
         </div>
 
         <div>
@@ -475,7 +477,7 @@ const PackageBouque = () => {
             type="number"
             id="totalPriceInput"
             value={netSubscriber}
-            readonly
+            readOnly
           />
         </div>
 

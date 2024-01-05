@@ -169,7 +169,7 @@ const ViewMoreSection = () => {
             </div>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
-            {packageResultFinal?.map((accordionItem) => (
+            {packageResultFinal?.map((accordionItem) => ( 
               <div className="accordion-item" key={accordionItem._id}>
                 <h2
                   className="accordion-header"
@@ -195,7 +195,7 @@ const ViewMoreSection = () => {
                   <div className="accordion-body">
                     <div className="accordion-innerDiv"></div>
                     <div style={{ marginTop: "25px" }}>
-                      {accordionItem.bouqueData.map((item) => (
+                      {accordionItem?.bouqueData?.map((item) => (
                         <div key={item._id}>
                           <strong
                             style={{
@@ -223,13 +223,13 @@ const ViewMoreSection = () => {
                             className="accordion-channelList"
                             style={{ listStyleType: "none", padding: 0 }}
                           >
-                            {item.channelRefs.map((channel, index) => (
+                            {item?.channelRefs?.map((channel, index) => (
                               <div key={index}>
                                 <div>
                                   <li key={channel._id}>
                                     <img
                                       // src={imageProvider(channel.image)}
-                                      src={`${channel.image}`}
+                                      src={`${channel?.image}`}
                                     />
                                     <span>{channel.name}</span>
                                   </li>

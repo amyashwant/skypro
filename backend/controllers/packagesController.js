@@ -8,6 +8,8 @@ const PackageBouque = require("../models/packagesPageModel/packageBouqueModel");
 const BouqueChannel = require("../models/packagesPageModel/bouqueChannel");
 const Category = require("../models/packagesPageModel/categoryModel");
 const mongoose = require("mongoose");
+const cloudinary = require("cloudinary").v2;
+const { error } = require("console");
 
 const getChannels = async (req, res) => {
   try {
@@ -464,10 +466,21 @@ const updateChannel = async (req, res) => {
     if (existingChannel) {
       return res.status(400).json({ error: "Can not update. Already exists" });
     }
+    // console.log("req?.file?.path>>",req?.file?.path);
+    // if (!req?.file?.path) {
+    //   return res.status(400).json(error);
+    // }
+    // const result = await cloudinary.uploader.upload(req.file.path);
 
     const updatedData = await Channel.findByIdAndUpdate(
       req.params.itemId,
-      { name: name, type: type, language: language, category: category },
+      {
+        name: name,
+        type: type,
+        language: language,
+        category: category,
+        // image: result,
+      },
       { new: true }
     );
     if (!updatedData) {
@@ -475,7 +488,7 @@ const updateChannel = async (req, res) => {
     }
     res.status(200).json(updatedData);
   } catch (error) {
-    console.log(error);
+    console.log("updatechannel>>",error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

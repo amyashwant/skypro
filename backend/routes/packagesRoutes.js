@@ -36,7 +36,9 @@ const {
 const {
   imageUploadMiddleware,
 } = require("../middleware/imageUploadMiddleware");
+
 const { error } = require("console");
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -144,6 +146,7 @@ router.get("/category", getCategory);
 //----------------------------------------------------------------
 router.put("/language/:itemId", updateLanguage);
 router.delete("/language/:id", deleteLanguage);
+
 router.put(
   "/channel/:itemId",
   upload.fields([
@@ -151,7 +154,9 @@ router.put(
     { name: "price" },
     { name: "language" },
     { name: "category" },
+    // { name: "image" },
   ]),
+  // imageUploadMiddleware("image"),
   updateChannel
 );
 

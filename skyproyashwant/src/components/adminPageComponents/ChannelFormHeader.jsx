@@ -294,17 +294,24 @@ const ChannelFormPage = () => {
 
       setError(error?.response?.data?.error);
       // setError(error?.response?.data);
+      toast.error(
+        `${
+          error?.response?.data?.error
+            ? error?.response?.data?.error
+            : "failed to create channel"
+        }`,
+        {
+          position: "top-center", // Set the position of the toast
+          autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
+          hideProgressBar: false, // Show or hide the progress bar
+          closeOnClick: true, // Close the toast when clicked
+          pauseOnHover: true, // Pause the timer when hovered
+          draggable: true, // Allow dragging the toast
+          progress: undefined, // Use the default progress bar
+          style: { fontSize: "18px", textAlign: "center", color: "#071e43" }, // Customize the style of the toast
+        }
+      );
       resetFormFields();
-      toast.error("Failed to create the channel", {
-        position: "top-center", // Set the position of the toast
-        autoClose: 5000, // Set the duration in milliseconds (e.g., 5000 = 5 seconds)
-        hideProgressBar: false, // Show or hide the progress bar
-        closeOnClick: true, // Close the toast when clicked
-        pauseOnHover: true, // Pause the timer when hovered
-        draggable: true, // Allow dragging the toast
-        progress: undefined, // Use the default progress bar
-        style: { fontSize: "18px", textAlign: "center", color: "#071e43" }, // Customize the style of the toast
-      });
     }
     setchannelName([]);
     setlanguageName([]);
@@ -353,13 +360,14 @@ const ChannelFormPage = () => {
     setLoading(true);
 
     console.log("formdatato send TYPE channelId>>", channelId[0]);
-    console.log("formDataUpdate.name>>,.....>>", formDataUpdate.name);
+    console.log("formDataUpdate.image>>,.....>>", formData.image);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("name", formDataUpdate.name);
       formDataToSend.append("type", channelId[0]);
       formDataToSend.append("language", languageId);
       formDataToSend.append("category", categoryId);
+      // formDataToSend.append("image", formData.image);
 
       // console.log("formdatatosend name channelId>>", formDataToSend);
       // console.log("formdataUpdate name channelId>>", formDataUpdate);
@@ -800,6 +808,16 @@ const ChannelFormPage = () => {
                   ))}
               </Select>
             </FormControl>
+            {/* </div> */}
+
+            {/* <div className="mb-3"> */}
+              {/* <label className="form-label">Channel Image</label>
+              <input
+                type="file"
+                className="form-control"
+                name="image"
+                onChange={handleChange}
+              /> */}
             {/* </div> */}
 
             <Button
