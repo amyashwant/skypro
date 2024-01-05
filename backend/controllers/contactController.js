@@ -22,15 +22,19 @@ const contactController = asyncHandler(async (req, res) => {
         pass: process.env.GOOGLE_PASS,
       },
     });
-    console.log("google mail receiver inside>>", process.env.GOOGLE_MAIL);
-    console.log("email sender inside>>", email);
-    console.log("google pass inside>>", process.env.GOOGLE_PASS);
+    // console.log("google mail receiver inside>>", process.env.GOOGLE_MAIL);
+    // console.log("email sender inside>>", email);
+    // console.log("google pass inside>>", process.env.GOOGLE_PASS);
 
     const mailOptions = {
       from: email,
       to: process.env.GOOGLE_MAIL,
-      subject: subject,
-      text: `A message was sent: ${message}. Contact details - Email: ${email}, Phone: ${countryCode} ${phone}`,
+      subject: "SkyPro has contacted you through the Contact Form.",
+      text: `You got a message from 
+      Name: ${name} 
+      Email: ${email} 
+      Mobile Number: ${phone} 
+      Message: ${message}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

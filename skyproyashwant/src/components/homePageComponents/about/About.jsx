@@ -40,7 +40,7 @@ const About = () => {
                       DISCOVER A WORLD OF HIGH-SPEED INTERNET
                     </h2>
                     <p className="para">
-                      We are a leading provider of high-speed internet, TV, and
+                      We are a leading provider of high-speed internet, TV and
                       phone services to residential and business customers. We
                       are committed to providing our customers with the best
                       possible experience, and we offer a variety of plans and

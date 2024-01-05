@@ -226,7 +226,7 @@ const ViewMoreSection = () => {
                             {item.channelRefs.map((channel, index) => (
                               <div key={index}>
                                 <div>
-                                  <li key={channel._id}>
+                                  <li className="viewmore-channelname" key={channel._id}>
                                     <img
                                       // src={imageProvider(channel.image)}
                                       src={`${channel.image}`}

@@ -12,7 +12,7 @@ const Facts = () => {
                 <div className="section-header style-two ps-lg-5">
                   {/* <h4 className="subtitle">OUR FACT</h4> */}
                   <h2 className="title">
-                    UNLIMITED MOVIES,K TV SHOWS AND MORE
+                    UNLIMITED MOVIES, TV SHOWS AND MORE
                   </h2>
                   <p className="para">
                     We are dedicated to serving customers. We achieve this not
@@ -31,7 +31,7 @@ const Facts = () => {
                     254<span>K CONNECTION PROVIDED</span>
                   </h3>
                   <p className="para">
-                    Broadband Internet Corporate Internet and Data Connectivity
+                    Broadband Internet, Corporate Internet and Data Connectivity
                   </p>
                 </div>
               </div>
@@ -41,10 +41,10 @@ const Facts = () => {
                 </div>
                 <div className="contents">
                   <h3 className="title">
-                    35<span>M CLIENT IN THE WOLRD</span>
+                    35<span>M CLIENT IN THE WORLD</span>
                   </h3>
                   <p className="para">
-                    Broadband Internet High Quality &amp; Reliable IPTSP Service
+                    Broadband Internet, High Quality &amp; Reliable IPTSP Service
                   </p>
                 </div>
               </div>
@@ -54,10 +54,10 @@ const Facts = () => {
                 </div>
                 <div className="contents">
                   <h3 className="title">
-                    480 <span> SATELLED CHANNELE</span>
+                    480 <span> SATELLITE CHANNEL</span>
                   </h3>
                   <p className="para">
-                    Broadband Internet Safe &amp; Smarter Home Internet
+                    Broadband Internet, Safe &amp; Smarter Home Internet
                   </p>
                 </div>
               </div>

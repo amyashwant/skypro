@@ -49,10 +49,10 @@ const TeamPage = () => {
               <div className="team-item">
                 <div className="thumb">
                   <img src={member.image} alt="img"/>
-                  <div className="share-icon">
-                    {/* <a href="javascript: void(0)" className="icon-share"></a> */}
+                  {/* <div className="share-icon">
+                    <a href="javascript: void(0)" className="icon-share"></a>
                     <Link to={member.link} className="icon-share" target="_blank"></Link>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="content">
                   <h4 className="name">{member.name}</h4>
