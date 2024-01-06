@@ -149,13 +149,13 @@ router.delete("/language/:id", deleteLanguage);
 
 router.put(
   "/channel/:itemId",
-  upload.fields([
-    { name: "name" },
-    { name: "price" },
-    { name: "language" },
-    { name: "category" },
-    // { name: "image" },
-  ]),
+  // upload.fields([
+  //   { name: "name" },
+  //   { name: "price" },
+  //   { name: "language" },
+  //   { name: "category" },
+  //   // { name: "image" },
+  // ]),
   // imageUploadMiddleware("image"),
   updateChannel
 );

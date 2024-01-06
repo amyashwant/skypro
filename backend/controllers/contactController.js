@@ -1,19 +1,45 @@
 const asyncHandler = require("express-async-handler");
-// const User = require("../models/userModel");
-// const Contact = require("../models/contactModel")
 const contactMiddleware = require("../middleware/contactMiddleware");
 const nodemailer = require("nodemailer");
-
-// console.log("google mail controller>>", process.env.GOOGLE_MAIL);
-// console.log("google pass contoller>>", process.env.GOOGLE_PASS);
 
 const contactController = asyncHandler(async (req, res) => {
   const { name, email, phone, countryCode, subject, message } = req.body;
   console.log(name, email, phone, countryCode, subject, message);
 
+  const emailTemplate = `
+  <html>
+  <head></head>
+  <body>
+    <div style="max-width: 600px; margin: auto; background: #e99e7a; padding: 20px; text-align: center; color: #fff; font-family: 'Roboto', sans-serif;">
+      <h1 style="color: #071e43; font-weight: 900; font-family: Roboto;">SkyPro Communication</h1>
+      <h2 style="color: #071e43; font-weight: 900;">Contact Form Submission</h2>
+
+      <div style="margin-bottom: 20px;">
+        <strong>Full Name:</strong> ${name}
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>Phone:</strong> ${countryCode} ${phone}
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>Email:</strong> ${email}
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>Subject:</strong> ${subject}
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>Message:</strong> ${message}
+      </div>
+    </div>
+  </body>
+</html>
+    `;
+
   // contactMiddleware(name, email, phone, subject, message)
 
-  //-----------------------------------------------------------------------------------------------------------------------
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -22,19 +48,12 @@ const contactController = asyncHandler(async (req, res) => {
         pass: process.env.GOOGLE_PASS,
       },
     });
-    // console.log("google mail receiver inside>>", process.env.GOOGLE_MAIL);
-    // console.log("email sender inside>>", email);
-    // console.log("google pass inside>>", process.env.GOOGLE_PASS);
 
     const mailOptions = {
       from: email,
       to: process.env.GOOGLE_MAIL,
-      subject: "SkyPro has contacted you through the Contact Form.",
-      text: `You got a message from 
-      Name: ${name} 
-      Email: ${email} 
-      Mobile Number: ${phone} 
-      Message: ${message}`,
+      // subject: "SkyPro has contacted you through the Contact Form.",
+      html: emailTemplate,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -50,8 +69,6 @@ const contactController = asyncHandler(async (req, res) => {
     console.log(error);
     res.status(500).json(error);
   }
-
-  //-----------------------------------------------------------------------------------------------------------------------
 });
 
 module.exports = { contactController };

@@ -26,7 +26,10 @@ const getChannels = async (req, res) => {
 const createLanguage = async (req, res) => {
   try {
     const { name } = req.body;
-    const existingLanguage = await Language.findOne({ name });
+    // const existingLanguage = await Language.findOne({ name });
+    const existingLanguage = await Language.findOne({
+      name: { $regex: new RegExp(name, "i") },
+    });
 
     if (existingLanguage) {
       console.log("existingLanguage>>/>>>", existingLanguage);
@@ -111,7 +114,9 @@ const deleteLanguage = async (req, res) => {
 const createBouquet = async (req, res) => {
   const { name, price, broadcasterRef } = req.body;
   try {
-    const existingBouquet = await Bouquet.findOne({ name });
+    const existingBouquet = await Bouquet.findOne({
+      name: { $regex: new RegExp(name, "i") },
+    });
     if (existingBouquet) {
       return res.status(400).json({ error: "Bouque Already Added" });
     }
@@ -174,7 +179,9 @@ const getBroadcasters = async (req, res) => {
 const createType = async (req, res) => {
   try {
     const { name } = req.body;
-    const existingType = await Type.findOne({ name });
+    const existingType = await Type.findOne({
+      name: { $regex: new RegExp(name, "i") },
+    });
 
     if (existingType) {
       // console.log("existingCategory>>/>>>", existingCategory);
@@ -372,7 +379,9 @@ const getBouqueChannel = async (req, res) => {
 const createCategory = async (req, res) => {
   try {
     const { name } = req.body;
-    const existingCategory = await Category.findOne({ name });
+    const existingCategory = await Category.findOne({
+      name: { $regex: new RegExp(name, "i") },
+    });
 
     if (existingCategory) {
       // console.log("existingCategory>>/>>>", existingCategory);
@@ -460,10 +469,20 @@ const updateChannel = async (req, res) => {
   const { name, type, language, category } = req.body;
   // const { buffer } = req.file;
   try {
+    console.log("name", name);
+    console.log("type", type);
+    console.log("language", language);
+    console.log("category", category);
     // const name = buffer.toString("utf-8");
     const existingChannel = await Channel.findOne({ name });
 
-    if (existingChannel) {
+    if (
+      existingChannel
+      // &&
+      // (existingChannel.type === type ||
+      //   existingChannel.language === language ||
+      //   existingChannel.category === category)
+    ) {
       return res.status(400).json({ error: "Can not update. Already exists" });
     }
     // console.log("req?.file?.path>>",req?.file?.path);
@@ -488,7 +507,7 @@ const updateChannel = async (req, res) => {
     }
     res.status(200).json(updatedData);
   } catch (error) {
-    console.log("updatechannel>>",error);
+    console.log("updatechannel>>", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

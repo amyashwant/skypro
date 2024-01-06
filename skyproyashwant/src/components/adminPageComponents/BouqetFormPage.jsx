@@ -89,11 +89,11 @@ const BouqetFormPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
+
     if (name === "price") {
       // Ensure that the entered value is a non-negative number greater than 0
       const isValidInput = /^[1-9]\d*(\.\d{1,2})?$/.test(value) || value === "";
-  
+
       if (isValidInput) {
         setFormData((prevData) => ({
           ...prevData,
@@ -113,7 +113,6 @@ const BouqetFormPage = () => {
       setError(null);
     }
   };
-  
 
   const getChannelFunc = async () => {
     const config = {
@@ -274,6 +273,7 @@ const BouqetFormPage = () => {
         <ToastContainer />
         <h2>Add Bouquets</h2>
         <form onSubmit={handleSubmit} className="broadcaster-form p-5 m-5">
+          <div style={{ color: "#fd5901" }}>{error && error}</div>
           <div className="mb-3">
             <label className="form-label">Bouquet Name</label>
             <input
@@ -284,7 +284,7 @@ const BouqetFormPage = () => {
               onChange={handleChange}
             />
           </div>
-          <div style={{ color: "#071e43" }}>{error && error}</div>
+          {/* <div style={{ color: "#071e43" }}>{error && error}</div> */}
           <div className="mb-3">
             <label className="form-label">Bouquet Price</label>
             <input

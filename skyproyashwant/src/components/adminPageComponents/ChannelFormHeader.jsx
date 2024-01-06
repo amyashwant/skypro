@@ -149,8 +149,13 @@ const ChannelFormPage = () => {
   };
 
   useEffect(() => {
+    // if (selectedLanguage) {
+    //   setFormDataUpdate({
+    //     name: selectedLanguage.name,
+    //   });
+    // }
     if (selectedLanguage) {
-      setFormDataUpdate({
+      setFormData({
         name: selectedLanguage.name,
       });
     }
@@ -320,35 +325,7 @@ const ChannelFormPage = () => {
     setCategoryName([]);
     setLoading(false);
   };
-
-  // const handleSubmitUpdate = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     const config = {
-  //       Headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //     };
-  //     const { name } = formDataUpdate;
-  //     const data = await axios.put(
-  //       `/api/package/channel/${selectedLanguage._id}`,
-  //       { name },
-  //       config
-  //     );
-
-  //     setLoading(false);
-
-  //     handleClose();
-  //     await getLanguageFunc();
-  //   } catch (error) {
-  //     // await getLanguageFunc();
-  //     setError(error?.response?.data?.error);
-  //     console.log(error);
-  //     setLoading(false);
-  //   }
-  // };
-  //------------------------update/delete-------------------------------
+  //--------------------------------------------------------------------------
 
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
@@ -357,13 +334,13 @@ const ChannelFormPage = () => {
         "Content-Type": "multipart/form-data",
       },
     };
-    setLoading(true);
+    setGetLoading(true);
 
     console.log("formdatato send TYPE channelId>>", channelId[0]);
     console.log("formDataUpdate.image>>,.....>>", formData.image);
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("name", formDataUpdate.name);
+      formDataToSend.append("name", formData.name);
       formDataToSend.append("type", channelId[0]);
       formDataToSend.append("language", languageId);
       formDataToSend.append("category", categoryId);
@@ -413,7 +390,7 @@ const ChannelFormPage = () => {
 
     resetFormFields();
     setCategoryName([]);
-    setLoading(false);
+    setGetLoading(false);
   };
 
   const handleChange = (e) => {
@@ -635,7 +612,7 @@ const ChannelFormPage = () => {
             <Typography variant="h5" gutterBottom>
               Channels
             </Typography>
-            {getLoading ? <Loader /> : ""}
+            {loading ? <Loader /> : ""}
             <Grid container spacing={2}>
               {viewChannelData?.map((item, index) => (
                 <Grid item key={index} xs={12} sm={6} md={6} lg={3}>
@@ -715,8 +692,10 @@ const ChannelFormPage = () => {
                 name="name"
                 type="text"
                 placeholder="Enter News Title"
-                value={formDataUpdate.name}
-                onChange={handleChangeUpdate}
+                // value={formDataUpdate.name}
+                // onChange={handleChangeUpdate}
+                value={formData.name}
+                onChange={handleChange}
               />
             </FormControl>
 
@@ -811,13 +790,13 @@ const ChannelFormPage = () => {
             {/* </div> */}
 
             {/* <div className="mb-3"> */}
-              {/* <label className="form-label">Channel Image</label>
-              <input
-                type="file"
-                className="form-control"
-                name="image"
-                onChange={handleChange}
-              /> */}
+            {/* <label className="form-label">Channel Image</label>
+            <input
+              type="file"
+              className="form-control"
+              name="image"
+              onChange={handleChange}
+            /> */}
             {/* </div> */}
 
             <Button
@@ -825,8 +804,11 @@ const ChannelFormPage = () => {
               variant="contained"
               color="primary"
               style={{ marginTop: "20px" }}
+              disabled={!isFormValid || getLoading}
             >
-              {loading ? <Loader /> : "Update"}
+              <span style={{ color: "white" }}>
+                {getLoading ? <Loader /> : "Update"}
+              </span>
             </Button>
           </form>
         </Box>

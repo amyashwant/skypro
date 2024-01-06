@@ -63,8 +63,8 @@ const ViewMoreSection = () => {
     const result = packageData.map((packageEntry) => {
       const correspondingBouqueEntry = bouqueData.filter(
         (bouqueEntry) =>
-          bouqueEntry.bouqueRef &&
-          bouqueEntry.bouqueRef._id === packageEntry.bouqueRef._id
+          bouqueEntry?.bouqueRef &&
+          bouqueEntry?.bouqueRef?._id === packageEntry?.bouqueRef?._id
       );
 
       return {
