@@ -58,7 +58,8 @@ const PackageBouque = () => {
   };
 
   const handleDiscountChange = (event) => {
-    const discountValue = Number(event.target.value) || 0;
+    // const discountValue = Number(event.target.value) || 0;
+    const discountValue = Math.max(Number(event.target.value), 0);
     setDiscount(discountValue);
     setIsDiscountEntered(discountValue > 0);
   };
